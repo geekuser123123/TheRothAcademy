@@ -59,13 +59,11 @@ export function MobileMenu() {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="group flex items-center justify-between gap-4 border-b border-r-line py-5"
+              className="group flex items-center justify-between gap-4 border-b border-r-line px-0 py-[18px]"
             >
               <span className="flex items-center gap-4">
                 <span className="text-xs text-r-gold">{String(index + 1).padStart(2, "0")}</span>
-                <span className="text-xl font-semibold font-body normal-case text-r-white">
-                  {item.label}
-                </span>
+                <span className="font-heading text-[30px] text-r-white">{item.label}</span>
               </span>
               <ArrowUpRight
                 size={18}
