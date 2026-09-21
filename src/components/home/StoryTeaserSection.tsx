@@ -5,18 +5,18 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 export function StoryTeaserSection() {
   return (
     <section className="border-b border-r-line bg-r-bg py-20 md:py-28">
-      <div className="container-brand grid items-center gap-16 md:grid-cols-[1.12fr_1fr]">
+      <div className="container-brand grid items-center gap-10 md:grid-cols-[1.12fr_1fr] md:gap-16">
         <p
           aria-hidden
-          className="select-none text-7xl leading-[0.85] text-transparent md:text-9xl"
-          style={{ WebkitTextStroke: "1px var(--color-r-line)" }}
+          className="min-w-0 select-none overflow-hidden leading-[0.85] text-transparent"
+          style={{ WebkitTextStroke: "1px var(--color-r-line)", fontSize: "clamp(2.75rem, 9vw, 8rem)" }}
         >
           Still
           <br />
           Standing.
         </p>
 
-        <div>
+        <div className="min-w-0">
           <Eyebrow>The Family Behind the Standard</Eyebrow>
           <h2 className="mt-4 text-4xl md:text-6xl">
             Some Things

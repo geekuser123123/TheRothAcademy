@@ -14,8 +14,8 @@ const icons = {
 export function AssetClassSection() {
   return (
     <section className="border-y border-r-line bg-r-stripe-1 py-20 md:py-28">
-      <div className="container-brand grid gap-16 md:grid-cols-[0.95fr_1.05fr]">
-        <div>
+      <div className="container-brand grid gap-10 md:grid-cols-[0.95fr_1.05fr] md:gap-16">
+        <div className="min-w-0">
           <Eyebrow>Think Outside the Usual Menu</Eyebrow>
           <h2 className="mt-4 text-4xl md:text-6xl">
             Invest in the
@@ -28,7 +28,7 @@ export function AssetClassSection() {
           </p>
         </div>
 
-        <div>
+        <div className="min-w-0">
           <ul className="divide-y divide-r-line border-t border-r-line">
             {assetClasses.map((item) => {
               const Icon = icons[item.icon as keyof typeof icons];

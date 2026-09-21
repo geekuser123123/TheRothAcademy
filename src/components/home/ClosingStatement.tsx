@@ -3,12 +3,12 @@ import Link from "next/link";
 export function ClosingStatement() {
   return (
     <section className="border-t border-r-line bg-r-bg py-24">
-      <div className="container-brand flex items-center justify-between gap-6">
-        <div>
+      <div className="container-brand flex flex-col items-start gap-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="min-w-0">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-r-gold">
             The next move is yours.
           </p>
-          <h2 className="mt-4 text-6xl md:text-8xl">
+          <h2 className="mt-4 text-5xl sm:text-6xl md:text-8xl">
             Make It <span className="text-r-gold">Count.</span>
           </h2>
         </div>

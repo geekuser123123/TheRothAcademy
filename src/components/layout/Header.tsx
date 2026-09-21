@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { mainNav } from "@/data/site-config";
+import { MobileMenu } from "@/components/layout/MobileMenu";
 
 export function Header() {
   return (
@@ -49,12 +50,7 @@ export function Header() {
           </div>
         </div>
 
-        {/* Mobile menu trigger placeholder — wire up once mobile nav is built */}
-        <button className="lg:hidden text-r-white" aria-label="Open menu" type="button">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round" />
-          </svg>
-        </button>
+        <MobileMenu />
       </div>
     </header>
   );

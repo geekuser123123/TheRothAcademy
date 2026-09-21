@@ -6,8 +6,8 @@ import { advancedServices } from "@/data/home-content";
 export function AdvancedServicesSection() {
   return (
     <section className="border-b border-r-line bg-r-bg py-20 md:py-28">
-      <div className="container-brand grid gap-16 md:grid-cols-[1fr_1.05fr]">
-        <div>
+      <div className="container-brand grid gap-10 md:grid-cols-[1fr_1.05fr] md:gap-16">
+        <div className="min-w-0">
           <Eyebrow>For the Questions That Go Further</Eyebrow>
           <h2 className="mt-6 text-4xl md:text-6xl">
             Big Ambition.
@@ -30,7 +30,7 @@ export function AdvancedServicesSection() {
           </p>
         </div>
 
-        <ul className="divide-y divide-r-line border-t border-r-line">
+        <ul className="min-w-0 divide-y divide-r-line border-t border-r-line">
           {advancedServices.map((item) => (
             <li key={item.number}>
               <Link
