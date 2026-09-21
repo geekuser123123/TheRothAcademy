@@ -1,29 +1,99 @@
-import { Button } from "@/components/ui/Button";
-import { Eyebrow } from "@/components/ui/Eyebrow";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight, ArrowDown, Landmark, Layers, BookOpen, Compass } from "lucide-react";
+import { heroCapabilities } from "@/data/home-content";
+
+const icons = { landmark: Landmark, layers: Layers, "book-open": BookOpen, compass: Compass };
 
 export function HeroSection() {
   return (
-    <section className="border-b border-r-line bg-r-bg py-20 md:py-32">
-      <div className="container-brand">
-        <Eyebrow>For the individual investor</Eyebrow>
-        <h1 className="mt-6 text-6xl md:text-8xl">
-          Own Your
-          <br />
-          <span className="text-r-gold">Next Move.</span>
-        </h1>
-        <p className="mt-6 max-w-xl text-base text-r-muted font-body normal-case">
-          {siteDescription}
-        </p>
-        <div className="mt-8 flex flex-wrap gap-4">
-          <Button href="/start">Find my starting point</Button>
-          <Button href="/contact" variant="outline">
-            Start a conversation
-          </Button>
+    <>
+      <section className="relative flex min-h-[600px] items-center overflow-hidden border-b border-r-line md:min-h-[690px]">
+        <Image
+          src="/gold-texture.jpg"
+          alt=""
+          aria-hidden
+          fill
+          priority
+          className="pointer-events-none object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-r-bg/90 to-r-bg/60" />
+
+        <div className="container-brand relative py-10 md:py-16">
+          <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-r-gold">
+            <span>Self-Directed Retirement &amp; Advanced Planning</span>
+            <span>The Roth Academy</span>
+          </div>
+
+          <div className="mt-6 flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
+            <h1 className="text-6xl md:text-8xl">
+              Own Your
+              <br />
+              <em className="not-italic text-r-gold">Next Move.</em>
+            </h1>
+
+            <div className="flex items-start gap-4 border-l border-r-line pl-4 md:max-w-xs">
+              <p className="text-base font-body normal-case text-r-white">
+                You built the ambition.
+                <br />
+                Give it a bigger field to play on.
+                <br />
+                <span className="mt-2 block text-xs font-semibold uppercase tracking-[0.15em] text-r-muted">
+                  Your Future. Your Direction.
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-10">
+            <p className="max-w-md text-base text-r-muted font-body normal-case">
+              Self-directed 401(k)s. Self-directed IRAs.
+              <br />
+              Advanced planning for what comes after.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-4">
+              <Link
+                href="/plans"
+                className="inline-flex items-center gap-2 rounded-sm bg-r-gold px-6 py-3 text-sm font-semibold text-r-bg transition-colors hover:bg-r-gold-light"
+              >
+                Find my plan
+                <ArrowUpRight size={18} aria-hidden />
+              </Link>
+              <Link
+                href="/advanced-services"
+                className="inline-flex items-center gap-2 rounded-sm border border-r-line px-6 py-3 text-sm font-semibold text-r-white transition-colors hover:border-r-gold hover:text-r-gold"
+              >
+                Explore advanced services
+              </Link>
+            </div>
+          </div>
+
+          <Link
+            href="/#your-plan"
+            className="mt-10 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-r-muted transition-colors hover:text-r-gold"
+          >
+            <ArrowDown size={16} aria-hidden />
+            The Possibilities Start Here
+          </Link>
+        </div>
+      </section>
+
+      <div className="border-b border-r-line bg-r-bg">
+        <div className="container-brand flex flex-wrap items-center justify-between gap-6 py-6">
+          {heroCapabilities.map((item) => {
+            const Icon = icons[item.icon];
+            return (
+              <span
+                key={item.label}
+                className="flex items-center gap-2 text-sm text-r-muted font-body normal-case"
+              >
+                <Icon size={18} className="text-r-gold" aria-hidden />
+                {item.label}
+              </span>
+            );
+          })}
         </div>
       </div>
-    </section>
+    </>
   );
 }
-
-const siteDescription =
-  "Self-directed 401(k)s, self-directed IRAs, and advanced planning. Bring your ambition. Build the right foundation.";
