@@ -8,7 +8,14 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-r-line bg-r-bg">
       <div className="container-brand flex h-24 items-center justify-between">
         <Link href="/" className="shrink-0">
-          <Image src="/roth-logo.png" alt="Roth Academy" width={140} height={80} className="h-12 w-auto" priority />
+          <Image
+            src="/roth-logo.png"
+            alt="Roth Academy"
+            width={71}
+            height={78}
+            className="h-[78px] w-[71px] object-contain"
+            priority
+          />
         </Link>
 
         <div className="hidden items-center gap-10 lg:flex">
