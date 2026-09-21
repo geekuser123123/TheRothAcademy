@@ -65,13 +65,13 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="mt-10 border-t border-r-line pt-8">
+          <div className="mt-10 flex flex-col gap-6 border-t border-r-line pt-8 md:flex-row md:items-center md:justify-between">
             <p className="max-w-md text-base text-r-muted font-body normal-case">
               Self-directed 401(k)s. Self-directed IRAs.
               <br />
               Advanced planning for what comes after.
             </p>
-            <div className="mt-6 flex flex-wrap items-center gap-6">
+            <div className="flex flex-wrap items-center gap-6">
               <Link
                 href="/plans"
                 className="inline-flex items-center gap-2 rounded-sm bg-r-gold px-6 py-3 text-sm font-semibold text-r-bg transition-colors hover:bg-r-gold-light"
