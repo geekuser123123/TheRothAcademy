@@ -17,7 +17,10 @@ export function HeroSection() {
           priority
           className="pointer-events-none object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-r-bg/90 to-r-bg/60" />
+        <div
+          className="absolute inset-0"
+          style={{ background: "linear-gradient(90deg, rgba(9,10,11,0.28), rgba(9,10,11,0.6))" }}
+        />
 
         <div className="container-brand relative py-10 md:py-16">
           <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-r-gold">
@@ -25,14 +28,15 @@ export function HeroSection() {
             <span>The Roth Academy</span>
           </div>
 
-          <div className="mt-6 flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
-            <h1 className="text-6xl md:text-8xl">
+          <div className="mt-6 flex flex-col gap-10 md:flex-row md:items-center md:justify-between">
+            <h1 className="text-6xl font-bold md:text-8xl">
               Own Your
               <br />
               <em className="not-italic text-r-gold">Next Move.</em>
             </h1>
 
-            <div className="flex items-start gap-4 border-l border-r-line pl-4 md:max-w-xs">
+            <div className="flex items-center gap-4 md:max-w-xs">
+              <span className="h-16 w-px shrink-0 bg-r-line" aria-hidden />
               <p className="text-base font-body normal-case text-r-white">
                 You built the ambition.
                 <br />
@@ -45,13 +49,13 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="mt-10">
+          <div className="mt-10 border-t border-r-line pt-8">
             <p className="max-w-md text-base text-r-muted font-body normal-case">
               Self-directed 401(k)s. Self-directed IRAs.
               <br />
               Advanced planning for what comes after.
             </p>
-            <div className="mt-6 flex flex-wrap gap-4">
+            <div className="mt-6 flex flex-wrap items-center gap-6">
               <Link
                 href="/plans"
                 className="inline-flex items-center gap-2 rounded-sm bg-r-gold px-6 py-3 text-sm font-semibold text-r-bg transition-colors hover:bg-r-gold-light"
@@ -61,7 +65,7 @@ export function HeroSection() {
               </Link>
               <Link
                 href="/advanced-services"
-                className="inline-flex items-center gap-2 rounded-sm border border-r-line px-6 py-3 text-sm font-semibold text-r-white transition-colors hover:border-r-gold hover:text-r-gold"
+                className="text-sm font-semibold text-r-white transition-colors hover:text-r-gold"
               >
                 Explore advanced services
               </Link>
