@@ -11,33 +11,35 @@ export function Header() {
           <Image src="/roth-logo.png" alt="Roth Academy" width={140} height={80} className="h-12 w-auto" priority />
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex">
-          {mainNav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="font-body text-[12px] font-medium normal-case text-r-white/90 transition-colors hover:text-r-gold"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="hidden items-center gap-10 lg:flex">
+          <nav className="flex items-center gap-8">
+            {mainNav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="font-body text-[12px] font-medium normal-case text-r-white/90 transition-colors hover:text-r-gold"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
 
-        <div className="hidden items-center gap-6 lg:flex">
-          <Link
-            href="/dashboard"
-            className="inline-flex items-center gap-1 font-body text-[12px] font-medium normal-case text-r-white/90 transition-colors hover:text-r-gold"
-          >
-            Client login
-            <ArrowUpRight size={14} aria-hidden />
-          </Link>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 rounded-sm bg-r-gold px-5 py-2.5 font-body text-[12px] font-medium normal-case text-r-bg transition-colors hover:bg-r-gold-light"
-          >
-            Let&apos;s talk
-            <ArrowUpRight size={16} aria-hidden />
-          </Link>
+          <div className="flex items-center gap-6">
+            <Link
+              href="/dashboard"
+              className="inline-flex items-center gap-1 font-body text-[12px] font-medium normal-case text-r-white/90 transition-colors hover:text-r-gold"
+            >
+              Client login
+              <ArrowUpRight size={14} aria-hidden />
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 rounded-sm bg-r-gold px-5 py-2.5 font-body text-[12px] font-medium normal-case text-r-bg transition-colors hover:bg-r-gold-light"
+            >
+              Let&apos;s talk
+              <ArrowUpRight size={16} aria-hidden />
+            </Link>
+          </div>
         </div>
 
         {/* Mobile menu trigger placeholder — wire up once mobile nav is built */}
