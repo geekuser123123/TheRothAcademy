@@ -22,7 +22,7 @@ export function HeroSection() {
           style={{ background: "linear-gradient(90deg, rgba(9,10,11,0.28), rgba(9,10,11,0.6))" }}
         />
 
-        <div className="container-brand relative py-10 md:py-16">
+        <div className="container-brand relative w-full py-10 md:py-16">
           <div
             className="flex flex-wrap justify-between gap-5"
             style={{ marginBottom: 40, fontSize: 11, letterSpacing: "0.14em" }}
