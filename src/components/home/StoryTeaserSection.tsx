@@ -1,27 +1,38 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 
-const STORY_POSTER = "/story/berry-family.webp";
+const STORY_IMAGE = "/story/berry-family.webp";
 const STORY_VIDEO = "/story/father-son.mp4";
 
 export function StoryTeaserSection() {
   return (
-    <section className="border-b border-r-line bg-r-bg py-20 md:py-28">
-      <div className="container-brand grid items-center gap-14 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
+    <section className="relative overflow-hidden border-b border-r-line py-20 md:py-28">
+      {/* Father-son video — sets the mood behind the whole section */}
+      <video
+        aria-hidden
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster={STORY_IMAGE}
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+      >
+        <source src={STORY_VIDEO} type="video/mp4" />
+      </video>
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-r-bg/85" />
+
+      <div className="container-brand relative grid items-center gap-14 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
         <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-brand-card)] border border-r-line">
-          <video
-            aria-hidden
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            poster={STORY_POSTER}
-            className="absolute inset-0 h-full w-full object-cover"
-          >
-            <source src={STORY_VIDEO} type="video/mp4" />
-          </video>
+          <Image
+            src={STORY_IMAGE}
+            alt="Tim and Kevin Berry"
+            fill
+            sizes="(min-width: 768px) 35vw, 100vw"
+            className="object-cover"
+          />
           <div
             aria-hidden
             className="absolute inset-0"

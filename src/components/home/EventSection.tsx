@@ -5,9 +5,9 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 
 export function EventSection() {
   return (
-    <section className="border-b border-r-line bg-r-bg">
+    <section className="border-b border-r-line bg-[#0F1013]">
       <div className="container-brand">
-        <div className="flex flex-col bg-r-panel/50 lg:flex-row lg:items-stretch">
+        <div className="flex flex-col lg:flex-row lg:items-stretch">
           <div className="relative h-56 w-full shrink-0 sm:h-80 lg:h-auto lg:w-[28rem]">
             <Image
               src="/events/dallas-skyline.jpg"
