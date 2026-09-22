@@ -6,7 +6,7 @@ import { MobileMenu } from "@/components/layout/MobileMenu";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-r-line bg-r-bg">
+    <header className="fixed inset-x-0 top-0 z-40 bg-transparent">
       <div className="container-brand flex h-24 items-center justify-between">
         <Link href="/" className="shrink-0">
           <Image

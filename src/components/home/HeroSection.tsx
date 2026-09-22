@@ -7,7 +7,7 @@ const icons = { landmark: Landmark, layers: Layers, "book-open": BookOpen, compa
 export function HeroSection() {
   return (
     <>
-      <section className="relative flex min-h-[92vh] items-center overflow-hidden border-b border-r-line">
+      <section className="relative flex min-h-[92vh] w-full items-center overflow-hidden border-b border-r-line">
         {/* City-at-dusk background video — sets a financial-district tone behind the gold brand palette */}
         <video
           aria-hidden
@@ -46,7 +46,7 @@ export function HeroSection() {
           className="pointer-events-none absolute -right-[15%] top-1/2 h-[90%] w-[45%] -translate-y-1/2 rounded-full border border-r-gold/30 md:-right-[8%]"
         />
 
-        <div className="container-brand relative py-20 md:py-28">
+        <div className="container-brand relative w-full pb-20 pt-32 md:pb-28 md:pt-40">
           <p
             className="flex items-center gap-3 font-semibold uppercase text-r-gold"
             style={{ fontSize: 11, letterSpacing: "0.14em" }}
