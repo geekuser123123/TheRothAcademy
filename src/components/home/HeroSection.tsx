@@ -7,11 +7,34 @@ const icons = { landmark: Landmark, layers: Layers, "book-open": BookOpen, compa
 export function HeroSection() {
   return (
     <>
-      <section className="relative overflow-hidden border-b border-r-line">
+      <section className="relative flex min-h-[92vh] items-center overflow-hidden border-b border-r-line">
+        {/* City-at-dusk background video — sets a financial-district tone behind the gold brand palette */}
+        <video
+          aria-hidden
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+        >
+          <source src="/videos/hero-background.mp4" type="video/mp4" />
+        </video>
+
+        {/* Scrim for text legibility over the video */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(100deg, rgba(9,10,11,0.96) 0%, rgba(9,10,11,0.88) 32%, rgba(9,10,11,0.55) 60%, rgba(9,10,11,0.75) 100%), linear-gradient(0deg, rgba(9,10,11,0.9) 0%, rgba(9,10,11,0.2) 35%, rgba(9,10,11,0.35) 100%)",
+          }}
+        />
+
         {/* Abstract gold arc — original graphic, not a stock/borrowed asset */}
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-[10%] top-1/2 h-[140%] w-[70%] -translate-y-1/2 rounded-full opacity-70 md:-right-[5%] md:w-[55%]"
+          className="pointer-events-none absolute -right-[10%] top-1/2 h-[140%] w-[70%] -translate-y-1/2 rounded-full opacity-40 mix-blend-screen md:-right-[5%] md:w-[55%]"
           style={{
             background:
               "conic-gradient(from 200deg at 50% 50%, transparent 0deg, var(--color-r-gold-dark) 60deg, var(--color-r-gold) 110deg, var(--color-r-gold-light) 140deg, transparent 200deg, transparent 360deg)",
@@ -23,20 +46,21 @@ export function HeroSection() {
           className="pointer-events-none absolute -right-[15%] top-1/2 h-[90%] w-[45%] -translate-y-1/2 rounded-full border border-r-gold/30 md:-right-[8%]"
         />
 
-        <div className="container-brand relative py-16 md:py-24">
+        <div className="container-brand relative py-20 md:py-28">
           <p
-            className="font-semibold uppercase text-r-gold"
+            className="flex items-center gap-3 font-semibold uppercase text-r-gold"
             style={{ fontSize: 11, letterSpacing: "0.14em" }}
           >
+            <span className="h-px w-8 bg-r-gold" aria-hidden />
             Self-Directed Retirement &amp; Advanced Planning
           </p>
 
           <h1
-            className="mt-6 max-w-3xl text-r-white"
+            className="mt-6 max-w-4xl text-r-white"
             style={{
-              fontSize: "clamp(2.75rem, 8vw, 8.25rem)",
+              fontSize: "clamp(3.25rem, 10vw, 9.5rem)",
               fontWeight: 500,
-              lineHeight: 0.95,
+              lineHeight: 0.93,
               letterSpacing: "-0.02em",
             }}
           >
@@ -56,7 +80,7 @@ export function HeroSection() {
             Self-directed 401(k)s. Self-directed IRAs. Advanced planning for what comes after.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link
               href="/plans"
               className="inline-flex items-center gap-2 rounded-[var(--radius-brand-control)] bg-r-gold px-6 py-3 text-sm font-semibold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
@@ -66,7 +90,7 @@ export function HeroSection() {
             </Link>
             <Link
               href="/advanced-services"
-              className="inline-flex items-center gap-2 rounded-[var(--radius-brand-control)] border border-r-line px-6 py-3 text-sm font-semibold uppercase tracking-wide text-r-white transition-colors hover:border-r-gold hover:text-r-gold"
+              className="inline-flex items-center gap-2 rounded-[var(--radius-brand-control)] border border-r-line/60 bg-r-bg/30 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-r-white backdrop-blur-sm transition-colors hover:border-r-gold hover:text-r-gold"
             >
               Explore advanced services
             </Link>
