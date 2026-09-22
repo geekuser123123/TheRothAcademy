@@ -8,13 +8,13 @@ const STORY_IMAGE = "/story/berry-family.webp";
 export function StoryTeaserSection() {
   return (
     <section className="border-b border-r-line bg-r-bg py-20 md:py-28">
-      <div className="container-brand grid items-center gap-14 md:grid-cols-[1fr_1.15fr] md:gap-16">
+      <div className="container-brand grid items-center gap-14 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
         <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-brand-card)] border border-r-line">
           <Image
             src={STORY_IMAGE}
             alt="Tim and Kevin Berry"
             fill
-            sizes="(min-width: 768px) 40vw, 100vw"
+            sizes="(min-width: 768px) 35vw, 100vw"
             className="object-cover"
           />
           <div
@@ -32,20 +32,18 @@ export function StoryTeaserSection() {
 
         <div className="min-w-0">
           <Eyebrow>The Family Behind the Standard</Eyebrow>
-          <h2 className="mt-4 text-4xl md:text-6xl">
-            Some Things
-            <br />
-            Are Worth
+          <h2 className="mt-4 text-5xl md:text-7xl lg:text-8xl">
+            Some Things Are Worth
             <br />
             <span className="text-r-gold">Building Again.</span>
           </h2>
-          <p className="mt-6 max-w-md text-sm text-r-muted font-body normal-case">
+          <p className="mt-6 max-w-xl text-base text-r-muted font-body normal-case">
             A father who kept going. A son who was watching. A company built to give hard-earned
             knowledge the follow-through it deserves.
           </p>
 
-          <blockquote className="mt-8 max-w-md border-l-2 border-r-gold/50 pl-5">
-            <p className="text-lg leading-snug text-r-white font-body normal-case">
+          <blockquote className="mt-8 max-w-xl border-l-2 border-r-gold/50 pl-5">
+            <p className="text-xl leading-snug text-r-white font-body normal-case">
               &ldquo;I didn&rsquo;t want to change my father. I wanted to build around him.&rdquo;
             </p>
             <footer className="mt-3 text-xs uppercase tracking-[0.15em] text-r-muted">
