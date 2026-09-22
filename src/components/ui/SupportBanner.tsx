@@ -1,16 +1,21 @@
 "use client";
 
 import { ArrowUpRight } from "lucide-react";
+import { clsx } from "clsx";
 import { useContactModal } from "@/components/contact/ContactModalProvider";
 
-export function LearnSupportBanner({
+export function SupportBanner({
   heading,
   description,
   cta,
+  contactTopic = "I am exploring my options",
+  variant = "link",
 }: {
   heading: string;
   description: string;
   cta: string;
+  contactTopic?: string;
+  variant?: "link" | "outline";
 }) {
   const { open } = useContactModal();
 
@@ -23,8 +28,13 @@ export function LearnSupportBanner({
         </div>
         <button
           type="button"
-          onClick={() => open("I am exploring my options")}
-          className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold uppercase tracking-wide text-r-gold"
+          onClick={() => open(contactTopic)}
+          className={clsx(
+            "inline-flex shrink-0 items-center gap-2 text-sm font-semibold uppercase tracking-wide transition-colors",
+            variant === "outline"
+              ? "rounded-[var(--radius-brand-control)] border border-r-line px-6 py-3 text-r-white hover:border-r-gold hover:text-r-gold"
+              : "text-r-gold",
+          )}
         >
           {cta}
           <ArrowUpRight size={16} aria-hidden />

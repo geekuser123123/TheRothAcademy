@@ -10,6 +10,7 @@ const INTEREST_OPTIONS = [
   "Self-Directed 401(k)",
   "Self-Directed IRA",
   "Advanced services",
+  "Events & workshops",
 ];
 
 const inputClasses =

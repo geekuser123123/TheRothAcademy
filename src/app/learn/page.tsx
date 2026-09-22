@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ServiceHero } from "@/components/services/ServiceHero";
 import { LearnDirectory } from "@/components/learn/LearnDirectory";
-import { LearnSupportBanner } from "@/components/learn/LearnSupportBanner";
+import { SupportBanner } from "@/components/ui/SupportBanner";
 import { ClosingStatement } from "@/components/home/ClosingStatement";
 import { learnHero, learnSupportBanner } from "@/data/learn-content";
 
@@ -23,7 +23,7 @@ export default function LearnPage() {
 
       <LearnDirectory />
 
-      <LearnSupportBanner
+      <SupportBanner
         heading={learnSupportBanner.heading}
         description={learnSupportBanner.description}
         cta={learnSupportBanner.cta}

@@ -1,14 +1,23 @@
 import { clsx } from "clsx";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 
+const gridColsClasses = {
+  3: "sm:grid-cols-3 md:grid-cols-3",
+  4: "sm:grid-cols-2 md:grid-cols-4",
+};
+
 export function ServiceProcess({
   eyebrow,
   heading,
   steps,
+  columns = 4,
+  note,
 }: {
   eyebrow: string;
   heading: string[];
   steps: { number: string; title: string; description: string }[];
+  columns?: 3 | 4;
+  note?: string;
 }) {
   return (
     <section className="border-b border-r-line bg-r-stripe-2 py-16 md:py-24">
@@ -22,7 +31,7 @@ export function ServiceProcess({
           ))}
         </h2>
 
-        <ol className="mt-12 grid gap-8 sm:grid-cols-2 md:grid-cols-4 md:gap-6">
+        <ol className={clsx("mt-12 grid gap-8 md:gap-6", gridColsClasses[columns])}>
           {steps.map((step) => (
             <li key={step.number} className="border-t border-r-gold/40 pt-5">
               <span className="text-xs font-semibold uppercase tracking-[0.15em] text-r-gold">{step.number}</span>
@@ -31,6 +40,8 @@ export function ServiceProcess({
             </li>
           ))}
         </ol>
+
+        {note && <p className="mt-10 max-w-3xl text-xs text-r-muted/70 font-body normal-case">{note}</p>}
       </div>
     </section>
   );
