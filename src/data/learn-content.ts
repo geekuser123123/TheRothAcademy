@@ -1,0 +1,274 @@
+export const learnHero = {
+  eyebrow: "The Knowledge Library",
+  title: ["The More You Know.", "The Further You See."],
+  goldLine: 1,
+  description:
+    "Understand the questions behind the opportunity. Practical guides for your first plan and the more complex decisions ahead.",
+};
+
+export const learnSupportBanner = {
+  heading: "Knowledge Is The Starting Point.",
+  description: "Bring an individual question to the team for the appropriate professional scope.",
+  cta: "Talk through my situation",
+};
+
+export type LearnLevel = "foundations" | "advanced";
+
+export const learnLevels: { key: LearnLevel; tabLabel: string; badge: string }[] = [
+  { key: "foundations", tabLabel: "The foundations", badge: "Foundations" },
+  { key: "advanced", tabLabel: "Think further", badge: "Advanced" },
+];
+
+export type LearnGuide = {
+  number: string;
+  slug: string;
+  level: LearnLevel;
+  kicker: string;
+  title: string;
+  description: string;
+  minutes: number;
+  body: string[];
+};
+
+export const learnGuides: LearnGuide[] = [
+  {
+    number: "01",
+    slug: "getting-started",
+    level: "foundations",
+    kicker: "Getting started",
+    title: "Your plan, from paperwork to practice",
+    description:
+      "Your plan documents describe the arrangement. Your daily records show how it is actually operated. Start by organizing both.",
+    minutes: 6,
+    body: [
+      "A retirement plan exists in two places at once: on paper, in the documents that establish it, and in practice, in the transactions and records that show how it actually runs day to day. Most questions that come up later trace back to a gap between the two.",
+      "Start by locating your plan's governing documents — the adoption agreement, plan document, or trust agreement, depending on your structure — and confirm they match how the plan is actually being operated. If a document describes a feature you aren't using, or an activity isn't reflected in any document, that gap is worth resolving before it compounds.",
+      "From there, build the habit of keeping a running record: contributions, distributions, loans, and any investment transactions, each dated and described. A plan that can produce a clear answer to 'what happened, and when' is a plan that is easier to administer, review, and eventually hand off.",
+    ],
+  },
+  {
+    number: "02",
+    slug: "opening-accounts",
+    level: "foundations",
+    kicker: "Bank & brokerage accounts",
+    title: "Prepare to open a plan account",
+    description:
+      "Financial institutions have their own application processes. A complete preparation packet helps you ask the right questions before sending an application.",
+    minutes: 5,
+    body: [
+      "Opening an account for a retirement plan is not the same as opening a personal account. The institution will want to see the plan's governing documents, an EIN specific to the plan (where applicable), and clarity on who has signing authority and under what conditions.",
+      "Before you apply anywhere, put together a single packet: the plan document, trust agreement, identification for anyone with authority, and a short written summary of what the account will be used for. Institutions vary in what they ask for and how they interpret self-directed activity, so having your facts organized up front avoids repeat requests mid-process.",
+      "It's also worth asking each institution directly how it handles the kinds of transactions you expect to make — a straightforward brokerage account has very different questions than one that will hold private lending notes or real estate. Ask before you apply, not after you're denied.",
+    ],
+  },
+  {
+    number: "03",
+    slug: "contributions",
+    level: "foundations",
+    kicker: "Contributions",
+    title: "Organize your contribution records",
+    description:
+      "A contribution is money added under the rules of the plan. Correct records start with identifying the participant, year, contribution type, and source information.",
+    minutes: 7,
+    body: [
+      "A contribution record answers four questions: who it's for, what year it applies to, what type it is (employee deferral, employer match, profit sharing, and so on), and where the money came from. Missing any one of these makes the record hard to use later, whether for a tax filing, an audit, or simply confirming a balance.",
+      "It helps to record contributions as they happen rather than reconstructing them at year-end. A simple running log — participant, date, amount, type, year applied — is enough to keep things straight, and it becomes the backbone of your annual records packet.",
+      "If a contribution needs to be corrected or recharacterized, document the reason and the correction the same way you'd document the original entry. A clean paper trail is what turns a routine correction into a non-event, instead of a question mark six years from now.",
+    ],
+  },
+  {
+    number: "04",
+    slug: "rollovers",
+    level: "foundations",
+    kicker: "Rollovers",
+    title: "Prepare for a rollover",
+    description:
+      "A rollover involves retirement assets moving between arrangements. It needs different records and checks from a new contribution.",
+    minutes: 6,
+    body: [
+      "A rollover moves existing retirement funds from one arrangement into another — a former employer's plan into an IRA, for instance, or one IRA into a newly self-directed one. Because the funds already carry tax treatment from their source, the paperwork trail matters more than it does for a fresh contribution.",
+      "Before initiating a rollover, confirm the receiving account is open and able to accept the transfer, and get a clear statement from the sending institution of how the funds will be sent (direct trustee-to-trustee transfer versus a distribution check made payable to you). The difference affects timing and, in some cases, tax withholding.",
+      "Keep the confirmation paperwork from both sides — the distribution notice from the old plan and the deposit confirmation from the new one — together with the date each occurred. That pairing is what shows a rollover was completed correctly if the question ever comes up.",
+    ],
+  },
+  {
+    number: "05",
+    slug: "participant-loans",
+    level: "foundations",
+    kicker: "Participant loans",
+    title: "Participant loans: prepare and maintain",
+    description:
+      "A participant loan is a loan to a participant under the plan. It is different from the plan making an investment loan to an unrelated borrower.",
+    minutes: 7,
+    body: [
+      "A participant loan lets someone borrow against their own plan balance, repaying it back into the same account over time under terms the plan document allows. It's a distinct feature from the plan lending money to a third party as an investment — the two are governed differently and shouldn't be confused.",
+      "Before taking a participant loan, confirm the plan document actually includes a loan provision, and what it specifies: maximum amount, repayment term, interest rate, and repayment frequency. Not every self-directed plan includes this feature by default.",
+      "Once a loan is issued, the repayment schedule needs to be followed and documented like any other plan record — payment date, amount, and running balance. A loan that falls behind on its documented schedule can create consequences for the plan, so maintaining the paperwork is not optional.",
+    ],
+  },
+  {
+    number: "06",
+    slug: "distributions",
+    level: "foundations",
+    kicker: "Distributions",
+    title: "Prepare a distribution request",
+    description:
+      "A distribution request should describe the proposed payment and provide the records needed to evaluate and process it.",
+    minutes: 6,
+    body: [
+      "A distribution is money leaving the plan — to the participant, a beneficiary, or in some cases directly to a third party. Before requesting one, be clear on the type: a routine distribution, a required minimum distribution, a hardship distribution, or a rollover out to another account each has different rules attached.",
+      "A complete request typically includes the participant's identifying information, the amount and reason for the distribution, and how it should be paid (check, wire, or transfer to another custodian). Having this ready in writing, rather than requested verbally, keeps the record clear from the start.",
+      "After the distribution is processed, file the confirmation alongside the original request. That pairing — what was asked for, and what actually happened — is the same pattern that makes every other plan record easy to review later.",
+    ],
+  },
+  {
+    number: "07",
+    slug: "annual-records",
+    level: "foundations",
+    kicker: "Annual requirements",
+    title: "Build your annual records packet",
+    description:
+      "A year-end packet brings the year into one place. It helps the people responsible for your plan see what happened and what still needs attention.",
+    minutes: 8,
+    body: [
+      "Most of the work of annual plan administration is really just organization: gathering everything that happened over the year into one place so it can be reviewed, reported, and filed correctly. A packet built as the year goes, rather than assembled from memory in January, is far less work.",
+      "A useful packet includes a contribution summary, a distribution summary, any loan activity, a current asset list with values as of year-end, and copies of any plan amendments or changes made during the year. If your plan held property or a private investment, include whatever documentation supports its year-end value.",
+      "Once assembled, the packet becomes the reference point for whoever prepares required filings or reviews the plan going forward — including you, next year, trying to remember what happened this year.",
+    ],
+  },
+  {
+    number: "08",
+    slug: "plan-changes",
+    level: "foundations",
+    kicker: "Forms & plan changes",
+    title: "Make a plan change with a clear record",
+    description:
+      "Changes to a business, trustee, participant, or plan feature may require different documents. Start by describing what is changing rather than selecting a form by its name alone.",
+    minutes: 5,
+    body: [
+      "Plans change: a business is restructured, a trustee is replaced, a new participant joins, or a feature like a loan provision is added. Each of these is a different kind of change, and each may call for different paperwork — which is why it helps to describe the change in plain language before reaching for a specific form.",
+      "Write down what is actually changing, who is involved, and when it should take effect. That description is what lets the appropriate professional identify exactly which amendment, form, or filing applies, rather than guessing from a form's title alone.",
+      "Keep the record of the change — the description, the resulting document, and its effective date — with your other plan records. A plan's history of changes is often as useful as its current state when questions come up later.",
+    ],
+  },
+  {
+    number: "09",
+    slug: "real-estate",
+    level: "advanced",
+    kicker: "Real estate",
+    title: "Before a retirement plan buys property",
+    description:
+      "Property brings contracts, expenses, ownership details, and ongoing records together. Preparing those facts early helps the appropriate professionals evaluate the proposed transaction.",
+    minutes: 9,
+    body: [
+      "Real estate is one of the most requested — and most involved — assets a self-directed plan can hold. Before pursuing a specific property, it helps to separate the general education (how property ownership inside a retirement plan works) from the specific deal (this property, these terms, this timeline).",
+      "General preparation includes understanding how the plan will hold title, how ongoing expenses (taxes, insurance, maintenance) will be paid from plan funds rather than personally, and how any income the property generates flows back into the plan. These are structural questions that apply regardless of which property you're considering.",
+      "When an actual property enters the picture, gather the purchase contract, any financing terms, and a clear description of who is involved in the transaction. That packet is what allows the appropriate professional to review the specific deal — the facts of one property don't transfer from a general guide, they require their own look.",
+    ],
+  },
+  {
+    number: "10",
+    slug: "private-lending",
+    level: "advanced",
+    kicker: "Private lending",
+    title: "Prepare a private lending transaction",
+    description:
+      "Private lending requires a clear understanding of the borrower, terms, security, documents, and payment process. Education does not replace review of a specific deal.",
+    minutes: 8,
+    body: [
+      "Private lending lets a plan act as the lender — putting capital to work through a promissory note rather than a traditional investment. It's a flexible option, but each loan is its own transaction with its own terms, so understanding the mechanics in general is only the first step.",
+      "For any specific loan, be ready to document the borrower, the loan amount and term, the interest rate, any security or collateral involved, and how and when payments will be made back to the plan. A promissory note and, where applicable, a lien or security agreement are the documents that make the arrangement enforceable.",
+      "Because every borrower and every deal is different, treat each private lending transaction as its own review, even if you've done several before. The terms that made a previous loan sound don't automatically apply to the next one.",
+    ],
+  },
+  {
+    number: "11",
+    slug: "roth-strategies",
+    level: "advanced",
+    kicker: "Roth strategies",
+    title: "Separate the Roth questions",
+    description:
+      "Roth is a tax designation, not a single transaction. A useful conversation begins by identifying the account, the source of funds, and the action being considered.",
+    minutes: 8,
+    body: [
+      "\"Roth\" describes a tax treatment, not one specific move — a Roth contribution, a Roth conversion, and a Roth account holding existing assets are three different situations with different rules and different consequences. Conversations get clearer once these are separated.",
+      "Start by identifying which of these applies to you: are you contributing new money directly to a Roth account, converting existing pre-tax funds into a Roth account, or asking about an account that is already Roth-designated? Each answer points toward a different set of questions.",
+      "From there, the source of the funds and your current tax situation are what determine whether a specific Roth strategy makes sense. This is exactly the kind of individual-facts question that benefits from a real conversation rather than a general rule of thumb.",
+    ],
+  },
+  {
+    number: "12",
+    slug: "ubit",
+    level: "advanced",
+    kicker: "UBIT & transaction restrictions",
+    title: "Recognize when an investment needs tax review",
+    description:
+      "Holding an investment through a retirement arrangement does not remove every possible tax question. The asset, activity, financing, and structure matter.",
+    minutes: 8,
+    body: [
+      "Retirement accounts are generally tax-advantaged, but that advantage isn't unlimited. Certain kinds of income — commonly, income from an actively run trade or business, or income tied to debt-financed property — can trigger a tax at the plan level, separate from the participant's personal return.",
+      "The questions that tend to raise this issue include: does the investment involve borrowed money (debt financing) inside the plan, and does the activity look more like operating a business than passively holding an asset? Neither answer is obvious from the asset type alone — a rental property financed with a mortgage inside the plan raises different questions than one purchased outright.",
+      "If your investment involves financing, an operating business, or a structure you haven't used before, treat the tax question as its own review rather than an assumption. It's better addressed before the transaction than after.",
+    ],
+  },
+  {
+    number: "13",
+    slug: "retirement-income",
+    level: "advanced",
+    kicker: "Distribution planning",
+    title: "Organize a retirement income conversation",
+    description:
+      "Retirement income planning connects the timing of payments with account rules, personal needs, taxes, and records. Begin with an organized picture of the facts.",
+    minutes: 7,
+    body: [
+      "Turning retirement savings into retirement income involves more than deciding to start taking distributions. Timing, account type, required minimums, and your broader tax picture all interact, which is why this conversation benefits from a full picture rather than a single account viewed in isolation.",
+      "Before that conversation, gather a simple inventory: every retirement account you hold, its type, its approximate balance, and any required distribution rules that apply to it because of your age. Add your other income sources so the full picture — not just the retirement accounts — is visible.",
+      "With that organized, the appropriate professional can help sequence withdrawals in a way that fits your actual needs and rules, rather than defaulting to whichever account is easiest to access first.",
+    ],
+  },
+  {
+    number: "14",
+    slug: "succession",
+    level: "advanced",
+    kicker: "Beneficiaries & succession",
+    title: "Make important plan information findable",
+    description:
+      "The right people should know which records exist and where to find them. Administrative preparation supports a broader estate planning conversation.",
+    minutes: 7,
+    body: [
+      "A retirement plan is only useful to the people who inherit it if they can find it and understand it. That starts with something simple but often overlooked: keeping beneficiary designations current, and making sure someone else knows those designations exist.",
+      "Build a short reference document: each account, its custodian or administrator, current beneficiaries, and where the governing documents are kept. This isn't a substitute for an estate plan, but it's the administrative layer that makes an estate plan actually executable when the time comes.",
+      "Revisit this document after any major life change — marriage, divorce, a new account, a death in the family — since beneficiary designations don't update themselves, and an outdated one can override even a carefully written will.",
+    ],
+  },
+  {
+    number: "15",
+    slug: "asset-protection",
+    level: "advanced",
+    kicker: "Asset protection",
+    title: "Prepare for an asset protection review",
+    description:
+      "Asset protection depends on the facts, jurisdiction, timing, and documents. Useful preparation means organizing the picture before asking for a conclusion.",
+    minutes: 8,
+    body: [
+      "Asset protection planning is highly fact-specific — what works depends on which state's laws apply, what's already in place, and when a given step is taken relative to any claim or risk. There's no single structure that applies the same way to everyone, which is why preparation matters more than a quick answer.",
+      "Before a review, put together a clear inventory: what assets you're asking about, how they're currently owned or titled, and what existing entities, trusts, or insurance already provide some protection. Note your state of residence and where the assets themselves are located, since both affect which rules apply.",
+      "Bring this picture to the appropriate professional rather than a specific structure you've heard about elsewhere — the right approach follows from your facts, not the other way around.",
+    ],
+  },
+  {
+    number: "16",
+    slug: "advanced-planning",
+    level: "advanced",
+    kicker: "Advanced case studies",
+    title: "Evaluate an advanced planning idea",
+    description:
+      "Advanced ideas are most useful when their assumptions are visible. Work backward from the proposed result to the facts and steps required.",
+    minutes: 9,
+    body: [
+      "Advanced planning ideas — a particular trust structure, an entity layer, a financing technique — often arrive secondhand: from a presentation, an article, or someone else's experience. The idea itself is a starting point for questions, not a plan you can adopt as-is.",
+      "A useful way to evaluate one is to work backward: what result is the idea supposed to produce, and what facts and conditions does it assume are true for you? Many advanced strategies depend on specific circumstances — a particular asset type, a certain account balance, a specific state's laws — that may or may not match your situation.",
+      "Bring the idea, along with your actual facts, to the appropriate professional for review. Their job is to determine whether the idea fits, what work it would take to implement, and who should handle it — decisions that belong in a written engagement, not a hallway conversation.",
+    ],
+  },
+];
