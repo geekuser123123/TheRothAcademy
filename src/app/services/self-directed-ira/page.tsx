@@ -27,7 +27,8 @@ export default function SelfDirectedIraPage() {
         goldLine={serviceIraHero.goldLine}
         description={serviceIraHero.description}
         whoItsFor={serviceIraHero.whoItsFor}
-        primaryCta={{ label: "Start the conversation", href: "/contact" }}
+        contactTopic="Self-Directed IRA"
+        primaryCta={{ label: "Explore My IRA Options" }}
         secondaryCta={{ label: "Explore advanced services", href: "/advanced-services" }}
       />
 

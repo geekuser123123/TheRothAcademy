@@ -1,7 +1,11 @@
-import Link from "next/link";
+"use client";
+
 import { ArrowUpRight } from "lucide-react";
+import { useContactModal } from "@/components/contact/ContactModalProvider";
 
 export function ClosingStatement() {
+  const { open } = useContactModal();
+
   return (
     <section className="border-t border-r-line bg-r-bg py-20">
       <div className="container-brand flex flex-col items-start gap-8 sm:flex-row sm:items-center sm:justify-between">
@@ -13,13 +17,14 @@ export function ClosingStatement() {
             Make It <span className="text-r-gold">Count.</span>
           </h2>
         </div>
-        <Link
-          href="/contact"
+        <button
+          type="button"
+          onClick={() => open()}
           className="inline-flex shrink-0 items-center gap-2 rounded-[var(--radius-brand-control)] bg-r-gold px-8 py-4 text-sm font-semibold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
         >
           Let&apos;s talk
           <ArrowUpRight size={18} aria-hidden />
-        </Link>
+        </button>
       </div>
     </section>
   );

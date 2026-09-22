@@ -3,6 +3,7 @@ import { Teko, Poppins } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { ContactModalProvider } from "@/components/contact/ContactModalProvider";
 import { siteConfig } from "@/data/site-config";
 
 const teko = Teko({
@@ -50,11 +51,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to main content
         </a>
-        <Header />
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
-        <Footer />
+        <ContactModalProvider>
+          <Header />
+          <main id="main-content" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </ContactModalProvider>
       </body>
     </html>
   );

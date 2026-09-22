@@ -1,8 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { clsx } from "clsx";
+import { useContactModal } from "@/components/contact/ContactModalProvider";
 
-type Cta = { label: string; href: string };
+// href navigates normally; omit it to open the shared contact modal instead.
+type Cta = { label: string; href?: string };
 
 export function ServiceHero({
   eyebrow,
@@ -10,6 +14,7 @@ export function ServiceHero({
   goldLine,
   description,
   whoItsFor,
+  contactTopic,
   primaryCta,
   secondaryCta,
 }: {
@@ -18,9 +23,12 @@ export function ServiceHero({
   goldLine?: number;
   description: string;
   whoItsFor?: string;
+  contactTopic?: string;
   primaryCta?: Cta;
   secondaryCta?: Cta;
 }) {
+  const { open } = useContactModal();
+
   return (
     <section className="relative overflow-hidden border-b border-r-line bg-r-stripe-2">
       {/* Abstract gold arc — echoes the homepage hero at a quieter scale */}
@@ -58,7 +66,7 @@ export function ServiceHero({
 
         {(primaryCta || secondaryCta) && (
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            {primaryCta && (
+            {primaryCta && (primaryCta.href ? (
               <Link
                 href={primaryCta.href}
                 className="inline-flex items-center gap-2 rounded-[var(--radius-brand-control)] bg-r-gold px-6 py-3 text-sm font-semibold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
@@ -66,15 +74,32 @@ export function ServiceHero({
                 {primaryCta.label}
                 <ArrowUpRight size={18} aria-hidden />
               </Link>
-            )}
-            {secondaryCta && (
+            ) : (
+              <button
+                type="button"
+                onClick={() => open(contactTopic)}
+                className="inline-flex items-center gap-2 rounded-[var(--radius-brand-control)] bg-r-gold px-6 py-3 text-sm font-semibold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
+              >
+                {primaryCta.label}
+                <ArrowUpRight size={18} aria-hidden />
+              </button>
+            ))}
+            {secondaryCta && (secondaryCta.href ? (
               <Link
                 href={secondaryCta.href}
                 className="inline-flex items-center gap-2 rounded-[var(--radius-brand-control)] border border-r-line/60 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-r-white transition-colors hover:border-r-gold hover:text-r-gold"
               >
                 {secondaryCta.label}
               </Link>
-            )}
+            ) : (
+              <button
+                type="button"
+                onClick={() => open(contactTopic)}
+                className="inline-flex items-center gap-2 rounded-[var(--radius-brand-control)] border border-r-line/60 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-r-white transition-colors hover:border-r-gold hover:text-r-gold"
+              >
+                {secondaryCta.label}
+              </button>
+            ))}
           </div>
         )}
       </div>

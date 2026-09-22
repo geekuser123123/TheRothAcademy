@@ -7,9 +7,11 @@ import { ArrowUpRight } from "lucide-react";
 import { clsx } from "clsx";
 import { mainNav } from "@/data/site-config";
 import { MobileMenu } from "@/components/layout/MobileMenu";
+import { useContactModal } from "@/components/contact/ContactModalProvider";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const { open } = useContactModal();
 
   useEffect(() => {
     function onScroll() {
@@ -60,13 +62,14 @@ export function Header() {
               Client Login
             </span>
             <span aria-hidden className="h-4 w-px bg-r-line" />
-            <Link
-              href="/contact"
+            <button
+              type="button"
+              onClick={() => open()}
               className="inline-flex items-center gap-2 rounded-sm bg-r-gold px-5 py-2.5 font-body text-[12px] font-semibold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
             >
               Let&apos;s talk
               <ArrowUpRight size={16} aria-hidden />
-            </Link>
+            </button>
           </div>
         </div>
 

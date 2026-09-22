@@ -4,11 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { mainNav } from "@/data/site-config";
+import { useContactModal } from "@/components/contact/ContactModalProvider";
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const { open: openContactModal } = useContactModal();
 
   useEffect(() => {
     if (!open) return;
@@ -90,14 +92,17 @@ export function MobileMenu() {
         </nav>
 
         <div className="p-6">
-          <Link
-            href="/contact"
-            onClick={close}
+          <button
+            type="button"
+            onClick={() => {
+              close();
+              openContactModal();
+            }}
             className="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-r-gold px-6 py-3 font-body text-sm font-semibold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
           >
             Start a conversation
             <ArrowUpRight size={16} aria-hidden />
-          </Link>
+          </button>
 
           <div className="mt-6 flex flex-wrap items-center gap-4">
             <span aria-disabled="true" className="font-body text-sm font-medium uppercase tracking-wide text-r-muted">

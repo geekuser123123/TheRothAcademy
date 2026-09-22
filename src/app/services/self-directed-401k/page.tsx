@@ -27,7 +27,8 @@ export default function SelfDirected401kPage() {
         goldLine={service401kHero.goldLine}
         description={service401kHero.description}
         whoItsFor={service401kHero.whoItsFor}
-        primaryCta={{ label: "Start the conversation", href: "/contact" }}
+        contactTopic="Self-Directed 401(k)"
+        primaryCta={{ label: "Start My 401(k) Conversation" }}
         secondaryCta={{ label: "Explore advanced services", href: "/advanced-services" }}
       />
 
