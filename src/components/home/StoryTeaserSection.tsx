@@ -7,19 +7,9 @@ const STORY_IMAGE = "/story/berry-family.webp";
 
 export function StoryTeaserSection() {
   return (
-    <section className="relative overflow-hidden border-b border-r-line bg-r-bg py-20 md:py-28">
-      {/* Decorative background text — sits behind everything, purely
-          atmospheric, never part of the layout flow. */}
-      <p
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 select-none whitespace-nowrap text-center font-heading uppercase leading-none text-r-white/[0.04]"
-        style={{ fontSize: "clamp(4rem, 14vw, 13rem)" }}
-      >
-        Still Standing.
-      </p>
-
-      <div className="container-brand relative grid items-stretch gap-10 md:grid-cols-[1fr_1.15fr] md:gap-16">
-        <div className="relative min-h-[340px] overflow-hidden rounded-[var(--radius-brand-card)] border border-r-line sm:min-h-[420px] md:min-h-0">
+    <section className="border-b border-r-line bg-r-bg py-20 md:py-28">
+      <div className="container-brand grid items-center gap-14 md:grid-cols-[1fr_1.15fr] md:gap-16">
+        <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-brand-card)] border border-r-line">
           <Image
             src={STORY_IMAGE}
             alt="Tim and Kevin Berry"
@@ -40,7 +30,7 @@ export function StoryTeaserSection() {
           </div>
         </div>
 
-        <div className="min-w-0 self-center">
+        <div className="min-w-0">
           <Eyebrow>The Family Behind the Standard</Eyebrow>
           <h2 className="mt-4 text-4xl md:text-6xl">
             Some Things
