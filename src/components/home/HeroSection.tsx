@@ -62,18 +62,14 @@ export function HeroSection() {
               fontWeight: 500,
               lineHeight: 0.93,
               letterSpacing: "-0.02em",
-              textShadow:
-                "-2px -2px 0 rgba(0,0,0,0.6), 2px -2px 0 rgba(0,0,0,0.6), -2px 2px 0 rgba(0,0,0,0.6), 2px 2px 0 rgba(0,0,0,0.6), 0 4px 30px rgba(0,0,0,0.4)",
+              textShadow: "0 4px 30px rgba(0,0,0,0.4)",
             }}
           >
             Own Your
             <br />
             <em
               className="not-italic text-r-gold"
-              style={{
-                textShadow:
-                  "-2px -2px 0 rgba(0,0,0,0.6), 2px -2px 0 rgba(0,0,0,0.6), -2px 2px 0 rgba(0,0,0,0.6), 2px 2px 0 rgba(0,0,0,0.6), 0 4px 30px rgba(0,0,0,0.4)",
-              }}
+              style={{ textShadow: "0 4px 30px rgba(0,0,0,0.4)" }}
             >
               Next Move.
             </em>
