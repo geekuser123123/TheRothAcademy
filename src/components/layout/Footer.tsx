@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { clsx } from "clsx";
 import { siteConfig, footerNav, legalNav, comingSoon } from "@/data/site-config";
 
 export function Footer() {
@@ -8,8 +9,8 @@ export function Footer() {
   return (
     <footer className="border-t border-r-line bg-r-bg">
       <div className="container-brand py-16">
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr_1fr]">
-          <div>
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-[1.2fr_1fr_1fr_1fr] lg:gap-12">
+          <div className="col-span-2 lg:col-span-1">
             <Link href="/" className="inline-block">
               <Image
                 src="/roth-logo.png"
@@ -29,7 +30,10 @@ export function Footer() {
           </div>
 
           {columns.map((column) => (
-            <div key={column.title}>
+            <div
+              key={column.title}
+              className={clsx(column === footerNav.nextStep && "col-span-2 lg:col-span-1")}
+            >
               <h3 className="text-sm font-semibold uppercase tracking-[0.15em] text-r-gold font-body normal-case">
                 {column.title}
               </h3>
