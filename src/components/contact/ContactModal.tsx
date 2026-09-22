@@ -67,8 +67,11 @@ export function ContactModal() {
           name: data.get("name"),
           email: data.get("email"),
           phone: data.get("phone"),
+          location: data.get("location"),
           interest: data.get("interest"),
           message: data.get("message"),
+          otherParties: data.get("otherParties"),
+          deadline: data.get("deadline"),
           page: pathname,
         }),
       });
@@ -91,7 +94,7 @@ export function ContactModal() {
         role="dialog"
         aria-modal="true"
         aria-labelledby="contact-modal-heading"
-        className="relative w-full max-w-md rounded-[var(--radius-brand-card)] border border-r-line bg-r-panel p-6 shadow-2xl shadow-black/60 sm:p-8"
+        className="relative w-full max-w-2xl rounded-[var(--radius-brand-card)] border border-r-line bg-r-panel p-6 shadow-2xl shadow-black/60 sm:p-8"
       >
         <button
           type="button"
@@ -161,21 +164,34 @@ export function ContactModal() {
                 </label>
               </div>
 
-              <label className="block" htmlFor="contact-interest">
-                <span className={labelClasses}>I&apos;m interested in</span>
-                <select
-                  id="contact-interest"
-                  name="interest"
-                  defaultValue={defaultInterest}
-                  className={`${inputClasses} appearance-none`}
-                >
-                  {INTEREST_OPTIONS.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-              </label>
+              <div className="grid gap-5 sm:grid-cols-2">
+                <label className="block" htmlFor="contact-location">
+                  <span className={labelClasses}>State / Country</span>
+                  <input
+                    id="contact-location"
+                    name="location"
+                    type="text"
+                    required
+                    placeholder="e.g. Texas, United States"
+                    className={inputClasses}
+                  />
+                </label>
+                <label className="block" htmlFor="contact-interest">
+                  <span className={labelClasses}>Your Starting Point</span>
+                  <select
+                    id="contact-interest"
+                    name="interest"
+                    defaultValue={defaultInterest}
+                    className={`${inputClasses} appearance-none`}
+                  >
+                    {INTEREST_OPTIONS.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              </div>
 
               <label className="block" htmlFor="contact-message">
                 <span className={labelClasses}>What do you want to accomplish?</span>
@@ -186,6 +202,31 @@ export function ContactModal() {
                   rows={3}
                   defaultValue={detail}
                   className={`${inputClasses} resize-none`}
+                />
+              </label>
+
+              <label className="block" htmlFor="contact-other-parties">
+                <span className={labelClasses}>
+                  Other People Or Businesses Involved <span className="normal-case text-r-muted/60">(optional)</span>
+                </span>
+                <textarea
+                  id="contact-other-parties"
+                  name="otherParties"
+                  rows={2}
+                  placeholder="Names for the initial review"
+                  className={`${inputClasses} resize-none`}
+                />
+              </label>
+
+              <label className="block" htmlFor="contact-deadline">
+                <span className={labelClasses}>
+                  Relevant Deadline <span className="normal-case text-r-muted/60">(optional)</span>
+                </span>
+                <input
+                  id="contact-deadline"
+                  name="deadline"
+                  type="date"
+                  className={`${inputClasses} [color-scheme:dark]`}
                 />
               </label>
 
