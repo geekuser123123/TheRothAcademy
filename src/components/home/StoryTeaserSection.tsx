@@ -16,37 +16,38 @@ export function StoryTeaserSection() {
   const hasRealImage = imageExists(STORY_IMAGE);
 
   return (
-    <section className="border-b border-r-line bg-r-bg py-20 md:py-28">
-      <div className="container-brand grid items-center gap-14 md:grid-cols-[1.05fr_1fr] md:gap-16">
-        <div className="relative min-w-0">
-          <p
-            aria-hidden
-            className="min-w-0 select-none overflow-visible leading-[0.85] text-transparent"
-            style={{ WebkitTextStroke: "1px var(--color-r-line)", fontSize: "clamp(2.75rem, 9vw, 8rem)" }}
-          >
-            Still
-            <br />
-            Standing.
-          </p>
+    <section className="relative overflow-hidden border-b border-r-line bg-r-bg py-20 md:py-28">
+      {/* Decorative background text — sits behind everything, purely
+          atmospheric, never part of the layout flow. */}
+      <p
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 select-none whitespace-nowrap text-center leading-none text-transparent"
+        style={{
+          WebkitTextStroke: "1px var(--color-r-line)",
+          fontSize: "clamp(4rem, 14vw, 13rem)",
+        }}
+      >
+        Still Standing.
+      </p>
 
-          <div className="relative mt-16 aspect-[4/5] w-[65%] overflow-hidden rounded-[var(--radius-brand-card)] border border-r-gold/30 shadow-2xl shadow-black/50 sm:mt-20 sm:w-[55%] md:mt-24 md:w-[60%]">
-            {hasRealImage ? (
-              <Image
-                src={STORY_IMAGE}
-                alt="The Berry family"
-                fill
-                sizes="(min-width: 768px) 30vw, 55vw"
-                className="object-cover"
-              />
-            ) : (
-              <ImagePlaceholder variant="c" mark className="relative h-full w-full" />
-            )}
-            <div
-              aria-hidden
-              className="absolute inset-0"
-              style={{ background: "linear-gradient(0deg, rgba(9,10,11,0.5), transparent 50%)" }}
+      <div className="container-brand relative grid items-center gap-14 md:grid-cols-[1.05fr_1fr] md:gap-16">
+        <div className="relative mx-auto aspect-[4/5] w-[65%] overflow-hidden rounded-[var(--radius-brand-card)] border border-r-gold/30 shadow-2xl shadow-black/50 sm:w-[55%] md:mx-0 md:w-[75%]">
+          {hasRealImage ? (
+            <Image
+              src={STORY_IMAGE}
+              alt="The Berry family"
+              fill
+              sizes="(min-width: 768px) 35vw, 55vw"
+              className="object-cover"
             />
-          </div>
+          ) : (
+            <ImagePlaceholder variant="c" mark className="relative h-full w-full" />
+          )}
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{ background: "linear-gradient(0deg, rgba(9,10,11,0.5), transparent 50%)" }}
+          />
         </div>
 
         <div className="min-w-0">
