@@ -22,7 +22,7 @@ export function StoryTeaserSection() {
       >
         <source src={STORY_VIDEO} type="video/mp4" />
       </video>
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-r-bg/85" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-r-bg/95" />
 
       <div className="container-brand relative grid items-center gap-14 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
         <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-brand-card)] border border-r-line">
