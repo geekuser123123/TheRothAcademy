@@ -1,14 +1,7 @@
 import Link from "next/link";
-import fs from "fs";
-import path from "path";
 import Image from "next/image";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { assetClasses } from "@/data/home-content";
-
-function imageExists(publicPath: string) {
-  return fs.existsSync(path.join(process.cwd(), "public", publicPath));
-}
 
 export function AssetClassSection() {
   return (
@@ -38,7 +31,6 @@ export function AssetClassSection() {
         <div>
           <ul className="min-w-0 divide-y divide-r-line border-t border-r-line">
             {assetClasses.map((item) => {
-              const hasRealImage = imageExists(item.image);
               const Row = (
                 <div className="group flex items-center gap-4 py-5 sm:gap-6">
                   <span className="w-6 shrink-0 text-xs text-r-gold sm:w-8">{item.number}</span>
@@ -47,20 +39,13 @@ export function AssetClassSection() {
                     <p className="mt-1 text-sm text-r-muted font-body normal-case">{item.description}</p>
                   </div>
                   <div className="relative h-16 w-24 shrink-0 overflow-hidden rounded-sm border border-r-line sm:h-20 sm:w-40">
-                    {hasRealImage ? (
-                      <Image
-                        src={item.image}
-                        alt=""
-                        fill
-                        sizes="160px"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    ) : (
-                      <ImagePlaceholder
-                        variant={item.placeholderVariant}
-                        className="absolute inset-0 transition-transform duration-500 group-hover:scale-105"
-                      />
-                    )}
+                    <Image
+                      src={item.image}
+                      alt=""
+                      fill
+                      sizes="160px"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
                   </div>
                 </div>
               );
