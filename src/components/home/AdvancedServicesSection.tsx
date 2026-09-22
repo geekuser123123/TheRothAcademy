@@ -1,7 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { advancedServices } from "@/data/home-content";
 
 export function AdvancedServicesSection() {
@@ -53,7 +53,20 @@ export function AdvancedServicesSection() {
           </ul>
         </div>
 
-        <ImagePlaceholder variant="d" className="relative hidden min-h-[420px] rounded-[var(--radius-brand-card)] md:block" />
+        <div className="relative hidden min-h-[420px] overflow-hidden rounded-[var(--radius-brand-card)] border border-r-line shadow-2xl shadow-black/40 md:sticky md:top-32 md:block md:self-start">
+          <Image
+            src="/home/advanced-services.webp"
+            alt=""
+            fill
+            sizes="40vw"
+            className="object-cover"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{ background: "linear-gradient(0deg, rgba(9,10,11,0.55), transparent 45%)" }}
+          />
+        </div>
       </div>
     </section>
   );
