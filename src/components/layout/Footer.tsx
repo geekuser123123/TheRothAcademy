@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { siteConfig, footerNav, legalNav, comingSoon } from "@/data/site-config";
 
 export function Footer() {
@@ -9,7 +10,15 @@ export function Footer() {
       <div className="container-brand py-16">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr_1fr]">
           <div>
-            <p className="text-2xl font-heading tracking-wide">{siteConfig.name}</p>
+            <Link href="/" className="inline-block">
+              <Image
+                src="/roth-logo.png"
+                alt={siteConfig.name}
+                width={58}
+                height={64}
+                className="h-14 w-auto object-contain"
+              />
+            </Link>
             <p className="mt-4 max-w-xs text-sm text-r-muted font-body normal-case">
               Self-directed retirement.
               <br />
