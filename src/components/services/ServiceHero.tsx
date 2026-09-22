@@ -27,6 +27,7 @@ export function ServiceHero({
   primaryCta,
   secondaryCta,
   summary,
+  videoSrc,
 }: {
   eyebrow: string;
   title: string[];
@@ -38,11 +39,29 @@ export function ServiceHero({
   primaryCta?: Cta;
   secondaryCta?: Cta;
   summary?: Summary;
+  videoSrc?: string;
 }) {
   const { open } = useContactModal();
 
   return (
     <section className="relative overflow-hidden border-b border-r-line bg-r-stripe-2">
+      {videoSrc && (
+        <>
+          <video
+            aria-hidden
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+          >
+            <source src={videoSrc} type="video/mp4" />
+          </video>
+          <div aria-hidden className="pointer-events-none absolute inset-0 bg-r-bg/90" />
+        </>
+      )}
+
       {/* Abstract gold arc — echoes the homepage hero at a quieter scale */}
       <div
         aria-hidden

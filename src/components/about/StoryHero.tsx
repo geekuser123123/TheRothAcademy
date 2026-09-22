@@ -8,6 +8,7 @@ export function StoryHero({
   lead,
   scrollCtaLabel,
   scrollCtaHref,
+  videoSrc,
 }: {
   eyebrow: string;
   title: string[];
@@ -15,9 +16,27 @@ export function StoryHero({
   lead: string;
   scrollCtaLabel: string;
   scrollCtaHref: string;
+  videoSrc?: string;
 }) {
   return (
     <section className="relative overflow-hidden border-b border-r-line bg-r-stripe-2">
+      {videoSrc && (
+        <>
+          <video
+            aria-hidden
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+          >
+            <source src={videoSrc} type="video/mp4" />
+          </video>
+          <div aria-hidden className="pointer-events-none absolute inset-0 bg-r-bg/90" />
+        </>
+      )}
+
       <div
         aria-hidden
         className="pointer-events-none absolute -right-[20%] top-0 h-full w-[60%] opacity-25 mix-blend-screen md:-right-[10%] md:w-[45%]"

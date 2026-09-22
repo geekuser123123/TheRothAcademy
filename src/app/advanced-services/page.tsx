@@ -22,6 +22,7 @@ export default function AdvancedServicesPage() {
         stats={advancedServicesHero.stats}
         contactTopic="Advanced services"
         primaryCta={{ label: "Talk Through My Situation" }}
+        videoSrc="/videos/hero-background.mp4"
       />
 
       <ServiceIntroBand

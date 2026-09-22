@@ -36,6 +36,7 @@ export default function SelfDirectedIraPage() {
         primaryCta={{ label: "Explore My IRA Options" }}
         secondaryCta={{ label: "Explore advanced services", href: "/advanced-services" }}
         summary={serviceIraHero.summary}
+        videoSrc="/videos/hero-background.mp4"
       />
 
       <ServiceProcess

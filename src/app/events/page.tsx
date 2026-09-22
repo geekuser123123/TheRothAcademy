@@ -19,6 +19,7 @@ export default function EventsPage() {
         title={eventsHero.title}
         goldLine={eventsHero.goldLine}
         description={eventsHero.description}
+        videoSrc="/videos/hero-background.mp4"
       />
 
       <EventFeatureSection />
