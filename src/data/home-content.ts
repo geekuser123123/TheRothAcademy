@@ -69,7 +69,7 @@ export const assetClasses = [
     number: "05",
     label: "Stocks & Bonds",
     description: "A flexible foundation for your strategy.",
-    href: undefined,
+    href: "/learn",
     image: "/investments/stocks-bonds.jpg",
   },
 ];
