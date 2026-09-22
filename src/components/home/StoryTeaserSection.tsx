@@ -18,36 +18,29 @@ export function StoryTeaserSection() {
         Still Standing.
       </p>
 
-      <div className="container-brand relative grid items-center gap-14 md:grid-cols-[1.05fr_1fr] md:gap-16">
-        <div className="relative mx-auto w-[65%] sm:w-[55%] md:mx-0 md:w-[75%]">
-          {/* Gold corner accents — sit just outside the frame, on the
-              wrapper, so the photo's own overflow-hidden never clips them. */}
-          <span aria-hidden className="absolute -left-3 -top-3 h-10 w-10 border-l-2 border-t-2 border-r-gold/70" />
-          <span aria-hidden className="absolute -bottom-3 -right-3 h-10 w-10 border-b-2 border-r-2 border-r-gold/70" />
-
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-brand-card)] border border-r-gold/30 shadow-2xl shadow-black/50">
-            <Image
-              src={STORY_IMAGE}
-              alt="Tim and Kevin Berry"
-              fill
-              sizes="(min-width: 768px) 35vw, 55vw"
-              className="object-cover"
-            />
-            <div
-              aria-hidden
-              className="absolute inset-0"
-              style={{ background: "linear-gradient(0deg, rgba(9,10,11,0.85) 0%, rgba(9,10,11,0.15) 35%, transparent 55%)" }}
-            />
-            <div className="absolute inset-x-0 bottom-0 p-5">
-              <p className="text-sm font-semibold text-r-white">Tim &amp; Kevin Berry</p>
-              <p className="mt-1 text-[11px] uppercase tracking-[0.15em] text-r-gold">
-                Two Generations. One Standard.
-              </p>
-            </div>
+      <div className="container-brand relative grid items-stretch gap-10 md:grid-cols-[1fr_1.15fr] md:gap-16">
+        <div className="relative min-h-[340px] overflow-hidden rounded-[var(--radius-brand-card)] border border-r-line sm:min-h-[420px] md:min-h-0">
+          <Image
+            src={STORY_IMAGE}
+            alt="Tim and Kevin Berry"
+            fill
+            sizes="(min-width: 768px) 40vw, 100vw"
+            className="object-cover"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{ background: "linear-gradient(0deg, rgba(9,10,11,0.85) 0%, rgba(9,10,11,0.15) 35%, transparent 55%)" }}
+          />
+          <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+            <p className="text-sm font-semibold text-r-white">Tim &amp; Kevin Berry</p>
+            <p className="mt-1 text-[11px] uppercase tracking-[0.15em] text-r-gold">
+              Two Generations. One Standard.
+            </p>
           </div>
         </div>
 
-        <div className="min-w-0">
+        <div className="min-w-0 self-center">
           <Eyebrow>The Family Behind the Standard</Eyebrow>
           <h2 className="mt-4 text-4xl md:text-6xl">
             Some Things
