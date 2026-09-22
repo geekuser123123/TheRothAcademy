@@ -6,6 +6,39 @@ export const serviceIraHero = {
     "A self-directed IRA puts your retirement savings to work in the assets you already understand — real estate, private lending, and more — inside an account built for individual investors.",
   whoItsFor:
     "Built for individuals with an existing IRA, a former employer's 401(k), or new contributions to direct toward a wider range of assets.",
+  summary: {
+    tag: "The Foundation",
+    title: "IRA",
+    subtitle: "Individual Retirement Account",
+    checklist: [
+      "Review the account and intended investments",
+      "Identify the appropriate provider arrangement",
+      "Define setup and coordination responsibilities",
+    ],
+    note: "Terms and eligibility confirmed during review.",
+  },
+};
+
+export const serviceIraFoundation = {
+  eyebrow: "What This Opens Up",
+  heading: ["A Stronger Foundation.", "More To Explore."],
+  steps: [
+    {
+      number: "01",
+      title: "Expand The Conversation",
+      description: "Explore real estate, private lending, qualifying metals, digital assets, and other investments supported by the provider.",
+    },
+    {
+      number: "02",
+      title: "Keep The Provider In View",
+      description: "A self-directed IRA still needs a qualified trustee or custodian. Provider capability and fees matter.",
+    },
+    {
+      number: "03",
+      title: "Review The Tax Character",
+      description: "Traditional and Roth IRAs have different rules. Existing account history and proposed funding deserve attention.",
+    },
+  ],
 };
 
 export const serviceIraOverview = {
@@ -27,30 +60,49 @@ export const serviceIraOverview = {
 };
 
 export const serviceIraProcess = {
-  eyebrow: "How It Works",
-  heading: ["From Account", "To Investment."],
+  eyebrow: "The Setup Journey",
+  heading: ["Get The Start", "Right."],
+  intro: "The proposal confirms the work included in your setup. These are the questions the process is built around.",
   steps: [
     {
       number: "01",
-      title: "Account Setup",
-      description: "Choose the IRA type that matches your goals — Traditional, Roth, or SEP.",
+      title: "Your Starting Point",
+      description: "Review current IRAs and other retirement accounts, the assets you want to explore, and the questions behind the move.",
     },
     {
       number: "02",
-      title: "Fund The Account",
-      description: "Roll over an old 401(k) or IRA, or make a new contribution.",
+      title: "Provider & Structure",
+      description: "Identify the custodian, account features, and any separately scoped entity work the proposed arrangement requires.",
     },
     {
       number: "03",
-      title: "Choose Your Structure",
-      description: "Select the custodial or checkbook-control setup that fits how you invest.",
+      title: "Funding & Documents",
+      description: "Coordinate the required paperwork and review the proposed transfer or rollover steps with the relevant providers.",
     },
     {
       number: "04",
-      title: "Direct Your Investments",
-      description: "Put the account to work in the assets you understand.",
+      title: "Ready For The Responsibilities",
+      description: "Know who handles records, reporting, custody, and transaction review before putting an idea into motion.",
     },
   ],
+};
+
+export const serviceIraScenario = {
+  eyebrow: "A Starting Scenario",
+  heading: ["You See An Opportunity.", "Start With The Account."],
+  paragraphs: [
+    "You have retirement savings and want to explore a private investment. Before money moves, the team gathers the account history, proposed investment, parties, and provider requirements.",
+    "The result is an agreed setup or review scope with clear responsibilities. A complex transaction may need a separately engaged attorney.",
+  ],
+  note: "Illustrative situation, not a client result or investment recommendation.",
+  prepTitle: "Bring The Basics.",
+  prepItems: [
+    "Current retirement account types",
+    "The proposed investment or goal",
+    "Relevant parties and relationships",
+    "Timing and any existing commitments",
+  ],
+  ctaLabel: "Start a conversation",
 };
 
 export const serviceIraFaq = {
@@ -82,5 +134,25 @@ export const serviceIraFaq = {
       answer:
         "Some self-directed IRA structures, like an IRA-owned LLC, let you write checks or wire funds directly for an investment without routing each transaction through a custodian.",
     },
+    {
+      question: "May I hold IRA metals personally?",
+      answer:
+        "No. IRA-owned precious metals must be held by the custodian or an approved depository — taking personal possession is treated as a distribution and can disqualify the account. The team reviews storage requirements before a metals purchase.",
+    },
+    {
+      question: "Does Roth Academy hold my assets?",
+      answer:
+        "No. Roth Academy is not a custodian. A qualified trustee or custodian holds the account's assets; the team coordinates the setup, paperwork, and provider relationship around that arrangement.",
+    },
   ],
+  sourceLink: {
+    label: "Read the SEC's investor information on self-directed IRAs",
+    href: "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/investor-14",
+  },
+};
+
+export const serviceIraCrossLink = {
+  label: "Explore the other starting point",
+  title: "Self-Directed 401(k)",
+  href: "/services/self-directed-401k",
 };
