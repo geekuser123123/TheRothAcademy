@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { clsx } from "clsx";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 
@@ -12,12 +14,16 @@ export function ServiceProcess({
   steps,
   columns = 4,
   note,
+  linkLabel,
+  linkHref,
 }: {
   eyebrow: string;
   heading: string[];
   steps: { number: string; title: string; description: string }[];
   columns?: 3 | 4;
   note?: string;
+  linkLabel?: string;
+  linkHref?: string;
 }) {
   return (
     <section className="border-b border-r-line bg-r-stripe-2 py-16 md:py-24">
@@ -42,6 +48,16 @@ export function ServiceProcess({
         </ol>
 
         {note && <p className="mt-10 max-w-3xl text-xs text-r-muted/70 font-body normal-case">{note}</p>}
+
+        {linkLabel && linkHref && (
+          <Link
+            href={linkHref}
+            className="mt-8 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-r-gold"
+          >
+            {linkLabel}
+            <ArrowRight size={16} aria-hidden />
+          </Link>
+        )}
       </div>
     </section>
   );
