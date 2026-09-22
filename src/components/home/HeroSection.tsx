@@ -58,16 +58,22 @@ export function HeroSection() {
           <h1
             className="mt-6 max-w-5xl text-r-white"
             style={{
-              fontSize: "clamp(3.75rem, 13vw, 11rem)",
-              fontWeight: 500,
+              fontSize: "clamp(3.75rem, 13vw, 205px)",
+              fontWeight: 700,
               lineHeight: 0.93,
               letterSpacing: "-0.02em",
+              textShadow:
+                "-2px -2px 0 rgba(0,0,0,0.6), 2px -2px 0 rgba(0,0,0,0.6), -2px 2px 0 rgba(0,0,0,0.6), 2px 2px 0 rgba(0,0,0,0.6), 0 4px 30px rgba(0,0,0,0.4)",
             }}
           >
-            Own Your{" "}
+            Own Your
+            <br />
             <em
-              className="not-italic bg-clip-text text-transparent"
-              style={{ backgroundImage: "linear-gradient(115deg, #f0d797, #a3844f 95%)" }}
+              className="not-italic text-r-gold"
+              style={{
+                textShadow:
+                  "-2px -2px 0 rgba(0,0,0,0.6), 2px -2px 0 rgba(0,0,0,0.6), -2px 2px 0 rgba(0,0,0,0.6), 2px 2px 0 rgba(0,0,0,0.6), 0 4px 30px rgba(0,0,0,0.4)",
+              }}
             >
               Next Move.
             </em>
