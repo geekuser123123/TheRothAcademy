@@ -21,11 +21,8 @@ export function StoryTeaserSection() {
           atmospheric, never part of the layout flow. */}
       <p
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 select-none whitespace-nowrap text-center leading-none text-transparent"
-        style={{
-          WebkitTextStroke: "1px var(--color-r-line)",
-          fontSize: "clamp(4rem, 14vw, 13rem)",
-        }}
+        className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 select-none whitespace-nowrap text-center font-heading uppercase leading-none text-r-white/5"
+        style={{ fontSize: "clamp(4rem, 14vw, 13rem)" }}
       >
         Still Standing.
       </p>
