@@ -14,9 +14,9 @@ export function Footer() {
               <Image
                 src="/roth-logo.png"
                 alt={siteConfig.name}
-                width={58}
-                height={64}
-                className="h-14 w-auto object-contain"
+                width={63}
+                height={70}
+                className="h-[70px] w-[63px] object-contain"
               />
             </Link>
             <p className="mt-4 max-w-xs text-sm text-r-muted font-body normal-case">
