@@ -90,25 +90,25 @@ export const advancedServices = [
     number: "01",
     title: "Trusts & Inheritance",
     description: "CRTs, estate planning, GRATs, and powers of appointment.",
-    href: "/advanced-services/trusts",
+    href: "/advanced-services?filter=trusts",
   },
   {
     number: "02",
     title: "Entities & Transactions",
     description: "Preferred LLCs, ownership interests, and real estate structures.",
-    href: "/advanced-services/transactions",
+    href: "/advanced-services?filter=transactions",
   },
   {
     number: "03",
     title: "Roth & Contribution Planning",
     description: "The accounts, timing, and tax questions behind a move.",
-    href: "/advanced-services/roth",
+    href: "/advanced-services?filter=roth",
   },
   {
     number: "04",
     title: "Protection & Plan Responsibilities",
     description: "Asset ownership, transaction review, and the details that matter.",
-    href: "/advanced-services/protection",
+    href: "/advanced-services?filter=protection,compliance",
   },
 ];
 

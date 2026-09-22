@@ -1,7 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { ArrowUpRight, Search } from "lucide-react";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { FilterPill } from "@/components/ui/FilterPill";
@@ -11,20 +12,33 @@ import {
   type ServiceCategoryKey,
 } from "@/data/advanced-services-content";
 
-type FilterKey = "all" | ServiceCategoryKey;
+const categoryKeys = advancedServiceCategories.map((category) => category.key);
 
 const cardLabelByCategory = Object.fromEntries(
   advancedServiceCategories.map((category) => [category.key, category.cardLabel]),
 ) as Record<ServiceCategoryKey, string>;
 
-export function AdvancedServicesDirectory() {
-  const [activeFilter, setActiveFilter] = useState<FilterKey>("all");
+function parseFilterParam(value: string | null): ServiceCategoryKey[] {
+  if (!value) return [];
+  return value
+    .split(",")
+    .map((key) => key.trim())
+    .filter((key): key is ServiceCategoryKey => (categoryKeys as string[]).includes(key));
+}
+
+function AdvancedServicesDirectoryContent() {
+  const searchParams = useSearchParams();
+  // Lazy initializer: the URL's ?filter= sets the starting selection once, on
+  // mount. Further changes come only from the pills, not from re-reading the URL.
+  const [activeFilters, setActiveFilters] = useState<Set<ServiceCategoryKey>>(
+    () => new Set(parseFilterParam(searchParams.get("filter"))),
+  );
   const [query, setQuery] = useState("");
 
   const filteredServices = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
     return advancedServices.filter((service) => {
-      if (activeFilter !== "all" && service.category !== activeFilter) return false;
+      if (activeFilters.size > 0 && !activeFilters.has(service.category)) return false;
       if (!normalizedQuery) return true;
       const cardLabel = cardLabelByCategory[service.category].toLowerCase();
       return (
@@ -33,7 +47,7 @@ export function AdvancedServicesDirectory() {
         cardLabel.includes(normalizedQuery)
       );
     });
-  }, [activeFilter, query]);
+  }, [activeFilters, query]);
 
   return (
     <section className="border-b border-r-line bg-r-bg py-20 md:py-28">
@@ -62,11 +76,15 @@ export function AdvancedServicesDirectory() {
           aria-label="Filter services by category"
           className="mt-8 flex snap-x gap-2 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
-          <FilterPill active={activeFilter === "all"} onClick={() => setActiveFilter("all")}>
+          <FilterPill active={activeFilters.size === 0} onClick={() => setActiveFilters(new Set())}>
             All services
           </FilterPill>
           {advancedServiceCategories.map((category) => (
-            <FilterPill key={category.key} active={activeFilter === category.key} onClick={() => setActiveFilter(category.key)}>
+            <FilterPill
+              key={category.key}
+              active={activeFilters.has(category.key)}
+              onClick={() => setActiveFilters(new Set([category.key]))}
+            >
               {category.tabLabel}
             </FilterPill>
           ))}
@@ -118,5 +136,13 @@ export function AdvancedServicesDirectory() {
         )}
       </div>
     </section>
+  );
+}
+
+export function AdvancedServicesDirectory() {
+  return (
+    <Suspense fallback={null}>
+      <AdvancedServicesDirectoryContent />
+    </Suspense>
   );
 }
