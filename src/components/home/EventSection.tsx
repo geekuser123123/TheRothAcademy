@@ -4,7 +4,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 
 export function EventSection() {
   return (
-    <section className="border-b border-r-line bg-r-bg py-20 md:py-28">
+    <section className="border-b border-r-line bg-r-bg py-12 md:py-16">
       <div className="container-brand flex flex-col gap-10 md:flex-row md:items-center md:justify-between">
         <div className="flex flex-wrap items-center gap-6">
           <div className="shrink-0 rounded-sm border border-r-line px-5 py-4 text-center">
@@ -23,7 +23,7 @@ export function EventSection() {
 
         <Link
           href="/events"
-          className="inline-flex shrink-0 items-center gap-2 rounded-sm bg-r-gold px-6 py-3 text-sm font-semibold text-r-bg transition-colors hover:bg-r-gold-light"
+          className="inline-flex shrink-0 items-center gap-2 rounded-sm bg-r-gold px-6 py-3 text-sm font-semibold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
         >
           Explore the event
           <ArrowUpRight size={18} aria-hidden />

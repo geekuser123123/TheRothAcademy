@@ -1,20 +1,35 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand colors — extracted from the reference site's design tokens */
+  /* Brand tokens */
   --color-r-bg: #090a0b;
-  --color-r-panel: #131416;
-  --color-r-panel-2: #191a1c;
+  --color-r-panel: #15171a;
+  --color-r-panel-2: #1b1d20;
   --color-r-gold: #c6a466;
+  --color-r-gold-dark: #8f7040;
   --color-r-gold-light: #e4c98f;
   --color-r-white: #f4f1ea;
-  --color-r-muted: #a7a8a7;
-  --color-r-line: #eae7de26;
+  --color-r-muted: #b7b4ad;
+  --color-r-line: rgba(244, 241, 234, 0.14);
   --color-r-stripe-1: #121315;
   --color-r-stripe-2: #151618;
 
+  --radius-brand-card: 12px;
+  --radius-brand-control: 8px;
+
   --font-heading: var(--font-teko), Impact, sans-serif;
   --font-body: var(--font-poppins), Arial, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @layer base {

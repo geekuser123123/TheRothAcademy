@@ -1,6 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, ArrowDown, Landmark, Layers, BookOpen, Compass } from "lucide-react";
+import { ArrowUpRight, Landmark, Layers, BookOpen, Compass } from "lucide-react";
 import { heroCapabilities } from "@/data/home-content";
 
 const icons = { landmark: Landmark, layers: Layers, "book-open": BookOpen, compass: Compass };
@@ -8,106 +7,83 @@ const icons = { landmark: Landmark, layers: Layers, "book-open": BookOpen, compa
 export function HeroSection() {
   return (
     <>
-      <section className="relative flex min-h-[600px] items-center overflow-hidden border-b border-r-line md:min-h-[690px]">
-        <Image
-          src="/gold-texture.jpg"
-          alt=""
+      <section className="relative overflow-hidden border-b border-r-line">
+        {/* Abstract gold arc — original graphic, not a stock/borrowed asset */}
+        <div
           aria-hidden
-          fill
-          priority
-          className="pointer-events-none object-cover"
+          className="pointer-events-none absolute -right-[10%] top-1/2 h-[140%] w-[70%] -translate-y-1/2 rounded-full opacity-70 md:-right-[5%] md:w-[55%]"
+          style={{
+            background:
+              "conic-gradient(from 200deg at 50% 50%, transparent 0deg, var(--color-r-gold-dark) 60deg, var(--color-r-gold) 110deg, var(--color-r-gold-light) 140deg, transparent 200deg, transparent 360deg)",
+            filter: "blur(40px)",
+          }}
         />
         <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(90deg, rgba(9,10,11,0.28), rgba(9,10,11,0.6))" }}
+          aria-hidden
+          className="pointer-events-none absolute -right-[15%] top-1/2 h-[90%] w-[45%] -translate-y-1/2 rounded-full border border-r-gold/30 md:-right-[8%]"
         />
 
-        <div className="container-brand relative w-full py-10 md:py-16">
-          <div
-            className="flex flex-wrap justify-between gap-5"
-            style={{ marginBottom: 40, fontSize: 11, letterSpacing: "0.14em" }}
+        <div className="container-brand relative py-16 md:py-24">
+          <p
+            className="font-semibold uppercase text-r-gold"
+            style={{ fontSize: 11, letterSpacing: "0.14em" }}
           >
-            <span className="font-semibold uppercase text-[#b8b6b0]">
-              Self-Directed Retirement &amp; Advanced Planning
-            </span>
-            <span className="font-semibold uppercase text-r-gold">The Roth Academy</span>
-          </div>
+            Self-Directed Retirement &amp; Advanced Planning
+          </p>
 
-          <div className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
-            <h1
-              className="text-r-white"
-              style={{
-                fontSize: "clamp(58px, 14.8vw, 205px)",
-                fontWeight: 500,
-                lineHeight: 0.89,
-                letterSpacing: "-0.025em",
-              }}
+          <h1
+            className="mt-6 max-w-3xl text-r-white"
+            style={{
+              fontSize: "clamp(2.75rem, 8vw, 8.25rem)",
+              fontWeight: 500,
+              lineHeight: 0.95,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Own Your{" "}
+            <em
+              className="not-italic bg-clip-text text-transparent"
+              style={{ backgroundImage: "linear-gradient(115deg, #f0d797, #a3844f 95%)" }}
             >
-              <span className="block whitespace-nowrap">Own Your</span>
-              <em
-                className="block whitespace-nowrap not-italic bg-clip-text text-transparent"
-                style={{ backgroundImage: "linear-gradient(115deg, #f0d797, #a3844f 95%)" }}
-              >
-                Next Move.
-              </em>
-            </h1>
+              Next Move.
+            </em>
+          </h1>
 
-            <div className="flex flex-col pt-4 md:max-w-[230px] md:pt-[45px]">
-              <span className="mb-6 block h-[60px] w-px bg-r-gold" aria-hidden />
-              <p className="text-[17px] leading-[1.7] text-[#d4d1ca] font-body normal-case">
-                You built the ambition.
-                <br />
-                Give it a bigger field to play on.
-              </p>
-              <span className="mt-[26px] block text-[10px] font-semibold uppercase tracking-[0.12em] text-r-gold">
-                Your Future. Your Direction.
-              </span>
-            </div>
+          <p className="mt-6 max-w-lg text-base text-r-muted font-body normal-case">
+            You built the ambition. Give it a bigger field to play on.
+          </p>
+          <p className="mt-2 max-w-lg text-base text-r-muted font-body normal-case">
+            Self-directed 401(k)s. Self-directed IRAs. Advanced planning for what comes after.
+          </p>
+
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <Link
+              href="/plans"
+              className="inline-flex items-center gap-2 rounded-[var(--radius-brand-control)] bg-r-gold px-6 py-3 text-sm font-semibold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
+            >
+              Find my plan
+              <ArrowUpRight size={18} aria-hidden />
+            </Link>
+            <Link
+              href="/advanced-services"
+              className="inline-flex items-center gap-2 rounded-[var(--radius-brand-control)] border border-r-line px-6 py-3 text-sm font-semibold uppercase tracking-wide text-r-white transition-colors hover:border-r-gold hover:text-r-gold"
+            >
+              Explore advanced services
+            </Link>
           </div>
-
-          <div className="mt-10 flex flex-col gap-6 border-t border-r-line pt-8 md:flex-row md:items-center md:justify-between">
-            <p className="max-w-md text-base text-r-muted font-body normal-case">
-              Self-directed 401(k)s. Self-directed IRAs.
-              <br />
-              Advanced planning for what comes after.
-            </p>
-            <div className="flex flex-wrap items-center gap-6">
-              <Link
-                href="/plans"
-                className="inline-flex items-center gap-2 rounded-sm bg-r-gold px-6 py-3 text-sm font-semibold text-r-bg transition-colors hover:bg-r-gold-light"
-              >
-                Find my plan
-                <ArrowUpRight size={18} aria-hidden />
-              </Link>
-              <Link
-                href="/advanced-services"
-                className="text-sm font-semibold text-r-white transition-colors hover:text-r-gold"
-              >
-                Explore advanced services
-              </Link>
-            </div>
-          </div>
-
-          <Link
-            href="/#your-plan"
-            className="mt-10 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-r-muted transition-colors hover:text-r-gold"
-          >
-            <ArrowDown size={16} aria-hidden />
-            The Possibilities Start Here
-          </Link>
         </div>
       </section>
 
       <div className="border-b border-r-line bg-r-bg">
-        <div className="container-brand flex flex-wrap items-center justify-between gap-6 py-6">
+        <div className="container-brand grid gap-6 divide-r-line py-6 sm:grid-cols-2 sm:divide-x lg:grid-cols-4">
           {heroCapabilities.map((item) => {
             const Icon = icons[item.icon];
             return (
               <span
                 key={item.label}
-                className="flex items-center gap-2 text-sm text-r-muted font-body normal-case"
+                className="flex items-center gap-2 px-0 text-sm text-r-muted font-body normal-case sm:px-6 sm:first:pl-0"
               >
-                <Icon size={18} className="text-r-gold" aria-hidden />
+                <Icon size={18} className="shrink-0 text-r-gold" aria-hidden />
                 {item.label}
               </span>
             );

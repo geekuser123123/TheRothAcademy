@@ -1,18 +1,37 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { mainNav } from "@/data/site-config";
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    closeButtonRef.current?.focus();
+
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") close();
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
+  function close() {
+    setOpen(false);
+    triggerRef.current?.focus();
+  }
 
   return (
     <div className="lg:hidden">
       <button
+        ref={triggerRef}
         className="text-r-white"
-        aria-label={open ? "Close menu" : "Open menu"}
+        aria-label="Open menu"
         aria-expanded={open}
         type="button"
         onClick={() => setOpen(true)}
@@ -23,7 +42,7 @@ export function MobileMenu() {
       {/* Backdrop */}
       <div
         aria-hidden
-        onClick={() => setOpen(false)}
+        onClick={close}
         className={`fixed inset-0 z-40 bg-black/70 transition-opacity duration-300 ${
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
@@ -37,28 +56,24 @@ export function MobileMenu() {
         role="dialog"
         aria-modal="true"
         aria-label="Site menu"
+        aria-hidden={!open}
       >
         <div className="flex items-start justify-between p-6">
           <div>
             <p className="text-lg font-heading tracking-wide text-r-gold">Roth Academy</p>
             <p className="mt-1 text-xs text-r-muted font-body normal-case">Choose your next move.</p>
           </div>
-          <button
-            className="text-r-white"
-            aria-label="Close menu"
-            type="button"
-            onClick={() => setOpen(false)}
-          >
+          <button ref={closeButtonRef} className="text-r-white" aria-label="Close menu" type="button" onClick={close}>
             <X size={22} aria-hidden />
           </button>
         </div>
 
-        <nav className="flex-1 border-t border-r-line px-6">
+        <nav className="flex-1 border-t border-r-line px-6" aria-label="Primary">
           {mainNav.map((item, index) => (
             <Link
               key={item.href}
               href={item.href}
-              onClick={() => setOpen(false)}
+              onClick={close}
               className="group flex items-center justify-between gap-4 border-b border-r-line px-0 py-[18px]"
             >
               <span className="flex items-center gap-4">
@@ -77,24 +92,23 @@ export function MobileMenu() {
         <div className="p-6">
           <Link
             href="/contact"
-            onClick={() => setOpen(false)}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-r-gold px-6 py-3 font-body text-sm font-semibold normal-case text-r-bg transition-colors hover:bg-r-gold-light"
+            onClick={close}
+            className="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-r-gold px-6 py-3 font-body text-sm font-semibold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
           >
             Start a conversation
             <ArrowUpRight size={16} aria-hidden />
           </Link>
 
-          <div className="mt-6 flex flex-col gap-4">
-            <Link
-              href="/dashboard"
-              onClick={() => setOpen(false)}
-              className="font-body text-sm font-medium normal-case text-r-white/90 transition-colors hover:text-r-gold"
-            >
-              Client login
-            </Link>
+          <div className="mt-6 flex flex-wrap items-center gap-4">
+            <span aria-disabled="true" className="inline-flex items-center gap-2 font-body text-sm font-medium normal-case text-r-muted">
+              Client Login
+              <span className="rounded-full border border-r-line px-2 py-0.5 text-[10px] uppercase tracking-wide text-r-muted">
+                Coming soon
+              </span>
+            </span>
             <Link
               href="/contact"
-              onClick={() => setOpen(false)}
+              onClick={close}
               className="font-body text-sm font-medium normal-case text-r-white/90 transition-colors hover:text-r-gold"
             >
               Contact the team

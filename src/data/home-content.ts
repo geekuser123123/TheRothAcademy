@@ -5,55 +5,64 @@ export const heroCapabilities = [
   { icon: "compass", label: "A team behind the work" },
 ] as const;
 
-export const twoWaysCards = [
+export const pathways = [
   {
-    step: "01 / The Business Owner",
-    kicker: "Self-Directed",
-    title: "401(k)",
+    number: "01",
+    title: "Self-Directed 401(k)",
+    description: "For business owners building a plan around their own structure.",
     href: "/services/self-directed-401k",
-    description:
-      "Build a retirement plan around your business, your ambitions, and the way you want to invest.",
-    tags: ["Business-sponsored", "Plan features", "Investment flexibility"],
-    cta: "Explore the 401(k)",
   },
   {
-    step: "02 / The Individual Investor",
-    kicker: "Self-Directed",
-    title: "IRA",
+    number: "02",
+    title: "Self-Directed IRA",
+    description: "For individual investors ready to move beyond a conventional menu.",
     href: "/services/self-directed-ira",
-    description:
-      "Explore a wider investment world inside an individual retirement account, with the right provider and a clear plan.",
-    tags: ["Individual account", "Traditional or Roth", "Provider coordination"],
-    cta: "Explore the IRA",
+  },
+  {
+    number: "03",
+    title: "Existing Plan Support",
+    description: "For accounts already in place that need review or coordination.",
+    href: "/services/existing-plan-support",
+  },
+  {
+    number: "04",
+    title: "Advanced Planning",
+    description: "For trusts, entities, and transactions beyond the basics.",
+    href: "/advanced-services",
   },
 ];
 
 export const assetClasses = [
   {
+    number: "01",
     icon: "house",
     label: "Real Estate",
     description: "Rentals, land, and property opportunities.",
     href: "/services/real-estate-transactions",
   },
   {
+    number: "02",
     icon: "landmark",
     label: "Private Lending",
     description: "Notes, collateral, and the lender's perspective.",
     href: "/services/private-lending",
   },
   {
+    number: "03",
     icon: "coins",
     label: "Precious Metals",
     description: "Eligibility, custody, and account requirements.",
     href: "/learn",
   },
   {
+    number: "04",
     icon: "bitcoin",
     label: "Digital Assets",
     description: "Provider options, ownership, and recordkeeping.",
     href: "/learn",
   },
   {
+    number: "05",
     icon: "chart-no-axes-combined",
     label: "Stocks & Bonds",
     description: "Brokerage access within the right arrangement.",
@@ -106,27 +115,27 @@ export const standardSteps = [
   },
 ];
 
-export const libraryCards = [
+export const libraryRows = [
   {
+    number: "01",
     category: "The Foundation",
     title: "Start With the Right Plan.",
     meta: "Getting started · 6 min read",
     link: "Your plan, from paperwork to practice",
-    highlight: false,
   },
   {
+    number: "02",
     category: "The Opportunity",
     title: "A Different Way to Think Property.",
     meta: "Real estate · 9 min read",
     link: "Before a retirement plan buys property",
-    highlight: true,
   },
   {
+    number: "03",
     category: "The Bigger Picture",
     title: "Ask the Questions That Matter.",
     meta: "Advanced case studies · 9 min read",
     link: "Evaluate an advanced planning idea",
-    highlight: false,
   },
 ];
 
@@ -137,20 +146,30 @@ export const checklistItems = [
   "The help needed to move forward",
 ];
 
-// NOTE: accordion answer copy was not captured from the source page — the
-// answers are hidden until each accordion item is expanded, so the saved
-// page never included them in the DOM. Placeholder text is marked clearly
-// below; replace with the real copy once we have it.
 export const faqItems = [
-  { question: "Where should I start?", answer: "PLACEHOLDER — needs source copy." },
-  { question: "What does self-directed mean?", answer: "PLACEHOLDER — needs source copy." },
+  {
+    question: "Where should I start?",
+    answer:
+      "Start with the account you already have, or the goal you're working toward. The team reviews your current setup, the assets you're interested in, and what's involved before recommending a next step.",
+  },
+  {
+    question: "What does self-directed mean?",
+    answer:
+      "A self-directed 401(k) or IRA lets the account hold a wider range of assets — like real estate or private lending — instead of a conventional menu of stocks, bonds, and funds, within the rules that apply to that account type.",
+  },
   {
     question: "Is Roth Academy a law firm or investment custodian?",
-    answer: "PLACEHOLDER — needs source copy.",
+    answer:
+      "No. Roth Academy provides education, onboarding, administrative support, and implementation coordination. It is not a law firm, investment adviser, or custodian. Legal work and individual professional advice require a separate engagement with the appropriate licensed professional.",
   },
   {
     question: "Do I need a retirement plan to use advanced services?",
-    answer: "PLACEHOLDER — needs source copy.",
+    answer:
+      "No. Advanced services like trusts, entity structuring, and transaction coordination are available on their own — a self-directed 401(k) or IRA is not required for every engagement.",
   },
-  { question: "How do I speak with the team?", answer: "PLACEHOLDER — needs source copy." },
+  {
+    question: "How do I speak with the team?",
+    answer:
+      "Use the contact form or the phone number and email in the footer. Tell the team a bit about what you're trying to accomplish so the conversation starts in the right place.",
+  },
 ];

@@ -45,11 +45,17 @@ export const footerNav = {
     title: "Your Next Step",
     links: [
       { label: "Contact the team", href: "/contact" },
-      { label: "Client login", href: "/dashboard" },
-      { label: "Tax Academy", href: "/tax-academy" },
     ],
   },
 };
+
+// Features referenced in navigation but not yet built. Rendered as
+// disabled, non-interactive items with a "Coming soon" badge rather
+// than a dead or placeholder link.
+export const comingSoon = [
+  { label: "Client login" },
+  { label: "Tax Academy" },
+];
 
 export const legalNav = [
   { label: "Privacy", href: "/privacy" },

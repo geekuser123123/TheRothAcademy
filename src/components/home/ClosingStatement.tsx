@@ -1,25 +1,24 @@
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
 export function ClosingStatement() {
   return (
-    <section className="border-t border-r-line bg-r-bg py-24">
+    <section className="border-t border-r-line bg-r-bg py-20">
       <div className="container-brand flex flex-col items-start gap-8 sm:flex-row sm:items-center sm:justify-between">
         <div className="min-w-0">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-r-gold">
             The next move is yours.
           </p>
-          <h2 className="mt-4 text-5xl sm:text-6xl md:text-8xl">
+          <h2 className="mt-4 text-5xl sm:text-6xl md:text-7xl">
             Make It <span className="text-r-gold">Count.</span>
           </h2>
         </div>
         <Link
           href="/contact"
-          aria-label="Start a conversation"
-          className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-r-gold text-r-gold transition-colors hover:bg-r-gold hover:text-r-bg md:h-20 md:w-20"
+          className="inline-flex shrink-0 items-center gap-2 rounded-[var(--radius-brand-control)] bg-r-gold px-8 py-4 text-sm font-semibold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
         >
-          <span aria-hidden className="text-2xl">
-            ↗
-          </span>
+          Let&apos;s talk
+          <ArrowUpRight size={18} aria-hidden />
         </Link>
       </div>
     </section>

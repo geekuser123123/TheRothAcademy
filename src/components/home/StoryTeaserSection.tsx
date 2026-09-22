@@ -29,7 +29,7 @@ export function StoryTeaserSection() {
             A father who kept going. A son who was watching. A company built to give hard-earned
             knowledge the follow-through it deserves.
           </p>
-          <Link href="/about" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-r-gold">
+          <Link href="/about" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-r-gold">
             Read the Berry story
             <ArrowUpRight size={16} aria-hidden />
           </Link>

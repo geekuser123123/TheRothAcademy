@@ -33,16 +33,19 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-6">
-            <Link
-              href="/dashboard"
-              className="inline-flex items-center gap-1 font-body text-[12px] font-medium normal-case text-r-white/90 transition-colors hover:text-r-gold"
+            <span
+              aria-disabled="true"
+              className="inline-flex items-center gap-2 font-body text-[12px] font-medium normal-case text-r-muted"
             >
-              Client login
-              <ArrowUpRight size={14} aria-hidden />
-            </Link>
+              Client Login
+              <span className="rounded-full border border-r-line px-2 py-0.5 text-[10px] uppercase tracking-wide text-r-muted">
+                Coming soon
+              </span>
+            </span>
+            <span aria-hidden className="h-4 w-px bg-r-line" />
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-sm bg-r-gold px-5 py-2.5 font-body text-[12px] font-medium normal-case text-r-bg transition-colors hover:bg-r-gold-light"
+              className="inline-flex items-center gap-2 rounded-sm bg-r-gold px-5 py-2.5 font-body text-[12px] font-semibold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
             >
               Let&apos;s talk
               <ArrowUpRight size={16} aria-hidden />

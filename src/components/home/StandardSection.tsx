@@ -18,9 +18,9 @@ export function StandardSection() {
           idea becomes organized work.
         </p>
 
-        <ol className="mt-12 grid gap-10 md:grid-cols-3">
+        <ol className="mt-12 grid gap-10 md:grid-cols-3 md:divide-x md:divide-r-line md:gap-0">
           {standardSteps.map((step) => (
-            <li key={step.number}>
+            <li key={step.number} className="md:px-8 md:first:pl-0">
               <span className="text-2xl font-heading text-r-gold">{step.number}</span>
               <h3 className="mt-2 text-2xl">{step.title}</h3>
               <p className="mt-3 text-sm text-r-muted font-body normal-case">{step.description}</p>
@@ -30,7 +30,7 @@ export function StandardSection() {
 
         <Link
           href="/work-with-us"
-          className="mt-10 inline-flex items-center gap-2 text-sm font-semibold text-r-gold"
+          className="mt-10 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-r-gold"
         >
           See how we work
           <ArrowUpRight size={16} aria-hidden />
