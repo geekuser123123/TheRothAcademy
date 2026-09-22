@@ -126,6 +126,7 @@ export const libraryRows = [
     title: "Start With the Right Plan.",
     meta: "Getting started · 6 min read",
     link: "Your plan, from paperwork to practice",
+    image: "/library/getting-started.webp",
   },
   {
     number: "02",
@@ -133,6 +134,7 @@ export const libraryRows = [
     title: "A Different Way to Think Property.",
     meta: "Real estate · 9 min read",
     link: "Before a retirement plan buys property",
+    image: "/library/real-estate.webp",
   },
   {
     number: "03",
@@ -140,6 +142,7 @@ export const libraryRows = [
     title: "Ask the Questions That Matter.",
     meta: "Advanced case studies · 9 min read",
     link: "Evaluate an advanced planning idea",
+    image: "/library/case-studies.webp",
   },
 ];
 
