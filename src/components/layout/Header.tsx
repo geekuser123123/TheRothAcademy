@@ -1,12 +1,32 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { clsx } from "clsx";
 import { mainNav } from "@/data/site-config";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 
 export function Header() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 32);
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="fixed inset-x-0 top-0 z-40 bg-transparent">
+    <header
+      className={clsx(
+        "fixed inset-x-0 top-0 z-40 transition-colors duration-300",
+        scrolled ? "border-b border-r-line bg-r-bg/95 backdrop-blur" : "border-b border-transparent bg-transparent",
+      )}
+    >
       <div className="container-brand flex h-24 items-center justify-between">
         <Link href="/" className="shrink-0">
           <Image
