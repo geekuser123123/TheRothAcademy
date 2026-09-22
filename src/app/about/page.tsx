@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { StoryHero } from "@/components/about/StoryHero";
 import { StoryIntro } from "@/components/about/StoryIntro";
-import { StoryChaptersScroll } from "@/components/about/StoryChaptersScroll";
+import { StoryChapters } from "@/components/about/StoryChapters";
 import { StoryStatementBand } from "@/components/about/StoryStatementBand";
 import { StoryTeamSection } from "@/components/about/StoryTeamSection";
 import { StoryClosingSection } from "@/components/about/StoryClosingSection";
@@ -43,13 +43,15 @@ export default function AboutPage() {
         paragraphs={storyIntro.paragraphs}
       />
 
-      <StoryChaptersScroll chapters={storyChapters} />
+      <StoryChapters chapters={storyChapters.slice(0, 2)} />
 
       <StoryStatementBand
         kicker={storyStatement.kicker}
         heading={storyStatement.heading}
         paragraph={storyStatement.paragraph}
       />
+
+      <StoryChapters chapters={storyChapters.slice(2, 4)} />
 
       <StoryTeamSection
         kicker={storyTeam.kicker}
