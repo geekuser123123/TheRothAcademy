@@ -1,6 +1,8 @@
 import { clsx } from "clsx";
 import Image from "next/image";
 
+export type ImagePlaceholderVariant = "a" | "b" | "c" | "d" | "e";
+
 /**
  * PLACEHOLDER — no licensed photography is available in this repo yet.
  * Renders an abstract, gold-lit gradient crop instead of a stock photo
@@ -20,7 +22,7 @@ export function ImagePlaceholder({
   mark = false,
   className,
 }: {
-  variant?: "a" | "b" | "c" | "d" | "e";
+  variant?: ImagePlaceholderVariant;
   mark?: boolean;
   className?: string;
 }) {
