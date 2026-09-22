@@ -1,10 +1,10 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { ArrowUpRight, Search } from "lucide-react";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { FilterPill } from "@/components/ui/FilterPill";
-import { useContactModal } from "@/components/contact/ContactModalProvider";
 import {
   advancedServiceCategories,
   advancedServices,
@@ -20,7 +20,6 @@ const cardLabelByCategory = Object.fromEntries(
 export function AdvancedServicesDirectory() {
   const [activeFilter, setActiveFilter] = useState<FilterKey>("all");
   const [query, setQuery] = useState("");
-  const { open } = useContactModal();
 
   const filteredServices = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -84,11 +83,8 @@ export function AdvancedServicesDirectory() {
           <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {filteredServices.map((service) => (
               <li key={service.number}>
-                <button
-                  type="button"
-                  onClick={() =>
-                    open("Advanced services", `I'd like to talk through: ${service.title}.`)
-                  }
+                <Link
+                  href={`/services/${service.slug}`}
                   className="group flex h-full w-full flex-col rounded-[var(--radius-brand-card)] border border-r-line bg-r-panel/40 p-6 text-left transition-colors hover:border-r-gold hover:bg-r-panel"
                 >
                   <div className="flex items-start justify-between gap-3">
@@ -107,7 +103,7 @@ export function AdvancedServicesDirectory() {
                     <span>{service.badge}</span>
                     <span>{service.number}</span>
                   </div>
-                </button>
+                </Link>
               </li>
             ))}
           </ul>

@@ -42,193 +42,325 @@ export const advancedServiceCategories: { key: ServiceCategoryKey; tabLabel: str
 
 export type AdvancedService = {
   number: string;
+  slug: string;
   title: string;
   description: string;
   category: ServiceCategoryKey;
   badge: "Explore the work" | "Specialist review";
+  body: string[];
 };
 
 export const advancedServices: AdvancedService[] = [
   {
     number: "01",
+    slug: "existing-plan-support",
     title: "Existing Plan Support",
     description: "Keep your plan paperwork and next steps organized.",
     category: "plans",
     badge: "Explore the work",
+    body: [
+      "If you already have a self-directed 401(k) or IRA, this service keeps the plan's paperwork, participant records, and administrative history organized — so nothing falls through the cracks between reviews.",
+      "The team confirms what documents exist, what's missing, and what needs updating, then helps you get the plan's records into a clear, current state.",
+    ],
   },
   {
     number: "02",
+    slug: "family-business-plans",
     title: "Family Business Plan Planning",
     description: "Coordinate the people and accounts in a family business.",
     category: "plans",
     badge: "Explore the work",
+    body: [
+      "When a retirement plan sits inside a family business, the accounts, ownership, and people involved can overlap in ways a standard plan doesn't anticipate.",
+      "This service coordinates the plan design around your specific family and business structure, so contributions, eligibility, and ownership stay properly separated and documented.",
+    ],
   },
   {
     number: "03",
+    slug: "contribution-planning",
     title: "Contribution Planning",
     description: "Make a clear plan for money going in.",
     category: "roth",
     badge: "Explore the work",
+    body: [
+      "Contribution planning maps out what money is going into your plan, from which source, under which rules — before the contribution happens, not after.",
+      "The team helps you identify the right contribution type and timing for your account, so your records stay clean and your limits stay respected.",
+    ],
   },
   {
     number: "04",
+    slug: "rollover-planning",
     title: "Rollover Planning",
     description: "Prepare for assets moving between retirement arrangements.",
     category: "roth",
     badge: "Explore the work",
+    body: [
+      "Moving retirement assets from one arrangement to another — an old 401(k) into a self-directed IRA, for instance — has its own paperwork and timing requirements.",
+      "This service prepares the rollover correctly from the start: confirming the receiving account, the transfer method, and the documentation that shows it was done right.",
+    ],
   },
   {
     number: "05",
+    slug: "participant-loans",
     title: "Participant Loan Documentation",
     description: "Put the loan and its repayment records in order.",
     category: "plans",
     badge: "Explore the work",
+    body: [
+      "A participant loan against your own plan balance needs a promissory note, a repayment schedule, and ongoing records — not just a transfer of funds.",
+      "The team helps put the loan's documentation in order, whether you're setting one up for the first time or catching up records on an existing loan.",
+    ],
   },
   {
     number: "06",
+    slug: "roth-conversion-planning",
     title: "Roth Conversion Planning",
     description: "Evaluate the move before moving the assets.",
     category: "roth",
     badge: "Explore the work",
+    body: [
+      "Converting pre-tax retirement funds to Roth is a decision worth evaluating carefully — it has tax consequences the year it happens, not just later.",
+      "This service walks through the numbers and the timing with you before any assets move, so the conversion reflects an informed decision, not a rushed one.",
+    ],
   },
   {
     number: "07",
+    slug: "preferred-llcs",
     title: "Preferred LLCs & Partnerships",
     description: "Structure different rights to capital and future growth.",
     category: "transactions",
     badge: "Explore the work",
+    body: [
+      "Not every owner in an LLC or partnership needs the same rights to capital, income, or future growth — a preferred structure can separate those interests deliberately.",
+      "This service structures the ownership interests to match what you're actually trying to accomplish, with the appropriate professional reviewing the entity documents.",
+    ],
   },
   {
     number: "08",
+    slug: "fractional-ownership",
     title: "Fractional Ownership & Valuation",
     description: "Review exactly which interest is being transferred.",
     category: "transactions",
     badge: "Explore the work",
+    body: [
+      "When a retirement plan holds a partial interest in an asset — a fraction of a property, a share of an entity — the exact interest being transferred needs to be precisely defined.",
+      "This service reviews what is actually being bought, sold, or held, and confirms the valuation and documentation support that specific interest.",
+    ],
   },
   {
     number: "09",
+    slug: "life-estates-remainders",
     title: "Life Estates & Remainder Interests",
     description: "Explore separate rights to income and future ownership.",
     category: "transactions",
     badge: "Explore the work",
+    body: [
+      "A life estate separates the right to use or receive income from an asset now from who owns it later — two distinct interests in the same property.",
+      "This service reviews how that separation would work for your situation, and what documentation is needed to make both interests clear and enforceable.",
+    ],
   },
   {
     number: "10",
+    slug: "charitable-remainder-trusts",
     title: "Charitable Remainder Trust Planning",
     description: "Connect an asset, income needs, and a charitable purpose.",
     category: "trusts",
     badge: "Explore the work",
+    body: [
+      "A charitable remainder trust connects an asset, an income stream, and a charitable gift — but the structure only works if all three are set up correctly together.",
+      "This service brings your asset, your income needs, and your charitable intent into one conversation with the appropriate professional, before any trust is drafted.",
+    ],
   },
   {
     number: "11",
+    slug: "estate-inheritance-planning",
     title: "Estate & Inheritance Planning",
     description: "Make the intended handoff clear.",
     category: "trusts",
     badge: "Explore the work",
+    body: [
+      "How your accounts and assets pass to the people you intend requires more than a will — beneficiary designations, account titling, and trust provisions all play a role.",
+      "This service reviews what you have in place today and where it may not say what you think it says, so the intended handoff is actually clear.",
+    ],
   },
   {
     number: "12",
+    slug: "grat-planning",
     title: "GRAT Planning Assessment",
     description: "Evaluate a specialized trust question with an attorney.",
     category: "trusts",
     badge: "Specialist review",
+    body: [
+      "A Grantor Retained Annuity Trust is a specialized estate planning structure with real tax mechanics and real risk if the assumptions behind it don't hold.",
+      "This is a specialist review: an attorney evaluates whether a GRAT fits your specific facts before any structure is recommended or built.",
+    ],
   },
   {
     number: "13",
+    slug: "powers-of-appointment",
     title: "Powers of Appointment",
     description: "Review who has authority over a future transfer.",
     category: "trusts",
     badge: "Explore the work",
+    body: [
+      "A power of appointment gives someone the authority to direct where a trust's assets go in the future — a quiet but significant provision worth understanding clearly.",
+      "This service reviews who holds that authority in your documents today, and whether it reflects who you actually want making that decision.",
+    ],
   },
   {
     number: "14",
+    slug: "unchained-roth-review",
     title: "Unchained Roth Assessment",
     description: "Bring the full structure into the conversation.",
     category: "trusts",
     badge: "Specialist review",
+    body: [
+      "Some Roth structures involve more than one account or entity working together — which means evaluating one piece in isolation can miss the bigger picture.",
+      "This is a specialist review: an attorney looks at the full structure together, not just the account in front of you, before offering an assessment.",
+    ],
   },
   {
     number: "15",
+    slug: "real-estate-transactions",
     title: "Real Estate & Development Transactions",
     description: "Put the legal structure around the actual deal.",
     category: "transactions",
     badge: "Explore the work",
+    body: [
+      "Buying, developing, or holding real estate inside a retirement plan involves contracts, financing, and ownership questions specific to that plan type.",
+      "This service puts the legal structure around your actual deal — reviewing the transaction's terms and documents before you're committed to them.",
+    ],
   },
   {
     number: "16",
+    slug: "private-lending",
     title: "Private Lending & Loan Documents",
     description: "Organize the terms, security, and responsibilities.",
     category: "transactions",
     badge: "Explore the work",
+    body: [
+      "Lending plan funds to another party requires a promissory note, security terms, and a repayment structure that protects the plan's interest.",
+      "This service organizes the borrower's terms, the security involved, and each party's responsibilities into documents that hold up if a question comes up later.",
+    ],
   },
   {
     number: "17",
+    slug: "shared-equity-financing",
     title: "Shared Equity & Appreciation Financing",
     description: "Evaluate financing tied to the economics of a property.",
     category: "transactions",
     badge: "Explore the work",
+    body: [
+      "Some financing arrangements tie repayment to a property's appreciation rather than a fixed interest rate — a structure that needs its own careful documentation.",
+      "This service evaluates financing tied to a property's economics, so the terms reflect what both parties actually agreed to.",
+    ],
   },
   {
     number: "18",
+    slug: "income-interest-planning",
     title: "Income Interests & Depreciation Planning",
     description: "Review the rights and deductions in a split-interest proposal.",
     category: "transactions",
     badge: "Specialist review",
+    body: [
+      "A split-interest proposal — where one party receives income and another the underlying asset — raises specific questions about rights, deductions, and tax treatment.",
+      "This is a specialist review: an attorney evaluates the rights and deductions involved in your specific proposal before it moves forward.",
+    ],
   },
   {
     number: "19",
+    slug: "ubit-planning",
     title: "UBIT & Debt-Financed Income Review",
     description: "Find the tax questions behind the investment.",
     category: "compliance",
     badge: "Explore the work",
+    body: [
+      "Certain income inside a retirement plan — from an active business, or property financed with debt — can trigger a tax at the plan level worth understanding in advance.",
+      "This service finds the tax questions behind your specific investment, so you know what applies before the transaction, not after a filing.",
+    ],
   },
   {
     number: "20",
+    slug: "blocker-corporations",
     title: "Blocker Corporation Assessment",
     description: "Examine the full costs and consequences of an entity layer.",
     category: "compliance",
     badge: "Specialist review",
+    body: [
+      "A blocker corporation can shield a retirement plan from certain tax exposure, but it adds its own costs, filings, and complexity that need to be weighed honestly.",
+      "This is a specialist review: an attorney examines the full costs and consequences of adding an entity layer before recommending one.",
+    ],
   },
   {
     number: "21",
+    slug: "private-company-investments",
     title: "Private Company & Founder Investments",
     description: "Review the shares, rights, and relationships behind a proposal.",
     category: "transactions",
     badge: "Explore the work",
+    body: [
+      "Investing plan funds in a private company or alongside a founder involves share classes, rights, and relationships that deserve the same scrutiny as any other transaction.",
+      "This service reviews the shares, rights, and relationships behind the proposal, so you understand what you'd actually own and on what terms.",
+    ],
   },
   {
     number: "22",
+    slug: "distributions-rmds",
     title: "Distributions & RMD Planning",
     description: "Plan the withdrawal and its follow-through.",
     category: "compliance",
     badge: "Explore the work",
+    body: [
+      "Required minimum distributions and other withdrawals need to be planned, not just requested — the timing and amount affect your taxes and your plan's records.",
+      "This service plans the withdrawal and its follow-through, so the distribution is documented correctly and fits into your broader retirement income picture.",
+    ],
   },
   {
     number: "23",
+    slug: "asset-protection",
     title: "Asset Protection Planning",
     description: "Review how ownership and exposure fit together.",
     category: "protection",
     badge: "Explore the work",
+    body: [
+      "Asset protection planning is highly fact-specific: what works depends on your state, your existing structures, and the timing of any steps you take.",
+      "This service reviews how your current ownership and exposure fit together, as the starting point for a plan built around your actual situation.",
+    ],
   },
   {
     number: "24",
+    slug: "protective-documents",
     title: "Ownership & Protective Document Review",
     description: "Read the restrictions before relying on them.",
     category: "protection",
     badge: "Explore the work",
+    body: [
+      "A trust, LLC, or insurance policy is only as protective as its actual language — restrictions you assume exist may not be written the way you think.",
+      "This service reads the documents you already have and identifies where they do, and don't, provide the protection you're relying on.",
+    ],
   },
   {
     number: "25",
+    slug: "prohibited-transactions",
     title: "Prohibited-Transaction Review",
     description: "Ask before a transaction, or get help reviewing what happened.",
     category: "compliance",
     badge: "Explore the work",
+    body: [
+      "Certain transactions between a retirement plan and disqualified persons are restricted by rule, with real consequences if one happens — intentionally or not.",
+      "This service reviews a transaction before it happens, or helps assess what occurred if a question has already come up, with the appropriate professional involved.",
+    ],
   },
   {
     number: "26",
+    slug: "reporting-notices",
     title: "Plan Reporting & Notice Support",
     description: "Identify the required work and who will complete it.",
     category: "compliance",
     badge: "Explore the work",
+    body: [
+      "Retirement plans carry their own reporting and notice requirements, separate from personal tax filings — easy to miss if no one is tracking them.",
+      "This service identifies the required work for your plan and who is responsible for completing it, so nothing is filed late or missed entirely.",
+    ],
   },
 ];
