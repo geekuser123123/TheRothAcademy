@@ -59,7 +59,7 @@ export function HeroSection() {
             className="mt-6 max-w-5xl text-r-white"
             style={{
               fontSize: "clamp(3.75rem, 13vw, 205px)",
-              fontWeight: 700,
+              fontWeight: 500,
               lineHeight: 0.93,
               letterSpacing: "-0.02em",
               textShadow:
