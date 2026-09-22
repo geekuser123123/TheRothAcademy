@@ -78,7 +78,7 @@ export function MobileMenu() {
             >
               <span className="flex items-center gap-4">
                 <span className="text-xs text-r-gold">{String(index + 1).padStart(2, "0")}</span>
-                <span className="font-heading text-[30px] text-r-white">{item.label}</span>
+                <span className="font-heading text-[30px] uppercase text-r-white">{item.label}</span>
               </span>
               <ArrowUpRight
                 size={18}
@@ -100,11 +100,8 @@ export function MobileMenu() {
           </Link>
 
           <div className="mt-6 flex flex-wrap items-center gap-4">
-            <span aria-disabled="true" className="inline-flex items-center gap-2 font-body text-sm font-medium normal-case text-r-muted">
+            <span aria-disabled="true" className="font-body text-sm font-medium uppercase tracking-wide text-r-muted">
               Client Login
-              <span className="rounded-full border border-r-line px-2 py-0.5 text-[10px] uppercase tracking-wide text-r-muted">
-                Coming soon
-              </span>
             </span>
             <Link
               href="/contact"

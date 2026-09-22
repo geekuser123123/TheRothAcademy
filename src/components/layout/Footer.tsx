@@ -41,11 +41,8 @@ export function Footer() {
                   <ul className="mt-3 space-y-3">
                     {comingSoon.map((item) => (
                       <li key={item.label}>
-                        <span aria-disabled="true" className="inline-flex items-center gap-2 text-sm text-r-muted font-body normal-case">
+                        <span aria-disabled="true" className="text-sm text-r-muted font-body normal-case">
                           {item.label}
-                          <span className="rounded-full border border-r-line px-2 py-0.5 text-[10px] uppercase tracking-wide text-r-muted">
-                            Coming soon
-                          </span>
                         </span>
                       </li>
                     ))}

@@ -25,7 +25,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="font-body text-[12px] font-medium normal-case text-r-white/90 transition-colors hover:text-r-gold"
+                className="font-body text-[12px] font-medium uppercase tracking-wide text-r-white/90 transition-colors hover:text-r-gold"
               >
                 {item.label}
               </Link>
@@ -35,12 +35,9 @@ export function Header() {
           <div className="flex items-center gap-6">
             <span
               aria-disabled="true"
-              className="inline-flex items-center gap-2 font-body text-[12px] font-medium normal-case text-r-muted"
+              className="font-body text-[12px] font-medium uppercase tracking-wide text-r-muted"
             >
               Client Login
-              <span className="rounded-full border border-r-line px-2 py-0.5 text-[10px] uppercase tracking-wide text-r-muted">
-                Coming soon
-              </span>
             </span>
             <span aria-hidden className="h-4 w-px bg-r-line" />
             <Link
