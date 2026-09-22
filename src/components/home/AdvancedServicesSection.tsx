@@ -53,7 +53,7 @@ export function AdvancedServicesSection() {
           </ul>
         </div>
 
-        <ImagePlaceholder variant="d" className="hidden min-h-[420px] rounded-[var(--radius-brand-card)] md:block" />
+        <ImagePlaceholder variant="d" className="relative hidden min-h-[420px] rounded-[var(--radius-brand-card)] md:block" />
       </div>
     </section>
   );

@@ -16,17 +16,17 @@ export function ImagePlaceholder({
   className?: string;
 }) {
   const gradients: Record<string, string> = {
-    a: "linear-gradient(135deg, #1b1d20 0%, #15171a 45%, #8f7040 100%)",
-    b: "linear-gradient(150deg, #15171a 0%, #1b1d20 55%, #c6a466 130%)",
-    c: "linear-gradient(115deg, #090a0b 0%, #1b1d20 50%, #8f7040 115%)",
-    d: "linear-gradient(160deg, #1b1d20 0%, #090a0b 60%, #c6a466 140%)",
-    e: "linear-gradient(140deg, #15171a 0%, #1b1d20 40%, #e4c98f 150%)",
+    a: "linear-gradient(100deg, #2a2d32 0%, #6b5738 60%, #a3844f 100%)",
+    b: "linear-gradient(100deg, #23262b 0%, #7a6440 55%, #c6a466 100%)",
+    c: "linear-gradient(100deg, #1b1d20 0%, #6b5738 50%, #8f7040 100%)",
+    d: "linear-gradient(100deg, #2a2d32 0%, #8a7040 55%, #c6a466 100%)",
+    e: "linear-gradient(100deg, #23262b 0%, #9c8250 50%, #e4c98f 100%)",
   };
 
   return (
     <div
       aria-hidden
-      className={clsx("relative overflow-hidden bg-r-panel-2", className)}
+      className={clsx("overflow-hidden bg-r-panel-2", className)}
       style={{ backgroundImage: gradients[variant] }}
     >
       <div className="absolute inset-0" style={{ background: "linear-gradient(0deg, rgba(9,10,11,0.35), transparent 60%)" }} />

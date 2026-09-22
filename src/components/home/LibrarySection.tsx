@@ -28,7 +28,7 @@ export function LibrarySection() {
             <li key={row.title}>
               <Link href="/learn" className="group flex items-center gap-6 py-6 transition-colors hover:bg-r-panel-2">
                 <span className="hidden text-xs text-r-gold sm:block">{row.number}</span>
-                <ImagePlaceholder variant="e" className="h-16 w-24 shrink-0 rounded-sm" />
+                <ImagePlaceholder variant="e" className="relative h-16 w-24 shrink-0 rounded-sm" />
                 <div className="min-w-0 flex-1">
                   <p className="text-xs font-semibold uppercase tracking-[0.15em] text-r-gold">{row.category}</p>
                   <h3 className="mt-1 text-xl">{row.title}</h3>
