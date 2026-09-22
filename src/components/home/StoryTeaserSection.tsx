@@ -1,20 +1,11 @@
-import fs from "fs";
-import path from "path";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 
-const STORY_IMAGE = "/story/berry-family.jpg";
-
-function imageExists(publicPath: string) {
-  return fs.existsSync(path.join(process.cwd(), "public", publicPath));
-}
+const STORY_IMAGE = "/story/berry-family.webp";
 
 export function StoryTeaserSection() {
-  const hasRealImage = imageExists(STORY_IMAGE);
-
   return (
     <section className="relative overflow-hidden border-b border-r-line bg-r-bg py-20 md:py-28">
       {/* Decorative background text — sits behind everything, purely
@@ -29,17 +20,13 @@ export function StoryTeaserSection() {
 
       <div className="container-brand relative grid items-center gap-14 md:grid-cols-[1.05fr_1fr] md:gap-16">
         <div className="relative mx-auto aspect-[4/5] w-[65%] overflow-hidden rounded-[var(--radius-brand-card)] border border-r-gold/30 shadow-2xl shadow-black/50 sm:w-[55%] md:mx-0 md:w-[75%]">
-          {hasRealImage ? (
-            <Image
-              src={STORY_IMAGE}
-              alt="The Berry family"
-              fill
-              sizes="(min-width: 768px) 35vw, 55vw"
-              className="object-cover"
-            />
-          ) : (
-            <ImagePlaceholder variant="c" mark className="relative h-full w-full" />
-          )}
+          <Image
+            src={STORY_IMAGE}
+            alt="The Berry family"
+            fill
+            sizes="(min-width: 768px) 35vw, 55vw"
+            className="object-cover"
+          />
           <div
             aria-hidden
             className="absolute inset-0"
