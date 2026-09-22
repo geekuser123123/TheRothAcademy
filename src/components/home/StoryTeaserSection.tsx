@@ -21,7 +21,7 @@ export function StoryTeaserSection() {
         <div className="relative min-w-0">
           <p
             aria-hidden
-            className="min-w-0 select-none overflow-hidden leading-[0.85] text-transparent"
+            className="min-w-0 select-none overflow-visible leading-[0.85] text-transparent"
             style={{ WebkitTextStroke: "1px var(--color-r-line)", fontSize: "clamp(2.75rem, 9vw, 8rem)" }}
           >
             Still
@@ -29,7 +29,7 @@ export function StoryTeaserSection() {
             Standing.
           </p>
 
-          <div className="relative mt-8 aspect-[4/5] w-[65%] overflow-hidden rounded-[var(--radius-brand-card)] border border-r-gold/30 shadow-2xl shadow-black/50 sm:w-[55%] md:w-[60%]">
+          <div className="relative mt-16 aspect-[4/5] w-[65%] overflow-hidden rounded-[var(--radius-brand-card)] border border-r-gold/30 shadow-2xl shadow-black/50 sm:mt-20 sm:w-[55%] md:mt-24 md:w-[60%]">
             {hasRealImage ? (
               <Image
                 src={STORY_IMAGE}
@@ -39,7 +39,7 @@ export function StoryTeaserSection() {
                 className="object-cover"
               />
             ) : (
-              <ImagePlaceholder variant="c" className="relative h-full w-full" />
+              <ImagePlaceholder variant="c" mark className="relative h-full w-full" />
             )}
             <div
               aria-hidden
