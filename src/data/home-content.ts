@@ -11,24 +11,34 @@ export const pathways = [
     title: "Self-Directed 401(k)",
     description: "For business owners building a plan around their own structure.",
     href: "/services/self-directed-401k",
+    // Real photo path once provided — falls back to an abstract
+    // placeholder until then. See ImagePlaceholder.
+    image: "/pathways/401k.jpg",
+    placeholderVariant: "a" as const,
   },
   {
     number: "02",
     title: "Self-Directed IRA",
     description: "For individual investors ready to move beyond a conventional menu.",
     href: "/services/self-directed-ira",
+    image: "/pathways/ira.jpg",
+    placeholderVariant: "b" as const,
   },
   {
     number: "03",
     title: "Existing Plan Support",
     description: "For accounts already in place that need review or coordination.",
     href: "/services/existing-plan-support",
+    image: "/pathways/existing-plan.jpg",
+    placeholderVariant: "c" as const,
   },
   {
     number: "04",
     title: "Advanced Planning",
     description: "For trusts, entities, and transactions beyond the basics.",
     href: "/advanced-services",
+    image: "/pathways/advanced-planning.jpg",
+    placeholderVariant: "d" as const,
   },
 ];
 
