@@ -63,7 +63,7 @@ export function ServiceOverview({
         <div
           className={clsx(
             "relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-[var(--radius-brand-card)] border border-r-gold/30 shadow-2xl shadow-black/50",
-            reverse && "md:order-1",
+            reverse && "md:order-1 md:mx-0",
           )}
         >
           {hasRealImage ? (
