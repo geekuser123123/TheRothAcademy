@@ -14,6 +14,7 @@ export function ServiceHero({
   goldLine,
   description,
   whoItsFor,
+  stats,
   contactTopic,
   primaryCta,
   secondaryCta,
@@ -23,6 +24,7 @@ export function ServiceHero({
   goldLine?: number;
   description: string;
   whoItsFor?: string;
+  stats?: string[];
   contactTopic?: string;
   primaryCta?: Cta;
   secondaryCta?: Cta;
@@ -62,6 +64,16 @@ export function ServiceHero({
         <p className="mt-6 max-w-lg text-base text-r-muted font-body normal-case">{description}</p>
         {whoItsFor && (
           <p className="mt-3 max-w-lg text-sm text-r-muted/70 font-body normal-case">{whoItsFor}</p>
+        )}
+
+        {stats && stats.length > 0 && (
+          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2">
+            {stats.map((stat) => (
+              <span key={stat} className="text-xs uppercase tracking-[0.15em] text-r-muted">
+                {stat}
+              </span>
+            ))}
+          </div>
         )}
 
         {(primaryCta || secondaryCta) && (

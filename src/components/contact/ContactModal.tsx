@@ -19,7 +19,7 @@ const labelClasses = "text-xs font-semibold uppercase tracking-[0.15em] text-r-m
 type Status = "idle" | "submitting" | "success" | "error";
 
 export function ContactModal() {
-  const { isOpen, topic, close } = useContactModal();
+  const { isOpen, topic, detail, close } = useContactModal();
   const pathname = usePathname();
   const [status, setStatus] = useState<Status>("idle");
   const nameInputRef = useRef<HTMLInputElement>(null);
@@ -183,6 +183,7 @@ export function ContactModal() {
                   name="message"
                   required
                   rows={3}
+                  defaultValue={detail}
                   className={`${inputClasses} resize-none`}
                 />
               </label>

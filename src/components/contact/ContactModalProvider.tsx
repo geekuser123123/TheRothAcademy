@@ -6,7 +6,8 @@ import { ContactModal } from "@/components/contact/ContactModal";
 type ContactModalContextValue = {
   isOpen: boolean;
   topic: string | undefined;
-  open: (topic?: string) => void;
+  detail: string | undefined;
+  open: (topic?: string, detail?: string) => void;
   close: () => void;
 };
 
@@ -15,15 +16,20 @@ const ContactModalContext = createContext<ContactModalContextValue | null>(null)
 export function ContactModalProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
   const [topic, setTopic] = useState<string | undefined>(undefined);
+  const [detail, setDetail] = useState<string | undefined>(undefined);
 
-  const open = useCallback((nextTopic?: string) => {
+  const open = useCallback((nextTopic?: string, nextDetail?: string) => {
     setTopic(nextTopic);
+    setDetail(nextDetail);
     setIsOpen(true);
   }, []);
 
   const close = useCallback(() => setIsOpen(false), []);
 
-  const value = useMemo(() => ({ isOpen, topic, open, close }), [isOpen, topic, open, close]);
+  const value = useMemo(
+    () => ({ isOpen, topic, detail, open, close }),
+    [isOpen, topic, detail, open, close],
+  );
 
   return (
     <ContactModalContext.Provider value={value}>
