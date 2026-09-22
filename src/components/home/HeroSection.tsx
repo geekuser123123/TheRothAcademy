@@ -62,15 +62,11 @@ export function HeroSection() {
               fontWeight: 500,
               lineHeight: 0.93,
               letterSpacing: "-0.02em",
-              textShadow: "0 4px 30px rgba(0,0,0,0.4)",
             }}
           >
             Own Your
             <br />
-            <em
-              className="not-italic text-r-gold"
-              style={{ textShadow: "0 4px 30px rgba(0,0,0,0.4)" }}
-            >
+            <em className="not-italic text-r-gold">
               Next Move.
             </em>
           </h1>
