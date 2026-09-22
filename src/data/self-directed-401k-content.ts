@@ -6,6 +6,39 @@ export const service401kHero = {
     "A self-directed 401(k) is built for owners who want their retirement plan to work as hard as they do — with room for the assets you already understand.",
   whoItsFor:
     "Built primarily for owner-only businesses — sole proprietors, partnerships, and corporations with no full-time employees other than an owner or spouse.",
+  summary: {
+    tag: "The Foundation",
+    title: "401(k)",
+    subtitle: "Business-Sponsored Retirement Plan",
+    checklist: [
+      "Review business and participant eligibility",
+      "Define the plan document package",
+      "Prepare for accounts, funding, and records",
+    ],
+    note: "Terms and eligibility confirmed during review.",
+  },
+};
+
+export const service401kFoundation = {
+  eyebrow: "What This Opens Up",
+  heading: ["A Stronger Foundation.", "More To Explore."],
+  steps: [
+    {
+      number: "01",
+      title: "A Plan For Your Business",
+      description: "Start with the business that supports the arrangement, including ownership and participant eligibility.",
+    },
+    {
+      number: "02",
+      title: "Features With A Purpose",
+      description: "Evaluate the plan's permitted contribution, Roth, rollover, and participant-loan features where relevant.",
+    },
+    {
+      number: "03",
+      title: "Room To Explore",
+      description: "Review investment possibilities and account providers in the context of the actual plan and transaction.",
+    },
+  ],
 };
 
 export const service401kOverview = {
@@ -27,30 +60,49 @@ export const service401kOverview = {
 };
 
 export const service401kProcess = {
-  eyebrow: "How It Works",
-  heading: ["From Conversation", "To Contribution."],
+  eyebrow: "The Setup Journey",
+  heading: ["Get The Start", "Right."],
+  intro: "The proposal confirms the work included in your setup. These are the questions the process is built around.",
   steps: [
     {
       number: "01",
-      title: "Eligibility Review",
-      description: "Confirm your business structure and plan eligibility with the team.",
+      title: "Business & Eligibility",
+      description: "Review your business, ownership, participants, other employers or plans, and what the arrangement needs to support.",
     },
     {
       number: "02",
-      title: "Plan Design",
-      description: "The right plan document and provisions are selected for your goals.",
+      title: "The Plan Documents",
+      description: "Define the plan document package and the features appropriate to the reviewed circumstances.",
     },
     {
       number: "03",
-      title: "Funding",
-      description: "Roll over an old employer plan or IRA, or begin new contributions.",
+      title: "Accounts & Funding",
+      description: "Prepare the information for the account providers and coordinate the proposed contribution or rollover questions.",
     },
     {
       number: "04",
-      title: "Direct Your Investments",
-      description: "Put the plan to work in the assets you understand.",
+      title: "The Work After Setup",
+      description: "Know the records, administration, and transaction responsibilities that come with using your plan.",
     },
   ],
+};
+
+export const service401kScenario = {
+  eyebrow: "A Starting Scenario",
+  heading: ["Your First Rental.", "Built On The Right Plan."],
+  paragraphs: [
+    "You own a business and want to explore purchasing a rental property through a retirement plan. The team starts with business and participant eligibility, then the proposed investment and financing.",
+    "The plan setup and property transaction are distinct pieces of work. The proposal makes clear what is included and what needs a separate professional review.",
+  ],
+  note: "Illustrative situation, not a client result or investment recommendation.",
+  prepTitle: "Bring The Basics.",
+  prepItems: [
+    "Business and ownership information",
+    "Employees and intended participants",
+    "Existing retirement arrangements",
+    "The investment idea and timing",
+  ],
+  ctaLabel: "Start a conversation",
 };
 
 export const service401kFaq = {
@@ -82,5 +134,20 @@ export const service401kFaq = {
       answer:
         "Checkbook control means the plan can write checks or wire funds directly for an investment, without waiting on a custodian to process each transaction — useful for time-sensitive opportunities like real estate.",
     },
+    {
+      question: "Does checkbook control remove the rules?",
+      answer:
+        "No. Checkbook control changes how a transaction is processed, not the rules that apply to it. Prohibited transactions, disqualified persons, and plan responsibilities still apply — the team reviews a proposed transaction before it moves forward.",
+    },
   ],
+  sourceLink: {
+    label: "Read the IRS overview of one-participant 401(k) plans",
+    href: "https://www.irs.gov/retirement-plans/one-participant-401k-plans",
+  },
+};
+
+export const service401kCrossLink = {
+  label: "Explore the other starting point",
+  title: "Self-Directed IRA",
+  href: "/services/self-directed-ira",
 };

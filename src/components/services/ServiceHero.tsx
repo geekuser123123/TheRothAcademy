@@ -1,12 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { clsx } from "clsx";
 import { useContactModal } from "@/components/contact/ContactModalProvider";
 
 // href navigates normally; omit it to open the shared contact modal instead.
 type Cta = { label: string; href?: string };
+
+type Summary = {
+  tag: string;
+  title: string;
+  subtitle: string;
+  checklist: string[];
+  note: string;
+};
 
 export function ServiceHero({
   eyebrow,
@@ -18,6 +26,7 @@ export function ServiceHero({
   contactTopic,
   primaryCta,
   secondaryCta,
+  summary,
 }: {
   eyebrow: string;
   title: string[];
@@ -28,6 +37,7 @@ export function ServiceHero({
   contactTopic?: string;
   primaryCta?: Cta;
   secondaryCta?: Cta;
+  summary?: Summary;
 }) {
   const { open } = useContactModal();
 
@@ -45,75 +55,98 @@ export function ServiceHero({
       />
 
       <div className="container-brand relative pb-16 pt-40 md:pb-20 md:pt-48">
-        <p
-          className="flex items-center gap-3 font-semibold uppercase text-r-gold"
-          style={{ fontSize: 11, letterSpacing: "0.14em" }}
-        >
-          <span className="h-px w-8 bg-r-gold" aria-hidden />
-          {eyebrow}
-        </p>
+        <div className={clsx(summary && "grid gap-14 md:grid-cols-[1.3fr_1fr] md:items-start md:gap-12")}>
+          <div className="min-w-0">
+            <p
+              className="flex items-center gap-3 font-semibold uppercase text-r-gold"
+              style={{ fontSize: 11, letterSpacing: "0.14em" }}
+            >
+              <span className="h-px w-8 bg-r-gold" aria-hidden />
+              {eyebrow}
+            </p>
 
-        <h1 className="mt-6 max-w-3xl text-5xl md:text-7xl lg:text-8xl">
-          {title.map((line, index) => (
-            <span key={line} className={clsx("block", index === goldLine && "text-r-gold")}>
-              {line}
-            </span>
-          ))}
-        </h1>
+            <h1 className="mt-6 max-w-3xl text-5xl md:text-7xl lg:text-8xl">
+              {title.map((line, index) => (
+                <span key={line} className={clsx("block", index === goldLine && "text-r-gold")}>
+                  {line}
+                </span>
+              ))}
+            </h1>
 
-        <p className="mt-6 max-w-lg text-base text-r-muted font-body normal-case">{description}</p>
-        {whoItsFor && (
-          <p className="mt-3 max-w-lg text-sm text-r-muted/70 font-body normal-case">{whoItsFor}</p>
-        )}
+            <p className="mt-6 max-w-lg text-base text-r-muted font-body normal-case">{description}</p>
+            {whoItsFor && (
+              <p className="mt-3 max-w-lg text-sm text-r-muted/70 font-body normal-case">{whoItsFor}</p>
+            )}
 
-        {stats && stats.length > 0 && (
-          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2">
-            {stats.map((stat) => (
-              <span key={stat} className="text-xs uppercase tracking-[0.15em] text-r-muted">
-                {stat}
-              </span>
-            ))}
+            {stats && stats.length > 0 && (
+              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2">
+                {stats.map((stat) => (
+                  <span key={stat} className="text-xs uppercase tracking-[0.15em] text-r-muted">
+                    {stat}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {(primaryCta || secondaryCta) && (
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                {primaryCta && (primaryCta.href ? (
+                  <Link
+                    href={primaryCta.href}
+                    className="inline-flex items-center gap-2 rounded-[var(--radius-brand-control)] bg-r-gold px-6 py-3 text-sm font-semibold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
+                  >
+                    {primaryCta.label}
+                    <ArrowUpRight size={18} aria-hidden />
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => open(contactTopic)}
+                    className="inline-flex items-center gap-2 rounded-[var(--radius-brand-control)] bg-r-gold px-6 py-3 text-sm font-semibold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
+                  >
+                    {primaryCta.label}
+                    <ArrowUpRight size={18} aria-hidden />
+                  </button>
+                ))}
+                {secondaryCta && (secondaryCta.href ? (
+                  <Link
+                    href={secondaryCta.href}
+                    className="inline-flex items-center gap-2 rounded-[var(--radius-brand-control)] border border-r-line/60 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-r-white transition-colors hover:border-r-gold hover:text-r-gold"
+                  >
+                    {secondaryCta.label}
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => open(contactTopic)}
+                    className="inline-flex items-center gap-2 rounded-[var(--radius-brand-control)] border border-r-line/60 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-r-white transition-colors hover:border-r-gold hover:text-r-gold"
+                  >
+                    {secondaryCta.label}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
-        )}
 
-        {(primaryCta || secondaryCta) && (
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            {primaryCta && (primaryCta.href ? (
-              <Link
-                href={primaryCta.href}
-                className="inline-flex items-center gap-2 rounded-[var(--radius-brand-control)] bg-r-gold px-6 py-3 text-sm font-semibold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
-              >
-                {primaryCta.label}
-                <ArrowUpRight size={18} aria-hidden />
-              </Link>
-            ) : (
-              <button
-                type="button"
-                onClick={() => open(contactTopic)}
-                className="inline-flex items-center gap-2 rounded-[var(--radius-brand-control)] bg-r-gold px-6 py-3 text-sm font-semibold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
-              >
-                {primaryCta.label}
-                <ArrowUpRight size={18} aria-hidden />
-              </button>
-            ))}
-            {secondaryCta && (secondaryCta.href ? (
-              <Link
-                href={secondaryCta.href}
-                className="inline-flex items-center gap-2 rounded-[var(--radius-brand-control)] border border-r-line/60 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-r-white transition-colors hover:border-r-gold hover:text-r-gold"
-              >
-                {secondaryCta.label}
-              </Link>
-            ) : (
-              <button
-                type="button"
-                onClick={() => open(contactTopic)}
-                className="inline-flex items-center gap-2 rounded-[var(--radius-brand-control)] border border-r-line/60 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-r-white transition-colors hover:border-r-gold hover:text-r-gold"
-              >
-                {secondaryCta.label}
-              </button>
-            ))}
-          </div>
-        )}
+          {summary && (
+            <aside className="rounded-[var(--radius-brand-card)] border border-r-gold/30 bg-r-panel/80 p-7 shadow-2xl shadow-black/40 backdrop-blur">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-r-gold">{summary.tag}</p>
+              <p className="mt-3 text-3xl text-r-white">{summary.title}</p>
+              <p className="mt-1 text-xs uppercase tracking-[0.15em] text-r-muted">{summary.subtitle}</p>
+
+              <ul className="mt-6 space-y-3 border-t border-r-line pt-6">
+                {summary.checklist.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-r-white font-body normal-case">
+                    <Check size={16} className="mt-0.5 shrink-0 text-r-gold" aria-hidden />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <p className="mt-6 text-xs text-r-muted/70 font-body normal-case">{summary.note}</p>
+            </aside>
+          )}
+        </div>
       </div>
     </section>
   );

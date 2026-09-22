@@ -11,6 +11,7 @@ const gridColsClasses = {
 export function ServiceProcess({
   eyebrow,
   heading,
+  intro,
   steps,
   columns = 4,
   note,
@@ -19,6 +20,7 @@ export function ServiceProcess({
 }: {
   eyebrow: string;
   heading: string[];
+  intro?: string;
   steps: { number: string; title: string; description: string }[];
   columns?: 3 | 4;
   note?: string;
@@ -36,6 +38,7 @@ export function ServiceProcess({
             </span>
           ))}
         </h2>
+        {intro && <p className="mt-4 max-w-xl text-sm text-r-muted font-body normal-case">{intro}</p>}
 
         <ol className={clsx("mt-12 grid gap-8 md:gap-6", gridColsClasses[columns])}>
           {steps.map((step) => (

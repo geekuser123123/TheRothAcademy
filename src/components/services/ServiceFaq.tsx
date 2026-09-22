@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import { clsx } from "clsx";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
@@ -6,10 +7,12 @@ export function ServiceFaq({
   eyebrow,
   heading,
   items,
+  sourceLink,
 }: {
   eyebrow: string;
   heading: string[];
   items: { question: string; answer: string }[];
+  sourceLink?: { label: string; href: string };
 }) {
   return (
     <section className="bg-r-bg py-20">
@@ -24,6 +27,18 @@ export function ServiceFaq({
         </h2>
 
         <FaqAccordion items={items} />
+
+        {sourceLink && (
+          <a
+            href={sourceLink.href}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-8 inline-flex items-center gap-2 text-sm text-r-muted transition-colors hover:text-r-gold"
+          >
+            {sourceLink.label}
+            <ArrowUpRight size={14} aria-hidden />
+          </a>
+        )}
       </div>
     </section>
   );
