@@ -1,15 +1,8 @@
-import fs from "fs";
-import path from "path";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { pathways } from "@/data/home-content";
-
-function imageExists(publicPath: string) {
-  return fs.existsSync(path.join(process.cwd(), "public", publicPath));
-}
 
 export function PathwaysSection() {
   return (
@@ -27,27 +20,19 @@ export function PathwaysSection() {
 
         <ul className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [-ms-overflow-style:none] [scrollbar-width:none] md:grid md:grid-cols-2 md:overflow-visible md:pb-0 lg:grid-cols-4 [&::-webkit-scrollbar]:hidden">
           {pathways.map((item) => {
-            const hasRealImage = imageExists(item.image);
             return (
               <li key={item.href} className="w-[78%] shrink-0 snap-center sm:w-[45%] md:w-auto">
                 <Link
                   href={item.href}
                   className="group relative flex aspect-[3/4] h-full flex-col justify-between overflow-hidden rounded-[var(--radius-brand-card)] border border-r-line p-6 transition-colors hover:border-r-gold"
                 >
-                  {hasRealImage ? (
-                    <Image
-                      src={item.image}
-                      alt=""
-                      fill
-                      sizes="(min-width: 1024px) 25vw, (min-width: 768px) 45vw, 78vw"
-                      className="absolute inset-0 object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  ) : (
-                    <ImagePlaceholder
-                      variant={item.placeholderVariant}
-                      className="absolute inset-0 transition-transform duration-500 group-hover:scale-105"
-                    />
-                  )}
+                  <Image
+                    src={item.image}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 25vw, (min-width: 768px) 45vw, 78vw"
+                    className="absolute inset-0 object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                   <div
                     aria-hidden
                     className="absolute inset-0"

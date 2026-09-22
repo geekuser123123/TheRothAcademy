@@ -11,34 +11,28 @@ export const pathways = [
     title: "Self-Directed 401(k)",
     description: "For business owners building a plan around their own structure.",
     href: "/services/self-directed-401k",
-    // Real photo path once provided — falls back to an abstract
-    // placeholder until then. See ImagePlaceholder.
-    image: "/pathways/401k.jpg",
-    placeholderVariant: "a" as const,
+    image: "/pathways/401k.webp",
   },
   {
     number: "02",
     title: "Self-Directed IRA",
     description: "For individual investors ready to move beyond a conventional menu.",
     href: "/services/self-directed-ira",
-    image: "/pathways/ira.jpg",
-    placeholderVariant: "b" as const,
+    image: "/pathways/ira.webp",
   },
   {
     number: "03",
     title: "Existing Plan Support",
     description: "For accounts already in place that need review or coordination.",
     href: "/services/existing-plan-support",
-    image: "/pathways/existing-plan.jpg",
-    placeholderVariant: "c" as const,
+    image: "/pathways/existing-plan.webp",
   },
   {
     number: "04",
     title: "Advanced Planning",
     description: "For trusts, entities, and transactions beyond the basics.",
     href: "/advanced-services",
-    image: "/pathways/advanced-planning.jpg",
-    placeholderVariant: "d" as const,
+    image: "/pathways/advanced-planning.webp",
   },
 ];
 
@@ -49,7 +43,6 @@ export const assetClasses = [
     description: "Direct ownership opportunities.",
     href: "/services/real-estate-transactions",
     image: "/investments/real-estate.jpg",
-    placeholderVariant: "a" as const,
   },
   {
     number: "02",
@@ -57,7 +50,6 @@ export const assetClasses = [
     description: "Put capital to work in your community.",
     href: "/services/private-lending",
     image: "/investments/private-lending.jpg",
-    placeholderVariant: "b" as const,
   },
   {
     number: "03",
@@ -65,7 +57,6 @@ export const assetClasses = [
     description: "A time-tested asset class in your plan.",
     href: "/learn",
     image: "/investments/precious-metals.jpg",
-    placeholderVariant: "c" as const,
   },
   {
     number: "04",
@@ -73,7 +64,6 @@ export const assetClasses = [
     description: "A modern asset class with a place in retirement.",
     href: "/learn",
     image: "/investments/digital-assets.jpg",
-    placeholderVariant: "d" as const,
   },
   {
     number: "05",
@@ -81,7 +71,6 @@ export const assetClasses = [
     description: "A flexible foundation for your strategy.",
     href: undefined,
     image: "/investments/stocks-bonds.jpg",
-    placeholderVariant: "e" as const,
   },
 ];
 
