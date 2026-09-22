@@ -1,22 +1,27 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 
-const STORY_IMAGE = "/story/berry-family.webp";
+const STORY_POSTER = "/story/berry-family.webp";
+const STORY_VIDEO = "/story/father-son.mp4";
 
 export function StoryTeaserSection() {
   return (
     <section className="border-b border-r-line bg-r-bg py-20 md:py-28">
       <div className="container-brand grid items-center gap-14 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
         <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-brand-card)] border border-r-line">
-          <Image
-            src={STORY_IMAGE}
-            alt="Tim and Kevin Berry"
-            fill
-            sizes="(min-width: 768px) 35vw, 100vw"
-            className="object-cover"
-          />
+          <video
+            aria-hidden
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster={STORY_POSTER}
+            className="absolute inset-0 h-full w-full object-cover"
+          >
+            <source src={STORY_VIDEO} type="video/mp4" />
+          </video>
           <div
             aria-hidden
             className="absolute inset-0"
