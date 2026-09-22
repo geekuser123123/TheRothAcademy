@@ -36,7 +36,6 @@ export default function SelfDirected401kPage() {
         primaryCta={{ label: "Start My 401(k) Conversation" }}
         secondaryCta={{ label: "Explore advanced services", href: "/advanced-services" }}
         summary={service401kHero.summary}
-        videoSrc="/videos/hero-background.mp4"
       />
 
       <ServiceProcess

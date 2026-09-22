@@ -32,7 +32,6 @@ export default function AboutPage() {
         lead={storyHero.lead}
         scrollCtaLabel={storyHero.scrollCtaLabel}
         scrollCtaHref={storyHero.scrollCtaHref}
-        videoSrc="/videos/hero-background.mp4"
       />
 
       <StoryIntro

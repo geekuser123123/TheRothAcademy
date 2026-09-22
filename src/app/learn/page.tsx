@@ -19,7 +19,6 @@ export default function LearnPage() {
         title={learnHero.title}
         goldLine={learnHero.goldLine}
         description={learnHero.description}
-        videoSrc="/videos/hero-background.mp4"
       />
 
       <LearnDirectory />
