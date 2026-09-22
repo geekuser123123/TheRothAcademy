@@ -53,7 +53,7 @@ export function AdvancedServicesSection() {
           </ul>
         </div>
 
-        <div className="relative hidden min-h-[420px] overflow-hidden rounded-[var(--radius-brand-card)] border border-r-line shadow-2xl shadow-black/40 md:sticky md:top-32 md:block md:self-start">
+        <div className="relative hidden aspect-[4/5] overflow-hidden rounded-[var(--radius-brand-card)] border border-r-line shadow-2xl shadow-black/40 md:sticky md:top-32 md:block md:self-start">
           <Image
             src="/home/advanced-services.webp"
             alt=""
