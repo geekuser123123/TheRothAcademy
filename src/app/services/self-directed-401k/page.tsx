@@ -35,6 +35,7 @@ export default function SelfDirected401kPage() {
         contactTopic="Self-Directed 401(k)"
         primaryCta={{ label: "Start My 401(k) Conversation" }}
         secondaryCta={{ label: "Explore advanced services", href: "/advanced-services" }}
+        imageSrc="/services/401k/hero.webp"
         summary={service401kHero.summary}
       />
 

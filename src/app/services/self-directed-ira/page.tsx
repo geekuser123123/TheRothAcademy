@@ -35,6 +35,7 @@ export default function SelfDirectedIraPage() {
         contactTopic="Self-Directed IRA"
         primaryCta={{ label: "Explore My IRA Options" }}
         secondaryCta={{ label: "Explore advanced services", href: "/advanced-services" }}
+        imageSrc="/services/ira/hero.webp"
         summary={serviceIraHero.summary}
       />
 

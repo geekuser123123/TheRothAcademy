@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { clsx } from "clsx";
@@ -28,6 +29,7 @@ export function ServiceHero({
   secondaryCta,
   summary,
   videoSrc,
+  imageSrc,
 }: {
   eyebrow: string;
   title: string[];
@@ -40,6 +42,7 @@ export function ServiceHero({
   secondaryCta?: Cta;
   summary?: Summary;
   videoSrc?: string;
+  imageSrc?: string;
 }) {
   const { open } = useContactModal();
 
@@ -59,6 +62,28 @@ export function ServiceHero({
             <source src={videoSrc} type="video/mp4" />
           </video>
           <div aria-hidden className="pointer-events-none absolute inset-0 bg-r-bg/90" />
+        </>
+      )}
+
+      {!videoSrc && imageSrc && (
+        <>
+          <Image
+            aria-hidden
+            src={imageSrc}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="pointer-events-none object-cover"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(100deg, rgba(9,10,11,0.95) 0%, rgba(9,10,11,0.85) 30%, rgba(9,10,11,0.5) 55%, rgba(9,10,11,0.3) 100%), linear-gradient(0deg, rgba(9,10,11,0.85) 0%, rgba(9,10,11,0.1) 30%, rgba(9,10,11,0.3) 100%)",
+            }}
+          />
         </>
       )}
 
