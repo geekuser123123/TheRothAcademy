@@ -52,7 +52,13 @@ export default async function AdvancedServiceDetailPage({ params }: PageProps<"/
           title={service.title}
           description={service.description}
           intro={detail.heroIntro}
-          badgeLabel={service.badge === "Specialist review" ? "Specialist Review" : "Scoped Professional Work"}
+          badgeLabel={
+            service.badge === "Specialist review"
+              ? "Specialist Review"
+              : service.badge === "Defined service"
+                ? "Defined Service"
+                : "Scoped Professional Work"
+          }
           serviceTitle={service.title}
         />
 

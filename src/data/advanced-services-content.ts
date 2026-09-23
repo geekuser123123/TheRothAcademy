@@ -104,7 +104,7 @@ export type AdvancedService = {
   title: string;
   description: string;
   category: ServiceCategoryKey;
-  badge: "Explore the work" | "Specialist review";
+  badge: "Explore the work" | "Specialist review" | "Defined service";
   body: string[];
   detail?: ServiceDetail;
 };
@@ -116,11 +116,74 @@ export const advancedServices: AdvancedService[] = [
     title: "Existing Plan Support",
     description: "Keep your plan paperwork and next steps organized.",
     category: "plans",
-    badge: "Explore the work",
+    badge: "Defined service",
     body: [
       "If you already have a self-directed 401(k) or IRA, this service keeps the plan's paperwork, participant records, and administrative history organized — so nothing falls through the cracks between reviews.",
       "The team confirms what documents exist, what's missing, and what needs updating, then helps you get the plan's records into a clear, current state.",
     ],
+    detail: {
+      heroIntro:
+        "Describe the change or unfinished task. The team identifies the records, documents, and responsibilities involved before quoting additional work.",
+      audience: "Existing clients with a document, sponsor, participant, amendment, or termination question.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Identify the appropriate administrative process",
+        "Confirm included coverage and any extra work",
+        "Organize the completed records",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "A client has changed businesses and needs to know what must be updated.",
+        approach: "The team reviews the request and separates routine record updates from any required professional work.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Plan documents and amendments",
+        "Sponsor and participant changes",
+        "Beneficiary and successor records",
+        "Plan termination preparation",
+      ],
+      considerationsNote:
+        "Your service agreement controls included maintenance. Renewal is separate from completing required filings or other plan obligations.",
+      questions: [
+        "What already exists, and what needs to change?",
+        "Which people and businesses are involved?",
+        "What does the plan actually permit?",
+      ],
+      questionsNote: "A defined document or support scope, the information needed to complete it, and clear responsibilities.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Current documents", "What is changing and why", "Requested timing"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/plan-changes",
+      faq: [
+        {
+          question: "Do you need my existing plan documents?",
+          answer:
+            "Current documents help, but they aren't required to start. Basic facts about what exists and what's changing are enough for the team to identify what's needed.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "The Roth Academy team handles routine record updates directly, with an attorney involved wherever a document, amendment, or termination question calls for it.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — a new amendment, a changed sponsor, a termination — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "02",
@@ -133,6 +196,68 @@ export const advancedServices: AdvancedService[] = [
       "When a retirement plan sits inside a family business, the accounts, ownership, and people involved can overlap in ways a standard plan doesn't anticipate.",
       "This service coordinates the plan design around your specific family and business structure, so contributions, eligibility, and ownership stay properly separated and documented.",
     ],
+    detail: {
+      heroIntro:
+        "Review business ownership, participating family members, and how the plan is intended to operate. Begin with the actual employment and account facts.",
+      audience: "Family businesses exploring participation or investments involving several plan accounts.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Review the family and business facts",
+        "Identify participation and ownership questions",
+        "Define the plan or transaction work required",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "Several family members work in a business and want to explore participation in one plan.",
+        approach: "An attorney reviews the applicable facts before the team prepares the agreed next steps.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Family participation",
+        "Business ownership and attribution",
+        "Joint investments among plan accounts",
+        "Traditional, Roth, and profit-sharing records",
+      ],
+      considerationsNote: "Family relationships alone do not establish eligibility or permit a joint investment.",
+      questions: [
+        "What already exists, and what needs to change?",
+        "Which people and businesses are involved?",
+        "What does the plan actually permit?",
+      ],
+      questionsNote: "A defined document or support scope, the information needed to complete it, and clear responsibilities.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Ownership and employment information", "Existing plan records", "Proposed participants and investments"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/getting-started",
+      faq: [
+        {
+          question: "Do you need my existing plan documents?",
+          answer:
+            "Current documents help, but they aren't required to start. Basic facts about the family, the business, and what you want to accomplish are enough for the team to identify what's needed.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "An attorney reviews the ownership and participation facts. The Roth Academy team coordinates intake, scheduling, and the paperwork moving between you and the professional.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — an added family member, a changed ownership structure, another account — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "03",
@@ -145,6 +270,69 @@ export const advancedServices: AdvancedService[] = [
       "Contribution planning maps out what money is going into your plan, from which source, under which rules — before the contribution happens, not after.",
       "The team helps you identify the right contribution type and timing for your account, so your records stay clean and your limits stay respected.",
     ],
+    detail: {
+      heroIntro:
+        "Bring employee, employer, and after-tax contribution questions together with your business and account records. Specialized noncash proposals begin with a separate review.",
+      audience: "Plan owners coordinating contributions across income sources and account types.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Review the relevant inputs and classifications",
+        "Identify calculations and supporting valuations needed",
+        "Document an agreed contribution process",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "A business owner wants to coordinate employee and profit-sharing contributions.",
+        approach: "The review identifies applicable inputs, responsibilities, and records before funds or assets move.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Employee and employer contributions",
+        "Voluntary after-tax contributions",
+        "Compensation and other plans",
+        "Noncash and ownership-interest proposals",
+      ],
+      considerationsNote: "Amounts, eligibility, deadlines, and any noncash treatment require current review.",
+      questions: [
+        "Where is the money now?",
+        "Which plan features and funding rules apply?",
+        "What tax and cash-flow questions need review?",
+      ],
+      questionsNote:
+        "A documented assessment of the proposed move and the steps to coordinate with your tax adviser and account provider.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Compensation and business records", "Other plan participation", "Proposed amounts, assets, and year"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/contributions",
+      faq: [
+        {
+          question: "Is a conversion or contribution automatically the right move?",
+          answer:
+            "No. Each has its own tax and timing consequences. The review looks at your actual income, other plans, and cash flow before recommending a specific contribution or conversion.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "The Roth Academy team organizes the inputs and coordinates with your tax adviser, with an attorney involved wherever a noncash or ownership-interest proposal calls for it.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — a different contribution type, a new income source, a following tax year — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "04",
@@ -791,7 +979,7 @@ export type DirectoryCard = {
   title: string;
   description: string;
   category: ServiceCategoryKey;
-  badge: "Explore the work" | "Specialist review";
+  badge: "Explore the work" | "Specialist review" | "Defined service";
 };
 
 // The full service directory ("/services"): the two plan pages up front,
