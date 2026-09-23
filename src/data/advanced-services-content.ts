@@ -1495,6 +1495,69 @@ export const advancedServices: AdvancedService[] = [
       "Certain income inside a retirement plan — from an active business, or property financed with debt — can trigger a tax at the plan level worth understanding in advance.",
       "This service finds the tax questions behind your specific investment, so you know what applies before the transaction, not after a filing.",
     ],
+    detail: {
+      heroIntro:
+        "Review the actual activity, ownership, and financing of an investment for unrelated business income and debt-financed income questions.",
+      audience: "Retirement investors with operating-business, flipping, or leveraged-investment questions.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Analyze the activity and relevant structures",
+        "Identify potential taxes and filings",
+        "Define any planning or reporting follow-up",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "A plan owner is considering a leveraged investment and wants a tax review before proceeding.",
+        approach: "The review identifies the relevant facts, possible obligations, and any further structuring work.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Business activity and property flips",
+        "Leverage and debt-financed income",
+        "Entity and income-interest proposals",
+        "Reporting responsibilities",
+      ],
+      considerationsNote: "Retirement ownership alone does not eliminate tax on every investment.",
+      questions: [
+        "What has happened, and what is still proposed?",
+        "Which records and deadlines matter?",
+        "Who is responsible for preparation, filing, and follow-through?",
+      ],
+      questionsNote:
+        "A defined assessment or preparation scope, specific responsibilities, and the records supporting the next step.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Entity and activity information", "Debt and income records", "Proposed or completed transaction documents"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/ubit",
+      faq: [
+        {
+          question: "What if the transaction has already happened?",
+          answer:
+            "The service still applies. A completed transaction shifts the work toward assessing what occurred and identifying any reporting or filing obligations, rather than reviewing a proposal in advance.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "The Roth Academy team coordinates the review of the activity and structures involved, with a tax professional engaged wherever filings or specialist analysis are needed.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — a different investment, an additional entity, a later filing — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "20",
@@ -1507,6 +1570,69 @@ export const advancedServices: AdvancedService[] = [
       "A blocker corporation can shield a retirement plan from certain tax exposure, but it adds its own costs, filings, and complexity that need to be weighed honestly.",
       "This is a specialist review: an attorney examines the full costs and consequences of adding an entity layer before recommending one.",
     ],
+    detail: {
+      heroIntro:
+        "Evaluate a proposed domestic C corporation or foreign blocker in the context of the investment, owners, jurisdictions, and reporting requirements.",
+      audience: "Clients exploring a blocker structure for a specific investment or business activity.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Assess the structure and relevant tax questions",
+        "Identify jurisdiction and specialist requirements",
+        "Define any implementation work separately",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "A client has been presented with a blocker proposal and wants to evaluate it before committing.",
+        approach: "The attorney reviews the full arrangement and identifies specialist analysis and ongoing requirements.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Domestic C corporations",
+        "Foreign blocker concepts",
+        "Underlying activities and financing",
+        "Entity costs and reporting",
+      ],
+      considerationsNote: "An added entity can introduce its own taxes, costs, and obligations. No tax result is promised.",
+      questions: [
+        "What has happened, and what is still proposed?",
+        "Which records and deadlines matter?",
+        "Who is responsible for preparation, filing, and follow-through?",
+      ],
+      questionsNote:
+        "A defined assessment or preparation scope, specific responsibilities, and the records supporting the next step.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Full proposed ownership structure", "Activity, financing, and location", "Existing advice and projections"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/ubit",
+      faq: [
+        {
+          question: "What if the transaction has already happened?",
+          answer:
+            "The service still applies. An existing blocker structure can be assessed for its actual costs, filings, and ongoing requirements, rather than only evaluated before it is formed.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "An attorney reviews the full arrangement and identifies the specialist analysis and ongoing requirements involved, with the Roth Academy team coordinating intake, scheduling, and the paperwork between you and the professional.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — an additional jurisdiction, a changed activity, a related filing — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "21",
@@ -1519,6 +1645,69 @@ export const advancedServices: AdvancedService[] = [
       "Investing plan funds in a private company or alongside a founder involves share classes, rights, and relationships that deserve the same scrutiny as any other transaction.",
       "This service reviews the shares, rights, and relationships behind the proposal, so you understand what you'd actually own and on what terms.",
     ],
+    detail: {
+      heroIntro:
+        "Assess a retirement-account investment involving a private company, restricted shares, or profits interests. The actual documents and parties are essential.",
+      audience: "Founders and investors exploring a private-company transaction involving retirement assets.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Review the company and proposed transaction",
+        "Identify valuation and restriction issues",
+        "Prepare the agreed assessment or documentation",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "An investor is considering a private-company investment through a retirement arrangement.",
+        approach: "The attorney reviews the proposed rights, economics, and parties rather than assuming a famous case study applies.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Nonpublic shares",
+        "Restricted stock and purchase rights",
+        "Profits interests",
+        "Valuation and related-party concerns",
+      ],
+      considerationsNote:
+        "Historical examples are educational context. They do not establish that a similar transaction is permissible or suitable.",
+      questions: [
+        "Who owns what, and who receives the economics?",
+        "How do funding, debt, services, and control interact?",
+        "Which documents and independent advisers are needed?",
+      ],
+      questionsNote: "A review of the actual transaction, identified issues, and an agreed path for documents and coordination.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Capitalization and ownership information", "Stock or interest agreements", "Funding and party relationships"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/advanced-planning",
+      faq: [
+        {
+          question: "Will this review cover every entity in my business?",
+          answer:
+            "Scope is set by your proposal. If the investment touches other entities or accounts you own, say so up front so the review — and its fee — reflects the actual structure, not just the shares in front of you.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "An attorney reviews the proposed rights, economics, and parties and prepares the agreed assessment or documentation, with the Roth Academy team coordinating intake, scheduling, and the paperwork between you and the professional.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — an additional round, a different company, a related transaction — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "22",
@@ -1531,6 +1720,71 @@ export const advancedServices: AdvancedService[] = [
       "Required minimum distributions and other withdrawals need to be planned, not just requested — the timing and amount affect your taxes and your plan's records.",
       "This service plans the withdrawal and its follow-through, so the distribution is documented correctly and fits into your broader retirement income picture.",
     ],
+    detail: {
+      heroIntro:
+        "Review proposed distributions, required minimum distribution questions, and the documentation behind cash or property payments.",
+      audience: "Clients preparing for retirement income or a proposed distribution of assets.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Review the account and proposed payment",
+        "Identify calculations, valuation, and tax questions",
+        "Assign the agreed payment and reporting steps",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "A client wants to evaluate distributing a property interest from a plan.",
+        approach:
+          "The attorney reviews the proposed interest, timing, and supporting records before an implementation process is agreed.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Required minimum distributions",
+        "Employment and ownership considerations",
+        "Property and fractional-interest distributions",
+        "Valuation, withholding, and reporting",
+      ],
+      considerationsNote:
+        "A request does not approve a distribution. Applicable dates and tax treatment require current individual review.",
+      questions: [
+        "What has happened, and what is still proposed?",
+        "Which records and deadlines matter?",
+        "Who is responsible for preparation, filing, and follow-through?",
+      ],
+      questionsNote:
+        "A defined assessment or preparation scope, specific responsibilities, and the records supporting the next step.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Account types and payment history", "Relevant personal and ownership facts", "Property, debt, and valuation records"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/retirement-income",
+      faq: [
+        {
+          question: "What if the transaction has already happened?",
+          answer:
+            "The service still applies. A completed distribution shifts the work toward reviewing what occurred and identifying any reporting or correction steps needed, rather than planning a payment in advance.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "The Roth Academy team coordinates the review of the account and proposed payment, with an attorney involved wherever valuation, property, or reporting questions call for it.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — an additional account, a different payment year, a related transaction — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "23",
@@ -1543,6 +1797,71 @@ export const advancedServices: AdvancedService[] = [
       "Asset protection planning is highly fact-specific: what works depends on your state, your existing structures, and the timing of any steps you take.",
       "This service reviews how your current ownership and exposure fit together, as the starting point for a plan built around your actual situation.",
     ],
+    detail: {
+      heroIntro:
+        "Examine existing ownership, relevant liabilities, and the legal tools appropriate to the situation. The first step is a clear account of the facts and timing.",
+      audience: "Business owners and investors seeking a prospective review of asset exposure.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Review the existing ownership and exposure",
+        "Identify relevant legal and document questions",
+        "Define an appropriate planning scope",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "An investor wants a review of how rental properties and business interests are currently held.",
+        approach: "The attorney assesses the existing arrangement and identifies the planning work that is appropriate to the facts.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Exempt assets and retirement plans",
+        "LLCs, partnerships, corporations, and trusts",
+        "Charging orders and bankruptcy considerations",
+        "Insurance coordination",
+        "Transfer timing",
+      ],
+      considerationsNote:
+        "No structure guarantees protection. Existing claims, transfer timing, and applicable law are central to the review.",
+      questions: [
+        "How are the assets currently owned?",
+        "Are there existing claims, guarantees, or obligations?",
+        "Which timing and jurisdiction issues change the analysis?",
+      ],
+      questionsNote:
+        "A fact-specific review of ownership and exposure, followed by appropriate document or planning work as agreed.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Ownership records and relevant documents", "Existing or threatened claims", "Business and jurisdiction details"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/asset-protection",
+      faq: [
+        {
+          question: "Is any structure guaranteed to protect my assets?",
+          answer:
+            "No. Protection depends on existing claims, transfer timing, and the law that applies to your specific situation — the review identifies what fits, not a guaranteed outcome.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "An attorney assesses your existing ownership and exposure and identifies the appropriate planning work, with the Roth Academy team coordinating intake, scheduling, and the paperwork between you and the professional.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — an additional entity, a changed circumstance, a related structure — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "24",
