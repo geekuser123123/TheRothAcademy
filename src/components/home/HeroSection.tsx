@@ -59,7 +59,7 @@ export function HeroSection() {
             className="max-w-5xl text-r-white"
             style={{
               marginTop: 35,
-              fontSize: "clamp(76px, 10.8vw, 146px)",
+              fontSize: "clamp(76px, 15.5vw, 220px)",
               fontWeight: 500,
               lineHeight: 0.9,
               letterSpacing: "-0.025em",
