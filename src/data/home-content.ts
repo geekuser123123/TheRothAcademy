@@ -62,14 +62,14 @@ export const assetClasses = [
     number: "04",
     label: "Digital Assets",
     description: "A modern asset class with a place in retirement.",
-    href: "/learn",
+    href: "/services/digital-assets",
     image: "/investments/digital-assets.jpg",
   },
   {
     number: "05",
     label: "Stocks & Bonds",
     description: "A flexible foundation for your strategy.",
-    href: "/learn",
+    href: "/services/stocks-bonds",
     image: "/investments/stocks-bonds.jpg",
   },
 ];

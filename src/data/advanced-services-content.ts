@@ -4,7 +4,7 @@ export const advancedServicesHero = {
   goldLine: 1,
   description:
     "Trusts. Ownership structures. Complex transactions. The planning questions that deserve a deeper look, with a team to organize the work.",
-  stats: ["27 Service Paths", "6 Areas Of Focus", "One Clear Starting Point"],
+  stats: ["29 Service Paths", "6 Areas Of Focus", "One Clear Starting Point"],
 };
 
 export const advancedServicesIntro = {
@@ -37,7 +37,7 @@ export const serviceDirectoryHero = {
   goldLine: 1,
   description:
     "Trusts. Ownership structures. Complex transactions. The planning questions that deserve a deeper look, with a team to organize the work.",
-  stats: ["29 Service Paths", "6 Areas Of Focus", "One Clear Starting Point"],
+  stats: ["31 Service Paths", "6 Areas Of Focus", "One Clear Starting Point"],
 };
 
 export const advancedServiceCategories: { key: ServiceCategoryKey; tabLabel: string; cardLabel: string }[] = [
@@ -630,6 +630,155 @@ export const advancedServices: AdvancedService[] = [
           question: "What happens if I need more help later?",
           answer:
             "A new question outside the original scope — an additional purchase, a different metal, a change in custodian — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
+  },
+  {
+    number: "28",
+    slug: "digital-assets",
+    title: "Digital Asset Custody & Compliance",
+    description: "Hold digital assets inside your plan with the right custody in place.",
+    category: "transactions",
+    badge: "Explore the work",
+    body: [
+      "Holding digital assets inside a retirement plan raises its own custody and security questions — the keys and the account need to be structured so the plan, not you personally, is the owner of record.",
+      "This service confirms which platforms and custody arrangements the plan can use, then coordinates the account setup so the holding stays properly documented.",
+    ],
+    detail: {
+      heroIntro:
+        "Review the digital assets you want to hold, the custody and security requirements that apply, and the provider arrangement your plan requires.",
+      audience: "Plan owners and investors who want to add digital assets inside a retirement account.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Confirm which digital assets and platforms the plan can use",
+        "Identify the custody, wallet, and security arrangement",
+        "Coordinate the purchase, custody, and reporting records",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "An investor wants to hold bitcoin inside a self-directed IRA.",
+        approach:
+          "The team confirms the custody arrangement and provider, then coordinates the account setup before any purchase is made.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Approved platforms and custody arrangements",
+        "Wallet security and access controls",
+        "Prohibited-transaction and related-party rules",
+        "Reporting and valuation records",
+      ],
+      considerationsNote:
+        "Digital assets held outside an approved custody arrangement can jeopardize the account's tax treatment. This service does not provide investment selection or guarantee returns.",
+      questions: [
+        "Which platforms and custody arrangements actually qualify?",
+        "Who holds the keys, and how is access controlled?",
+        "How is the holding valued and reported each year?",
+      ],
+      questionsNote: "A review of the actual proposal, the applicable rules, and an agreed path for custody and records.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before a custody and provider arrangement is confirmed.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Account and provider details", "Digital assets and proposed amount", "Timing and funding source"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      faq: [
+        {
+          question: "Will this review cover every entity in my business?",
+          answer:
+            "Scope is set by your proposal. If the purchase touches other accounts or entities you own, say so up front so the review — and its fee — reflects the actual structure, not just the assets in front of you.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "The Roth Academy team coordinates the custody and provider arrangement, with an attorney involved wherever the security, prohibited-transaction, or compliance questions call for it.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — an additional purchase, a different platform, a change in custody — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
+  },
+  {
+    number: "29",
+    slug: "stocks-bonds",
+    title: "Brokerage Account Setup & Coordination",
+    description: "Bring a traditional brokerage account into your self-directed plan.",
+    category: "transactions",
+    badge: "Explore the work",
+    body: [
+      "Stocks and bonds are the most familiar part of the menu, but inside a self-directed plan the account still has to be titled and funded correctly alongside your other holdings.",
+      "This service confirms the broker and account structure, then coordinates the paperwork so the brokerage side of your plan stays properly documented.",
+    ],
+    detail: {
+      heroIntro: "Review the brokerage arrangement you want to use, and confirm how it fits inside your self-directed plan.",
+      audience: "Plan owners who want a traditional brokerage account alongside their other self-directed investments.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Confirm the proposed broker and account structure",
+        "Identify the required account titling and paperwork",
+        "Coordinate funding and the account opening process",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "An investor wants part of a self-directed IRA in stocks and bonds alongside real estate.",
+        approach:
+          "The team confirms the account titling and broker, then coordinates the paperwork so both sides of the plan stay properly documented.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Broker selection and account titling",
+        "Funding source and timing",
+        "Coordination with other plan holdings",
+        "Ongoing statements and recordkeeping",
+      ],
+      considerationsNote:
+        "This service does not recommend or manage investments held in the brokerage account. It coordinates the account's setup within your plan.",
+      questions: [
+        "Which broker and account type fit the plan?",
+        "How is the account titled, and who has authority?",
+        "How does this account coordinate with other plan holdings?",
+      ],
+      questionsNote: "A review of the actual proposal, the applicable rules, and an agreed path for the account and records.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before the brokerage account is opened.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Account and provider details", "Proposed broker and funding amount", "Timing and existing account information"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      faq: [
+        {
+          question: "Will this review cover every entity in my business?",
+          answer:
+            "Scope is set by your proposal. If the account touches other entities or accounts you own, say so up front so the review — and its fee — reflects the actual structure, not just this account.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "The Roth Academy team coordinates the account opening and titling with the broker, with an attorney involved wherever a coordination or compliance question calls for it.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — an additional account, a change in broker, a funding change — becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
