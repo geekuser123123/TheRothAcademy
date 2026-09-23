@@ -21,13 +21,13 @@ export function StoryIntro({
 }) {
   return (
     <section id="the-story" className="border-b border-r-line bg-r-bg py-16 md:py-24">
-      <div className="container-brand grid gap-12 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
+      <div className="container-brand grid gap-12 md:grid-cols-[320px_1fr] md:gap-12 lg:gap-20">
         <aside className="md:sticky md:top-32 md:self-start">
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-r-gold">{byline.tag}</p>
           <p className="mt-3 text-2xl text-r-white">{byline.name}</p>
           <p className="mt-1 text-sm text-r-muted font-body normal-case">{byline.role}</p>
 
-          <div className="relative mt-6 aspect-[4/5] w-full max-w-xs overflow-hidden rounded-[var(--radius-brand-card)] border border-r-gold/30 shadow-xl shadow-black/40">
+          <div className="relative mt-6 aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-brand-card)] border border-r-gold/30 shadow-xl shadow-black/40">
             <Image src={PORTRAIT} alt="Tim and Kevin Berry" fill sizes="320px" className="object-cover" />
           </div>
           <p className="mt-3 text-[11px] uppercase tracking-[0.15em] text-r-muted/70">{portraitCaption}</p>
@@ -35,7 +35,7 @@ export function StoryIntro({
 
         <article className="min-w-0 md:self-center">
           <Eyebrow>{kicker}</Eyebrow>
-          <h2 className="mt-4 text-4xl md:text-6xl">
+          <h2 className="mt-4 text-4xl md:text-7xl lg:text-8xl">
             {heading.map((line, index) => (
               <span key={line} className={clsx("block", index === heading.length - 1 && "text-r-gold")}>
                 {line}
