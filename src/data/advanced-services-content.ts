@@ -799,6 +799,72 @@ export const advancedServices: AdvancedService[] = [
       "A charitable remainder trust connects an asset, an income stream, and a charitable gift — but the structure only works if all three are set up correctly together.",
       "This service brings your asset, your income needs, and your charitable intent into one conversation with the appropriate professional, before any trust is drafted.",
     ],
+    detail: {
+      heroIntro:
+        "Evaluate whether a charitable remainder trust fits the assets, people, and objectives involved. The engagement may cover design, funding, and coordination with other advisers.",
+      audience: "Asset owners exploring charitable planning, income arrangements, or a future sale.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Review goals, assets, and beneficiaries",
+        "Analyze the proposed trust arrangement",
+        "Prepare agreed documents and a funding or coordination plan",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "A property owner is considering a sale and wants to explore a CRT.",
+        approach:
+          "The review addresses the asset, timing, income objectives, and charitable purpose before any transfer.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Trust funding and asset sales",
+        "Income arrangements",
+        "Charitable beneficiaries",
+        "Remainder-interest valuation",
+        "Retirement-account beneficiary planning",
+      ],
+      considerationsNote:
+        "Trust distributions and underlying transactions have their own tax rules. The teaching examples do not promise tax-free proceeds to the client.",
+      questions: [
+        "Who should receive income, control, and remaining value?",
+        "Which assets, obligations, and jurisdictions are involved?",
+        "What must the structure accomplish over time?",
+      ],
+      questionsNote:
+        "A clearly defined planning direction and, when separately agreed, the drafting and implementation work behind it.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Asset and basis records", "Debt and proposed sale timing", "Income goals and intended beneficiaries"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/succession",
+      faq: [
+        {
+          question: "Do I need a retirement plan for this work?",
+          answer:
+            "No. This service reviews trusts, income arrangements, and charitable structures involving any qualifying asset — a retirement account is not required to begin.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "An attorney reviews the proposed trust arrangement and prepares the agreed documents, with the Roth Academy team coordinating intake, scheduling, and the paperwork between you and the professional.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — an additional beneficiary, a later sale, a related structure — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "11",
@@ -811,6 +877,73 @@ export const advancedServices: AdvancedService[] = [
       "How your accounts and assets pass to the people you intend requires more than a will — beneficiary designations, account titling, and trust provisions all play a role.",
       "This service reviews what you have in place today and where it may not say what you think it says, so the intended handoff is actually clear.",
     ],
+    detail: {
+      heroIntro:
+        "Coordinate beneficiary records, successor responsibilities, and the broader planning questions around retirement wealth and related structures.",
+      audience: "People planning for family, successors, or inherited retirement assets.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Review existing records and intended outcomes",
+        "Identify conflicts, gaps, and professional work needed",
+        "Prepare the agreed updates and handoff instructions",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario:
+          "A client wants family members to receive organized instructions and appropriately coordinated beneficiary arrangements.",
+        approach:
+          "The attorney reviews the actual records and the team helps assemble the agreed updates and handoff materials.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Beneficiary and successor designations",
+        "Children and grandchildren",
+        "Inherited Roth accounts",
+        "Business or LLC beneficiaries",
+        "CRTs as beneficiaries",
+      ],
+      considerationsNote:
+        "The exact scope identifies which estate documents and jurisdictions are covered. Existing forms should not be changed from a general example.",
+      questions: [
+        "Who should receive income, control, and remaining value?",
+        "Which assets, obligations, and jurisdictions are involved?",
+        "What must the structure accomplish over time?",
+      ],
+      questionsNote:
+        "A clearly defined planning direction and, when separately agreed, the drafting and implementation work behind it.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Current designations and relevant estate documents", "People and structures involved", "An inventory of relevant assets and records"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/succession",
+      faq: [
+        {
+          question: "Do I need a retirement plan for this work?",
+          answer:
+            "No. This service reviews beneficiary records and estate structures across any account or asset you hold — a retirement plan is not required to begin.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "An attorney reviews your existing records and prepares the agreed updates, with the Roth Academy team coordinating intake, scheduling, and the paperwork between you and the professional.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — an additional beneficiary, a new structure, a related transaction — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "12",
@@ -823,6 +956,69 @@ export const advancedServices: AdvancedService[] = [
       "A Grantor Retained Annuity Trust is a specialized estate planning structure with real tax mechanics and real risk if the assumptions behind it don't hold.",
       "This is a specialist review: an attorney evaluates whether a GRAT fits your specific facts before any structure is recommended or built.",
     ],
+    detail: {
+      heroIntro:
+        "Bring a question about a grantor retained annuity trust and the interests it creates. Begin with an assessment of the proposed assets, parties, and objective.",
+      audience: "Clients asking whether a GRAT merits further analysis in their circumstances.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Assess the proposed objective and available facts",
+        "Identify the legal, tax, and valuation research needed",
+        "Define any subsequent planning engagement",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "A client has been advised to explore a GRAT and wants an independent planning assessment.",
+        approach: "The attorney reviews the proposed approach before any document or implementation engagement is quoted.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Grantor retained annuity trusts",
+        "Retained and remainder interests",
+        "Valuation and transfer questions",
+      ],
+      considerationsNote:
+        "GRATs are briefly referenced in the teaching material. This page offers an assessment path, not a predetermined structure or outcome.",
+      questions: [
+        "Who should receive income, control, and remaining value?",
+        "Which assets, obligations, and jurisdictions are involved?",
+        "What must the structure accomplish over time?",
+      ],
+      questionsNote:
+        "A clearly defined planning direction and, when separately agreed, the drafting and implementation work behind it.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Asset and ownership records", "Proposed beneficiaries and timing", "Existing adviser recommendations"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/succession",
+      faq: [
+        {
+          question: "Do I need a retirement plan for this work?",
+          answer:
+            "No. A GRAT assessment addresses whichever assets are proposed for the trust — a retirement account is not required to begin.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "An attorney conducts the assessment and identifies the legal, tax, and valuation questions involved, with the Roth Academy team coordinating intake, scheduling, and the paperwork between you and the professional.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "If the assessment supports moving forward, drafting and implementation becomes its own proposal, defined and priced separately from this initial review.",
+        },
+      ],
+    },
   },
   {
     number: "13",
