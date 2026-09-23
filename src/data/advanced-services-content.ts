@@ -370,6 +370,74 @@ export const advancedServices: AdvancedService[] = [
       "Lending plan funds to another party requires a promissory note, security terms, and a repayment structure that protects the plan's interest.",
       "This service organizes the borrower's terms, the security involved, and each party's responsibilities into documents that hold up if a question comes up later.",
     ],
+    detail: {
+      heroIntro:
+        "Review a proposed investment loan and define the documentation and follow-through needed. This is separate from a participant loan.",
+      audience: "Investors and plan owners considering private lending.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Review the parties and proposed terms",
+        "Prepare or review the agreed loan documents",
+        "Identify recording and servicing responsibilities",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "A client wants their plan to make a loan secured by real estate.",
+        approach:
+          "The attorney reviews the proposed transaction and the team coordinates the agreed document and record tasks.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Borrower and related parties",
+        "Notes, collateral, and security instruments",
+        "Repayment and servicing",
+        "Existing loan document review",
+      ],
+      considerationsNote:
+        "Collateral, enforceability, licensing, and jurisdiction may require additional work or other providers.",
+      questions: [
+        "Who owns what, and who receives the economics?",
+        "How do funding, debt, services, and control interact?",
+        "Which documents and independent advisers are needed?",
+      ],
+      questionsNote: "A review of the actual transaction, identified issues, and an agreed path for documents and coordination.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: [
+        "Borrower and relationship information",
+        "Amount, terms, and proposed collateral",
+        "Existing drafts and timing",
+      ],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/private-lending",
+      faq: [
+        {
+          question: "Will this review cover every entity in my business?",
+          answer:
+            "Scope is set by your proposal. If the loan touches other entities or accounts you own, say so up front so the review — and its fee — reflects the actual structure, not just the note in front of you.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "An attorney handles the legal review and documentation. The Roth Academy team coordinates intake, scheduling, and the paperwork moving between you and the professional.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — another loan, a changed structure, a servicing issue — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "17",
