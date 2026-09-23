@@ -55,7 +55,7 @@ export const assetClasses = [
     number: "03",
     label: "Precious Metals",
     description: "A time-tested asset class in your plan.",
-    href: "/learn",
+    href: "/services/precious-metals",
     image: "/investments/precious-metals.jpg",
   },
   {

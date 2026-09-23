@@ -4,7 +4,7 @@ export const advancedServicesHero = {
   goldLine: 1,
   description:
     "Trusts. Ownership structures. Complex transactions. The planning questions that deserve a deeper look, with a team to organize the work.",
-  stats: ["26 Service Paths", "6 Areas Of Focus", "One Clear Starting Point"],
+  stats: ["27 Service Paths", "6 Areas Of Focus", "One Clear Starting Point"],
 };
 
 export const advancedServicesIntro = {
@@ -37,7 +37,7 @@ export const serviceDirectoryHero = {
   goldLine: 1,
   description:
     "Trusts. Ownership structures. Complex transactions. The planning questions that deserve a deeper look, with a team to organize the work.",
-  stats: ["28 Service Paths", "6 Areas Of Focus", "One Clear Starting Point"],
+  stats: ["29 Service Paths", "6 Areas Of Focus", "One Clear Starting Point"],
 };
 
 export const advancedServiceCategories: { key: ServiceCategoryKey; tabLabel: string; cardLabel: string }[] = [
@@ -558,6 +558,81 @@ export const advancedServices: AdvancedService[] = [
       "Retirement plans carry their own reporting and notice requirements, separate from personal tax filings — easy to miss if no one is tracking them.",
       "This service identifies the required work for your plan and who is responsible for completing it, so nothing is filed late or missed entirely.",
     ],
+  },
+  {
+    number: "27",
+    slug: "precious-metals",
+    title: "Precious Metals Custody & Compliance",
+    description: "Hold approved metals the right way inside your plan.",
+    category: "transactions",
+    badge: "Explore the work",
+    body: [
+      "Precious metals held inside a retirement plan have to meet specific purity standards and be held through an approved custodian and depository — not kept at home or in a personal safe.",
+      "This service confirms which metals and products qualify, then coordinates the custodian and depository arrangement so the holding stays properly documented.",
+    ],
+    detail: {
+      heroIntro:
+        "Review the metals you want to hold, the purity and storage rules that apply, and the custodian arrangement your plan requires.",
+      audience: "Plan owners and investors who want to add precious metals inside a retirement account.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Confirm which metals and products meet the plan's purity requirements",
+        "Identify the custodian and approved depository arrangement",
+        "Coordinate the purchase, storage, and reporting records",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "An investor wants to move part of an IRA into gold and silver coins.",
+        approach:
+          "The team confirms which products qualify, then coordinates the custodian and depository arrangement before any purchase is made.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Approved metals, coins, and purity standards",
+        "Custodian and depository requirements",
+        "Storage, insurance, and access rules",
+        "Reporting and valuation records",
+      ],
+      considerationsNote:
+        "Metals held outside an approved custodian arrangement can jeopardize the account's tax treatment. This service does not provide investment selection or guarantee returns.",
+      questions: [
+        "Which metals and products actually qualify?",
+        "Who is the custodian, and where is the depository?",
+        "How is the holding valued and reported each year?",
+      ],
+      questionsNote: "A review of the actual proposal, the applicable rules, and an agreed path for the custodian and records.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before a custodian and depository arrangement is confirmed.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Account and provider details", "Metals, products, and proposed amount", "Timing and funding source"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      faq: [
+        {
+          question: "Will this review cover every entity in my business?",
+          answer:
+            "Scope is set by your proposal. If the purchase touches other accounts or entities you own, say so up front so the review — and its fee — reflects the actual structure, not just the metals in front of you.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "The Roth Academy team coordinates the custodian and depository arrangement, with an attorney involved wherever the purity, storage, or compliance questions call for it.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — an additional purchase, a different metal, a change in custodian — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
 ];
 
