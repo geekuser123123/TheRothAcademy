@@ -13,7 +13,7 @@ export const storyIntro = {
     name: "Kevin Berry",
     role: "Leading Roth Academy. Tim's son.",
   },
-  portraitCaption: "Tim Berry · Attorney & Educator",
+  portraitCaption: "Tim & Kevin Berry · Two Generations, One Standard",
   kicker: "Before There Was A Next Chapter",
   heading: ["I Was The Kid", "Watching Him Rebuild."],
   lead: "Before I led Roth Academy, I watched my father keep a family moving while he put his own life back together.",
