@@ -555,6 +555,32 @@ export const learnGuides: LearnGuide[] = [
       "Before that conversation, gather a simple inventory: every retirement account you hold, its type, its approximate balance, and any required distribution rules that apply to it because of your age. Add your other income sources so the full picture — not just the retirement accounts — is visible.",
       "With that organized, the appropriate professional can help sequence withdrawals in a way that fits your actual needs and rules, rather than defaulting to whichever account is easiest to access first.",
     ],
+    lesson: {
+      chapters: [
+        {
+          heading: "List the accounts and needs",
+          paragraph:
+            "Gather account types, balances, ownership details, and the income needs you want to discuss. Include relevant personal circumstances and existing payment schedules.",
+        },
+        {
+          heading: "Identify time-sensitive questions",
+          paragraph:
+            "Ask which obligations apply and how dates are determined. Do not use an old slide or a general age reference as a substitute for current individualized guidance.",
+        },
+        {
+          heading: "Create a written follow-through plan",
+          paragraph:
+            "Separate proposed actions from confirmed instructions. Record who processes each payment and handles reporting so the plan becomes a practical sequence of tasks.",
+        },
+      ],
+      checklist: [
+        "Gather account and income information",
+        "List timing questions",
+        "Review the proposed approach",
+        "Assign processing and reporting tasks",
+      ],
+      relatedServiceSlugs: ["distributions-rmds", "reporting-notices"],
+    },
   },
   {
     number: "14",
@@ -570,6 +596,32 @@ export const learnGuides: LearnGuide[] = [
       "Build a short reference document: each account, its custodian or administrator, current beneficiaries, and where the governing documents are kept. This isn't a substitute for an estate plan, but it's the administrative layer that makes an estate plan actually executable when the time comes.",
       "Revisit this document after any major life change — marriage, divorce, a new account, a death in the family — since beneficiary designations don't update themselves, and an outdated one can override even a carefully written will.",
     ],
+    lesson: {
+      chapters: [
+        {
+          heading: "Locate the current records",
+          paragraph:
+            "Find beneficiary designations, successor information, and the relevant plan documents. Record dates and identify any gaps or changes in circumstances.",
+        },
+        {
+          heading: "Coordinate with the wider plan",
+          paragraph:
+            "Retirement plan records and estate documents may interact. Ask the appropriate professional to review proposed changes rather than assuming one document automatically updates another.",
+        },
+        {
+          heading: "Create a document location guide",
+          paragraph:
+            "List the documents, responsible contacts, and secure storage locations. Share access deliberately with the right people and keep the guide current.",
+        },
+      ],
+      checklist: [
+        "Locate designations and successor records",
+        "Identify changes in circumstances",
+        "Coordinate professional review",
+        "Create a document location guide",
+      ],
+      relatedServiceSlugs: ["charitable-remainder-trusts", "estate-inheritance-planning", "grat-planning"],
+    },
   },
   {
     number: "15",
@@ -585,6 +637,32 @@ export const learnGuides: LearnGuide[] = [
       "Before a review, put together a clear inventory: what assets you're asking about, how they're currently owned or titled, and what existing entities, trusts, or insurance already provide some protection. Note your state of residence and where the assets themselves are located, since both affect which rules apply.",
       "Bring this picture to the appropriate professional rather than a specific structure you've heard about elsewhere — the right approach follows from your facts, not the other way around.",
     ],
+    lesson: {
+      chapters: [
+        {
+          heading: "Map ownership and obligations",
+          paragraph:
+            "List relevant assets, owners, entities, and existing obligations. Give the reviewing attorney accurate facts rather than only the desired outcome.",
+        },
+        {
+          heading: "Explain the timing",
+          paragraph:
+            "Pending disputes, existing claims, and earlier transfers may affect the analysis. Discuss them with counsel before making changes.",
+        },
+        {
+          heading: "Define the engagement",
+          paragraph:
+            "Ask for a clear scope covering the questions, jurisdictions, documents, and follow-up work involved. Education is a starting point for that engagement.",
+        },
+      ],
+      checklist: [
+        "List ownership and entities",
+        "Gather existing documents",
+        "Identify relevant obligations and timing",
+        "Prepare questions for counsel",
+      ],
+      relatedServiceSlugs: ["charitable-remainder-trusts", "estate-inheritance-planning", "powers-of-appointment"],
+    },
   },
   {
     number: "16",
@@ -600,5 +678,31 @@ export const learnGuides: LearnGuide[] = [
       "A useful way to evaluate one is to work backward: what result is the idea supposed to produce, and what facts and conditions does it assume are true for you? Many advanced strategies depend on specific circumstances — a particular asset type, a certain account balance, a specific state's laws — that may or may not match your situation.",
       "Bring the idea, along with your actual facts, to the appropriate professional for review. Their job is to determine whether the idea fits, what work it would take to implement, and who should handle it — decisions that belong in a written engagement, not a hallway conversation.",
     ],
+    lesson: {
+      chapters: [
+        {
+          heading: "State the actual objective",
+          paragraph:
+            "Describe the problem you want to solve and the constraints that matter. A strategy name is not an objective. Different goals may call for different approaches.",
+        },
+        {
+          heading: "Identify assumptions and tradeoffs",
+          paragraph:
+            "List the account types, entities, parties, timing, and resources involved. Ask what could make the approach unsuitable and what obligations continue afterward.",
+        },
+        {
+          heading: "Obtain a scoped analysis",
+          paragraph:
+            "Charitable arrangements, Roth strategies, and other complex structures require individual review. Define the analysis and implementation work separately so the next step is clear.",
+        },
+      ],
+      checklist: [
+        "Write the objective",
+        "List key assumptions",
+        "Identify costs and ongoing obligations",
+        "Request a defined professional analysis",
+      ],
+      relatedServiceSlugs: ["contribution-planning", "roth-conversion-planning", "preferred-llcs"],
+    },
   },
 ];
