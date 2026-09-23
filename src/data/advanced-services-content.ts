@@ -1031,6 +1031,70 @@ export const advancedServices: AdvancedService[] = [
       "A power of appointment gives someone the authority to direct where a trust's assets go in the future — a quiet but significant provision worth understanding clearly.",
       "This service reviews who holds that authority in your documents today, and whether it reflects who you actually want making that decision.",
     ],
+    detail: {
+      heroIntro:
+        "Examine an existing or proposed power of appointment and how it interacts with ownership, beneficiaries, and the underlying documents.",
+      audience: "Clients whose planning involves authority to redirect property or ownership interests.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Review the language, parties, and intended use",
+        "Analyze the interaction with other structures",
+        "Prepare agreed revisions or a written assessment",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "A client has an LLC assignment containing a power of appointment and wants to understand its role in a larger plan.",
+        approach: "The attorney reviews the actual wording and relationships before advising on next steps.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Property and LLC interests",
+        "Permitted recipients",
+        "Document restrictions",
+        "Inheritance and related-party questions",
+      ],
+      considerationsNote:
+        "A power of appointment does not automatically remove ownership, creditor, or transaction concerns.",
+      questions: [
+        "Who should receive income, control, and remaining value?",
+        "Which assets, obligations, and jurisdictions are involved?",
+        "What must the structure accomplish over time?",
+      ],
+      questionsNote:
+        "A clearly defined planning direction and, when separately agreed, the drafting and implementation work behind it.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["The instrument creating the power", "Ownership and beneficiary information", "The proposed action"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/asset-protection",
+      faq: [
+        {
+          question: "Do I need a retirement plan for this work?",
+          answer:
+            "No. A power of appointment can appear in a trust, an LLC assignment, or another document — a retirement account is not required to begin.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "An attorney reviews the actual wording and relationships and prepares any agreed revisions, with the Roth Academy team coordinating intake, scheduling, and the paperwork between you and the professional.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — a related document, an additional party, a different transaction — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "14",
@@ -1043,6 +1107,71 @@ export const advancedServices: AdvancedService[] = [
       "Some Roth structures involve more than one account or entity working together — which means evaluating one piece in isolation can miss the bigger picture.",
       "This is a specialist review: an attorney looks at the full structure together, not just the account in front of you, before offering an assessment.",
     ],
+    detail: {
+      heroIntro:
+        "Request a specialist assessment of the inherited Roth, entity-beneficiary, and appointment-power concepts discussed in the Unchained Roth material.",
+      audience: "Clients with a specific question about the seminar concept or an existing arrangement.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Gather the full chain of documents and relationships",
+        "Identify unresolved legal and tax questions",
+        "Provide the agreed assessment and possible next steps",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "A client has heard the Unchained Roth concept and wants to know whether it has any relevance to their situation.",
+        approach: "The matter begins with a defined assessment rather than instructions to create or fund the arrangement.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Inherited Roth accounts",
+        "LLC beneficiaries",
+        "Powers of appointment",
+        "Related-party analysis",
+        "Preferred partnership alternatives",
+      ],
+      considerationsNote:
+        "This is a specialist assessment of a teaching concept. No exemption, suitability, or tax outcome is assumed.",
+      questions: [
+        "Who should receive income, control, and remaining value?",
+        "Which assets, obligations, and jurisdictions are involved?",
+        "What must the structure accomplish over time?",
+      ],
+      questionsNote:
+        "A clearly defined planning direction and, when separately agreed, the drafting and implementation work behind it.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Inheritance and account records", "All relevant entity and appointment documents", "Proposed transactions and parties"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/advanced-planning",
+      faq: [
+        {
+          question: "Do I need a retirement plan for this work?",
+          answer:
+            "No. This service reviews the full chain of accounts and entities involved in your specific question — a retirement plan is not required to begin.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "An attorney reviews the full chain of documents and relationships and provides the agreed assessment, with the Roth Academy team coordinating intake, scheduling, and the paperwork between you and the professional.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "If the assessment identifies further work, drafting or implementation becomes its own proposal, defined and priced separately from this initial review.",
+        },
+      ],
+    },
   },
   {
     number: "15",
@@ -1216,6 +1345,69 @@ export const advancedServices: AdvancedService[] = [
       "Some financing arrangements tie repayment to a property's appreciation rather than a fixed interest rate — a structure that needs its own careful documentation.",
       "This service evaluates financing tied to a property's economics, so the terms reflect what both parties actually agreed to.",
     ],
+    detail: {
+      heroIntro:
+        "Request review of a shared appreciation mortgage, equity-sharing agreement, or a related proposal. Start with what each party contributes, receives, and controls.",
+      audience: "Owners and investors considering financing with an appreciation or shared-equity component.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Analyze the proposed economic and legal terms",
+        "Identify tax and transaction questions",
+        "Define the required documents",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "An owner and investor are considering an arrangement tied to future property appreciation.",
+        approach: "The review examines the arrangement as a whole, including payment, control, and exit terms.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Shared appreciation mortgages",
+        "Equity-sharing agreements",
+        "Seller financing",
+        "Income-interest financing alternatives",
+      ],
+      considerationsNote:
+        "The tax treatment of a shared return cannot be assumed from the name of the agreement.",
+      questions: [
+        "Who owns what, and who receives the economics?",
+        "How do funding, debt, services, and control interact?",
+        "Which documents and independent advisers are needed?",
+      ],
+      questionsNote: "A review of the actual transaction, identified issues, and an agreed path for documents and coordination.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Property and debt records", "Proposed economics and parties", "Draft agreements and exit terms"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/private-lending",
+      faq: [
+        {
+          question: "Will this review cover every entity in my business?",
+          answer:
+            "Scope is set by your proposal. If the financing touches other entities or accounts you own, say so up front so the review — and its fee — reflects the actual structure, not just the arrangement in front of you.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "The Roth Academy team coordinates the review of the proposed terms, with an attorney involved wherever the payment, control, or exit provisions call for it.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — a revised term, a different property, a related transaction — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "18",
@@ -1228,6 +1420,69 @@ export const advancedServices: AdvancedService[] = [
       "A split-interest proposal — where one party receives income and another the underlying asset — raises specific questions about rights, deductions, and tax treatment.",
       "This is a specialist review: an attorney evaluates the rights and deductions involved in your specific proposal before it moves forward.",
     ],
+    detail: {
+      heroIntro:
+        "Explore the income-interest, depreciation, amortization, and cost-segregation questions raised by a proposed property arrangement. Coordinate with the relevant tax and valuation professionals.",
+      audience: "Clients evaluating income rights associated with real estate held by a plan or other structure.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Assess the proposed interests and responsibilities",
+        "Identify tax and valuation work needed",
+        "Define the legal documents and adviser coordination",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "A client wants to assess a proposal to acquire a property income interest.",
+        approach: "The attorney evaluates the legal arrangement while the required tax analysis is identified and separately assigned.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Sales or purchases of income interests",
+        "Depreciation and amortization",
+        "Cost-segregation considerations",
+        "Remainder ownership",
+      ],
+      considerationsNote:
+        "A deduction or tax benefit is not established by the seminar illustration. Engineering and valuation services are separately identified if needed.",
+      questions: [
+        "Who owns what, and who receives the economics?",
+        "How do funding, debt, services, and control interact?",
+        "Which documents and independent advisers are needed?",
+      ],
+      questionsNote: "A review of the actual transaction, identified issues, and an agreed path for documents and coordination.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Title and ownership records", "Income and depreciation information", "Proposed purchase terms"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/advanced-planning",
+      faq: [
+        {
+          question: "Will this review cover every entity in my business?",
+          answer:
+            "Scope is set by your proposal. If the income interest touches other entities or accounts you own, say so up front so the review — and its fee — reflects the actual structure, not just the interest in front of you.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "An attorney evaluates the legal arrangement and identifies the tax and valuation work needed, with the Roth Academy team coordinating intake, scheduling, and the paperwork between you and the professional.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — a different property, an additional interest, a related transaction — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "19",
