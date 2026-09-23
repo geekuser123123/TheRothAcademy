@@ -52,7 +52,6 @@ export default function SelfDirectedIraPage() {
         features={serviceIraOverview.features}
         image={serviceIraOverview.image}
         imageAlt="Self-directed IRA account documents"
-        placeholderVariant={serviceIraOverview.placeholderVariant}
         reverse
       />
 

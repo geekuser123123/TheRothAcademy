@@ -52,7 +52,6 @@ export default function SelfDirected401kPage() {
         features={service401kOverview.features}
         image={service401kOverview.image}
         imageAlt="Self-directed 401(k) plan documents"
-        placeholderVariant={service401kOverview.placeholderVariant}
       />
 
       <ServiceAssetGrid

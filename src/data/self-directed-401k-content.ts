@@ -48,8 +48,7 @@ export const service401kOverview = {
     "A self-directed 401(k) is a qualified retirement plan designed for your business, administered under the same IRS rules that govern any 401(k) — with a plan document that opens the door to a wider range of assets.",
     "Instead of choosing from a fixed list of mutual funds, the plan can hold real estate, private lending, and other alternative investments alongside traditional ones, all inside one tax-advantaged structure.",
   ],
-  image: "/services/401k/overview.jpg",
-  placeholderVariant: "a" as const,
+  image: "/services/401k/overview.webp",
   features: [
     "Higher contribution limits than a traditional IRA",
     "Checkbook-level control over plan investments",

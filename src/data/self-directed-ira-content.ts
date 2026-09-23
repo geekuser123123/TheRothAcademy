@@ -48,8 +48,7 @@ export const serviceIraOverview = {
     "A self-directed IRA is an individual retirement account administered under the same IRS rules as any traditional or Roth IRA — held with a custodian that allows a broader range of assets than a typical brokerage IRA.",
     "Instead of a fixed menu of mutual funds and stocks, the account can hold real estate, private lending, precious metals, and other alternative investments, alongside traditional ones.",
   ],
-  image: "/services/ira/overview.jpg",
-  placeholderVariant: "b" as const,
+  image: "/services/ira/overview.webp",
   features: [
     "Available as Traditional, Roth, or SEP IRA",
     "No business ownership required to open one",

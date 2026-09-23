@@ -1,14 +1,7 @@
-import fs from "fs";
-import path from "path";
 import Image from "next/image";
 import { Check } from "lucide-react";
 import { clsx } from "clsx";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { ImagePlaceholder, type ImagePlaceholderVariant } from "@/components/ui/ImagePlaceholder";
-
-function imageExists(publicPath: string) {
-  return fs.existsSync(path.join(process.cwd(), "public", publicPath));
-}
 
 export function ServiceOverview({
   eyebrow,
@@ -17,7 +10,6 @@ export function ServiceOverview({
   features,
   image,
   imageAlt = "",
-  placeholderVariant = "a",
   reverse = false,
 }: {
   eyebrow: string;
@@ -26,11 +18,8 @@ export function ServiceOverview({
   features: string[];
   image: string;
   imageAlt?: string;
-  placeholderVariant?: ImagePlaceholderVariant;
   reverse?: boolean;
 }) {
-  const hasRealImage = imageExists(image);
-
   return (
     <section className="border-b border-r-line bg-r-bg py-20 md:py-28">
       <div className="container-brand grid items-center gap-14 md:grid-cols-[1.05fr_1fr] md:gap-16">
@@ -66,11 +55,7 @@ export function ServiceOverview({
             reverse && "md:order-1 md:mx-0",
           )}
         >
-          {hasRealImage ? (
-            <Image src={image} alt={imageAlt} fill sizes="(min-width: 768px) 35vw, 90vw" className="object-cover" />
-          ) : (
-            <ImagePlaceholder variant={placeholderVariant} mark className="relative h-full w-full" />
-          )}
+          <Image src={image} alt={imageAlt} fill sizes="(min-width: 768px) 35vw, 90vw" className="object-cover" />
         </div>
       </div>
     </section>
