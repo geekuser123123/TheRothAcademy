@@ -19,6 +19,7 @@ export default function EventsPage() {
         title={eventsHero.title}
         goldLine={eventsHero.goldLine}
         description={eventsHero.description}
+        imageSrc="/events/hero.webp"
       />
 
       <EventFeatureSection />
