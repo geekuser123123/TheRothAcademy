@@ -345,6 +345,69 @@ export const advancedServices: AdvancedService[] = [
       "Moving retirement assets from one arrangement to another — an old 401(k) into a self-directed IRA, for instance — has its own paperwork and timing requirements.",
       "This service prepares the rollover correctly from the start: confirming the receiving account, the transfer method, and the documentation that shows it was done right.",
     ],
+    detail: {
+      heroIntro:
+        "Identify the source, destination, and proposed method before initiating a rollover. Keep the instructions, dates, and tax records together.",
+      audience: "People moving retirement assets or evaluating a change in account arrangement.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Review the proposed movement",
+        "Identify institution instructions and professional questions",
+        "Define the recordkeeping and reporting responsibilities",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "An investor has several older retirement accounts and wants to evaluate a transfer.",
+        approach: "The team organizes each source separately for review and coordinated next steps.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Source and destination eligibility",
+        "Direct and indirect movements",
+        "Inherited-account distinctions",
+        "Property distribution and rollover questions",
+      ],
+      considerationsNote: "Not every distribution or account is eligible for every destination. A general guide does not authorize a movement.",
+      questions: [
+        "Where is the money now?",
+        "Which plan features and funding rules apply?",
+        "What tax and cash-flow questions need review?",
+      ],
+      questionsNote:
+        "A documented assessment of the proposed move and the steps to coordinate with your tax adviser and account provider.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Source and destination account types", "Recent statements and prior movements", "Relevant deadlines"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/rollovers",
+      faq: [
+        {
+          question: "Is a conversion or contribution automatically the right move?",
+          answer:
+            "No — and neither is a rollover. Each depends on the accounts, timing, and rules involved. The review looks at your actual source and destination before recommending a method.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "The Roth Academy team organizes the institution instructions and records, with an attorney involved wherever an inherited account or property distribution calls for it.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — another account, a different destination, a following tax year — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "05",
@@ -352,11 +415,73 @@ export const advancedServices: AdvancedService[] = [
     title: "Participant Loan Documentation",
     description: "Put the loan and its repayment records in order.",
     category: "plans",
-    badge: "Explore the work",
+    badge: "Defined service",
     body: [
       "A participant loan against your own plan balance needs a promissory note, a repayment schedule, and ongoing records — not just a transfer of funds.",
       "The team helps put the loan's documentation in order, whether you're setting one up for the first time or catching up records on an existing loan.",
     ],
+    detail: {
+      heroIntro:
+        "Request help with a proposed participant loan, its documentation, and the repayment process. Existing loans and plan terms are part of the review.",
+      audience: "Plan participants considering a loan or needing help with an existing loan record.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Review the applicable plan and loan facts",
+        "Prepare the agreed documentation",
+        "Identify ongoing repayment records",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "A participant wants to assess a loan and know how repayments will be tracked.",
+        approach: "The team gathers the inputs and coordinates the agreed calculation and documentation.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Plan permission and loan calculations",
+        "Loan documents",
+        "Repayment schedules",
+        "Missed-payment questions",
+      ],
+      considerationsNote: "A request does not approve a loan or determine the amount available.",
+      questions: [
+        "What already exists, and what needs to change?",
+        "Which people and businesses are involved?",
+        "What does the plan actually permit?",
+      ],
+      questionsNote: "A defined document or support scope, the information needed to complete it, and clear responsibilities.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Current plan and account records", "Existing loan balances", "Proposed amount and purpose"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/participant-loans",
+      faq: [
+        {
+          question: "Do you need my existing plan documents?",
+          answer:
+            "Current documents help, but they aren't required to start. Basic facts about the plan and any existing loan are enough for the team to identify what's needed.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "The Roth Academy team prepares the loan documentation and repayment records directly, with an attorney involved wherever the plan terms call for it.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — a missed payment, a second loan, a changed repayment schedule — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "06",
@@ -369,6 +494,69 @@ export const advancedServices: AdvancedService[] = [
       "Converting pre-tax retirement funds to Roth is a decision worth evaluating carefully — it has tax consequences the year it happens, not just later.",
       "This service walks through the numbers and the timing with you before any assets move, so the conversion reflects an informed decision, not a rushed one.",
     ],
+    detail: {
+      heroIntro:
+        "Review the account, asset, basis records, and proposed conversion. Complex interests need an analysis of both the structure and its supportable value.",
+      audience: "People considering a Roth conversion, including one involving noncash assets.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Review the proposed conversion and supporting records",
+        "Identify valuation and tax-analysis needs",
+        "Define the implementation and reporting scope",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "A client wants to explore converting an ownership interest rather than cash.",
+        approach: "The attorney examines the proposed interest and identifies the valuation and tax work needed before implementation.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Pretax and after-tax records",
+        "Property and LLC interests",
+        "Preferred and common units",
+        "Valuation and separate accounting",
+      ],
+      considerationsNote: "A valuation illustration does not establish an allowable discount or guarantee a tax result.",
+      questions: [
+        "Where is the money now?",
+        "Which plan features and funding rules apply?",
+        "What tax and cash-flow questions need review?",
+      ],
+      questionsNote:
+        "A documented assessment of the proposed move and the steps to coordinate with your tax adviser and account provider.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Account and basis records", "Asset descriptions and proposed valuations", "Desired timing and wider planning questions"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/roth-strategies",
+      faq: [
+        {
+          question: "Is a conversion or contribution automatically the right move?",
+          answer:
+            "No. Each has its own tax and timing consequences. The review looks at your actual income, other plans, and cash flow before recommending a specific conversion.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "An attorney examines any noncash interest and its valuation, with the Roth Academy team coordinating intake, scheduling, and the paperwork moving between you and the professional.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — a different asset, a following tax year, a related account — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "07",
