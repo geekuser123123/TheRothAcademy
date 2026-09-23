@@ -32,7 +32,8 @@ export default function AboutPage() {
         lead={storyHero.lead}
         scrollCtaLabel={storyHero.scrollCtaLabel}
         scrollCtaHref={storyHero.scrollCtaHref}
-        imageSrc="/about/story-hero.webp"
+        imageSrc="/about/hero-tim-kevin.webp"
+        metadata={storyHero.metadata}
       />
 
       <StoryIntro
@@ -41,18 +42,17 @@ export default function AboutPage() {
         kicker={storyIntro.kicker}
         heading={storyIntro.heading}
         lead={storyIntro.lead}
+        pullQuote={storyIntro.pullQuote}
         paragraphs={storyIntro.paragraphs}
       />
 
-      <StoryChapters chapters={storyChapters.slice(0, 2)} />
+      <StoryChapters chapters={storyChapters} />
 
       <StoryStatementBand
         kicker={storyStatement.kicker}
         heading={storyStatement.heading}
         paragraph={storyStatement.paragraph}
       />
-
-      <StoryChapters chapters={storyChapters.slice(2, 4)} />
 
       <StoryTeamSection
         kicker={storyTeam.kicker}
@@ -65,6 +65,7 @@ export default function AboutPage() {
         eyebrow={storyValues.eyebrow}
         heading={storyValues.heading}
         steps={storyValues.items}
+        variant="cards"
         linkLabel={storyValues.linkLabel}
         linkHref={storyValues.linkHref}
       />
@@ -77,7 +78,7 @@ export default function AboutPage() {
         signatureRole={storyClosing.signatureRole}
       />
 
-      <ClosingStatement />
+      <ClosingStatement ghostText="Next Move" />
     </>
   );
 }

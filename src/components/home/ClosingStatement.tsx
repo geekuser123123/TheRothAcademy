@@ -5,11 +5,20 @@ import { useContactModal } from "@/components/contact/ContactModalProvider";
 
 const words = ["Discipline", "Today", "Freedom", "Tomorrow"];
 
-export function ClosingStatement() {
+export function ClosingStatement({ ghostText }: { ghostText?: string } = {}) {
   const { open } = useContactModal();
 
   return (
     <section className="relative overflow-hidden border-t border-r-line bg-r-bg py-20 md:py-28">
+      {ghostText && (
+        <span
+          aria-hidden
+          className="pointer-events-none absolute bottom-0 left-1/2 w-full -translate-x-1/2 select-none whitespace-nowrap text-center font-heading text-[18vw] leading-none text-r-white/[0.04]"
+        >
+          {ghostText}
+        </span>
+      )}
+
       {/* Abstract gold arc — echoes the service-page hero at a quieter scale */}
       <div
         aria-hidden

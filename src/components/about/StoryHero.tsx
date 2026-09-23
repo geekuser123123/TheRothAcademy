@@ -11,6 +11,7 @@ export function StoryHero({
   scrollCtaHref,
   videoSrc,
   imageSrc,
+  metadata,
 }: {
   eyebrow: string;
   title: string[];
@@ -20,6 +21,7 @@ export function StoryHero({
   scrollCtaHref: string;
   videoSrc?: string;
   imageSrc?: string;
+  metadata?: { name: string; role: string };
 }) {
   return (
     <section className="relative overflow-hidden border-b border-r-line bg-r-stripe-2">
@@ -100,6 +102,13 @@ export function StoryHero({
             <ArrowDown size={14} aria-hidden />
           </a>
         </div>
+
+        {metadata && (
+          <div className="mt-10 border-t border-r-line pt-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-r-white">{metadata.name}</p>
+            <p className="mt-1 text-xs uppercase tracking-[0.15em] text-r-muted">{metadata.role}</p>
+          </div>
+        )}
       </div>
     </section>
   );

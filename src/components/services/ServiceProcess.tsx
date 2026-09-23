@@ -14,6 +14,7 @@ export function ServiceProcess({
   intro,
   steps,
   columns = 4,
+  variant = "list",
   note,
   linkLabel,
   linkHref,
@@ -23,6 +24,7 @@ export function ServiceProcess({
   intro?: string;
   steps: { number: string; title: string; description: string }[];
   columns?: 3 | 4;
+  variant?: "list" | "cards";
   note?: string;
   linkLabel?: string;
   linkHref?: string;
@@ -40,14 +42,30 @@ export function ServiceProcess({
         </h2>
         {intro && <p className="mt-4 max-w-xl text-sm text-r-muted font-body normal-case">{intro}</p>}
 
-        <ol className={clsx("mt-12 grid gap-8 md:gap-6", gridColsClasses[columns])}>
-          {steps.map((step) => (
-            <li key={step.number} className="border-t border-r-gold/40 pt-5">
-              <span className="text-xs font-semibold uppercase tracking-[0.15em] text-r-gold">{step.number}</span>
-              <h3 className="mt-2 text-2xl">{step.title}</h3>
-              <p className="mt-3 text-sm text-r-muted font-body normal-case">{step.description}</p>
-            </li>
-          ))}
+        <ol
+          className={clsx(
+            "mt-12 grid gap-6",
+            variant === "cards" ? "sm:grid-cols-2" : clsx("md:gap-6", gridColsClasses[columns]),
+          )}
+        >
+          {steps.map((step) =>
+            variant === "cards" ? (
+              <li
+                key={step.number}
+                className="rounded-[var(--radius-brand-card)] border border-r-line bg-r-panel/60 p-7"
+              >
+                <span className="text-xs font-semibold uppercase tracking-[0.15em] text-r-gold">{step.number}</span>
+                <h3 className="mt-2 text-2xl">{step.title}</h3>
+                <p className="mt-3 text-sm text-r-muted font-body normal-case">{step.description}</p>
+              </li>
+            ) : (
+              <li key={step.number} className="border-t border-r-gold/40 pt-5">
+                <span className="text-xs font-semibold uppercase tracking-[0.15em] text-r-gold">{step.number}</span>
+                <h3 className="mt-2 text-2xl">{step.title}</h3>
+                <p className="mt-3 text-sm text-r-muted font-body normal-case">{step.description}</p>
+              </li>
+            ),
+          )}
         </ol>
 
         {note && <p className="mt-10 max-w-3xl text-xs text-r-muted/70 font-body normal-case">{note}</p>}

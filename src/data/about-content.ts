@@ -5,6 +5,7 @@ export const storyHero = {
   lead: "A father who rebuilt. A son who was watching. The reason Roth Academy exists today.",
   scrollCtaLabel: "Read Our Story",
   scrollCtaHref: "#the-story",
+  metadata: { name: "Tim & Kevin Berry", role: "Two Generations. One Standard." },
 };
 
 export const storyIntro = {
@@ -13,7 +14,7 @@ export const storyIntro = {
     name: "Kevin Berry",
     role: "Leading Roth Academy. Tim's son.",
   },
-  portraitCaption: "Tim & Kevin Berry · Two Generations, One Standard",
+  portraitCaption: "Kevin Berry · Telling The Family's Account",
   kicker: "Before There Was A Next Chapter",
   heading: ["I Was The Kid", "Watching Him Rebuild."],
   lead: "Before I led Roth Academy, I watched my father keep a family moving while he put his own life back together.",
@@ -21,6 +22,7 @@ export const storyIntro = {
     "I watched the moves, the pressure, the law books — the work that followed him from one place to the next.",
     "As a kid, I didn't understand the tax code. I understood that my dad kept working, and that even when things were hard for us, he still cared about getting the answer right for somebody else. That is where this company really begins.",
   ],
+  pullQuote: "I understood that my dad kept working.",
 };
 
 export const storyChapters = [
