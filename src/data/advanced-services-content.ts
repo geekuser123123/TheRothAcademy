@@ -31,6 +31,15 @@ export type ServiceCategoryKey =
   | "protection"
   | "compliance";
 
+export const serviceDirectoryHero = {
+  eyebrow: "The Service Directory",
+  title: ["The Right Work.", "For Your Next Move."],
+  goldLine: 1,
+  description:
+    "Trusts. Ownership structures. Complex transactions. The planning questions that deserve a deeper look, with a team to organize the work.",
+  stats: ["28 Service Paths", "6 Areas Of Focus", "One Clear Starting Point"],
+};
+
 export const advancedServiceCategories: { key: ServiceCategoryKey; tabLabel: string; cardLabel: string }[] = [
   { key: "plans", tabLabel: "Plan support", cardLabel: "Plan Design & Support" },
   { key: "roth", tabLabel: "Roth & funding", cardLabel: "Roth & Contribution Planning" },
@@ -363,4 +372,42 @@ export const advancedServices: AdvancedService[] = [
       "This service identifies the required work for your plan and who is responsible for completing it, so nothing is filed late or missed entirely.",
     ],
   },
+];
+
+export type DirectoryCard = {
+  number: string;
+  slug: string;
+  title: string;
+  description: string;
+  category: ServiceCategoryKey;
+  badge: "Explore the work" | "Specialist review";
+};
+
+// The full service directory ("/services"): the two plan pages up front,
+// followed by every advanced service, renumbered 01–28.
+export const allServiceCards: DirectoryCard[] = [
+  {
+    number: "01",
+    slug: "self-directed-401k",
+    title: "Self-Directed 401(k)",
+    description: "Build a plan around how you want to invest.",
+    category: "plans",
+    badge: "Explore the work",
+  },
+  {
+    number: "02",
+    slug: "self-directed-ira",
+    title: "Self-Directed IRA",
+    description: "Explore a wider investment menu with the right structure.",
+    category: "plans",
+    badge: "Explore the work",
+  },
+  ...advancedServices.map((service, index) => ({
+    number: String(index + 3).padStart(2, "0"),
+    slug: service.slug,
+    title: service.title,
+    description: service.description,
+    category: service.category,
+    badge: service.badge,
+  })),
 ];
