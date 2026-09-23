@@ -1,7 +1,7 @@
 export const learnHero = {
   eyebrow: "The Knowledge Library",
-  title: ["The More You Know.", "The Further You See."],
-  goldLine: 1,
+  title: ["The More You", "Know. The", "Further You See."],
+  goldLine: 2,
   description:
     "Understand the questions behind the opportunity. Practical guides for your first plan and the more complex decisions ahead.",
 };
