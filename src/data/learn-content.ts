@@ -177,6 +177,32 @@ export const learnGuides: LearnGuide[] = [
       "Before initiating a rollover, confirm the receiving account is open and able to accept the transfer, and get a clear statement from the sending institution of how the funds will be sent (direct trustee-to-trustee transfer versus a distribution check made payable to you). The difference affects timing and, in some cases, tax withholding.",
       "Keep the confirmation paperwork from both sides — the distribution notice from the old plan and the deposit confirmation from the new one — together with the date each occurred. That pairing is what shows a rollover was completed correctly if the question ever comes up.",
     ],
+    lesson: {
+      chapters: [
+        {
+          heading: "Identify the source and destination",
+          paragraph:
+            "Record the exact account types and institutions involved. Eligibility depends on the distribution and receiving arrangement. Do not assume that every account balance is eligible to move.",
+        },
+        {
+          heading: "Confirm the method",
+          paragraph:
+            "Direct and indirect movements create different responsibilities. Obtain current instructions before initiating the movement, especially when funds may be paid to you personally.",
+        },
+        {
+          heading: "Keep the full record",
+          paragraph:
+            "Retain instructions, confirmations, statements, and applicable tax reporting. Ask the relevant professional to resolve any mismatch between the paperwork and the transaction.",
+        },
+      ],
+      checklist: [
+        "Identify source and destination account types",
+        "Confirm eligibility and transfer instructions",
+        "Record the actual dates and amounts",
+        "Keep confirmations and reporting documents",
+      ],
+      relatedServiceSlugs: ["self-directed-ira", "contribution-planning", "rollover-planning"],
+    },
   },
   {
     number: "05",
@@ -192,6 +218,32 @@ export const learnGuides: LearnGuide[] = [
       "Before taking a participant loan, confirm the plan document actually includes a loan provision, and what it specifies: maximum amount, repayment term, interest rate, and repayment frequency. Not every self-directed plan includes this feature by default.",
       "Once a loan is issued, the repayment schedule needs to be followed and documented like any other plan record — payment date, amount, and running balance. A loan that falls behind on its documented schedule can create consequences for the plan, so maintaining the paperwork is not optional.",
     ],
+    lesson: {
+      chapters: [
+        {
+          heading: "Check the actual plan",
+          paragraph:
+            "Confirm whether participant loans are permitted and what terms apply. The amount available is a calculation based on the applicable rules and facts, not simply the account balance.",
+        },
+        {
+          heading: "Formalize the arrangement",
+          paragraph:
+            "Complete the required documents and establish a repayment schedule before treating a transfer as an authorized loan. Existing loans may affect the analysis.",
+        },
+        {
+          heading: "Track repayments",
+          paragraph:
+            "Keep the schedule, evidence of payments, and records of changes. If a payment is missed or circumstances change, request help promptly rather than waiting for year end.",
+        },
+      ],
+      checklist: [
+        "Confirm plan permission",
+        "Gather existing loan and account information",
+        "Complete the required loan documents",
+        "Track every repayment",
+      ],
+      relatedServiceSlugs: ["participant-loans"],
+    },
   },
   {
     number: "06",
@@ -207,6 +259,32 @@ export const learnGuides: LearnGuide[] = [
       "A complete request typically includes the participant's identifying information, the amount and reason for the distribution, and how it should be paid (check, wire, or transfer to another custodian). Having this ready in writing, rather than requested verbally, keeps the record clear from the start.",
       "After the distribution is processed, file the confirmation alongside the original request. That pairing — what was asked for, and what actually happened — is the same pattern that makes every other plan record easy to review later.",
     ],
+    lesson: {
+      chapters: [
+        {
+          heading: "Confirm the permitted event",
+          paragraph:
+            "Eligibility for a payment depends on the plan, payment type, and participant circumstances. A request form alone does not establish that the payment is permitted.",
+        },
+        {
+          heading: "Separate the accounts",
+          paragraph:
+            "Pretax, Roth, and other after-tax records may affect tax treatment. Preserve records of contributions, prior movements, and any basis rather than assuming all balances have the same treatment.",
+        },
+        {
+          heading: "Assign reporting responsibilities",
+          paragraph:
+            "Clarify who calculates withholding, processes payment, prepares reporting, delivers participant copies, and files required forms. These may be separate tasks.",
+        },
+      ],
+      checklist: [
+        "Identify the payment purpose",
+        "Gather account-type records",
+        "Confirm eligibility and tax questions",
+        "Assign payment and reporting responsibilities",
+      ],
+      relatedServiceSlugs: ["distributions-rmds", "reporting-notices"],
+    },
   },
   {
     number: "07",
