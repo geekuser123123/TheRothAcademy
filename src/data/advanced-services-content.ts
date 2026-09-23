@@ -569,6 +569,74 @@ export const advancedServices: AdvancedService[] = [
       "Not every owner in an LLC or partnership needs the same rights to capital, income, or future growth — a preferred structure can separate those interests deliberately.",
       "This service structures the ownership interests to match what you're actually trying to accomplish, with the appropriate professional reviewing the entity documents.",
     ],
+    detail: {
+      heroIntro:
+        "Explore an entity with preferred and common interests, including how capital, income, and appreciation would be allocated. Review the participants and economics before drafting.",
+      audience: "Investors and business owners considering different economic interests within one entity.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Analyze the proposed economics and parties",
+        "Identify valuation and transaction restrictions",
+        "Prepare the agreed entity and transaction documents",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "A developer and outside investors want different rights to investment returns.",
+        approach:
+          "The attorney reviews the economics, ownership, and proposed retirement-account participation before defining the documents.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Preferred returns and common interests",
+        "Capital and distribution rights",
+        "Outside investors and syndications",
+        "Traditional and Roth account participation",
+      ],
+      considerationsNote:
+        "Different ownership classes do not by themselves establish tax treatment or make a related-party transaction permissible.",
+      questions: [
+        "Who owns what, and who receives the economics?",
+        "How do funding, debt, services, and control interact?",
+        "Which documents and independent advisers are needed?",
+      ],
+      questionsNote: "A review of the actual transaction, identified issues, and an agreed path for documents and coordination.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: [
+        "Participants and relationships",
+        "Proposed contributions and distribution terms",
+        "Existing documents and investment details",
+      ],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/advanced-planning",
+      faq: [
+        {
+          question: "Will this review cover every entity in my business?",
+          answer:
+            "Scope is set by your proposal. If the structure touches other entities or accounts you own, say so up front so the review — and its fee — reflects the actual structure, not just the interests in front of you.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "An attorney reviews the economics and drafts the entity documents. The Roth Academy team coordinates intake, scheduling, and the paperwork moving between you and the professional.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — an added investor, a changed allocation, a following transaction — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "08",
@@ -581,6 +649,69 @@ export const advancedServices: AdvancedService[] = [
       "When a retirement plan holds a partial interest in an asset — a fraction of a property, a share of an entity — the exact interest being transferred needs to be precisely defined.",
       "This service reviews what is actually being bought, sold, or held, and confirms the valuation and documentation support that specific interest.",
     ],
+    detail: {
+      heroIntro:
+        "Work through tenancy-in-common interests, ownership restrictions, and valuation questions connected to a proposed contribution, conversion, sale, or distribution.",
+      audience: "Owners evaluating a transaction involving less than the entire asset.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Identify the legal interest and its restrictions",
+        "Coordinate the required valuation questions",
+        "Review the proposed transfer and documentation",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "A plan owns an interest in a property and its owner is considering a distribution.",
+        approach: "The review focuses on the exact interest, debt, and valuation evidence relevant to that proposed transfer.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Tenancy in common",
+        "Control and marketability",
+        "Restrictions and debt",
+        "Valuation for retirement transactions",
+      ],
+      considerationsNote:
+        "Appraisals and specialized valuation work may require a separate provider. No particular discount is promised.",
+      questions: [
+        "Who owns what, and who receives the economics?",
+        "How do funding, debt, services, and control interact?",
+        "Which documents and independent advisers are needed?",
+      ],
+      questionsNote: "A review of the actual transaction, identified issues, and an agreed path for documents and coordination.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Ownership and title records", "Relevant debt and restrictions", "The action being considered"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/advanced-planning",
+      faq: [
+        {
+          question: "Will this review cover every entity in my business?",
+          answer:
+            "Scope is set by your proposal. If the interest touches other entities or accounts you own, say so up front so the review — and its fee — reflects the actual structure, not just the fraction in front of you.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "The Roth Academy team coordinates the valuation and documentation, with an attorney involved wherever the transfer or restrictions call for it.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — another interest, a different valuation date, a related transaction — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "09",
@@ -593,6 +724,69 @@ export const advancedServices: AdvancedService[] = [
       "A life estate separates the right to use or receive income from an asset now from who owns it later — two distinct interests in the same property.",
       "This service reviews how that separation would work for your situation, and what documentation is needed to make both interests clear and enforceable.",
     ],
+    detail: {
+      heroIntro:
+        "Review lifetime or fixed-term interests and the remainder that follows. The legal rights, parties, valuation, and planned transaction all need to work together.",
+      audience: "Clients considering split interests in property or other assets.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Analyze the proposed rights and transaction",
+        "Identify valuation and tax questions",
+        "Define the agreed documents and implementation steps",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "Two investors want to explore separate rights to property income and future ownership.",
+        approach: "The attorney examines the proposed division of rights and determines what further analysis is needed.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Lifetime and fixed-term interests",
+        "Split purchases",
+        "Sales of income and remainder interests",
+        "Combinations with fractional interests or LLCs",
+      ],
+      considerationsNote:
+        "Specialized short-duration examples require individual review and are not standardized offers.",
+      questions: [
+        "Who owns what, and who receives the economics?",
+        "How do funding, debt, services, and control interact?",
+        "Which documents and independent advisers are needed?",
+      ],
+      questionsNote: "A review of the actual transaction, identified issues, and an agreed path for documents and coordination.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Asset and ownership information", "Proposed term and parties", "Income, debt, and valuation records"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/advanced-planning",
+      faq: [
+        {
+          question: "Will this review cover every entity in my business?",
+          answer:
+            "Scope is set by your proposal. If the split interest touches other entities or accounts you own, say so up front so the review — and its fee — reflects the actual structure, not just the interests in front of you.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "An attorney examines the division of rights and drafts the agreed documents, with the Roth Academy team coordinating intake, scheduling, and the paperwork between you and the professional.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — a different term, an added party, a related transaction — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "10",
