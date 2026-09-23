@@ -1,16 +1,31 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { mainNav } from "@/data/site-config";
 import { useContactModal } from "@/components/contact/ContactModalProvider";
+
+function subscribeNoop() {
+  return () => {};
+}
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const { open: openContactModal } = useContactModal();
+
+  // The header applies backdrop-filter once the page scrolls, which makes it
+  // the containing block for any `fixed` descendant — pinning this panel to
+  // the header's own box instead of the viewport. Portal it out to escape
+  // that, once mounted (document.body isn't available during SSR).
+  const mounted = useSyncExternalStore(
+    subscribeNoop,
+    () => true,
+    () => false,
+  );
 
   useEffect(() => {
     if (!open) return;
@@ -28,19 +43,8 @@ export function MobileMenu() {
     triggerRef.current?.focus();
   }
 
-  return (
-    <div className="lg:hidden">
-      <button
-        ref={triggerRef}
-        className="text-r-white"
-        aria-label="Open menu"
-        aria-expanded={open}
-        type="button"
-        onClick={() => setOpen(true)}
-      >
-        <Menu size={26} aria-hidden />
-      </button>
-
+  const overlay = (
+    <>
       {/* Backdrop */}
       <div
         aria-hidden
@@ -118,6 +122,23 @@ export function MobileMenu() {
           </div>
         </div>
       </div>
+    </>
+  );
+
+  return (
+    <div className="lg:hidden">
+      <button
+        ref={triggerRef}
+        className="text-r-white"
+        aria-label="Open menu"
+        aria-expanded={open}
+        type="button"
+        onClick={() => setOpen(true)}
+      >
+        <Menu size={26} aria-hidden />
+      </button>
+
+      {mounted && createPortal(overlay, document.body)}
     </div>
   );
 }
