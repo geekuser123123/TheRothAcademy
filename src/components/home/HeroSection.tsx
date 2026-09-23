@@ -56,12 +56,13 @@ export function HeroSection() {
           </p>
 
           <h1
-            className="mt-6 max-w-5xl text-r-white"
+            className="max-w-5xl text-r-white"
             style={{
-              fontSize: "clamp(3.75rem, 13vw, 205px)",
+              marginTop: 35,
+              fontSize: "clamp(76px, 10.8vw, 146px)",
               fontWeight: 500,
-              lineHeight: 0.93,
-              letterSpacing: "-0.02em",
+              lineHeight: 0.9,
+              letterSpacing: "-0.025em",
             }}
           >
             Own Your

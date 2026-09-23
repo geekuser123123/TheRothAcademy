@@ -84,7 +84,15 @@ export function ServiceHero({
               {eyebrow}
             </p>
 
-            <h1 className="mt-6 max-w-3xl text-5xl md:text-7xl lg:text-8xl">
+            <h1
+              className="max-w-3xl"
+              style={{
+                marginTop: 35,
+                fontSize: "clamp(76px, 10.8vw, 146px)",
+                lineHeight: 0.9,
+                letterSpacing: "-0.025em",
+              }}
+            >
               {title.map((line, index) => (
                 <span key={line} className={clsx("block", index === goldLine && "text-r-gold")}>
                   {line}
