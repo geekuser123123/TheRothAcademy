@@ -22,6 +22,7 @@ export const learnLevels: { key: LearnLevel; tabLabel: string; badge: string }[]
 export type LearnChapter = { heading: string; paragraph: string };
 
 export type LearnLesson = {
+  video?: { youtubeId: string; title: string; caption: string };
   chapters: LearnChapter[];
   checklist: string[];
   relatedServiceSlugs: string[];
@@ -300,6 +301,33 @@ export const learnGuides: LearnGuide[] = [
       "A useful packet includes a contribution summary, a distribution summary, any loan activity, a current asset list with values as of year-end, and copies of any plan amendments or changes made during the year. If your plan held property or a private investment, include whatever documentation supports its year-end value.",
       "Once assembled, the packet becomes the reference point for whoever prepares required filings or reviews the plan going forward — including you, next year, trying to remember what happened this year.",
     ],
+    lesson: {
+      chapters: [
+        {
+          heading: "Reconcile activity",
+          paragraph:
+            "Gather contributions, rollovers, loans, distributions, and investment activity. Check that the records agree with the relevant account statements and transaction documents.",
+        },
+        {
+          heading: "Gather values",
+          paragraph:
+            "Identify what valuations or supporting records are needed for the assets held. Record the relevant date and source of each value. A balance shown today may differ from a required year-end value.",
+        },
+        {
+          heading: "Confirm the applicable filings",
+          paragraph:
+            "Filing requirements depend on the plan and circumstances. Confirm what applies, who prepares each filing, who submits it, and how submission will be evidenced. Service renewal is a separate administrative matter.",
+        },
+      ],
+      checklist: [
+        "Collect year-end account and asset records",
+        "Reconcile contributions and distributions",
+        "Check participant loan payments",
+        "Confirm filing responsibilities",
+        "Retain evidence of completed work",
+      ],
+      relatedServiceSlugs: ["self-directed-401k", "self-directed-ira", "existing-plan-support"],
+    },
   },
   {
     number: "08",
@@ -315,6 +343,32 @@ export const learnGuides: LearnGuide[] = [
       "Write down what is actually changing, who is involved, and when it should take effect. That description is what lets the appropriate professional identify exactly which amendment, form, or filing applies, rather than guessing from a form's title alone.",
       "Keep the record of the change — the description, the resulting document, and its effective date — with your other plan records. A plan's history of changes is often as useful as its current state when questions come up later.",
     ],
+    lesson: {
+      chapters: [
+        {
+          heading: "Describe the change",
+          paragraph:
+            "State the current information, proposed information, reason, and desired effective date. Include the relevant business or personal change without sending unnecessary sensitive data.",
+        },
+        {
+          heading: "Identify the proper work",
+          paragraph:
+            "An administrative update, sponsor change, amendment, and participant change are not interchangeable. The team should identify the appropriate process and scope from the facts.",
+        },
+        {
+          heading: "Keep the completed version",
+          paragraph:
+            "Save the executed document and record which earlier information it replaces. Confirm whether any financial institution or other party also needs an update.",
+        },
+      ],
+      checklist: [
+        "Describe the current and proposed information",
+        "Identify the required process",
+        "Complete signatures where needed",
+        "File the completed version and follow-up records",
+      ],
+      relatedServiceSlugs: ["self-directed-401k", "self-directed-ira", "existing-plan-support"],
+    },
   },
   {
     number: "09",
@@ -330,6 +384,38 @@ export const learnGuides: LearnGuide[] = [
       "General preparation includes understanding how the plan will hold title, how ongoing expenses (taxes, insurance, maintenance) will be paid from plan funds rather than personally, and how any income the property generates flows back into the plan. These are structural questions that apply regardless of which property you're considering.",
       "When an actual property enters the picture, gather the purchase contract, any financing terms, and a clear description of who is involved in the transaction. That packet is what allows the appropriate professional to review the specific deal — the facts of one property don't transfer from a general guide, they require their own look.",
     ],
+    lesson: {
+      video: {
+        youtubeId: "HJUG9z3Qcxs",
+        title: "Tim Berry on self-directed IRAs and real estate",
+        caption: "Tim Berry discusses IRAs in this video. Review your actual plan and account terms separately.",
+      },
+      chapters: [
+        {
+          heading: "Map the entire transaction",
+          paragraph:
+            "Identify the buyer, seller, related parties, proposed use, financing, and people providing services. The relationship between parties and the intended use deserve attention before a commitment is made.",
+        },
+        {
+          heading: "Prepare the cash and documents",
+          paragraph:
+            "Gather the proposed contract, projected costs, funding information, and account details. Ask how title, signatures, expenses, and records should be handled for the actual arrangement.",
+        },
+        {
+          heading: "Plan ongoing administration",
+          paragraph:
+            "Ownership continues after closing. Prepare for income, expenses, valuation records, and eventual sale or distribution. Obtain advice about transaction restrictions and potential taxes where relevant.",
+        },
+      ],
+      checklist: [
+        "List parties and relationships",
+        "Describe use and financing",
+        "Gather the contract and proposed cash flows",
+        "Identify professional review needs",
+        "Plan ongoing records",
+      ],
+      relatedServiceSlugs: ["preferred-llcs", "real-estate-transactions", "ubit-planning"],
+    },
   },
   {
     number: "10",

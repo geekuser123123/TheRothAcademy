@@ -41,6 +41,20 @@ export function LessonBody({ guide, lesson }: { guide: LearnGuide; lesson: Learn
         </aside>
 
         <article className="min-w-0 max-w-2xl">
+          {lesson.video && (
+            <div className="mb-12">
+              <div className="aspect-video overflow-hidden rounded-[var(--radius-brand-card)] border border-r-line">
+                <iframe
+                  title={lesson.video.title}
+                  src={`https://www.youtube-nocookie.com/embed/${lesson.video.youtubeId}`}
+                  loading="lazy"
+                  allowFullScreen
+                  className="h-full w-full"
+                />
+              </div>
+              <p className="mt-3 text-xs text-r-muted/70 font-body normal-case">{lesson.video.caption}</p>
+            </div>
+          )}
           {lesson.chapters.map((chapter, index) => (
             <section key={chapter.heading} id={`chapter-${index}`} className={index > 0 ? "mt-12" : undefined}>
               <span className="font-heading text-xl text-r-gold">{String(index + 1).padStart(2, "0")}</span>
