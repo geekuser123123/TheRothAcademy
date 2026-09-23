@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, Check } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { clsx } from "clsx";
 import { useContactModal } from "@/components/contact/ContactModalProvider";
 
@@ -74,7 +74,7 @@ export function ServiceHero({
       />
 
       <div className="container-brand relative pb-16 pt-40 md:pb-20 md:pt-48">
-        <div className={clsx(summary && "grid gap-14 md:grid-cols-[1.3fr_1fr] md:items-start md:gap-12")}>
+        <div className={clsx(summary && "grid gap-14 md:grid-cols-[1.15fr_1fr] md:items-stretch md:gap-12")}>
           <div className="min-w-0">
             <p
               className="flex items-center gap-3 font-semibold uppercase text-r-gold"
@@ -156,21 +156,39 @@ export function ServiceHero({
           </div>
 
           {summary && (
-            <aside className="rounded-[var(--radius-brand-card)] border border-r-gold/30 bg-r-panel/80 p-7 shadow-2xl shadow-black/40 backdrop-blur">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-r-gold">{summary.tag}</p>
-              <p className="mt-3 text-3xl text-r-white">{summary.title}</p>
-              <p className="mt-1 text-xs uppercase tracking-[0.15em] text-r-muted">{summary.subtitle}</p>
+            <aside className="relative flex h-full flex-col overflow-hidden rounded-[var(--radius-brand-card)] border border-r-gold/30 bg-gradient-to-b from-r-panel to-r-panel/70 p-8 shadow-2xl shadow-black/50 backdrop-blur md:p-10">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-r-gold/10 blur-3xl"
+              />
+              <span aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-r-gold-dark via-r-gold to-r-gold-light" />
+              <span
+                aria-hidden
+                className="pointer-events-none absolute -bottom-10 -right-4 select-none font-heading text-[10rem] leading-none text-r-white/[0.04]"
+              >
+                {summary.title}
+              </span>
 
-              <ul className="mt-6 space-y-3 border-t border-r-line pt-6">
-                {summary.checklist.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-r-white font-body normal-case">
-                    <Check size={16} className="mt-0.5 shrink-0 text-r-gold" aria-hidden />
-                    {item}
+              <div className="relative border-b border-r-line pb-7">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-r-gold">{summary.tag}</p>
+                <p className="mt-4 text-5xl text-r-white">{summary.title}</p>
+                <p className="mt-2 text-xs uppercase tracking-[0.15em] text-r-muted">{summary.subtitle}</p>
+              </div>
+
+              <ul className="relative mt-8 flex-1 space-y-5">
+                {summary.checklist.map((item, index) => (
+                  <li key={item} className="flex items-start gap-4">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-r-gold/40 text-[11px] font-semibold text-r-gold">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="pt-0.5 text-sm leading-relaxed text-r-white font-body normal-case">{item}</span>
                   </li>
                 ))}
               </ul>
 
-              <p className="mt-6 text-xs text-r-muted/70 font-body normal-case">{summary.note}</p>
+              <p className="relative mt-8 border-t border-r-line pt-6 text-xs text-r-muted/70 font-body normal-case">
+                {summary.note}
+              </p>
             </aside>
           )}
         </div>
