@@ -1874,6 +1874,71 @@ export const advancedServices: AdvancedService[] = [
       "A trust, LLC, or insurance policy is only as protective as its actual language — restrictions you assume exist may not be written the way you think.",
       "This service reads the documents you already have and identifies where they do, and don't, provide the protection you're relying on.",
     ],
+    detail: {
+      heroIntro:
+        "Review deeds, assignments, and ownership provisions for their intended role in a larger structure. Existing language needs to be considered with the actual parties and property.",
+      audience: "Clients with proposed or existing restrictions in ownership and transfer documents.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Review the actual instruments and title context",
+        "Identify inconsistent provisions or unresolved questions",
+        "Prepare agreed revisions or a written assessment",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "A client has several assignments and deed restrictions that need to be reviewed together.",
+        approach: "The attorney examines how the provisions interact before any revisions are agreed.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Restricted and reserved deeds",
+        "Covenants and restrictions",
+        "Assignments of notes and liens",
+        "LLC interest assignments",
+        "Powers of appointment",
+      ],
+      considerationsNote:
+        "A restriction should not be treated as automatic creditor protection or used to evade an existing obligation.",
+      questions: [
+        "How are the assets currently owned?",
+        "Are there existing claims, guarantees, or obligations?",
+        "Which timing and jurisdiction issues change the analysis?",
+      ],
+      questionsNote:
+        "A fact-specific review of ownership and exposure, followed by appropriate document or planning work as agreed.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Executed and draft documents", "Title and ownership records", "The intended purpose and relevant claims"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/asset-protection",
+      faq: [
+        {
+          question: "Is any structure guaranteed to protect my assets?",
+          answer:
+            "No. Protection depends on existing claims, transfer timing, and the law that applies to your specific situation — the review identifies what the actual language provides, not a guaranteed outcome.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "An attorney examines the actual instruments and how their provisions interact, with the Roth Academy team coordinating intake, scheduling, and the paperwork between you and the professional.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — an additional document, a related entity, a changed circumstance — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "25",
@@ -1886,6 +1951,70 @@ export const advancedServices: AdvancedService[] = [
       "Certain transactions between a retirement plan and disqualified persons are restricted by rule, with real consequences if one happens — intentionally or not.",
       "This service reviews a transaction before it happens, or helps assess what occurred if a question has already come up, with the appropriate professional involved.",
     ],
+    detail: {
+      heroIntro:
+        "Bring the parties, relationships, actions, and dates together for professional review. Requests involving past mistakes are evaluated on their facts.",
+      audience: "Plan owners seeking a proposed-transaction review or help with a potential problem.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Review the facts and transaction history",
+        "Identify the issue and any time-sensitive action",
+        "Define the available analysis or correction work",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "A client has already signed a guarantee and wants to know what questions it raises for a plan investment.",
+        approach: "The team flags the timing and the attorney evaluates the facts and any appropriate next steps.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Related parties and personal use",
+        "Services and guarantees",
+        "Joint-investment concerns",
+        "Independent decision-makers",
+        "Potential exemptions and correction provisions",
+      ],
+      considerationsNote: "No correction or exemption is assumed. Tell the team about relevant deadlines in the initial request.",
+      questions: [
+        "What has happened, and what is still proposed?",
+        "Which records and deadlines matter?",
+        "Who is responsible for preparation, filing, and follow-through?",
+      ],
+      questionsNote:
+        "A defined assessment or preparation scope, specific responsibilities, and the records supporting the next step.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["All parties and relationships", "Agreements and dates", "What has already happened"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/ubit",
+      faq: [
+        {
+          question: "What if the transaction has already happened?",
+          answer:
+            "The service still applies. A completed transaction shifts the work toward evaluating the facts and any time-sensitive correction or exemption question, rather than reviewing a proposal in advance.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "The Roth Academy team flags relevant timing and gathers the facts, with an attorney evaluating the transaction and any available correction or exemption path.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — a different transaction, an additional party, a related filing — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "26",
@@ -1893,11 +2022,75 @@ export const advancedServices: AdvancedService[] = [
     title: "Plan Reporting & Notice Support",
     description: "Identify the required work and who will complete it.",
     category: "compliance",
-    badge: "Explore the work",
+    badge: "Defined service",
     body: [
       "Retirement plans carry their own reporting and notice requirements, separate from personal tax filings — easy to miss if no one is tracking them.",
       "This service identifies the required work for your plan and who is responsible for completing it, so nothing is filed late or missed entirely.",
     ],
+    detail: {
+      heroIntro:
+        "Request help with annual reporting, distribution reporting, or a notice. The scope identifies preparation, filing, payment, and response responsibilities separately.",
+      audience: "Plan owners with a filing question, missing record, or received notice.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Review the reporting issue and records",
+        "Define preparation and submission responsibilities",
+        "Organize the completed work and evidence",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "A client receives a notice about a plan filing and needs the next steps organized.",
+        approach: "The team gathers the notice and history, then the appropriate professional defines the response scope.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Form 5500-EZ",
+        "Forms 990-T and 5330",
+        "Forms 1099-R, 1096, and 945",
+        "EFTPS and payment responsibilities",
+        "Filing penalties and notices",
+      ],
+      considerationsNote: "Preparation, filing, and representation are different services. The engagement specifies which are included.",
+      questions: [
+        "What has happened, and what is still proposed?",
+        "Which records and deadlines matter?",
+        "Who is responsible for preparation, filing, and follow-through?",
+      ],
+      questionsNote:
+        "A defined assessment or preparation scope, specific responsibilities, and the records supporting the next step.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: ["Reporting year and relevant records", "Any notice and its deadline", "Prior filings and correspondence"],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/annual-records",
+      faq: [
+        {
+          question: "What if the transaction has already happened?",
+          answer:
+            "The service still applies. A missed filing or a received notice shifts the work toward organizing what occurred and defining the response, rather than planning ahead of a deadline.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "The Roth Academy team gathers the notice and history and organizes the completed work, with the appropriate professional defining and completing the preparation, filing, or response.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — a different filing year, an additional notice, a related form — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "27",
