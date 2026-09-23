@@ -431,6 +431,33 @@ export const learnGuides: LearnGuide[] = [
       "For any specific loan, be ready to document the borrower, the loan amount and term, the interest rate, any security or collateral involved, and how and when payments will be made back to the plan. A promissory note and, where applicable, a lien or security agreement are the documents that make the arrangement enforceable.",
       "Because every borrower and every deal is different, treat each private lending transaction as its own review, even if you've done several before. The terms that made a previous loan sound don't automatically apply to the next one.",
     ],
+    lesson: {
+      chapters: [
+        {
+          heading: "Identify the parties and terms",
+          paragraph:
+            "Describe the borrower and relevant relationships, the amount, purpose, payment schedule, interest terms, and proposed collateral. Avoid relying on a verbal description alone.",
+        },
+        {
+          heading: "Review documentation and responsibilities",
+          paragraph:
+            "Have the appropriate professionals assess the proposed documents and transaction. Identify who handles signatures, security instruments, recording, and ongoing servicing.",
+        },
+        {
+          heading: "Prepare for the life of the loan",
+          paragraph:
+            "Track payments, balances, correspondence, and collateral information. Decide how missed payments and changes will be addressed before they arise.",
+        },
+      ],
+      checklist: [
+        "Identify borrower and relationships",
+        "Collect proposed terms and collateral records",
+        "Arrange professional document review",
+        "Assign servicing responsibility",
+        "Set up payment records",
+      ],
+      relatedServiceSlugs: ["private-lending", "shared-equity-financing"],
+    },
   },
   {
     number: "11",
@@ -446,6 +473,32 @@ export const learnGuides: LearnGuide[] = [
       "Start by identifying which of these applies to you: are you contributing new money directly to a Roth account, converting existing pre-tax funds into a Roth account, or asking about an account that is already Roth-designated? Each answer points toward a different set of questions.",
       "From there, the source of the funds and your current tax situation are what determine whether a specific Roth strategy makes sense. This is exactly the kind of individual-facts question that benefits from a real conversation rather than a general rule of thumb.",
     ],
+    lesson: {
+      chapters: [
+        {
+          heading: "Name the action",
+          paragraph:
+            "A contribution, conversion, rollover, and distribution may raise different questions. Confirm which features your actual arrangement supports before considering a specific action.",
+        },
+        {
+          heading: "Organize the tax records",
+          paragraph:
+            "Keep pretax, designated Roth, and other after-tax information distinct. Records of basis and earlier transactions may matter. Do not infer tax treatment solely from a transfer amount.",
+        },
+        {
+          heading: "Build a professional question list",
+          paragraph:
+            "Ask about eligibility, tax treatment, reporting, timing, and the interaction with your broader circumstances. Obtain a defined analysis before proceeding with a material transaction.",
+        },
+      ],
+      checklist: [
+        "Identify the action and account",
+        "Confirm available plan features",
+        "Gather tax and basis records",
+        "Prepare questions for your tax professional",
+      ],
+      relatedServiceSlugs: ["contribution-planning", "roth-conversion-planning"],
+    },
   },
   {
     number: "12",
@@ -461,6 +514,32 @@ export const learnGuides: LearnGuide[] = [
       "The questions that tend to raise this issue include: does the investment involve borrowed money (debt financing) inside the plan, and does the activity look more like operating a business than passively holding an asset? Neither answer is obvious from the asset type alone — a rental property financed with a mortgage inside the plan raises different questions than one purchased outright.",
       "If your investment involves financing, an operating business, or a structure you haven't used before, treat the tax question as its own review rather than an assumption. It's better addressed before the transaction than after.",
     ],
+    lesson: {
+      chapters: [
+        {
+          heading: "Describe the underlying activity",
+          paragraph:
+            "Gather information about what generates the income, how the activity is conducted, and the entities involved. An investment label alone may not explain the underlying tax facts.",
+        },
+        {
+          heading: "Include financing and ownership details",
+          paragraph:
+            "Provide the proposed debt terms and ownership structure to the reviewing professional. Different arrangements and investments may receive different treatment.",
+        },
+        {
+          heading: "Obtain the required analysis",
+          paragraph:
+            "Ask whether reporting or tax obligations arise and who will handle them. Treat a general lesson as preparation for that conversation, not as an individual conclusion.",
+        },
+      ],
+      checklist: [
+        "Describe the underlying activity",
+        "Collect entity and financing details",
+        "Identify potential filing questions",
+        "Obtain the appropriate review",
+      ],
+      relatedServiceSlugs: ["preferred-llcs", "real-estate-transactions", "ubit-planning"],
+    },
   },
   {
     number: "13",
