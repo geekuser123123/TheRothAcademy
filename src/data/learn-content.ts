@@ -19,6 +19,14 @@ export const learnLevels: { key: LearnLevel; tabLabel: string; badge: string }[]
   { key: "advanced", tabLabel: "Think further", badge: "Advanced" },
 ];
 
+export type LearnChapter = { heading: string; paragraph: string };
+
+export type LearnLesson = {
+  chapters: LearnChapter[];
+  checklist: string[];
+  relatedServiceSlugs: string[];
+};
+
 export type LearnGuide = {
   number: string;
   slug: string;
@@ -28,6 +36,7 @@ export type LearnGuide = {
   description: string;
   minutes: number;
   body: string[];
+  lesson?: LearnLesson;
 };
 
 export const learnGuides: LearnGuide[] = [
@@ -45,6 +54,32 @@ export const learnGuides: LearnGuide[] = [
       "Start by locating your plan's governing documents — the adoption agreement, plan document, or trust agreement, depending on your structure — and confirm they match how the plan is actually being operated. If a document describes a feature you aren't using, or an activity isn't reflected in any document, that gap is worth resolving before it compounds.",
       "From there, build the habit of keeping a running record: contributions, distributions, loans, and any investment transactions, each dated and described. A plan that can produce a clear answer to 'what happened, and when' is a plan that is easier to administer, review, and eventually hand off.",
     ],
+    lesson: {
+      chapters: [
+        {
+          heading: "Know the people",
+          paragraph:
+            "Identify the sponsoring business, trustee, and participants from the executed documents. Each has a different role. Keep contact details current and use the correct plan information when opening accounts.",
+        },
+        {
+          heading: "Know the documents",
+          paragraph:
+            "Locate the executed plan package and any later amendments. A draft is different from a signed document. An old version may help explain history, while current instructions should come from the applicable documents.",
+        },
+        {
+          heading: "Create a working record",
+          paragraph:
+            "Keep account-opening records, funding confirmations, and transaction documents in separate folders. The person performing a task should record when it was completed and what supports that conclusion.",
+        },
+      ],
+      checklist: [
+        "Locate the signed plan package",
+        "Confirm the plan name and responsible people",
+        "Separate drafts and current documents",
+        "Choose the next unfinished setup task",
+      ],
+      relatedServiceSlugs: ["self-directed-401k", "self-directed-ira", "existing-plan-support"],
+    },
   },
   {
     number: "02",
@@ -60,6 +95,32 @@ export const learnGuides: LearnGuide[] = [
       "Before you apply anywhere, put together a single packet: the plan document, trust agreement, identification for anyone with authority, and a short written summary of what the account will be used for. Institutions vary in what they ask for and how they interpret self-directed activity, so having your facts organized up front avoids repeat requests mid-process.",
       "It's also worth asking each institution directly how it handles the kinds of transactions you expect to make — a straightforward brokerage account has very different questions than one that will hold private lending notes or real estate. Ask before you apply, not after you're denied.",
     ],
+    lesson: {
+      chapters: [
+        {
+          heading: "Start with the institution",
+          paragraph:
+            "Ask what type of account it supports, the documents required, the available features, and any institution-specific restrictions. Confirm current instructions directly with the institution.",
+        },
+        {
+          heading: "Match the records",
+          paragraph:
+            "Use the correct plan and trust information from the executed documents. Resolve mismatched names or identifiers before proceeding. Do not guess an account title from a marketing name.",
+        },
+        {
+          heading: "Keep the confirmation",
+          paragraph:
+            "Save submitted materials and the confirmation of the account opening. Record who has authority to operate the account and how ongoing statements will be retained.",
+        },
+      ],
+      checklist: [
+        "Confirm current institution requirements",
+        "Gather executed documents",
+        "Check names and identifiers",
+        "Save the application and confirmation",
+      ],
+      relatedServiceSlugs: ["self-directed-401k", "self-directed-ira", "existing-plan-support"],
+    },
   },
   {
     number: "03",
@@ -75,6 +136,32 @@ export const learnGuides: LearnGuide[] = [
       "It helps to record contributions as they happen rather than reconstructing them at year-end. A simple running log — participant, date, amount, type, year applied — is enough to keep things straight, and it becomes the backbone of your annual records packet.",
       "If a contribution needs to be corrected or recharacterized, document the reason and the correction the same way you'd document the original entry. A clean paper trail is what turns a routine correction into a non-event, instead of a question mark six years from now.",
     ],
+    lesson: {
+      chapters: [
+        {
+          heading: "Classify the contribution",
+          paragraph:
+            "Employee and employer contributions have different rules. Designated Roth contributions and pretax contributions also require appropriate tracking. The label used on a transfer does not determine eligibility.",
+        },
+        {
+          heading: "Gather the right inputs",
+          paragraph:
+            "Business structure, compensation, other retirement plans, and applicable plan terms may affect the calculation. Use current-year guidance and qualified help for the actual amount and deadlines.",
+        },
+        {
+          heading: "Document the completed action",
+          paragraph:
+            "Retain elections where required, calculations, deposit confirmations, and records of how amounts were classified. Keep a proposed calculation separate from a completed deposit.",
+        },
+      ],
+      checklist: [
+        "Identify the contribution year and type",
+        "Gather compensation and other-plan information",
+        "Confirm the calculation and relevant deadlines",
+        "Retain election and deposit records",
+      ],
+      relatedServiceSlugs: ["contribution-planning", "rollover-planning"],
+    },
   },
   {
     number: "04",

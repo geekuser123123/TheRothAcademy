@@ -5,9 +5,14 @@ import { ArrowLeft, Clock } from "lucide-react";
 import { clsx } from "clsx";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { LearnArticleCta } from "@/components/learn/LearnArticleCta";
+import { LessonHero } from "@/components/learn/LessonHero";
+import { LessonBody } from "@/components/learn/LessonBody";
+import { LessonRelatedWork } from "@/components/learn/LessonRelatedWork";
+import { ClosingStatement } from "@/components/home/ClosingStatement";
 import { learnGuides, learnLevels } from "@/data/learn-content";
 
 const badgeByLevel = Object.fromEntries(learnLevels.map((level) => [level.key, level.badge]));
+const tabLabelByLevel = Object.fromEntries(learnLevels.map((level) => [level.key, level.tabLabel]));
 
 export function generateStaticParams() {
   return learnGuides.map((guide) => ({ slug: guide.slug }));
@@ -24,6 +29,24 @@ export default async function LearnGuidePage({ params }: PageProps<"/learn/[slug
   const { slug } = await params;
   const guide = learnGuides.find((item) => item.slug === slug);
   if (!guide) notFound();
+
+  if (guide.lesson) {
+    const lesson = guide.lesson;
+    return (
+      <>
+        <LessonHero
+          levelLabel={tabLabelByLevel[guide.level]}
+          kicker={guide.kicker}
+          title={guide.title}
+          minutes={guide.minutes}
+          intro={guide.description}
+        />
+        <LessonBody guide={guide} lesson={lesson} />
+        <LessonRelatedWork slugs={lesson.relatedServiceSlugs} />
+        <ClosingStatement />
+      </>
+    );
+  }
 
   return (
     <>
