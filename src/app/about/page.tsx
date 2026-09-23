@@ -32,6 +32,7 @@ export default function AboutPage() {
         lead={storyHero.lead}
         scrollCtaLabel={storyHero.scrollCtaLabel}
         scrollCtaHref={storyHero.scrollCtaHref}
+        imageSrc="/about/story-hero.webp"
       />
 
       <StoryIntro

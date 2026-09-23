@@ -1,5 +1,6 @@
 import { ArrowDown } from "lucide-react";
 import { clsx } from "clsx";
+import Image from "next/image";
 
 export function StoryHero({
   eyebrow,
@@ -9,6 +10,7 @@ export function StoryHero({
   scrollCtaLabel,
   scrollCtaHref,
   videoSrc,
+  imageSrc,
 }: {
   eyebrow: string;
   title: string[];
@@ -17,6 +19,7 @@ export function StoryHero({
   scrollCtaLabel: string;
   scrollCtaHref: string;
   videoSrc?: string;
+  imageSrc?: string;
 }) {
   return (
     <section className="relative overflow-hidden border-b border-r-line bg-r-stripe-2">
@@ -34,6 +37,21 @@ export function StoryHero({
             <source src={videoSrc} type="video/mp4" />
           </video>
           <div aria-hidden className="pointer-events-none absolute inset-0 bg-r-bg/90" />
+        </>
+      )}
+
+      {!videoSrc && imageSrc && (
+        <>
+          <Image
+            aria-hidden
+            src={imageSrc}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="pointer-events-none object-cover"
+          />
+          <div aria-hidden className="pointer-events-none absolute inset-0 bg-r-bg/80" />
         </>
       )}
 
