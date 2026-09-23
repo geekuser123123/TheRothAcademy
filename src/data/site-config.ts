@@ -28,7 +28,7 @@ export const footerNav = {
       { label: "Self-Directed IRA", href: "/services/self-directed-ira" },
       { label: "Advanced services", href: "/advanced-services" },
       { label: "All services", href: "/services" },
-      { label: "Find my starting point", href: "/goals" },
+      { label: "Find my starting point", href: "/start" },
     ],
   },
   academy: {
