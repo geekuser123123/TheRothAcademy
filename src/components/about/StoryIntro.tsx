@@ -33,7 +33,7 @@ export function StoryIntro({
           <p className="mt-3 text-[11px] uppercase tracking-[0.15em] text-r-muted/70">{portraitCaption}</p>
         </aside>
 
-        <article className="min-w-0">
+        <article className="min-w-0 md:self-center">
           <Eyebrow>{kicker}</Eyebrow>
           <h2 className="mt-4 text-4xl md:text-6xl">
             {heading.map((line, index) => (
