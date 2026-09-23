@@ -49,6 +49,55 @@ export const advancedServiceCategories: { key: ServiceCategoryKey; tabLabel: str
   { key: "compliance", tabLabel: "Plan responsibilities", cardLabel: "Plan Taxes, Distributions & Compliance" },
 ];
 
+export const serviceEngagementSteps = {
+  eyebrow: "How The Work Moves Forward",
+  heading: ["A Clear Start.", "A Defined Engagement."],
+  steps: [
+    {
+      number: "01",
+      title: "The Conversation",
+      description: "Tell the team what you want to accomplish and what is already in place.",
+    },
+    {
+      number: "02",
+      title: "The Right Scope",
+      description: "The appropriate professional reviews the matter. Your proposal defines the work and fee.",
+    },
+    {
+      number: "03",
+      title: "The Follow-Through",
+      description: "Confirm your engagement and required funding. Follow the work with an assigned team.",
+    },
+  ],
+};
+
+export type ServiceDetail = {
+  heroIntro: string;
+  audience: string;
+  workIntro: string;
+  workSteps: string[];
+  example: {
+    heading: string[];
+    scenario: string;
+    approach: string;
+    disclaimer: string;
+  };
+  considerations: string[];
+  considerationsNote: string;
+  questions: string[];
+  questionsNote: string;
+  nextMove: {
+    heading: string[];
+    paragraph: string;
+    ctaLabel: string;
+    details: string[];
+  };
+  prepare: string[];
+  prepareNote: string;
+  relatedGuideHref?: string;
+  faq: { question: string; answer: string }[];
+};
+
 export type AdvancedService = {
   number: string;
   slug: string;
@@ -57,6 +106,7 @@ export type AdvancedService = {
   category: ServiceCategoryKey;
   badge: "Explore the work" | "Specialist review";
   body: string[];
+  detail?: ServiceDetail;
 };
 
 export const advancedServices: AdvancedService[] = [
@@ -239,6 +289,75 @@ export const advancedServices: AdvancedService[] = [
       "Buying, developing, or holding real estate inside a retirement plan involves contracts, financing, and ownership questions specific to that plan type.",
       "This service puts the legal structure around your actual deal — reviewing the transaction's terms and documents before you're committed to them.",
     ],
+    detail: {
+      heroIntro:
+        "Bring the property, financing, parties, and proposed ownership together for review. The scope may cover one purchase or a defined part of a larger development.",
+      audience: "Plan owners, developers, and investors preparing a property transaction.",
+      workIntro:
+        "Your proposal defines the included deliverables. Depending on the facts and professional review, the work may include:",
+      workSteps: [
+        "Review the proposed deal and relevant restrictions",
+        "Identify the agreed transaction documents",
+        "Coordinate the defined closing and follow-through work",
+      ],
+      example: {
+        heading: ["A Real-World Question.", "A Considered Approach."],
+        scenario: "A developer is evaluating a project involving outside investors and a retirement plan.",
+        approach:
+          "The team prepares a concise deal brief, then an attorney defines the review and documentation required.",
+        disclaimer: "This example explains the service. It is not a client result or a promise of tax treatment.",
+      },
+      considerations: [
+        "Acquisitions, rentals, and sales",
+        "Development and syndication",
+        "Ownership and signature responsibilities",
+        "Retirement-account participation",
+        "Ongoing transaction records",
+      ],
+      considerationsNote:
+        "Each transaction is evaluated on its own facts. This service does not provide investment selection or guarantee returns.",
+      questions: [
+        "Who owns what, and who receives the economics?",
+        "How do funding, debt, services, and control interact?",
+        "Which documents and independent advisers are needed?",
+      ],
+      questionsNote: "A review of the actual transaction, identified issues, and an agreed path for documents and coordination.",
+      nextMove: {
+        heading: ["Bring The Goal.", "We'll Define The Work."],
+        paragraph: "The team organizes the facts before an attorney appointment or engagement is arranged.",
+        ctaLabel: "Start With This Service",
+        details: ["Written scope & fee", "Assigned professional & coordinator", "Defined deliverables & review date"],
+      },
+      prepare: [
+        "Property and party details",
+        "Contracts, financing, and ownership proposal",
+        "Deadlines and adviser information",
+      ],
+      prepareNote: "Basic facts are enough to start. Detailed records follow at the appropriate stage.",
+      relatedGuideHref: "/learn/real-estate",
+      faq: [
+        {
+          question: "Will this review cover every entity in my business?",
+          answer:
+            "Scope is set by your proposal. If the transaction touches other entities or accounts you own, say so up front so the review — and its fee — reflects the actual structure, not just the property in front of you.",
+        },
+        {
+          question: "What will the engagement include?",
+          answer:
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+        },
+        {
+          question: "Who will handle the professional work?",
+          answer:
+            "An attorney handles the legal review and documentation. The Roth Academy team coordinates intake, scheduling, and the paperwork moving between you and the professional.",
+        },
+        {
+          question: "What happens if I need more help later?",
+          answer:
+            "A new question outside the original scope — another property, a changed structure, a follow-on transaction — becomes its own proposal, defined and priced the same way as the first.",
+        },
+      ],
+    },
   },
   {
     number: "16",

@@ -2,8 +2,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
+import { ServiceDetailHero } from "@/components/services/ServiceDetailHero";
+import { ServiceDetailBody } from "@/components/services/ServiceDetailBody";
+import { RelatedServices } from "@/components/services/RelatedServices";
 import { ServiceDetailCta } from "@/components/services/ServiceDetailCta";
-import { advancedServices, advancedServiceCategories } from "@/data/advanced-services-content";
+import { ServiceProcess } from "@/components/services/ServiceProcess";
+import { ServiceFaq } from "@/components/services/ServiceFaq";
+import { ClosingStatement } from "@/components/home/ClosingStatement";
+import {
+  advancedServices,
+  advancedServiceCategories,
+  serviceEngagementSteps,
+} from "@/data/advanced-services-content";
 
 const cardLabelByCategory = Object.fromEntries(
   advancedServiceCategories.map((category) => [category.key, category.cardLabel]),
@@ -25,9 +35,48 @@ export default async function AdvancedServiceDetailPage({ params }: PageProps<"/
   const service = advancedServices.find((item) => item.slug === slug);
   if (!service) notFound();
 
+  const category = advancedServiceCategories.find((item) => item.key === service.category)!;
+  const categoryHref = `/services?filter=${service.category}`;
+
+  if (service.detail) {
+    const detail = service.detail;
+    const related = advancedServices
+      .filter((item) => item.category === service.category && item.slug !== service.slug)
+      .slice(0, 3);
+
+    return (
+      <>
+        <ServiceDetailHero
+          categoryLabel={category.cardLabel}
+          categoryHref={categoryHref}
+          title={service.title}
+          description={service.description}
+          intro={detail.heroIntro}
+          badgeLabel={service.badge === "Specialist review" ? "Specialist Review" : "Scoped Professional Work"}
+          serviceTitle={service.title}
+        />
+
+        <ServiceDetailBody service={service} detail={detail} />
+
+        <ServiceProcess
+          eyebrow={serviceEngagementSteps.eyebrow}
+          heading={serviceEngagementSteps.heading}
+          steps={serviceEngagementSteps.steps}
+          columns={3}
+        />
+
+        <ServiceFaq eyebrow="Before Your Next Move" heading={["Before", "We Begin."]} items={detail.faq} />
+
+        <RelatedServices categoryLabel={category.cardLabel} categoryHref={categoryHref} services={related} />
+
+        <ClosingStatement />
+      </>
+    );
+  }
+
   return (
     <>
-      <section className="border-b border-r-line bg-r-stripe-2 py-16 pt-40 md:py-20 md:pt-48">
+      <section className="border-b border-r-line bg-r-stripe-2 pb-16 pt-40 md:pb-20 md:pt-48">
         <div className="container-brand max-w-3xl">
           <Link
             href="/advanced-services"
@@ -44,8 +93,17 @@ export default async function AdvancedServiceDetailPage({ params }: PageProps<"/
             </span>
           </div>
 
-          <h1 className="mt-4 text-4xl md:text-6xl">{service.title}</h1>
-          <p className="mt-4 max-w-lg text-sm text-r-muted font-body normal-case">{service.description}</p>
+          <h1
+            style={{
+              marginTop: 35,
+              fontSize: "clamp(76px, 10.8vw, 146px)",
+              lineHeight: 0.9,
+              letterSpacing: "-0.025em",
+            }}
+          >
+            {service.title}
+          </h1>
+          <p className="mt-6 max-w-lg text-sm text-r-muted font-body normal-case">{service.description}</p>
 
           <span className="mt-6 block text-xs uppercase tracking-[0.15em] text-r-muted">{service.badge}</span>
         </div>
