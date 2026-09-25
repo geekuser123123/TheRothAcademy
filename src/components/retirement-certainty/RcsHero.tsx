@@ -1,11 +1,167 @@
 import { ArrowUpRight } from "lucide-react";
 import { rcsContent } from "@/data/retirement-certainty-session-content";
 
+const HERO_RIGHT_STYLES = `
+.hero-right-wrap {
+  position: relative;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.hero-photo-card {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.2);
+}
+
+.hero-photo-card img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.hero-photo-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(12,12,12,0.85));
+  padding: 40px 28px 28px;
+}
+
+.hero-photo-name {
+  font-family: var(--font-playfair-display), 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.hero-photo-title {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hf-card-1 {
+  position: absolute;
+  top: 28px;
+  right: -40px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  min-width: 150px;
+  z-index: 10;
+}
+
+.hf-bar {
+  height: 3px;
+  width: 36px;
+  background: #B89958;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+
+.hf-num {
+  font-family: var(--font-playfair-display), 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #0C0C0C;
+  line-height: 1;
+}
+
+.hf-label {
+  font-size: 11px;
+  color: #8C959D;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.hf-card-2 {
+  position: absolute;
+  bottom: 140px;
+  left: -20px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  min-width: 160px;
+  z-index: 10;
+}
+
+.hero-cred-strip {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  justify-content: center;
+}
+
+.hero-cred-pill {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(184,153,88,0.35);
+  border-radius: 100px;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+@media(max-width: 768px) {
+  .hf-card-1 {
+    right: -10px;
+    top: 10px;
+    padding: 10px 14px;
+    min-width: 120px;
+  }
+
+  .hf-card-2 {
+    left: -10px;
+    bottom: 160px;
+    padding: 8px 12px;
+    min-width: 130px;
+  }
+
+  .hf-num {
+    font-size: 20px;
+  }
+
+  .hf-label {
+    font-size: 10px;
+    line-height: 1.2;
+  }
+
+  .hf-bar {
+    height: 2px;
+    width: 24px;
+    margin-bottom: 6px;
+  }
+
+  .hero-photo-overlay {
+    padding: 60px 20px 20px;
+    z-index: 20;
+  }
+
+  .hero-photo-name {
+    font-size: 18px;
+  }
+
+  .hero-photo-title {
+    font-size: 10px;
+    line-height: 1.3;
+  }
+}
+`;
+
 export function RcsHero() {
   const { hero } = rcsContent;
 
   return (
     <section className="relative overflow-hidden border-b border-r-line bg-r-stripe-2">
+      <style>{HERO_RIGHT_STYLES}</style>
       <div
         aria-hidden
         className="pointer-events-none absolute -right-[15%] top-1/2 h-[140%] w-[65%] -translate-y-1/2 rounded-full opacity-30 mix-blend-screen md:-right-[5%] md:w-[50%]"
@@ -51,39 +207,38 @@ export function RcsHero() {
               <ArrowUpRight size={18} aria-hidden />
             </a>
           </div>
-
-          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2">
-            {hero.tags.map((tag) => (
-              <span key={tag} className="text-xs uppercase tracking-[0.15em] text-r-muted">
-                {tag}
-              </span>
-            ))}
-          </div>
         </div>
 
-        <aside className="relative rounded-[var(--radius-brand-card)] border border-r-gold/30 bg-gradient-to-b from-r-panel to-r-panel/70 p-8 shadow-2xl shadow-black/50">
-          <span
-            aria-hidden
-            className="pointer-events-none absolute inset-x-0 top-0 h-1 rounded-t-[var(--radius-brand-card)] bg-gradient-to-r from-r-gold-dark via-r-gold to-r-gold-light"
-          />
-          <div className="flex items-center gap-4 border-b border-r-line pb-6">
-            <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-r-gold/40 bg-r-bg text-lg font-semibold text-r-gold">
-              TB
-            </span>
-            <div>
-              <p className="text-lg text-r-white">{hero.specialist.name}</p>
-              <p className="mt-1 text-xs uppercase tracking-[0.12em] text-r-muted">{hero.specialist.title}</p>
+        <div className="hero-right-wrap">
+          <div className="hf-card-1">
+            <div className="hf-bar" />
+            <div className="hf-num">25+</div>
+            <div className="hf-label">Years of Specialist Experience</div>
+          </div>
+
+          <div className="hero-photo-card">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="https://iraideas.com/wp-content/uploads/Attorney.png" alt="Self-Directed Retirement Plan Specialist" />
+            <div className="hero-photo-overlay">
+              <div className="hero-photo-name">TIM BERRY</div>
+              <div className="hero-photo-title">Self-Directed Retirement Plan Specialist</div>
             </div>
           </div>
-          <div className="mt-6 grid grid-cols-2 gap-6">
-            {hero.stats.map((stat) => (
-              <div key={stat.label}>
-                <p className="text-4xl text-r-gold">{stat.value}</p>
-                <p className="mt-1 text-xs text-r-muted font-body normal-case">{stat.label}</p>
+
+          <div className="hf-card-2">
+            <div className="hf-bar" />
+            <div className="hf-num">400%</div>
+            <div className="hf-label">Value Guarantee or full refund</div>
+          </div>
+
+          <div className="hero-cred-strip">
+            {hero.tags.map((tag) => (
+              <div className="hero-cred-pill" key={tag}>
+                {tag}
               </div>
             ))}
           </div>
-        </aside>
+        </div>
       </div>
     </section>
   );
