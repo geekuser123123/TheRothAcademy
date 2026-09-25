@@ -70,6 +70,7 @@ const FINAL_CTA_STYLES = `
   color: #ffffff;
   line-height: 1.1;
   margin-bottom: 24px;
+  text-transform: none;
 }
 
 .fcs-title em {

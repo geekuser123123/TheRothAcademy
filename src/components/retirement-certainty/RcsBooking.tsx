@@ -538,24 +538,122 @@ export function RcsBooking() {
         strategy="afterInteractive"
         onLoad={() => window.dispatchEvent(new Event("rcs-square-loaded"))}
       />
+      <style>{`
+        .cbf-header { text-align: center; margin-bottom: 56px; }
+        .cbf-eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          color: #B89958;
+          margin-bottom: 14px;
+          font-family: var(--font-inter), 'Inter', sans-serif;
+        }
+        .cbf-eyebrow-dot {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: #B89958;
+          animation: cbfPulse 2s infinite;
+        }
+        @keyframes cbfPulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.4; transform: scale(0.8); }
+        }
+        .cbf-title {
+          font-family: var(--font-playfair-display), 'Playfair Display', serif;
+          font-size: clamp(28px, 3.5vw, 42px);
+          font-weight: 700;
+          color: #fff;
+          line-height: 1.15;
+          margin-bottom: 14px;
+          text-transform: none;
+        }
+        .cbf-divider {
+          width: 52px;
+          height: 3px;
+          background: #B89958;
+          border-radius: 2px;
+          margin: 0 auto 20px;
+        }
+        .cbf-subtitle {
+          font-size: 16px;
+          color: rgba(255,255,255,0.65);
+          max-width: 520px;
+          margin: 0 auto;
+          line-height: 1.75;
+          font-family: var(--font-inter), 'Inter', sans-serif;
+        }
+        .cbf-trust-row {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 28px;
+          flex-wrap: wrap;
+          margin-top: 20px;
+        }
+        .cbf-trust-item {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 12px;
+          font-weight: 500;
+          color: rgba(255,255,255,0.55);
+          font-family: var(--font-inter), 'Inter', sans-serif;
+        }
+        .cbf-trust-icon {
+          width: 16px;
+          height: 16px;
+          color: #B89958;
+        }
+        .cbf-trust-sep {
+          width: 1px;
+          height: 14px;
+          background: rgba(255,255,255,0.15);
+        }
+      `}</style>
       <div className="container-brand">
-        <div className="mx-auto max-w-xl text-center">
-          <p
-            className="flex items-center justify-center gap-3 font-semibold uppercase text-r-gold"
-            style={{ fontSize: 11, letterSpacing: "0.14em" }}
-          >
-            <span className="h-px w-8 bg-r-gold" aria-hidden />
+        <div className="cbf-header">
+          <div className="cbf-eyebrow">
+            <span className="cbf-eyebrow-dot" />
             Reserve Your Session
-          </p>
-          <h2 className="mt-4 text-4xl text-r-white md:text-5xl">Book Your Retirement Certainty Session</h2>
-          <p className="mt-4 text-sm leading-relaxed text-r-muted font-body normal-case">
-            Select a date and time, fill in your details, and complete your secure $125 payment.
-          </p>
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-            <span className="text-xs uppercase tracking-[0.12em] text-r-muted">15 focused minutes</span>
-            <span className="text-xs uppercase tracking-[0.12em] text-r-muted">Secure payment</span>
-            <span className="text-xs uppercase tracking-[0.12em] text-r-muted">Instant confirmation</span>
-            <span className="text-xs uppercase tracking-[0.12em] text-r-muted">400% guarantee</span>
+          </div>
+          <h2 className="cbf-title">Book Your Retirement Certainty Session</h2>
+          <div className="cbf-divider" />
+          <p className="cbf-subtitle">Select a date and time, fill in your details, and complete your secure $125 payment.</p>
+          <div className="cbf-trust-row">
+            <div className="cbf-trust-item">
+              <svg className="cbf-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              15 focused minutes
+            </div>
+            <div className="cbf-trust-sep" />
+            <div className="cbf-trust-item">
+              <svg className="cbf-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" />
+                <path d="M7 11V7a5 5 0 0110 0v4" />
+              </svg>
+              Secure payment
+            </div>
+            <div className="cbf-trust-sep" />
+            <div className="cbf-trust-item">
+              <svg className="cbf-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Instant confirmation
+            </div>
+            <div className="cbf-trust-sep" />
+            <div className="cbf-trust-item">
+              <svg className="cbf-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+              400% guarantee
+            </div>
           </div>
         </div>
 
@@ -840,7 +938,12 @@ export function RcsBooking() {
               <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-r-gold/15">
                 <Check size={30} className="text-r-gold" aria-hidden />
               </div>
-              <h3 className="text-2xl text-r-white">Booking Confirmed!</h3>
+              <h3
+                className="text-2xl text-r-white"
+                style={{ fontFamily: "var(--font-playfair-display), 'Playfair Display', serif", textTransform: "none" }}
+              >
+                Booking Confirmed!
+              </h3>
               <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-r-muted font-body normal-case">
                 Your Retirement Certainty Session with Tim Berry has been booked and payment received. A confirmation
                 email is on its way.

@@ -33,6 +33,8 @@ export function RcsHero() {
               fontSize: "clamp(40px, 6vw, 76px)",
               lineHeight: 0.98,
               letterSpacing: "-0.02em",
+              fontFamily: "var(--font-playfair-display), 'Playfair Display', serif",
+              textTransform: "none",
             }}
           >
             {hero.title}

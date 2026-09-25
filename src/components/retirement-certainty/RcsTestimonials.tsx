@@ -51,6 +51,7 @@ const TESTI_STYLES = `
   color: #ffffff;
   margin-bottom: 16px;
   line-height: 1.15;
+  text-transform: none;
 }
 
 .testi-divider {

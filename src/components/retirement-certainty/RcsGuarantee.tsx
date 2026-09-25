@@ -258,6 +258,7 @@ const GUARANTEE_STYLES = `
   color: #0C0C0C;
   line-height: 1.2;
   margin-bottom: 14px;
+  text-transform: none;
 }
 
 .guarantee-divider {

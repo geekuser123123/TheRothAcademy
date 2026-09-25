@@ -82,6 +82,7 @@ const WTIF_STYLES = `
   color: #0C0C0C;
   line-height: 1.15;
   margin: 0 0 12px;
+  text-transform: none;
 }
 
 .wtif-divider {

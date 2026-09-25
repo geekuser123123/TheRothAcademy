@@ -37,6 +37,7 @@ const FOCUS_STYLES = `
   color: #0C0C0C;
   line-height: 1.15;
   margin-bottom: 14px;
+  text-transform: none;
 }
 
 .focus-divider {
