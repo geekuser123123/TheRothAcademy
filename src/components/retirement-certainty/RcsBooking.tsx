@@ -598,7 +598,7 @@ export function RcsBooking() {
           </div>
 
           <div className="overflow-hidden rounded-[var(--radius-brand-card)] border border-r-line bg-r-panel/40">
-            <div className="flex items-center justify-between border-b border-r-line bg-r-stripe-1 px-6 py-4 sm:px-8">
+            <div id="form" className="flex items-center justify-between border-b border-r-line bg-r-stripe-1 px-6 py-4 sm:px-8">
               <div className="flex items-center gap-2.5">
                 <span className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-r-gold" />
                 <span className="text-sm font-semibold text-r-white">
