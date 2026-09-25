@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Teko, Poppins } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import { SiteChrome } from "@/components/layout/SiteChrome";
 import { ContactModalProvider } from "@/components/contact/ContactModalProvider";
 import { siteConfig } from "@/data/site-config";
 
@@ -52,11 +51,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to main content
         </a>
         <ContactModalProvider>
-          <Header />
-          <main id="main-content" className="flex-1">
-            {children}
-          </main>
-          <Footer />
+          <SiteChrome>{children}</SiteChrome>
         </ContactModalProvider>
       </body>
     </html>
