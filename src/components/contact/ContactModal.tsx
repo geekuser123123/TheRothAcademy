@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, X } from "lucide-react";
 import { useContactModal } from "@/components/contact/ContactModalProvider";
+import { getPageLabel } from "@/lib/page-label";
 
 const INTEREST_OPTIONS = [
   "I am exploring my options",
@@ -72,7 +73,7 @@ export function ContactModal() {
           message: data.get("message"),
           otherParties: data.get("otherParties"),
           deadline: data.get("deadline"),
-          page: pathname,
+          page: getPageLabel(pathname),
         }),
       });
       if (!response.ok) throw new Error("Request failed");
