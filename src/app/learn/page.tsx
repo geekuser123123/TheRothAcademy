@@ -19,7 +19,7 @@ export default function LearnPage() {
         title={learnHero.title}
         goldLine={learnHero.goldLine}
         description={learnHero.description}
-        imageSrc="/gold-dust-hero.jpg"
+        imageSrc="/learn/hero.webp"
       />
 
       <LearnDirectory />

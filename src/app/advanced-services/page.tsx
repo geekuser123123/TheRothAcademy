@@ -22,7 +22,7 @@ export default function AdvancedServicesPage() {
         stats={advancedServicesHero.stats}
         contactTopic="Advanced services"
         primaryCta={{ label: "Talk Through My Situation" }}
-        imageSrc="/gold-dust-hero.jpg"
+        imageSrc="/advanced-services/hero.webp"
       />
 
       <ServiceIntroBand

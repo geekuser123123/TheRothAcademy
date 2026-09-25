@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BookOpen, ChevronRight, Clock } from "lucide-react";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -16,8 +17,25 @@ export function LessonHero({
   intro: string;
 }) {
   return (
-    <section className="border-b border-r-line bg-r-stripe-2 pb-16 pt-40 md:pb-20 md:pt-48">
-      <div className="container-brand max-w-3xl">
+    <section className="relative overflow-hidden border-b border-r-line bg-r-stripe-2 pb-16 pt-40 md:pb-20 md:pt-48">
+      <Image
+        aria-hidden
+        src="/gold-dust-hero.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="pointer-events-none object-cover"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(100deg, rgba(9,10,11,0.96) 0%, rgba(9,10,11,0.88) 32%, rgba(9,10,11,0.55) 60%, rgba(9,10,11,0.75) 100%), linear-gradient(0deg, rgba(9,10,11,0.9) 0%, rgba(9,10,11,0.2) 35%, rgba(9,10,11,0.35) 100%)",
+        }}
+      />
+      <div className="container-brand relative max-w-3xl">
         <nav
           aria-label="Breadcrumb"
           className="flex flex-wrap items-center gap-2 text-xs text-r-muted font-body normal-case"
