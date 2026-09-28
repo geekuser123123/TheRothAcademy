@@ -67,6 +67,7 @@ export function ContactModal() {
         body: JSON.stringify({
           name: data.get("name"),
           email: data.get("email"),
+          phone: data.get("phone"),
           location: data.get("location"),
           interest: data.get("interest"),
           message: data.get("message"),
@@ -144,17 +145,25 @@ export function ContactModal() {
                 />
               </label>
 
-              <label className="block" htmlFor="contact-email">
-                <span className={labelClasses}>Email</span>
-                <input
-                  id="contact-email"
-                  name="email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  className={inputClasses}
-                />
-              </label>
+              <div className="grid gap-5 sm:grid-cols-2">
+                <label className="block" htmlFor="contact-email">
+                  <span className={labelClasses}>Email</span>
+                  <input
+                    id="contact-email"
+                    name="email"
+                    type="email"
+                    required
+                    autoComplete="email"
+                    className={inputClasses}
+                  />
+                </label>
+                <label className="block" htmlFor="contact-phone">
+                  <span className={labelClasses}>
+                    Phone <span className="normal-case text-r-muted/60">(optional)</span>
+                  </span>
+                  <input id="contact-phone" name="phone" type="tel" autoComplete="tel" className={inputClasses} />
+                </label>
+              </div>
 
               <div className="grid gap-5 sm:grid-cols-2">
                 <label className="block" htmlFor="contact-location">
