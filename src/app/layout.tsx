@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Teko, Poppins } from "next/font/google";
 import "./globals.css";
 import { SiteChrome } from "@/components/layout/SiteChrome";
@@ -53,6 +54,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ContactModalProvider>
           <SiteChrome>{children}</SiteChrome>
         </ContactModalProvider>
+        <Script
+          src="https://link.msgsndr.com/js/external-tracking.js"
+          data-tracking-id="tk_b03c38ae759849af9ae29bdaf079e24a"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
