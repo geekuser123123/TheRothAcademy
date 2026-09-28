@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Landmark, Layers, BookOpen, Compass } from "lucide-react";
 import { heroCapabilities } from "@/data/home-content";
@@ -9,18 +8,20 @@ export function HeroSection() {
   return (
     <>
       <section className="relative flex min-h-[92vh] w-full items-center overflow-hidden border-b border-r-line">
-        {/* Gold-dust texture background */}
-        <Image
+        {/* City-at-dusk background video — sets a financial-district tone behind the gold brand palette */}
+        <video
           aria-hidden
-          src="/gold-dust-hero.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="pointer-events-none object-cover"
-        />
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+        >
+          <source src="/videos/hero-background.mp4" type="video/mp4" />
+        </video>
 
-        {/* Scrim for text legibility over the background */}
+        {/* Scrim for text legibility over the video */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
