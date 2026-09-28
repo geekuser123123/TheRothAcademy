@@ -65,13 +65,13 @@ export function ContactModal() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: data.get("name"),
+          name: data.get("first_name"),
           email: data.get("email"),
           phone: data.get("phone"),
           location: data.get("location"),
           interest: data.get("interest"),
           message: data.get("message"),
-          otherParties: data.get("otherParties"),
+          otherParties: data.get("otherparties"),
           deadline: data.get("deadline"),
           page: getPageLabel(pathname),
         }),
@@ -137,7 +137,7 @@ export function ContactModal() {
                 <input
                   ref={nameInputRef}
                   id="contact-name"
-                  name="name"
+                  name="first_name"
                   type="text"
                   required
                   autoComplete="name"
@@ -212,7 +212,7 @@ export function ContactModal() {
                 </span>
                 <textarea
                   id="contact-other-parties"
-                  name="otherParties"
+                  name="otherparties"
                   rows={2}
                   placeholder="Names for the initial review"
                   className={`${inputClasses} resize-none`}
