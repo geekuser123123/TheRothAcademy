@@ -7,6 +7,11 @@ export const siteConfig = {
   email: "access@therothacademy.com",
   phone: "(888) 988-8509",
   phoneTel: "+18889888509",
+  addressLine1: "3515 Longmire Dr, Ste B",
+  addressCity: "College Station",
+  addressState: "TX",
+  addressZip: "77845",
+  stateFull: "Texas",
   disclaimer:
     "Roth Academy provides education, onboarding, administrative support, and implementation coordination. It is not a law firm, investment adviser, or custodian. Individual professional advice and legal work require the appropriate separate engagement. No investment, tax treatment, or financial result is guaranteed.",
 };
