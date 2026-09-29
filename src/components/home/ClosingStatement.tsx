@@ -12,10 +12,14 @@ export function ClosingStatement({
     </>
   ),
   description = "Your goals deserve more than a standard plan. Open a plan and put your retirement money to work.",
+  primaryLabel = "Open a Plan",
+  primaryHref = planDestinations.openPlan,
 }: {
   ghostText?: string;
   heading?: React.ReactNode;
   description?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
 } = {}) {
   return (
     <section className="relative overflow-hidden border-t border-r-line bg-r-bg py-20 md:py-28">
@@ -51,10 +55,10 @@ export function ClosingStatement({
           <p className="max-w-sm text-sm text-r-muted font-body normal-case">{description}</p>
           <div className="mt-6 flex flex-wrap items-center gap-5">
             <Link
-              href={planDestinations.openPlan}
+              href={primaryHref}
               className="inline-flex shrink-0 items-center gap-2 rounded-[var(--radius-brand-control)] bg-r-gold px-8 py-4 text-sm font-semibold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
             >
-              Open a Plan
+              {primaryLabel}
               <ArrowUpRight size={18} aria-hidden />
             </Link>
             <Link

@@ -1,7 +1,7 @@
 export const serviceIraHero = {
   eyebrow: "For Individual Investors",
-  title: ["Move Beyond", "The Usual", "Menu."],
-  goldLine: 2,
+  title: ["Give Your Retirement Money", "More Possibilities."],
+  goldLine: 1,
   description:
     "A self-directed IRA puts your retirement savings to work in the assets you already understand — real estate, private lending, and more — inside an account built for individual investors.",
   whoItsFor:
@@ -20,29 +20,45 @@ export const serviceIraHero = {
 };
 
 export const serviceIraFoundation = {
-  eyebrow: "What This Opens Up",
-  heading: ["A Stronger Foundation.", "More To Explore."],
+  eyebrow: "Who It Fits",
+  heading: ["Built For", "Individual Investors."],
   steps: [
     {
       number: "01",
-      title: "Expand The Conversation",
-      description: "Explore real estate, private lending, qualifying metals, digital assets, and other investments supported by the provider.",
+      title: "Individual Investors",
+      description: "Anyone with earned income or existing retirement funds to roll over — no business ownership required.",
     },
     {
       number: "02",
-      title: "Keep The Provider In View",
-      description: "A self-directed IRA still needs a qualified trustee or custodian. Provider capability and fees matter.",
+      title: "Existing Account Holders",
+      description: "Investors moving funds from an old 401(k) or an existing IRA into a self-directed account.",
     },
     {
       number: "03",
-      title: "Review The Tax Character",
-      description: "Traditional and Roth IRAs have different rules. Existing account history and proposed funding deserve attention.",
+      title: "Hands-On Investors",
+      description: "Anyone ready to move beyond a fixed menu of mutual funds and stocks.",
     },
   ],
 };
 
+export const serviceIraPricing = {
+  eyebrow: "What You Get",
+  heading: ["Package", "Inclusions."],
+  intro: "Everything needed to establish and maintain your self-directed IRA.",
+  included: [
+    "Account setup coordination with a qualified custodian",
+    "Guidance choosing Traditional, Roth, or SEP",
+    "Rollover and transfer guidance",
+    "Team support through setup and your first transaction",
+  ],
+  setupFee: "[Setup fee — TBD]",
+  ongoingFee: "[Ongoing fee — TBD]",
+  providerCosts: "Custodian and provider fees are billed separately by your account provider. [Provider cost details — TBD]",
+  note: "Final pricing is confirmed during your account review.",
+};
+
 export const serviceIraOverview = {
-  eyebrow: "The Account",
+  eyebrow: "The Benefits",
   heading: ["What Is A", "Self-Directed IRA?"],
   paragraphs: [
     "A self-directed IRA is an individual retirement account administered under the same IRS rules as any traditional or Roth IRA — held with a custodian that allows a broader range of assets than a typical brokerage IRA.",

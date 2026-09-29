@@ -3,16 +3,17 @@ import { ServiceHero } from "@/components/services/ServiceHero";
 import { ServiceOverview } from "@/components/services/ServiceOverview";
 import { ServiceProcess } from "@/components/services/ServiceProcess";
 import { ServiceAssetGrid } from "@/components/services/ServiceAssetGrid";
-import { ServiceScenario } from "@/components/services/ServiceScenario";
+import { ServicePricing } from "@/components/services/ServicePricing";
 import { ServiceFaq } from "@/components/services/ServiceFaq";
 import { ServiceCrossLink } from "@/components/services/ServiceCrossLink";
 import { ClosingStatement } from "@/components/home/ClosingStatement";
+import { planDestinations } from "@/data/site-config";
 import {
   serviceIraHero,
   serviceIraFoundation,
   serviceIraOverview,
+  serviceIraPricing,
   serviceIraProcess,
-  serviceIraScenario,
   serviceIraFaq,
   serviceIraCrossLink,
 } from "@/data/self-directed-ira-content";
@@ -33,17 +34,10 @@ export default function SelfDirectedIraPage() {
         description={serviceIraHero.description}
         whoItsFor={serviceIraHero.whoItsFor}
         contactTopic="Self-Directed IRA"
-        primaryCta={{ label: "Explore My IRA Options" }}
-        secondaryCta={{ label: "Explore advanced services", href: "/advanced-services" }}
+        primaryCta={{ label: "Open My IRA", href: planDestinations.openIra }}
+        secondaryCta={{ label: "Ask a Question", href: planDestinations.getHelp }}
         imageSrc="/services/ira/hero.webp"
         summary={serviceIraHero.summary}
-      />
-
-      <ServiceProcess
-        eyebrow={serviceIraFoundation.eyebrow}
-        heading={serviceIraFoundation.heading}
-        steps={serviceIraFoundation.steps}
-        columns={3}
       />
 
       <ServiceOverview
@@ -56,6 +50,13 @@ export default function SelfDirectedIraPage() {
         reverse
       />
 
+      <ServiceProcess
+        eyebrow={serviceIraFoundation.eyebrow}
+        heading={serviceIraFoundation.heading}
+        steps={serviceIraFoundation.steps}
+        columns={3}
+      />
+
       <ServiceAssetGrid
         eyebrow="Inside The Account"
         heading={["What Your IRA", "Can Hold."]}
@@ -64,22 +65,22 @@ export default function SelfDirectedIraPage() {
         footnote="Investment availability depends on the account, provider, and applicable rules. The academy does not recommend or custody investments."
       />
 
+      <ServicePricing
+        eyebrow={serviceIraPricing.eyebrow}
+        heading={serviceIraPricing.heading}
+        intro={serviceIraPricing.intro}
+        included={serviceIraPricing.included}
+        setupFee={serviceIraPricing.setupFee}
+        ongoingFee={serviceIraPricing.ongoingFee}
+        providerCosts={serviceIraPricing.providerCosts}
+        note={serviceIraPricing.note}
+      />
+
       <ServiceProcess
         eyebrow={serviceIraProcess.eyebrow}
         heading={serviceIraProcess.heading}
         intro={serviceIraProcess.intro}
         steps={serviceIraProcess.steps}
-      />
-
-      <ServiceScenario
-        eyebrow={serviceIraScenario.eyebrow}
-        heading={serviceIraScenario.heading}
-        paragraphs={serviceIraScenario.paragraphs}
-        note={serviceIraScenario.note}
-        prepTitle={serviceIraScenario.prepTitle}
-        prepItems={serviceIraScenario.prepItems}
-        ctaLabel={serviceIraScenario.ctaLabel}
-        contactTopic="Self-Directed IRA"
       />
 
       <ServiceFaq
@@ -95,7 +96,7 @@ export default function SelfDirectedIraPage() {
         href={serviceIraCrossLink.href}
       />
 
-      <ClosingStatement />
+      <ClosingStatement primaryLabel="Open My IRA" primaryHref={planDestinations.openIra} />
     </>
   );
 }

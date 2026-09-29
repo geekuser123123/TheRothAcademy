@@ -3,16 +3,17 @@ import { ServiceHero } from "@/components/services/ServiceHero";
 import { ServiceOverview } from "@/components/services/ServiceOverview";
 import { ServiceProcess } from "@/components/services/ServiceProcess";
 import { ServiceAssetGrid } from "@/components/services/ServiceAssetGrid";
-import { ServiceScenario } from "@/components/services/ServiceScenario";
+import { ServicePricing } from "@/components/services/ServicePricing";
 import { ServiceFaq } from "@/components/services/ServiceFaq";
 import { ServiceCrossLink } from "@/components/services/ServiceCrossLink";
 import { ClosingStatement } from "@/components/home/ClosingStatement";
+import { planDestinations } from "@/data/site-config";
 import {
   service401kHero,
   service401kFoundation,
   service401kOverview,
+  service401kPricing,
   service401kProcess,
-  service401kScenario,
   service401kFaq,
   service401kCrossLink,
 } from "@/data/self-directed-401k-content";
@@ -33,17 +34,10 @@ export default function SelfDirected401kPage() {
         description={service401kHero.description}
         whoItsFor={service401kHero.whoItsFor}
         contactTopic="Self-Directed 401(k)"
-        primaryCta={{ label: "Start My 401(k) Conversation" }}
-        secondaryCta={{ label: "Explore advanced services", href: "/advanced-services" }}
+        primaryCta={{ label: "Open My 401(k)", href: planDestinations.open401k }}
+        secondaryCta={{ label: "Ask a Question", href: planDestinations.getHelp }}
         imageSrc="/services/401k/hero.webp"
         summary={service401kHero.summary}
-      />
-
-      <ServiceProcess
-        eyebrow={service401kFoundation.eyebrow}
-        heading={service401kFoundation.heading}
-        steps={service401kFoundation.steps}
-        columns={3}
       />
 
       <ServiceOverview
@@ -55,6 +49,13 @@ export default function SelfDirected401kPage() {
         imageAlt="Self-directed 401(k) plan documents"
       />
 
+      <ServiceProcess
+        eyebrow={service401kFoundation.eyebrow}
+        heading={service401kFoundation.heading}
+        steps={service401kFoundation.steps}
+        columns={3}
+      />
+
       <ServiceAssetGrid
         eyebrow="Inside The Plan"
         heading={["What Your Plan", "Can Hold."]}
@@ -63,22 +64,22 @@ export default function SelfDirected401kPage() {
         footnote="Investment availability depends on the account, provider, and applicable rules. The academy does not recommend or custody investments."
       />
 
+      <ServicePricing
+        eyebrow={service401kPricing.eyebrow}
+        heading={service401kPricing.heading}
+        intro={service401kPricing.intro}
+        included={service401kPricing.included}
+        setupFee={service401kPricing.setupFee}
+        ongoingFee={service401kPricing.ongoingFee}
+        providerCosts={service401kPricing.providerCosts}
+        note={service401kPricing.note}
+      />
+
       <ServiceProcess
         eyebrow={service401kProcess.eyebrow}
         heading={service401kProcess.heading}
         intro={service401kProcess.intro}
         steps={service401kProcess.steps}
-      />
-
-      <ServiceScenario
-        eyebrow={service401kScenario.eyebrow}
-        heading={service401kScenario.heading}
-        paragraphs={service401kScenario.paragraphs}
-        note={service401kScenario.note}
-        prepTitle={service401kScenario.prepTitle}
-        prepItems={service401kScenario.prepItems}
-        ctaLabel={service401kScenario.ctaLabel}
-        contactTopic="Self-Directed 401(k)"
       />
 
       <ServiceFaq
@@ -94,7 +95,7 @@ export default function SelfDirected401kPage() {
         href={service401kCrossLink.href}
       />
 
-      <ClosingStatement />
+      <ClosingStatement primaryLabel="Open My 401(k)" primaryHref={planDestinations.open401k} />
     </>
   );
 }

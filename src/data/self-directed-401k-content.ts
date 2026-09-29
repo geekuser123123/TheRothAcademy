@@ -1,7 +1,7 @@
 export const service401kHero = {
   eyebrow: "For Business Owners",
-  title: ["Build A Plan", "Around Your", "Business."],
-  goldLine: 2,
+  title: ["Build Your Retirement", "Around Your Business."],
+  goldLine: 1,
   description:
     "A self-directed 401(k) is built for owners who want their retirement plan to work as hard as they do — with room for the assets you already understand.",
   whoItsFor:
@@ -20,29 +20,45 @@ export const service401kHero = {
 };
 
 export const service401kFoundation = {
-  eyebrow: "What This Opens Up",
-  heading: ["A Stronger Foundation.", "More To Explore."],
+  eyebrow: "Who It Fits",
+  heading: ["Built For", "Business Owners."],
   steps: [
     {
       number: "01",
-      title: "A Plan For Your Business",
-      description: "Start with the business that supports the arrangement, including ownership and participant eligibility.",
+      title: "Owner-Only Businesses",
+      description: "Sole proprietors, partnerships, and corporations with no full-time employees other than an owner or spouse.",
     },
     {
       number: "02",
-      title: "Features With A Purpose",
-      description: "Evaluate the plan's permitted contribution, Roth, rollover, and participant-loan features where relevant.",
+      title: "Ready To Contribute More",
+      description: "Owners who want higher contribution limits than a traditional IRA allows.",
     },
     {
       number: "03",
-      title: "Room To Explore",
-      description: "Review investment possibilities and account providers in the context of the actual plan and transaction.",
+      title: "Hands-On Investors",
+      description: "Anyone who wants checkbook-level control over their plan's investments.",
     },
   ],
 };
 
+export const service401kPricing = {
+  eyebrow: "What You Get",
+  heading: ["Package", "Inclusions."],
+  intro: "Everything needed to establish and maintain your self-directed 401(k).",
+  included: [
+    "Plan document package built for your business",
+    "Account setup coordination with your chosen provider",
+    "Rollover and contribution guidance",
+    "Team support through setup and your first transaction",
+  ],
+  setupFee: "[Setup fee — TBD]",
+  ongoingFee: "[Ongoing fee — TBD]",
+  providerCosts: "Provider and custodian fees are billed separately by your account provider. [Provider cost details — TBD]",
+  note: "Final pricing is confirmed during your plan review.",
+};
+
 export const service401kOverview = {
-  eyebrow: "The Account",
+  eyebrow: "The Benefits",
   heading: ["What Is A", "Self-Directed 401(k)?"],
   paragraphs: [
     "A self-directed 401(k) is a qualified retirement plan designed for your business, administered under the same IRS rules that govern any 401(k) — with a plan document that opens the door to a wider range of assets.",
