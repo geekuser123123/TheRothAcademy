@@ -3,18 +3,17 @@ import { learnGuides } from "@/data/learn-content";
 
 const STATIC_PAGE_LABELS: Record<string, string> = {
   "/": "Homepage",
-  "/about": "Our Story",
+  "/about": "About Roth Academy",
   "/advanced-services": "Advanced Services",
   "/contact": "Contact",
   "/events": "Events",
-  "/goals": "Goals",
+  "/goals": "What Would You Invest In?",
   "/learn": "Learn",
   "/plans": "Plans",
-  "/services": "Services",
   "/services/self-directed-401k": "Self-Directed 401(k)",
   "/services/self-directed-ira": "Self-Directed IRA",
-  "/start": "Find My Plan",
-  "/work-with-us": "Work With Us",
+  "/start": "Get Started",
+  "/work-with-us": "How It Works",
 };
 
 // Human-readable label for the page a contact form was submitted from,
