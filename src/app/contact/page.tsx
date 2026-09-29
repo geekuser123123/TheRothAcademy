@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { ServiceHero } from "@/components/services/ServiceHero";
-import { ContactOptionsSection } from "@/components/contact/ContactOptionsSection";
-import { SupportBanner } from "@/components/ui/SupportBanner";
+import { ContactForm } from "@/components/contact/ContactForm";
 import { ClosingStatement } from "@/components/home/ClosingStatement";
-import { contactHero, clientBanner } from "@/data/contact-content";
+import { contactHero, clientPortal } from "@/data/contact-content";
+import { siteConfig } from "@/data/site-config";
 
 export const metadata: Metadata = {
-  title: "Contact the Team",
-  description: "Tell the Roth Academy team what you want to accomplish. Begin with a clear objective and the right next step.",
+  title: "Have a Question Before Getting Started?",
+  description: "Ask the team a plan question, get help choosing between a 401(k) and an IRA, or find your existing-client support contact.",
 };
 
 export default function ContactPage() {
@@ -20,15 +20,27 @@ export default function ContactPage() {
         description={contactHero.description}
       />
 
-      <ContactOptionsSection />
+      <section className="border-b border-r-line bg-r-bg py-16 md:py-24">
+        <div className="container-brand max-w-2xl">
+          <ContactForm />
+        </div>
+      </section>
 
-      <SupportBanner
-        heading={clientBanner.heading}
-        description={clientBanner.description}
-        cta={clientBanner.cta}
-        href={clientBanner.href}
-        variant="outline"
-      />
+      <section className="border-b border-r-line bg-r-stripe-2 py-14">
+        <div className="container-brand max-w-2xl">
+          <h2 className="text-2xl md:text-3xl">{clientPortal.heading}</h2>
+          <p className="mt-2 text-sm text-r-muted font-body normal-case">{clientPortal.description}</p>
+          <p className="mt-4 text-sm text-r-muted/80 font-body normal-case">{clientPortal.note}</p>
+          <div className="mt-4 space-y-1 text-sm font-body normal-case">
+            <a href={`mailto:${siteConfig.email}`} className="block text-r-gold hover:text-r-gold-light transition-colors">
+              {siteConfig.email}
+            </a>
+            <a href={`tel:${siteConfig.phoneTel}`} className="block text-r-gold hover:text-r-gold-light transition-colors">
+              {siteConfig.phone}
+            </a>
+          </div>
+        </div>
+      </section>
 
       <ClosingStatement />
     </>
