@@ -2,21 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import { ArrowUpRight, Building2, HelpCircle, User, Check } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { clsx } from "clsx";
+import { PlanInterestChooser } from "@/components/ui/PlanInterestChooser";
 import { getPageLabel } from "@/lib/page-label";
 import { planInterestOptions, type PlanInterestValue } from "@/data/start-content";
 
 const inputClasses =
   "mt-2 block w-full rounded-sm border border-r-line bg-r-bg px-4 py-3 text-sm text-r-white font-body normal-case placeholder:text-r-muted/50 transition-colors focus:border-r-gold focus:outline-none";
 const labelClasses = "text-xs font-semibold uppercase tracking-[0.15em] text-r-muted";
-
-const planIcons = { "401k": Building2, ira: User, "help-me-choose": HelpCircle };
-const planCardDescriptions = {
-  "401k": "For business owners.",
-  ira: "For individual investors.",
-  "help-me-choose": "Not sure yet? We'll help.",
-};
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -99,47 +93,7 @@ export function StartForm() {
 
   return card(
     <form onSubmit={handleSubmit} className="space-y-10">
-      <div>
-        <span className={labelClasses}>Plan Interest</span>
-        <div role="radiogroup" aria-label="Plan interest" className="mt-3 grid gap-3 sm:grid-cols-3">
-          {planInterestOptions.map((option) => {
-            const Icon = planIcons[option.value];
-            const active = planInterest === option.value;
-            return (
-              <button
-                key={option.value}
-                type="button"
-                role="radio"
-                aria-checked={active}
-                onClick={() => setPlanInterest(option.value)}
-                className={clsx(
-                  "flex flex-col items-start gap-3 rounded-[var(--radius-brand-control)] border p-4 text-left transition-colors",
-                  active
-                    ? "border-r-gold bg-r-gold/10"
-                    : "border-r-line bg-r-bg/40 hover:border-r-gold/50 hover:bg-r-bg/70",
-                )}
-              >
-                <span
-                  className={clsx(
-                    "flex h-9 w-9 items-center justify-center rounded-full border",
-                    active ? "border-r-gold text-r-gold" : "border-r-line text-r-muted",
-                  )}
-                >
-                  <Icon size={16} aria-hidden />
-                </span>
-                <span>
-                  <span className={clsx("block text-sm font-semibold", active ? "text-r-white" : "text-r-white/90")}>
-                    {option.label}
-                  </span>
-                  <span className="mt-0.5 block text-xs text-r-muted font-body normal-case">
-                    {planCardDescriptions[option.value]}
-                  </span>
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
+      <PlanInterestChooser value={planInterest} onChange={setPlanInterest} />
 
       <div className="border-t border-r-line pt-8">
         <span className={clsx(labelClasses, "text-r-gold")}>Your Information</span>
