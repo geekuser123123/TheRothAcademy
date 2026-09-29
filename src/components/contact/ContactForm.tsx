@@ -39,7 +39,7 @@ export function ContactForm() {
           name: data.get("name"),
           email,
           phone,
-          planInterest,
+          interest: planInterest,
           message: data.get("question"),
           page: getPageLabel(pathname),
         }),
