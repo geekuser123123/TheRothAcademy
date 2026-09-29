@@ -34,31 +34,46 @@ export const plansComparison = {
   heading: ["Which Starting Point", "Fits Your World?"],
   intro: "This is a starting comparison. Eligibility, provider capabilities, and the actual account or plan terms still need review.",
   columns: ["Self-Directed 401(k)", "Self-Directed IRA"],
+  columnCtas: [
+    { label: "Open My 401(k)", href: "/start?plan=401k" },
+    { label: "Open My IRA", href: "/start?plan=ira" },
+  ],
   rows: [
     {
-      question: "What is the starting point?",
-      answers: ["A business-sponsored retirement plan.", "An individual retirement account with an appropriate provider."],
-    },
-    {
-      question: "What will we review first?",
+      question: "Who does it serve?",
       answers: [
-        "Business ownership, eligible participants, other plans, and intended investments.",
-        "Existing retirement accounts, intended assets, provider capabilities, and funding.",
+        "Business owners — sole proprietors, partnerships, and corporations.",
+        "Individual investors, with or without business ownership.",
       ],
     },
     {
-      question: "What are we setting up?",
+      question: "Business eligibility",
       answers: [
-        "The agreed plan documents and account-opening preparation.",
-        "The agreed provider and structure coordination for your IRA.",
+        "Owner-only businesses with no full-time employees other than an owner or spouse.",
+        "None required — anyone with earned income or funds to roll over can open one.",
       ],
     },
     {
-      question: "What happens after setup?",
+      question: "Funding options",
       answers: [
-        "Records, plan administration, and separately scoped help as needed.",
-        "Custodian records, account responsibilities, and separately scoped help as needed.",
+        "Employee deferral and employer profit-sharing contributions, plus rollovers from eligible plans.",
+        "Annual contributions plus rollovers from an old 401(k) or existing IRA.",
       ],
+    },
+    {
+      question: "Key features",
+      answers: [
+        "Higher contribution limits, checkbook-level control, and a built-in loan provision where the plan allows.",
+        "Traditional, Roth, or SEP options, with checkbook-level control available through certain structures.",
+      ],
+    },
+    {
+      question: "Setup cost",
+      answers: ["[Setup fee — TBD]", "[Setup fee — TBD]"],
+    },
+    {
+      question: "Ongoing cost",
+      answers: ["[Ongoing fee — TBD]", "[Ongoing fee — TBD]"],
     },
   ],
 };

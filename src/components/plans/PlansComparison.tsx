@@ -1,5 +1,8 @@
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { plansComparison } from "@/data/plans-content";
+import { planDestinations } from "@/data/site-config";
 
 export function PlansComparison() {
   return (
@@ -72,6 +75,27 @@ export function PlansComparison() {
             </div>
           ))}
         </div>
+
+        <div className="mt-10 grid gap-4 border-t border-r-line pt-8 sm:grid-cols-2">
+          {plansComparison.columnCtas.map((cta) => (
+            <Link
+              key={cta.href}
+              href={cta.href}
+              className="inline-flex items-center justify-center gap-2 rounded-[var(--radius-brand-control)] bg-r-gold px-6 py-3 text-sm font-semibold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
+            >
+              {cta.label}
+              <ArrowUpRight size={16} aria-hidden />
+            </Link>
+          ))}
+        </div>
+
+        <Link
+          href={planDestinations.getHelp}
+          className="mt-6 flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wide text-r-gold"
+        >
+          Help Me Choose
+          <ArrowUpRight size={16} aria-hidden />
+        </Link>
       </div>
     </section>
   );
