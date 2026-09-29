@@ -17,13 +17,19 @@ export const siteConfig = {
 };
 
 export const mainNav = [
-  { label: "401(k)", href: "/services/self-directed-401k" },
-  { label: "IRA", href: "/services/self-directed-ira" },
-  { label: "Advanced services", href: "/advanced-services" },
+  { label: "Self-Directed 401(k)", href: "/services/self-directed-401k" },
+  { label: "Self-Directed IRA", href: "/services/self-directed-ira" },
   { label: "Learn", href: "/learn" },
-  { label: "Events", href: "/events" },
-  { label: "Our story", href: "/about" },
+  { label: "Get Help", href: "/contact" },
 ];
+
+export const planDestinations = {
+  openPlan: "/start",
+  open401k: "/start?plan=401k",
+  openIra: "/start?plan=ira",
+  comparePlans: "/plans",
+  getHelp: "/contact",
+};
 
 export const footerNav = {
   startHere: {
@@ -31,25 +37,23 @@ export const footerNav = {
     links: [
       { label: "Self-Directed 401(k)", href: "/services/self-directed-401k" },
       { label: "Self-Directed IRA", href: "/services/self-directed-ira" },
-      { label: "Advanced services", href: "/advanced-services" },
-      { label: "All services", href: "/services" },
-      { label: "Find my starting point", href: "/start" },
+      { label: "Compare Plans", href: "/plans" },
+      { label: "What Would You Invest In?", href: "/goals" },
     ],
   },
   academy: {
     title: "The Academy",
     links: [
-      { label: "Our story", href: "/about" },
-      { label: "Knowledge library", href: "/learn" },
-      { label: "Explore by goal", href: "/goals" },
-      { label: "Events & workshops", href: "/events" },
-      { label: "How we work", href: "/work-with-us" },
+      { label: "About Roth Academy", href: "/about" },
+      { label: "How It Works", href: "/work-with-us" },
+      { label: "Knowledge Library", href: "/learn" },
     ],
   },
   nextStep: {
     title: "Your Next Step",
     links: [
-      { label: "Contact the team", href: "/contact" },
+      { label: "Open a Plan", href: "/start" },
+      { label: "Get Help", href: "/contact" },
     ],
   },
 };

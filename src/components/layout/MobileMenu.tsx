@@ -4,8 +4,7 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { Menu, X, ArrowUpRight } from "lucide-react";
-import { mainNav } from "@/data/site-config";
-import { useContactModal } from "@/components/contact/ContactModalProvider";
+import { mainNav, planDestinations } from "@/data/site-config";
 
 function subscribeNoop() {
   return () => {};
@@ -15,7 +14,6 @@ export function MobileMenu() {
   const [open, setOpen] = useState(false);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
-  const { open: openContactModal } = useContactModal();
 
   // The header applies backdrop-filter once the page scrolls, which makes it
   // the containing block for any `fixed` descendant — pinning this panel to
@@ -96,17 +94,14 @@ export function MobileMenu() {
         </nav>
 
         <div className="p-6">
-          <button
-            type="button"
-            onClick={() => {
-              close();
-              openContactModal();
-            }}
+          <Link
+            href={planDestinations.openPlan}
+            onClick={close}
             className="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-r-gold px-6 py-3 font-body text-sm font-semibold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
           >
-            Start a conversation
+            Open a Plan
             <ArrowUpRight size={16} aria-hidden />
-          </button>
+          </Link>
 
           <div className="mt-6 flex flex-wrap items-center gap-4">
             <span aria-disabled="true" className="font-body text-sm font-medium uppercase tracking-wide text-r-muted">
@@ -117,7 +112,7 @@ export function MobileMenu() {
               onClick={close}
               className="font-body text-sm font-medium normal-case text-r-white/90 transition-colors hover:text-r-gold"
             >
-              Contact the team
+              Get Help
             </Link>
           </div>
         </div>

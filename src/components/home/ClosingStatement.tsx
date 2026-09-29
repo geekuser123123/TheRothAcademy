@@ -1,13 +1,22 @@
-"use client";
-
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { useContactModal } from "@/components/contact/ContactModalProvider";
+import { planDestinations } from "@/data/site-config";
 
 const words = ["Discipline", "Today", "Freedom", "Tomorrow"];
 
-export function ClosingStatement({ ghostText }: { ghostText?: string } = {}) {
-  const { open } = useContactModal();
-
+export function ClosingStatement({
+  ghostText,
+  heading = (
+    <>
+      Make It <span className="text-r-gold">Count.</span>
+    </>
+  ),
+  description = "Your goals deserve more than a standard plan. Open a plan and put your retirement money to work.",
+}: {
+  ghostText?: string;
+  heading?: React.ReactNode;
+  description?: string;
+} = {}) {
   return (
     <section className="relative overflow-hidden border-t border-r-line bg-r-bg py-20 md:py-28">
       {ghostText && (
@@ -35,24 +44,26 @@ export function ClosingStatement({ ghostText }: { ghostText?: string } = {}) {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-r-gold">
             A More Independent Tomorrow
           </p>
-          <h2 className="mt-4 text-5xl sm:text-6xl md:text-7xl">
-            Make It <span className="text-r-gold">Count.</span>
-          </h2>
+          <h2 className="mt-4 text-5xl sm:text-6xl md:text-7xl">{heading}</h2>
         </div>
 
         <div className="min-w-0">
-          <p className="max-w-sm text-sm text-r-muted font-body normal-case">
-            Your goals deserve more than a standard plan. Let&apos;s explore what&apos;s possible —
-            together.
-          </p>
-          <button
-            type="button"
-            onClick={() => open()}
-            className="mt-6 inline-flex shrink-0 items-center gap-2 rounded-[var(--radius-brand-control)] bg-r-gold px-8 py-4 text-sm font-semibold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
-          >
-            Let&apos;s talk
-            <ArrowUpRight size={18} aria-hidden />
-          </button>
+          <p className="max-w-sm text-sm text-r-muted font-body normal-case">{description}</p>
+          <div className="mt-6 flex flex-wrap items-center gap-5">
+            <Link
+              href={planDestinations.openPlan}
+              className="inline-flex shrink-0 items-center gap-2 rounded-[var(--radius-brand-control)] bg-r-gold px-8 py-4 text-sm font-semibold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
+            >
+              Open a Plan
+              <ArrowUpRight size={18} aria-hidden />
+            </Link>
+            <Link
+              href={planDestinations.getHelp}
+              className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold uppercase tracking-wide text-r-gold"
+            >
+              Ask a Question
+            </Link>
+          </div>
         </div>
 
         <div className="hidden shrink-0 md:block">
