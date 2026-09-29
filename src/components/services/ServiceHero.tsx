@@ -110,11 +110,11 @@ export function ServiceHero({
             </p>
 
             <h1
-              className="max-w-3xl"
+              className={clsx(!summary && "max-w-3xl")}
               style={{
                 marginTop: 35,
-                fontSize: "clamp(76px, 10.8vw, 146px)",
-                lineHeight: 0.9,
+                fontSize: summary ? "clamp(48px, 6vw, 84px)" : "clamp(76px, 10.8vw, 146px)",
+                lineHeight: 0.95,
                 letterSpacing: "-0.025em",
               }}
             >
