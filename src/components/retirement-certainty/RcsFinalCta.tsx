@@ -371,7 +371,7 @@ const TRUST_ITEMS = [
     ),
   },
   {
-    label: "400% guarantee",
+    label: "250% guarantee",
     icon: (
       <svg className="fcs-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -383,7 +383,7 @@ const TRUST_ITEMS = [
 const STATS = [
   { num: "25+", label: "Years of Specialist Experience" },
   { num: "$125", label: "Flat Consultation Fee" },
-  { num: "400%", label: "Value Guarantee or Refund" },
+  { num: "250%", label: "Value Guarantee or Refund" },
 ];
 
 export function RcsFinalCta() {
@@ -454,11 +454,11 @@ export function RcsFinalCta() {
           <div className="fcs-bottom-left">
             <div className="fcs-bottom-badge">
               <div className="fcs-bottom-badge-seal">
-                <div className="fcs-bottom-badge-pct">400%</div>
+                <div className="fcs-bottom-badge-pct">250%</div>
                 <div className="fcs-bottom-badge-word">Guar.</div>
               </div>
               <div className="fcs-bottom-badge-text">
-                <strong>400% Value Guarantee</strong>
+                <strong>250% Value Guarantee</strong>
                 <span>Full refund within 7 days if value isn&apos;t delivered.</span>
               </div>
             </div>

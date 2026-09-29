@@ -488,7 +488,7 @@ export function RcsHelpAreas() {
             </div>
             <div className="fb-stat-sep" />
             <div className="fb-stat">
-              <div className="fb-stat-num">400%</div>
+              <div className="fb-stat-num">250%</div>
               <div className="fb-stat-label">Guarantee</div>
             </div>
           </div>

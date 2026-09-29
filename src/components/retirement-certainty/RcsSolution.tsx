@@ -629,7 +629,7 @@ export function RcsSolution() {
 
               <div className="offer-card-guarantee">
                 <div className="ocg-seal">
-                  <div className="ocg-seal-pct">400%</div>
+                  <div className="ocg-seal-pct">250%</div>
                   <div className="ocg-seal-word">
                     Value
                     <br />
@@ -637,7 +637,7 @@ export function RcsSolution() {
                   </div>
                 </div>
                 <div className="ocg-text">
-                  <strong>400% Value Guarantee</strong>
+                  <strong>250% Value Guarantee</strong>
                   <span>
                     If you don&apos;t receive at least 4× the value of your investment, contact us within 7 days for
                     a full refund. No hassle, no arguments.

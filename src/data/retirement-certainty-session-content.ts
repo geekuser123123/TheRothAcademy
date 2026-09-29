@@ -7,7 +7,7 @@ export const rcsContent = {
     cta: "Book Now",
     stats: [
       { value: "25+", label: "Years of Specialist Experience" },
-      { value: "400%", label: "Value Guarantee or full refund" },
+      { value: "250%", label: "Value Guarantee or full refund" },
     ],
     specialist: {
       name: "Tim Berry",
@@ -45,7 +45,7 @@ export const rcsContent = {
     ],
     banner: {
       text: "Not sure which category you fall into? That's exactly what we're here for.",
-      meta: "15 minutes · $125 · Backed by our 400% Value Guarantee",
+      meta: "15 minutes · $125 · Backed by our 250% Value Guarantee",
       cta: "Book My Consultation Now",
     },
   },
@@ -101,8 +101,8 @@ export const rcsContent = {
       cta: "Book My Consultation",
     },
     guarantee: {
-      badge: "400%",
-      title: "400% Value Guarantee",
+      badge: "250%",
+      title: "250% Value Guarantee",
       description:
         "If you don't receive at least 4× the value of your investment, contact us within 7 days for a full refund. No hassle, no arguments.",
     },
@@ -116,7 +116,7 @@ export const rcsContent = {
     stats: [
       { value: "25+", label: "Years Experience" },
       { value: "$125", label: "Flat Fee" },
-      { value: "400%", label: "Value Guarantee" },
+      { value: "250%", label: "Value Guarantee" },
     ],
     quote: "Confidence isn't built on hope. It's built on knowing.",
     items: [
@@ -221,16 +221,16 @@ export const rcsContent = {
       stats: [
         { value: "15", label: "Minutes" },
         { value: "$125", label: "Flat Fee" },
-        { value: "400%", label: "Guarantee" },
+        { value: "250%", label: "Guarantee" },
       ],
     },
   },
 
   guarantee: {
     eyebrow: "Risk-Free",
-    badge: "400%",
+    badge: "250%",
     badgeSub: "Value Guar.",
-    title: "The 400% Value Guarantee",
+    title: "The 250% Value Guarantee",
     subtitle: "Our promise that you'll walk away with clarity, confidence, and actionable information.",
     quote:
       "If you don't feel you received at least four times the value of your investment, simply contact us within 7 days and we'll make it right. No hassle. No arguments.",
@@ -247,7 +247,7 @@ export const rcsContent = {
     ],
     title2: "You Either Get the Clarity You Paid For Or You Get Your Money Back",
     description:
-      "We get it. Spending money on a consultation is easy when you know you're going to get value. It's a lot harder when you're not sure what you'll receive in return. That's exactly why we offer the 400% Value Guarantee, so you can book with complete confidence.",
+      "We get it. Spending money on a consultation is easy when you know you're going to get value. It's a lot harder when you're not sure what you'll receive in return. That's exactly why we offer the 250% Value Guarantee, so you can book with complete confidence.",
     description2:
       "If you don't feel you received at least four times the value of your $125 investment, simply contact us within 7 days and we'll make it right. No hassle. No arguments.",
     steps: [
@@ -256,7 +256,7 @@ export const rcsContent = {
       "Full refund issued: returned to your original payment method within 5–10 business days",
     ],
     cta: "Book My Consultation: $125",
-    ctaNote: "15 minutes · Instant confirmation · Backed by the 400% Value Guarantee",
+    ctaNote: "15 minutes · Instant confirmation · Backed by the 250% Value Guarantee",
   },
 
   faq: {
@@ -321,18 +321,18 @@ export const rcsContent = {
     description:
       "The IRS doesn't care whether a prohibited transaction was accidental. When your retirement plan holds significant assets, certainty isn't a luxury: it's a necessity. Get answers now, before uncertainty becomes a problem.",
     cta: "Book My Consultation Now",
-    pills: ["15 focused minutes", "Secure payment", "Instant confirmation", "400% guarantee"],
+    pills: ["15 focused minutes", "Secure payment", "Instant confirmation", "250% guarantee"],
     quote: "The most expensive retirement mistake is often the one you do not know you have made. Get clarity before uncertainty becomes a problem.",
     quoteAttribution: "IRA Ideas LLC · 25+ Years of Specialist Experience",
     stats: [
       { value: "25+", label: "Years of Specialist Experience" },
       { value: "$125", label: "Flat Consultation Fee" },
-      { value: "400%", label: "Value Guarantee or Refund" },
+      { value: "250%", label: "Value Guarantee or Refund" },
     ],
     footerGuarantee: {
-      badge: "400%",
+      badge: "250%",
       badgeSub: "Guar.",
-      title: "400% Value Guarantee",
+      title: "250% Value Guarantee",
       description: "Full refund within 7 days if value isn't delivered.",
       quote: "“Confidence isn't built on hope. It's built on knowing.”",
     },

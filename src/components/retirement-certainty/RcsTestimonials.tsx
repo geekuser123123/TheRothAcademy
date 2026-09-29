@@ -621,7 +621,7 @@ export function RcsTestimonials() {
             </div>
             <div className="tbs-divider" />
             <div className="tbs-stat">
-              <div className="tbs-num">400%</div>
+              <div className="tbs-num">250%</div>
               <div className="tbs-label">Value Guarantee</div>
             </div>
             <div className="tbs-divider" />
