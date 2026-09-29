@@ -5,9 +5,11 @@ import Script from "next/script";
 import { CreditCard, Check, Clock, ShieldCheck } from "lucide-react";
 import { rcsContent } from "@/data/retirement-certainty-session-content";
 
-// Live integration — wired to production Stripe + n8n. Do not change these
-// values without updating the matching n8n workflows / Stripe dashboard.
-const STRIPE_PUBLISHABLE_KEY = "pk_live_51UI6jT2eiso8i6zsDPPGW72Fkv3WuLxmNuhVmSulZSfksut4TlmHARwr5z2MybVM7RtuxtZR4bAUCdIpGMPPiIyN005Ld2TTyN";
+// TEMP: Stripe TEST mode key for end-to-end verification — swap back to the
+// live key (pk_live_51UI6jT2eiso8i6zsDPPGW72Fkv3WuLxmNuhVmSulZSfksut4TlmHARwr5z2MybVM7RtuxtZR4bAUCdIpGMPPiIyN005Ld2TTyN)
+// once testing is confirmed working, and switch the n8n "Charge Stripe" node
+// back to the live restricted key at the same time.
+const STRIPE_PUBLISHABLE_KEY = "pk_test_51UI6ja2c0Q84dTy8JJT3865xKgK10bn2HvHDSVIzY8rFMFDHNEai9YXDRId8A37bdeET4Bgk11pWlepaxcHXwfs100LGKoYcxw";
 const N8N_SLOTS_WEBHOOK = "https://n8n.coreautomations.org/webhook/get-slots";
 const N8N_BOOKING_WEBHOOK = "https://n8n.coreautomations.org/webhook/0f7ca06d-b691-4297-834d-5cbd7e473ff5";
 
