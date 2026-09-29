@@ -133,7 +133,7 @@ export const privacySections: LegalArticle[] = [
   {
     heading: "Information we collect",
     body: [
-      "When you submit a contact form, book a session, or opt in to SMS or email updates, we collect the information you provide — typically your name, email address, phone number, and any details about what you'd like to discuss. If you make a payment for a service, our payment processor collects the billing information required to complete that transaction.",
+      "When you submit a contact form, book a session, or opt in to SMS or email updates, we collect the information you provide: typically your name, email address, phone number, and any details about what you'd like to discuss. If you make a payment for a service, our payment processor collects the billing information required to complete that transaction.",
       "We also automatically receive basic technical information, such as the page you submitted a form from, so we can route your inquiry to the right team.",
     ],
   },
@@ -153,7 +153,7 @@ export const privacySections: LegalArticle[] = [
   {
     heading: "Sharing with service providers",
     body: [
-      "We share information with trusted third-party service providers only as needed to operate our business — for example, our scheduling and payment processor to complete a booking, and our customer relationship platform to track and follow up on your inquiry. These providers are contractually limited to using your information to provide their service to us.",
+      "We share information with trusted third-party service providers only as needed to operate our business: for example, our scheduling and payment processor to complete a booking, and our customer relationship platform to track and follow up on your inquiry. These providers are contractually limited to using your information to provide their service to us.",
       "We do not sell, rent, or trade your personal information to third parties for their own marketing purposes.",
     ],
   },

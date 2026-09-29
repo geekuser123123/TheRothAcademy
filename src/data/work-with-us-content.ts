@@ -3,7 +3,7 @@ export const workHero = {
   title: ["From Interest", "To Funded Account."],
   goldLine: 1,
   description:
-    "A clear path from picking a plan to putting money to work — with a team that stays with you the whole way.",
+    "A clear path from picking a plan to putting money to work, with a team that stays with you the whole way.",
 };
 
 export const workSteps = [

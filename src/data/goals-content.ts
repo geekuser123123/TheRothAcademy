@@ -3,7 +3,7 @@ export const goalsHero = {
   title: ["What Would You", "Invest In?"],
   goldLine: 1,
   description:
-    "Real estate, private lending, precious metals, digital assets, stocks and bonds — put your self-directed 401(k) or IRA to work in opportunities you understand.",
+    "Real estate, private lending, precious metals, digital assets, stocks and bonds: put your self-directed 401(k) or IRA to work in opportunities you understand.",
 };
 
 export type InvestmentPossibility = {
@@ -22,7 +22,7 @@ export const investmentPossibilities: InvestmentPossibility[] = [
     label: "Real Estate",
     image: "/investments/real-estate.jpg",
     description:
-      "Your plan can directly own real property — rental homes, land, or commercial buildings — instead of investing indirectly through a REIT or fund.",
+      "Your plan can directly own real property (rental homes, land, or commercial buildings) instead of investing indirectly through a REIT or fund.",
     example:
       "For example, a plan might purchase a rental property with plan funds, with rental income and expenses flowing back through the account.",
   },
@@ -32,7 +32,7 @@ export const investmentPossibilities: InvestmentPossibility[] = [
     label: "Private Lending",
     image: "/investments/private-lending.jpg",
     description:
-      "Put plan funds to work as the lender — financing another party's real estate purchase, business venture, or project — and collect the interest inside your plan.",
+      "Put plan funds to work as the lender (financing another party's real estate purchase, business venture, or project) and collect the interest inside your plan.",
     example:
       "For example, a plan might issue a short-term loan secured by real estate, earning interest as the borrower repays.",
   },
@@ -62,7 +62,7 @@ export const investmentPossibilities: InvestmentPossibility[] = [
     label: "Stocks & Bonds",
     image: "/investments/stocks-bonds.jpg",
     description:
-      "Your plan can still hold traditional investments — individual stocks, bonds, and funds — alongside the alternative assets you add.",
+      "Your plan can still hold traditional investments (individual stocks, bonds, and funds) alongside the alternative assets you add.",
     example:
       "For example, a plan might keep a core position in stocks and bonds while directing a portion toward real estate or private lending.",
   },

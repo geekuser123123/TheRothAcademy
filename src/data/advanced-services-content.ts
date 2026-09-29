@@ -118,7 +118,7 @@ export const advancedServices: AdvancedService[] = [
     category: "plans",
     badge: "Defined service",
     body: [
-      "If you already have a self-directed 401(k) or IRA, this service keeps the plan's paperwork, participant records, and administrative history organized — so nothing falls through the cracks between reviews.",
+      "If you already have a self-directed 401(k) or IRA, this service keeps the plan's paperwork, participant records, and administrative history organized, so nothing falls through the cracks between reviews.",
       "The team confirms what documents exist, what's missing, and what needs updating, then helps you get the plan's records into a clear, current state.",
     ],
     detail: {
@@ -170,7 +170,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -180,7 +180,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — a new amendment, a changed sponsor, a termination — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (a new amendment, a changed sponsor, a termination) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -244,7 +244,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -254,7 +254,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — an added family member, a changed ownership structure, another account — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (an added family member, a changed ownership structure, another account) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -267,7 +267,7 @@ export const advancedServices: AdvancedService[] = [
     category: "roth",
     badge: "Explore the work",
     body: [
-      "Contribution planning maps out what money is going into your plan, from which source, under which rules — before the contribution happens, not after.",
+      "Contribution planning maps out what money is going into your plan, from which source, under which rules, before the contribution happens, not after.",
       "The team helps you identify the right contribution type and timing for your account, so your records stay clean and your limits stay respected.",
     ],
     detail: {
@@ -319,7 +319,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -329,7 +329,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — a different contribution type, a new income source, a following tax year — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (a different contribution type, a new income source, a following tax year) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -342,7 +342,7 @@ export const advancedServices: AdvancedService[] = [
     category: "roth",
     badge: "Explore the work",
     body: [
-      "Moving retirement assets from one arrangement to another — an old 401(k) into a self-directed IRA, for instance — has its own paperwork and timing requirements.",
+      "Moving retirement assets from one arrangement to another (an old 401(k) into a self-directed IRA, for instance) has its own paperwork and timing requirements.",
       "This service prepares the rollover correctly from the start: confirming the receiving account, the transfer method, and the documentation that shows it was done right.",
     ],
     detail: {
@@ -389,12 +389,12 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "Is a conversion or contribution automatically the right move?",
           answer:
-            "No — and neither is a rollover. Each depends on the accounts, timing, and rules involved. The review looks at your actual source and destination before recommending a method.",
+            "No, and neither is a rollover. Each depends on the accounts, timing, and rules involved. The review looks at your actual source and destination before recommending a method.",
         },
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -404,7 +404,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — another account, a different destination, a following tax year — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (another account, a different destination, a following tax year) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -417,7 +417,7 @@ export const advancedServices: AdvancedService[] = [
     category: "plans",
     badge: "Defined service",
     body: [
-      "A participant loan against your own plan balance needs a promissory note, a repayment schedule, and ongoing records — not just a transfer of funds.",
+      "A participant loan against your own plan balance needs a promissory note, a repayment schedule, and ongoing records, not just a transfer of funds.",
       "The team helps put the loan's documentation in order, whether you're setting one up for the first time or catching up records on an existing loan.",
     ],
     detail: {
@@ -468,7 +468,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -478,7 +478,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — a missed payment, a second loan, a changed repayment schedule — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (a missed payment, a second loan, a changed repayment schedule) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -491,7 +491,7 @@ export const advancedServices: AdvancedService[] = [
     category: "roth",
     badge: "Explore the work",
     body: [
-      "Converting pre-tax retirement funds to Roth is a decision worth evaluating carefully — it has tax consequences the year it happens, not just later.",
+      "Converting pre-tax retirement funds to Roth is a decision worth evaluating carefully: it has tax consequences the year it happens, not just later.",
       "This service walks through the numbers and the timing with you before any assets move, so the conversion reflects an informed decision, not a rushed one.",
     ],
     detail: {
@@ -543,7 +543,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -553,7 +553,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — a different asset, a following tax year, a related account — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (a different asset, a following tax year, a related account) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -566,7 +566,7 @@ export const advancedServices: AdvancedService[] = [
     category: "transactions",
     badge: "Explore the work",
     body: [
-      "Not every owner in an LLC or partnership needs the same rights to capital, income, or future growth — a preferred structure can separate those interests deliberately.",
+      "Not every owner in an LLC or partnership needs the same rights to capital, income, or future growth: a preferred structure can separate those interests deliberately.",
       "This service structures the ownership interests to match what you're actually trying to accomplish, with the appropriate professional reviewing the entity documents.",
     ],
     detail: {
@@ -618,12 +618,12 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "Will this review cover every entity in my business?",
           answer:
-            "Scope is set by your proposal. If the structure touches other entities or accounts you own, say so up front so the review — and its fee — reflects the actual structure, not just the interests in front of you.",
+            "Scope is set by your proposal. If the structure touches other entities or accounts you own, say so up front so the review (and its fee) reflects the actual structure, not just the interests in front of you.",
         },
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -633,7 +633,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — an added investor, a changed allocation, a following transaction — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (an added investor, a changed allocation, a following transaction) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -646,7 +646,7 @@ export const advancedServices: AdvancedService[] = [
     category: "transactions",
     badge: "Explore the work",
     body: [
-      "When a retirement plan holds a partial interest in an asset — a fraction of a property, a share of an entity — the exact interest being transferred needs to be precisely defined.",
+      "When a retirement plan holds a partial interest in an asset (a fraction of a property, a share of an entity), the exact interest being transferred needs to be precisely defined.",
       "This service reviews what is actually being bought, sold, or held, and confirms the valuation and documentation support that specific interest.",
     ],
     detail: {
@@ -693,12 +693,12 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "Will this review cover every entity in my business?",
           answer:
-            "Scope is set by your proposal. If the interest touches other entities or accounts you own, say so up front so the review — and its fee — reflects the actual structure, not just the fraction in front of you.",
+            "Scope is set by your proposal. If the interest touches other entities or accounts you own, say so up front so the review (and its fee) reflects the actual structure, not just the fraction in front of you.",
         },
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -708,7 +708,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — another interest, a different valuation date, a related transaction — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (another interest, a different valuation date, a related transaction) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -721,7 +721,7 @@ export const advancedServices: AdvancedService[] = [
     category: "transactions",
     badge: "Explore the work",
     body: [
-      "A life estate separates the right to use or receive income from an asset now from who owns it later — two distinct interests in the same property.",
+      "A life estate separates the right to use or receive income from an asset now from who owns it later, two distinct interests in the same property.",
       "This service reviews how that separation would work for your situation, and what documentation is needed to make both interests clear and enforceable.",
     ],
     detail: {
@@ -768,12 +768,12 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "Will this review cover every entity in my business?",
           answer:
-            "Scope is set by your proposal. If the split interest touches other entities or accounts you own, say so up front so the review — and its fee — reflects the actual structure, not just the interests in front of you.",
+            "Scope is set by your proposal. If the split interest touches other entities or accounts you own, say so up front so the review (and its fee) reflects the actual structure, not just the interests in front of you.",
         },
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -783,7 +783,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — a different term, an added party, a related transaction — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (a different term, an added party, a related transaction) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -796,7 +796,7 @@ export const advancedServices: AdvancedService[] = [
     category: "trusts",
     badge: "Explore the work",
     body: [
-      "A charitable remainder trust connects an asset, an income stream, and a charitable gift — but the structure only works if all three are set up correctly together.",
+      "A charitable remainder trust connects an asset, an income stream, and a charitable gift, but the structure only works if all three are set up correctly together.",
       "This service brings your asset, your income needs, and your charitable intent into one conversation with the appropriate professional, before any trust is drafted.",
     ],
     detail: {
@@ -846,12 +846,12 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "Do I need a retirement plan for this work?",
           answer:
-            "No. This service reviews trusts, income arrangements, and charitable structures involving any qualifying asset — a retirement account is not required to begin.",
+            "No. This service reviews trusts, income arrangements, and charitable structures involving any qualifying asset: a retirement account is not required to begin.",
         },
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -861,7 +861,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — an additional beneficiary, a later sale, a related structure — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (an additional beneficiary, a later sale, a related structure) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -874,7 +874,7 @@ export const advancedServices: AdvancedService[] = [
     category: "trusts",
     badge: "Explore the work",
     body: [
-      "How your accounts and assets pass to the people you intend requires more than a will — beneficiary designations, account titling, and trust provisions all play a role.",
+      "How your accounts and assets pass to the people you intend requires more than a will: beneficiary designations, account titling, and trust provisions all play a role.",
       "This service reviews what you have in place today and where it may not say what you think it says, so the intended handoff is actually clear.",
     ],
     detail: {
@@ -925,12 +925,12 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "Do I need a retirement plan for this work?",
           answer:
-            "No. This service reviews beneficiary records and estate structures across any account or asset you hold — a retirement plan is not required to begin.",
+            "No. This service reviews beneficiary records and estate structures across any account or asset you hold: a retirement plan is not required to begin.",
         },
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -940,7 +940,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — an additional beneficiary, a new structure, a related transaction — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (an additional beneficiary, a new structure, a related transaction) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -1000,12 +1000,12 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "Do I need a retirement plan for this work?",
           answer:
-            "No. A GRAT assessment addresses whichever assets are proposed for the trust — a retirement account is not required to begin.",
+            "No. A GRAT assessment addresses whichever assets are proposed for the trust: a retirement account is not required to begin.",
         },
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -1028,7 +1028,7 @@ export const advancedServices: AdvancedService[] = [
     category: "trusts",
     badge: "Explore the work",
     body: [
-      "A power of appointment gives someone the authority to direct where a trust's assets go in the future — a quiet but significant provision worth understanding clearly.",
+      "A power of appointment gives someone the authority to direct where a trust's assets go in the future, a quiet but significant provision worth understanding clearly.",
       "This service reviews who holds that authority in your documents today, and whether it reflects who you actually want making that decision.",
     ],
     detail: {
@@ -1076,12 +1076,12 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "Do I need a retirement plan for this work?",
           answer:
-            "No. A power of appointment can appear in a trust, an LLC assignment, or another document — a retirement account is not required to begin.",
+            "No. A power of appointment can appear in a trust, an LLC assignment, or another document: a retirement account is not required to begin.",
         },
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -1091,7 +1091,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — a related document, an additional party, a different transaction — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (a related document, an additional party, a different transaction) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -1104,7 +1104,7 @@ export const advancedServices: AdvancedService[] = [
     category: "trusts",
     badge: "Specialist review",
     body: [
-      "Some Roth structures involve more than one account or entity working together — which means evaluating one piece in isolation can miss the bigger picture.",
+      "Some Roth structures involve more than one account or entity working together, which means evaluating one piece in isolation can miss the bigger picture.",
       "This is a specialist review: an attorney looks at the full structure together, not just the account in front of you, before offering an assessment.",
     ],
     detail: {
@@ -1153,12 +1153,12 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "Do I need a retirement plan for this work?",
           answer:
-            "No. This service reviews the full chain of accounts and entities involved in your specific question — a retirement plan is not required to begin.",
+            "No. This service reviews the full chain of accounts and entities involved in your specific question: a retirement plan is not required to begin.",
         },
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -1182,7 +1182,7 @@ export const advancedServices: AdvancedService[] = [
     badge: "Explore the work",
     body: [
       "Buying, developing, or holding real estate inside a retirement plan involves contracts, financing, and ownership questions specific to that plan type.",
-      "This service puts the legal structure around your actual deal — reviewing the transaction's terms and documents before you're committed to them.",
+      "This service puts the legal structure around your actual deal, reviewing the transaction's terms and documents before you're committed to them.",
     ],
     detail: {
       heroIntro:
@@ -1234,12 +1234,12 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "Will this review cover every entity in my business?",
           answer:
-            "Scope is set by your proposal. If the transaction touches other entities or accounts you own, say so up front so the review — and its fee — reflects the actual structure, not just the property in front of you.",
+            "Scope is set by your proposal. If the transaction touches other entities or accounts you own, say so up front so the review (and its fee) reflects the actual structure, not just the property in front of you.",
         },
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -1249,7 +1249,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — another property, a changed structure, a follow-on transaction — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (another property, a changed structure, a follow-on transaction) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -1314,12 +1314,12 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "Will this review cover every entity in my business?",
           answer:
-            "Scope is set by your proposal. If the loan touches other entities or accounts you own, say so up front so the review — and its fee — reflects the actual structure, not just the note in front of you.",
+            "Scope is set by your proposal. If the loan touches other entities or accounts you own, say so up front so the review (and its fee) reflects the actual structure, not just the note in front of you.",
         },
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -1329,7 +1329,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — another loan, a changed structure, a servicing issue — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (another loan, a changed structure, a servicing issue) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -1342,7 +1342,7 @@ export const advancedServices: AdvancedService[] = [
     category: "transactions",
     badge: "Explore the work",
     body: [
-      "Some financing arrangements tie repayment to a property's appreciation rather than a fixed interest rate — a structure that needs its own careful documentation.",
+      "Some financing arrangements tie repayment to a property's appreciation rather than a fixed interest rate, a structure that needs its own careful documentation.",
       "This service evaluates financing tied to a property's economics, so the terms reflect what both parties actually agreed to.",
     ],
     detail: {
@@ -1389,12 +1389,12 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "Will this review cover every entity in my business?",
           answer:
-            "Scope is set by your proposal. If the financing touches other entities or accounts you own, say so up front so the review — and its fee — reflects the actual structure, not just the arrangement in front of you.",
+            "Scope is set by your proposal. If the financing touches other entities or accounts you own, say so up front so the review (and its fee) reflects the actual structure, not just the arrangement in front of you.",
         },
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -1404,7 +1404,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — a revised term, a different property, a related transaction — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (a revised term, a different property, a related transaction) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -1417,7 +1417,7 @@ export const advancedServices: AdvancedService[] = [
     category: "transactions",
     badge: "Specialist review",
     body: [
-      "A split-interest proposal — where one party receives income and another the underlying asset — raises specific questions about rights, deductions, and tax treatment.",
+      "A split-interest proposal (where one party receives income and another the underlying asset) raises specific questions about rights, deductions, and tax treatment.",
       "This is a specialist review: an attorney evaluates the rights and deductions involved in your specific proposal before it moves forward.",
     ],
     detail: {
@@ -1464,12 +1464,12 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "Will this review cover every entity in my business?",
           answer:
-            "Scope is set by your proposal. If the income interest touches other entities or accounts you own, say so up front so the review — and its fee — reflects the actual structure, not just the interest in front of you.",
+            "Scope is set by your proposal. If the income interest touches other entities or accounts you own, say so up front so the review (and its fee) reflects the actual structure, not just the interest in front of you.",
         },
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -1479,7 +1479,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — a different property, an additional interest, a related transaction — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (a different property, an additional interest, a related transaction) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -1492,7 +1492,7 @@ export const advancedServices: AdvancedService[] = [
     category: "compliance",
     badge: "Explore the work",
     body: [
-      "Certain income inside a retirement plan — from an active business, or property financed with debt — can trigger a tax at the plan level worth understanding in advance.",
+      "Certain income inside a retirement plan (from an active business, or property financed with debt) can trigger a tax at the plan level worth understanding in advance.",
       "This service finds the tax questions behind your specific investment, so you know what applies before the transaction, not after a filing.",
     ],
     detail: {
@@ -1544,7 +1544,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -1554,7 +1554,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — a different investment, an additional entity, a later filing — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (a different investment, an additional entity, a later filing) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -1619,7 +1619,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -1629,7 +1629,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — an additional jurisdiction, a changed activity, a related filing — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (an additional jurisdiction, a changed activity, a related filing) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -1689,12 +1689,12 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "Will this review cover every entity in my business?",
           answer:
-            "Scope is set by your proposal. If the investment touches other entities or accounts you own, say so up front so the review — and its fee — reflects the actual structure, not just the shares in front of you.",
+            "Scope is set by your proposal. If the investment touches other entities or accounts you own, say so up front so the review (and its fee) reflects the actual structure, not just the shares in front of you.",
         },
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -1704,7 +1704,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — an additional round, a different company, a related transaction — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (an additional round, a different company, a related transaction) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -1717,7 +1717,7 @@ export const advancedServices: AdvancedService[] = [
     category: "compliance",
     badge: "Explore the work",
     body: [
-      "Required minimum distributions and other withdrawals need to be planned, not just requested — the timing and amount affect your taxes and your plan's records.",
+      "Required minimum distributions and other withdrawals need to be planned, not just requested: the timing and amount affect your taxes and your plan's records.",
       "This service plans the withdrawal and its follow-through, so the distribution is documented correctly and fits into your broader retirement income picture.",
     ],
     detail: {
@@ -1771,7 +1771,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -1781,7 +1781,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — an additional account, a different payment year, a related transaction — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (an additional account, a different payment year, a related transaction) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -1843,12 +1843,12 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "Is any structure guaranteed to protect my assets?",
           answer:
-            "No. Protection depends on existing claims, transfer timing, and the law that applies to your specific situation — the review identifies what fits, not a guaranteed outcome.",
+            "No. Protection depends on existing claims, transfer timing, and the law that applies to your specific situation: the review identifies what fits, not a guaranteed outcome.",
         },
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -1858,7 +1858,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — an additional entity, a changed circumstance, a related structure — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (an additional entity, a changed circumstance, a related structure) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -1871,7 +1871,7 @@ export const advancedServices: AdvancedService[] = [
     category: "protection",
     badge: "Explore the work",
     body: [
-      "A trust, LLC, or insurance policy is only as protective as its actual language — restrictions you assume exist may not be written the way you think.",
+      "A trust, LLC, or insurance policy is only as protective as its actual language: restrictions you assume exist may not be written the way you think.",
       "This service reads the documents you already have and identifies where they do, and don't, provide the protection you're relying on.",
     ],
     detail: {
@@ -1920,12 +1920,12 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "Is any structure guaranteed to protect my assets?",
           answer:
-            "No. Protection depends on existing claims, transfer timing, and the law that applies to your specific situation — the review identifies what the actual language provides, not a guaranteed outcome.",
+            "No. Protection depends on existing claims, transfer timing, and the law that applies to your specific situation: the review identifies what the actual language provides, not a guaranteed outcome.",
         },
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -1935,7 +1935,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — an additional document, a related entity, a changed circumstance — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (an additional document, a related entity, a changed circumstance) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -1948,7 +1948,7 @@ export const advancedServices: AdvancedService[] = [
     category: "compliance",
     badge: "Explore the work",
     body: [
-      "Certain transactions between a retirement plan and disqualified persons are restricted by rule, with real consequences if one happens — intentionally or not.",
+      "Certain transactions between a retirement plan and disqualified persons are restricted by rule, with real consequences if one happens, intentionally or not.",
       "This service reviews a transaction before it happens, or helps assess what occurred if a question has already come up, with the appropriate professional involved.",
     ],
     detail: {
@@ -2001,7 +2001,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -2011,7 +2011,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — a different transaction, an additional party, a related filing — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (a different transaction, an additional party, a related filing) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -2024,7 +2024,7 @@ export const advancedServices: AdvancedService[] = [
     category: "compliance",
     badge: "Defined service",
     body: [
-      "Retirement plans carry their own reporting and notice requirements, separate from personal tax filings — easy to miss if no one is tracking them.",
+      "Retirement plans carry their own reporting and notice requirements, separate from personal tax filings, easy to miss if no one is tracking them.",
       "This service identifies the required work for your plan and who is responsible for completing it, so nothing is filed late or missed entirely.",
     ],
     detail: {
@@ -2077,7 +2077,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -2087,7 +2087,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — a different filing year, an additional notice, a related form — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (a different filing year, an additional notice, a related form) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -2100,7 +2100,7 @@ export const advancedServices: AdvancedService[] = [
     category: "transactions",
     badge: "Explore the work",
     body: [
-      "Precious metals held inside a retirement plan have to meet specific purity standards and be held through an approved custodian and depository — not kept at home or in a personal safe.",
+      "Precious metals held inside a retirement plan have to meet specific purity standards and be held through an approved custodian and depository, not kept at home or in a personal safe.",
       "This service confirms which metals and products qualify, then coordinates the custodian and depository arrangement so the holding stays properly documented.",
     ],
     detail: {
@@ -2147,12 +2147,12 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "Will this review cover every entity in my business?",
           answer:
-            "Scope is set by your proposal. If the purchase touches other accounts or entities you own, say so up front so the review — and its fee — reflects the actual structure, not just the metals in front of you.",
+            "Scope is set by your proposal. If the purchase touches other accounts or entities you own, say so up front so the review (and its fee) reflects the actual structure, not just the metals in front of you.",
         },
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -2162,7 +2162,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — an additional purchase, a different metal, a change in custodian — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (an additional purchase, a different metal, a change in custodian) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -2175,7 +2175,7 @@ export const advancedServices: AdvancedService[] = [
     category: "transactions",
     badge: "Explore the work",
     body: [
-      "Holding digital assets inside a retirement plan raises its own custody and security questions — the keys and the account need to be structured so the plan, not you personally, is the owner of record.",
+      "Holding digital assets inside a retirement plan raises its own custody and security questions: the keys and the account need to be structured so the plan, not you personally, is the owner of record.",
       "This service confirms which platforms and custody arrangements the plan can use, then coordinates the account setup so the holding stays properly documented.",
     ],
     detail: {
@@ -2222,12 +2222,12 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "Will this review cover every entity in my business?",
           answer:
-            "Scope is set by your proposal. If the purchase touches other accounts or entities you own, say so up front so the review — and its fee — reflects the actual structure, not just the assets in front of you.",
+            "Scope is set by your proposal. If the purchase touches other accounts or entities you own, say so up front so the review (and its fee) reflects the actual structure, not just the assets in front of you.",
         },
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -2237,7 +2237,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — an additional purchase, a different platform, a change in custody — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (an additional purchase, a different platform, a change in custody) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },
@@ -2296,12 +2296,12 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "Will this review cover every entity in my business?",
           answer:
-            "Scope is set by your proposal. If the account touches other entities or accounts you own, say so up front so the review — and its fee — reflects the actual structure, not just this account.",
+            "Scope is set by your proposal. If the account touches other entities or accounts you own, say so up front so the review (and its fee) reflects the actual structure, not just this account.",
         },
         {
           question: "What will the engagement include?",
           answer:
-            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers — confirmed before any billable work begins.",
+            "A written scope of work, the assigned professional and coordinator, and the deliverables and review date the fee covers, confirmed before any billable work begins.",
         },
         {
           question: "Who will handle the professional work?",
@@ -2311,7 +2311,7 @@ export const advancedServices: AdvancedService[] = [
         {
           question: "What happens if I need more help later?",
           answer:
-            "A new question outside the original scope — an additional account, a change in broker, a funding change — becomes its own proposal, defined and priced the same way as the first.",
+            "A new question outside the original scope (an additional account, a change in broker, a funding change) becomes its own proposal, defined and priced the same way as the first.",
         },
       ],
     },

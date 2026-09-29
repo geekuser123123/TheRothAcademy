@@ -16,7 +16,7 @@ export function AssetClassSection() {
               <span className="text-r-gold">World You Know.</span>
             </h2>
             <p className="mt-6 max-w-sm text-sm text-r-muted font-body normal-case">
-              Use your retirement accounts to invest in opportunities you understand — from real
+              Use your retirement accounts to invest in opportunities you understand: from real
               estate to private lending and beyond.
             </p>
             <span className="mt-6 block h-px w-12 bg-r-gold" aria-hidden />

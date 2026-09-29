@@ -8,7 +8,7 @@ export function LearnArticleCta() {
       <div className="container-brand flex flex-wrap items-center justify-between gap-6">
         <div className="max-w-lg">
           <p className="text-sm text-r-muted font-body normal-case">
-            Have a question specific to your situation? General guides are a starting point — compare the two
+            Have a question specific to your situation? General guides are a starting point: compare the two
             plans, or bring the team your facts.
           </p>
         </div>

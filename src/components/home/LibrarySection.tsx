@@ -41,7 +41,7 @@ export function LibrarySection() {
                   <p className="text-xs font-semibold uppercase tracking-[0.15em] text-r-gold">{row.category}</p>
                   <h3 className="mt-1 text-xl">{row.title}</h3>
                   <p className="mt-1 text-sm text-r-muted font-body normal-case">
-                    {row.link} — {row.meta}
+                    {row.link} · {row.meta}
                   </p>
                 </div>
                 <ArrowUpRight

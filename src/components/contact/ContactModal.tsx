@@ -112,7 +112,7 @@ export function ContactModal() {
               Request Received.
             </h2>
             <p className="mt-4 text-sm text-r-muted font-body normal-case">
-              Thank you — the team will review your request and follow up shortly.
+              Thank you, the team will review your request and follow up shortly.
             </p>
             <button
               type="button"

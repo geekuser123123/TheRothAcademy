@@ -33,7 +33,7 @@ export function CompanyCredibilitySection() {
           </h2>
           <p className="mt-6 max-w-sm text-sm text-r-muted font-body normal-case">
             Roth Academy was built to give self-directed retirement planning the follow-through it
-            deserves — a team that stays with you, not just a form to fill out.
+            deserves: a team that stays with you, not just a form to fill out.
           </p>
 
           <Link

@@ -396,7 +396,7 @@ const POINT_CHECK = (
 
 const POINTS = [
   "Full refund if the value isn't delivered",
-  "7-day refund window — no questions asked",
+  "7-day refund window, no questions asked",
   "Backed by 25+ years of specialist experience",
   "Refund issued to original payment method within 5–10 days",
 ];

@@ -21,7 +21,7 @@ import {
 export const metadata: Metadata = {
   title: "Self-Directed 401(k)",
   description:
-    "A self-directed 401(k) built for business owners — higher contribution limits, checkbook control, and room for the assets you understand.",
+    "A self-directed 401(k) built for business owners: higher contribution limits, checkbook control, and room for the assets you understand.",
 };
 
 export default function SelfDirected401kPage() {

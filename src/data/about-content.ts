@@ -19,7 +19,7 @@ export const storyIntro = {
   heading: ["I Was The Kid", "Watching Him Rebuild."],
   lead: "Before I led Roth Academy, I watched my father keep a family moving while he put his own life back together.",
   paragraphs: [
-    "I watched the moves, the pressure, the law books — the work that followed him from one place to the next.",
+    "I watched the moves, the pressure, the law books, the work that followed him from one place to the next.",
     "As a kid, I didn't understand the tax code. I understood that my dad kept working, and that even when things were hard for us, he still cared about getting the answer right for somebody else. That is where this company really begins.",
   ],
   pullQuote: "I understood that my dad kept working.",
@@ -31,7 +31,7 @@ export const storyChapters = [
     label: "The Choice",
     heading: ["He Learned How To Sell.", "He Chose To Serve."],
     paragraphs: [
-      "Early in his career, Tim saw how powerful a sales pitch could be — and the distance between what people were promised and what they actually received.",
+      "Early in his career, Tim saw how powerful a sales pitch could be, and the distance between what people were promised and what they actually received.",
       "He wanted a different kind of career: one interested in what came after someone said yes. He kept studying, kept doing the work, and built something built to last.",
     ],
   },
@@ -40,8 +40,8 @@ export const storyChapters = [
     label: "The Break",
     heading: ["The Future Changed.", "The Responsibilities Didn't."],
     paragraphs: [
-      "Then came a painful break with people he had trusted for years — decisions that left him without the business he believed he had helped build.",
-      "There was still a family to raise. So he started again, moved again, and took the work in front of him. There was no clean reset — only showing up.",
+      "Then came a painful break with people he had trusted for years, decisions that left him without the business he believed he had helped build.",
+      "There was still a family to raise. So he started again, moved again, and took the work in front of him. There was no clean reset, only showing up.",
     ],
   },
   {
@@ -50,7 +50,7 @@ export const storyChapters = [
     heading: ["Every Hard Question", "Gave Him Something Back."],
     paragraphs: [
       "Over the years, the difficult cases became experience. Tim built his work around self-directed IRAs, 401(k) plans, trusts, and the decisions that connect them.",
-      "He remained the same person when somebody needed help — one question often became a longer conversation, because he wanted to finish the thought.",
+      "He remained the same person when somebody needed help: one question often became a longer conversation, because he wanted to finish the thought.",
     ],
   },
   {
@@ -58,7 +58,7 @@ export const storyChapters = [
     label: "The Son",
     heading: ["I Didn't Want To Change My Father.", "I Wanted To Build Around Him."],
     paragraphs: [
-      "I saw what happened when a generous person carried too much alone — questions, scheduling, follow-up, every loose end reaching the same person.",
+      "I saw what happened when a generous person carried too much alone: questions, scheduling, follow-up, every loose end reaching the same person.",
       "I wanted his knowledge to have a stronger home. That became my job: build the company, organize the client experience, and give the professional room to think.",
     ],
   },
@@ -124,7 +124,7 @@ export const storyClosing = {
   heading: ["My Father Kept Going", "For His Family.", "Now We Get To Build", "Something That Lasts."],
   paragraphs: [
     "We know what it takes to start over, and what it means to have people counting on you. When you bring us something you've worked hard to build, we remember there's a life behind it.",
-    "That is the standard we intend to earn — one client, one engagement, one kept commitment at a time.",
+    "That is the standard we intend to earn, one client, one engagement, one kept commitment at a time.",
   ],
   signatureName: "Kevin Berry",
   signatureRole: "Roth Academy",

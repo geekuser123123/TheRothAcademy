@@ -3,7 +3,7 @@ export const serviceIraHero = {
   title: ["Give Your Retirement Money", "More Possibilities."],
   goldLine: 1,
   description:
-    "A self-directed IRA puts your retirement savings to work in the assets you already understand — real estate, private lending, and more — inside an account built for individual investors.",
+    "A self-directed IRA puts your retirement savings to work in the assets you already understand (real estate, private lending, and more) inside an account built for individual investors.",
   whoItsFor:
     "Built for individuals with an existing IRA, a former employer's 401(k), or new contributions to direct toward a wider range of assets.",
   summary: {
@@ -26,7 +26,7 @@ export const serviceIraFoundation = {
     {
       number: "01",
       title: "Individual Investors",
-      description: "Anyone with earned income or existing retirement funds to roll over — no business ownership required.",
+      description: "Anyone with earned income or existing retirement funds to roll over, no business ownership required.",
     },
     {
       number: "02",
@@ -51,9 +51,9 @@ export const serviceIraPricing = {
     "Rollover and transfer guidance",
     "Team support through setup and your first transaction",
   ],
-  setupFee: "[Setup fee — TBD]",
-  ongoingFee: "[Ongoing fee — TBD]",
-  providerCosts: "Custodian and provider fees are billed separately by your account provider. [Provider cost details — TBD]",
+  setupFee: "[Setup fee: TBD]",
+  ongoingFee: "[Ongoing fee: TBD]",
+  providerCosts: "Custodian and provider fees are billed separately by your account provider. [Provider cost details: TBD]",
   note: "Final pricing is confirmed during your account review.",
 };
 
@@ -61,7 +61,7 @@ export const serviceIraOverview = {
   eyebrow: "The Benefits",
   heading: ["What Is A", "Self-Directed IRA?"],
   paragraphs: [
-    "A self-directed IRA is an individual retirement account administered under the same IRS rules as any traditional or Roth IRA — held with a custodian that allows a broader range of assets than a typical brokerage IRA.",
+    "A self-directed IRA is an individual retirement account administered under the same IRS rules as any traditional or Roth IRA, held with a custodian that allows a broader range of assets than a typical brokerage IRA.",
     "Instead of a fixed menu of mutual funds and stocks, the account can hold real estate, private lending, precious metals, and other alternative investments, alongside traditional ones.",
   ],
   image: "/services/ira/overview.webp",
@@ -152,7 +152,7 @@ export const serviceIraFaq = {
     {
       question: "May I hold IRA metals personally?",
       answer:
-        "No. IRA-owned precious metals must be held by the custodian or an approved depository — taking personal possession is treated as a distribution and can disqualify the account. The team reviews storage requirements before a metals purchase.",
+        "No. IRA-owned precious metals must be held by the custodian or an approved depository. Taking personal possession is treated as a distribution and can disqualify the account. The team reviews storage requirements before a metals purchase.",
     },
     {
       question: "Does Roth Academy hold my assets?",

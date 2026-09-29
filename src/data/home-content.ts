@@ -154,7 +154,7 @@ export const faqItems = [
   {
     question: "What can I invest in?",
     answer:
-      "Real estate, private lending, precious metals, digital assets, stocks and bonds, and more — assets your account is eligible to hold, within the rules that apply to that account type and provider. See what's possible on our investment page.",
+      "Real estate, private lending, precious metals, digital assets, stocks and bonds, and more, assets your account is eligible to hold, within the rules that apply to that account type and provider. See what's possible on our investment page.",
   },
   {
     question: "Can I use money from an existing retirement account?",
@@ -174,6 +174,6 @@ export const faqItems = [
   {
     question: "What help do I receive afterward?",
     answer:
-      "Your team stays available after setup — for account questions, documentation, and ongoing support as you invest. Continuing plan administration and tax-year resources are available through the Tax Academy client experience.",
+      "Your team stays available after setup, for account questions, documentation, and ongoing support as you invest. Continuing plan administration and tax-year resources are available through the Tax Academy client experience.",
   },
 ];

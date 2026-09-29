@@ -70,7 +70,7 @@ export function ContactForm() {
         </span>
         <h2 className="mt-6 text-3xl text-r-gold">Question Received.</h2>
         <p className="mx-auto mt-4 max-w-md text-sm text-r-muted font-body normal-case">
-          Thank you — the team will review your question and follow up shortly.
+          Thank you, the team will review your question and follow up shortly.
         </p>
       </div>,
     );

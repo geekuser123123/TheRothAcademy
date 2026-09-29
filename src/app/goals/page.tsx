@@ -7,7 +7,7 @@ import { goalsHero, investmentPossibilities, investmentPossibilitiesFootnote } f
 export const metadata: Metadata = {
   title: "What Would You Invest In?",
   description:
-    "Real estate, private lending, precious metals, digital assets, stocks and bonds — see what a self-directed 401(k) or IRA can hold.",
+    "Real estate, private lending, precious metals, digital assets, stocks and bonds: see what a self-directed 401(k) or IRA can hold.",
 };
 
 export default function GoalsPage() {

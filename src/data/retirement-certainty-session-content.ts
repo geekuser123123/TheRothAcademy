@@ -39,7 +39,7 @@ export const rcsContent = {
         tag: "Pre-Investment Planning",
         title: "Investors Planning Their Next Move",
         description:
-          "You are considering a new investment and want to ask questions before completing the transaction — the ideal time to avoid costly mistakes.",
+          "You are considering a new investment and want to ask questions before completing the transaction: the ideal time to avoid costly mistakes.",
         note: "Pre-investment guidance available",
       },
     ],
@@ -59,7 +59,7 @@ export const rcsContent = {
       {
         title: "Review Your Primary Concern",
         description:
-          "We start by focusing on your most pressing compliance question, concern, or transaction — no time wasted on generalities. You bring the question; we bring the answer.",
+          "We start by focusing on your most pressing compliance question, concern, or transaction: no time wasted on generalities. You bring the question; we bring the answer.",
       },
       {
         title: "Identify Compliance Risks",
@@ -69,7 +69,7 @@ export const rcsContent = {
       {
         title: "Determine the Safest Path Forward",
         description:
-          "You walk away knowing exactly where you stand, what needs attention, and what corrective steps — if any — should be taken next.",
+          "You walk away knowing exactly where you stand, what needs attention, and what corrective steps (if any) should be taken next.",
       },
     ],
     topics: [
@@ -143,14 +143,14 @@ export const rcsContent = {
       },
       {
         quote:
-          "Tim Berry is an attorney you need to work with! He is a good listener, accessible and respectful of your time. He has great knowledge with retirement planning and the many nuances involved. Tim is the whole package — incredibly helpful. I highly recommend him.",
+          "Tim Berry is an attorney you need to work with! He is a good listener, accessible and respectful of your time. He has great knowledge with retirement planning and the many nuances involved. Tim is the whole package: incredibly helpful. I highly recommend him.",
         name: "Verified Client",
         context: "Retirement Plan Consultation",
         tag: "Verified",
       },
       {
         quote:
-          "A man qualified to talk straight simple language to usually confused IRS agents. Not a 10-page response — short, sweet, and to the point. Tim does not relent — over $50k in penalties gone. And his fee is embarrassingly fair.",
+          "A man qualified to talk straight simple language to usually confused IRS agents. Not a 10-page response: short, sweet, and to the point. Tim does not relent: over $50k in penalties gone. And his fee is embarrassingly fair.",
         name: "Verified Client",
         context: "IRS Penalty Resolution",
         tag: "$50k+ Saved",
@@ -236,7 +236,7 @@ export const rcsContent = {
       "If you don't feel you received at least four times the value of your investment, simply contact us within 7 days and we'll make it right. No hassle. No arguments.",
     points: [
       "Full refund if the value isn't delivered",
-      "7-day refund window — no questions asked",
+      "7-day refund window, no questions asked",
       "Backed by 25+ years of specialist experience",
       "Refund issued to original payment method within 5–10 days",
     ],
@@ -251,11 +251,11 @@ export const rcsContent = {
     description2:
       "If you don't feel you received at least four times the value of your $125 investment, simply contact us within 7 days and we'll make it right. No hassle. No arguments.",
     steps: [
-      "Complete your consultation — attend your full 15-minute session",
-      "Request within 7 days — email tim@iraideas.com if you're not satisfied",
-      "Full refund issued — returned to your original payment method within 5–10 business days",
+      "Complete your consultation: attend your full 15-minute session",
+      "Request within 7 days: email tim@iraideas.com if you're not satisfied",
+      "Full refund issued: returned to your original payment method within 5–10 business days",
     ],
-    cta: "Book My Consultation — $125",
+    cta: "Book My Consultation: $125",
     ctaNote: "15 minutes · Instant confirmation · Backed by the 400% Value Guarantee",
   },
 
@@ -310,7 +310,7 @@ export const rcsContent = {
       {
         question: "Why is the consultation only $125?",
         answer:
-          "Our goal is to make professional guidance accessible before small issues become larger problems. Many investors simply need clarity on one specific question or transaction. This focused session is designed to provide exactly that — quickly and affordably.",
+          "Our goal is to make professional guidance accessible before small issues become larger problems. Many investors simply need clarity on one specific question or transaction. This focused session is designed to provide exactly that: quickly and affordably.",
       },
     ],
   },
@@ -319,7 +319,7 @@ export const rcsContent = {
     eyebrow: "Take the Next Step",
     title: ["Spend 15 Minutes Today.", "Sleep Better Tonight."],
     description:
-      "The IRS doesn't care whether a prohibited transaction was accidental. When your retirement plan holds significant assets, certainty isn't a luxury — it's a necessity. Get answers now, before uncertainty becomes a problem.",
+      "The IRS doesn't care whether a prohibited transaction was accidental. When your retirement plan holds significant assets, certainty isn't a luxury: it's a necessity. Get answers now, before uncertainty becomes a problem.",
     cta: "Book My Consultation Now",
     pills: ["15 focused minutes", "Secure payment", "Instant confirmation", "400% guarantee"],
     quote: "The most expensive retirement mistake is often the one you do not know you have made. Get clarity before uncertainty becomes a problem.",

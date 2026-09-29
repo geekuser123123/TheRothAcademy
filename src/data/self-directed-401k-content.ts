@@ -3,9 +3,9 @@ export const service401kHero = {
   title: ["Build Your Retirement", "Around Your Business."],
   goldLine: 1,
   description:
-    "A self-directed 401(k) is built for owners who want their retirement plan to work as hard as they do — with room for the assets you already understand.",
+    "A self-directed 401(k) is built for owners who want their retirement plan to work as hard as they do, with room for the assets you already understand.",
   whoItsFor:
-    "Built primarily for owner-only businesses — sole proprietors, partnerships, and corporations with no full-time employees other than an owner or spouse.",
+    "Built primarily for owner-only businesses, sole proprietors, partnerships, and corporations with no full-time employees other than an owner or spouse.",
   summary: {
     tag: "The Foundation",
     title: "401(k)",
@@ -51,9 +51,9 @@ export const service401kPricing = {
     "Rollover and contribution guidance",
     "Team support through setup and your first transaction",
   ],
-  setupFee: "[Setup fee — TBD]",
-  ongoingFee: "[Ongoing fee — TBD]",
-  providerCosts: "Provider and custodian fees are billed separately by your account provider. [Provider cost details — TBD]",
+  setupFee: "[Setup fee: TBD]",
+  ongoingFee: "[Ongoing fee: TBD]",
+  providerCosts: "Provider and custodian fees are billed separately by your account provider. [Provider cost details: TBD]",
   note: "Final pricing is confirmed during your plan review.",
 };
 
@@ -61,7 +61,7 @@ export const service401kOverview = {
   eyebrow: "The Benefits",
   heading: ["What Is A", "Self-Directed 401(k)?"],
   paragraphs: [
-    "A self-directed 401(k) is a qualified retirement plan designed for your business, administered under the same IRS rules that govern any 401(k) — with a plan document that opens the door to a wider range of assets.",
+    "A self-directed 401(k) is a qualified retirement plan designed for your business, administered under the same IRS rules that govern any 401(k), with a plan document that opens the door to a wider range of assets.",
     "Instead of choosing from a fixed list of mutual funds, the plan can hold real estate, private lending, and other alternative investments alongside traditional ones, all inside one tax-advantaged structure.",
   ],
   image: "/services/401k/overview.webp",
@@ -127,7 +127,7 @@ export const service401kFaq = {
     {
       question: "Who can open a self-directed 401(k)?",
       answer:
-        "Generally, owner-only businesses — sole proprietors, partnerships, and corporations with no full-time common-law employees other than an owner or spouse. The team reviews your specific structure before recommending a plan.",
+        "Generally, owner-only businesses, sole proprietors, partnerships, and corporations with no full-time common-law employees other than an owner or spouse. The team reviews your specific structure before recommending a plan.",
     },
     {
       question: "How much can I contribute?",
@@ -147,12 +147,12 @@ export const service401kFaq = {
     {
       question: "What is checkbook control?",
       answer:
-        "Checkbook control means the plan can write checks or wire funds directly for an investment, without waiting on a custodian to process each transaction — useful for time-sensitive opportunities like real estate.",
+        "Checkbook control means the plan can write checks or wire funds directly for an investment, without waiting on a custodian to process each transaction: useful for time-sensitive opportunities like real estate.",
     },
     {
       question: "Does checkbook control remove the rules?",
       answer:
-        "No. Checkbook control changes how a transaction is processed, not the rules that apply to it. Prohibited transactions, disqualified persons, and plan responsibilities still apply — the team reviews a proposed transaction before it moves forward.",
+        "No. Checkbook control changes how a transaction is processed, not the rules that apply to it. Prohibited transactions, disqualified persons, and plan responsibilities still apply; the team reviews a proposed transaction before it moves forward.",
     },
   ],
   sourceLink: {

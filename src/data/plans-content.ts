@@ -42,7 +42,7 @@ export const plansComparison = {
     {
       question: "Who does it serve?",
       answers: [
-        "Business owners — sole proprietors, partnerships, and corporations.",
+        "Business owners, sole proprietors, partnerships, and corporations.",
         "Individual investors, with or without business ownership.",
       ],
     },
@@ -50,7 +50,7 @@ export const plansComparison = {
       question: "Business eligibility",
       answers: [
         "Owner-only businesses with no full-time employees other than an owner or spouse.",
-        "None required — anyone with earned income or funds to roll over can open one.",
+        "None required, anyone with earned income or funds to roll over can open one.",
       ],
     },
     {
@@ -69,11 +69,11 @@ export const plansComparison = {
     },
     {
       question: "Setup cost",
-      answers: ["[Setup fee — TBD]", "[Setup fee — TBD]"],
+      answers: ["[Setup fee: TBD]", "[Setup fee: TBD]"],
     },
     {
       question: "Ongoing cost",
-      answers: ["[Ongoing fee — TBD]", "[Ongoing fee — TBD]"],
+      answers: ["[Ongoing fee: TBD]", "[Ongoing fee: TBD]"],
     },
   ],
 };

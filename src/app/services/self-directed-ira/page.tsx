@@ -21,7 +21,7 @@ import {
 export const metadata: Metadata = {
   title: "Self-Directed IRA",
   description:
-    "A self-directed IRA built for individual investors — Traditional, Roth, or SEP, with room for the assets you understand.",
+    "A self-directed IRA built for individual investors: Traditional, Roth, or SEP, with room for the assets you understand.",
 };
 
 export default function SelfDirectedIraPage() {

@@ -700,7 +700,7 @@ export function RcsBooking() {
               <div className="flex items-center gap-2.5">
                 <span className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-r-gold" />
                 <span className="text-sm font-semibold text-r-white">
-                  Retirement Certainty Session — ${solution.priceCard.price}
+                  Retirement Certainty Session: ${solution.priceCard.price}
                 </span>
               </div>
               <div className="hidden items-center gap-1.5 text-xs text-r-muted sm:flex">
@@ -791,7 +791,7 @@ export function RcsBooking() {
                 <div>
                   <p className="text-[11px] font-semibold uppercase tracking-wide text-r-muted">Date &amp; Time</p>
                   <p id="summaryDateTime" className="mt-1 text-sm font-semibold text-r-white">
-                    —
+                    -
                   </p>
                 </div>
                 <div>
@@ -873,7 +873,7 @@ export function RcsBooking() {
               <div className="mb-6 rounded-[var(--radius-brand-control)] border border-r-gold/25 bg-r-gold/[0.06] p-5">
                 <Row label="Retirement Certainty Session (15 min)" value={`$${solution.priceCard.price}.00`} />
                 <Row label="Consultant" value="Tim Berry" />
-                <Row label="Date & Time" value={<span id="paymentDateTime">—</span>} />
+                <Row label="Date & Time" value={<span id="paymentDateTime">-</span>} />
                 <Row label="Total Due Today" value={`$${solution.priceCard.price}.00`} bold />
               </div>
 
@@ -949,9 +949,9 @@ export function RcsBooking() {
                 email is on its way.
               </p>
               <div className="mx-auto mt-7 inline-block min-w-[280px] rounded-[var(--radius-brand-card)] border border-r-line bg-r-panel/40 p-6 text-left">
-                <SuccessRow label="Date & Time (CST)"><span id="successDate">—</span></SuccessRow>
+                <SuccessRow label="Date & Time (CST)"><span id="successDate">-</span></SuccessRow>
                 <SuccessRow label="Self-Directed Retirement Specialist">Tim Berry</SuccessRow>
-                <SuccessRow label={<>Confirmation sent to <span id="successEmail">—</span></>}><span id="successName">—</span></SuccessRow>
+                <SuccessRow label={<>Confirmation sent to <span id="successEmail">-</span></>}><span id="successName">-</span></SuccessRow>
                 <SuccessRow label="Via Square" last>${solution.priceCard.price}.00 Paid</SuccessRow>
               </div>
             </div>

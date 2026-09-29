@@ -436,7 +436,7 @@ export function RcsFinalCta() {
                 &quot;The most expensive retirement mistake is often the one you do not know you have made. Get
                 clarity before uncertainty becomes a problem.&quot;
               </div>
-              <div className="fcs-quote-attr">— IRA Ideas LLC &nbsp;·&nbsp; 25+ Years of Specialist Experience</div>
+              <div className="fcs-quote-attr">- IRA Ideas LLC &nbsp;·&nbsp; 25+ Years of Specialist Experience</div>
             </div>
 
             <div className="fcs-stats-row">
