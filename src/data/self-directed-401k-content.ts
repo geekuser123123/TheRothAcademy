@@ -52,8 +52,7 @@ export const service401kPricing = {
     "Team support through setup and your first transaction",
   ],
   price: "$1,500",
-  providerCosts: "Provider and custodian fees are billed separately by your account provider. [Provider cost details: TBD]",
-  note: "One all-inclusive price covers setup and ongoing plan support.",
+  note: "The whole package. Setup and ongoing plan support, no separate fees.",
 };
 
 export const service401kOverview = {

@@ -164,7 +164,7 @@ export const faqItems = [
   {
     question: "What does setup cost?",
     answer:
-      "Setup includes a one-time fee plus ongoing account fees, with some provider costs billed separately. See the full breakdown on each plan's page, or ask the team for the current pricing that fits your situation.",
+      "$1,500 for the whole package, covering setup and ongoing support for either plan. See the details on each plan's page, or ask the team if you have questions.",
   },
   {
     question: "How long does setup take?",

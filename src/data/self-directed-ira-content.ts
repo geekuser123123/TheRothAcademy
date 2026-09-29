@@ -52,8 +52,7 @@ export const serviceIraPricing = {
     "Team support through setup and your first transaction",
   ],
   price: "$1,500",
-  providerCosts: "Custodian and provider fees are billed separately by your account provider. [Provider cost details: TBD]",
-  note: "One all-inclusive price covers setup and ongoing account support.",
+  note: "The whole package. Setup and ongoing account support, no separate fees.",
 };
 
 export const serviceIraOverview = {

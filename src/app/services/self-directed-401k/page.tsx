@@ -70,7 +70,6 @@ export default function SelfDirected401kPage() {
         intro={service401kPricing.intro}
         included={service401kPricing.included}
         price={service401kPricing.price}
-        providerCosts={service401kPricing.providerCosts}
         note={service401kPricing.note}
       />
 
