@@ -5,12 +5,11 @@ import Script from "next/script";
 import { CreditCard, Check, Clock, ShieldCheck } from "lucide-react";
 import { rcsContent } from "@/data/retirement-certainty-session-content";
 
-// Live integration — already wired to production Square + n8n. Do not change
-// these values without updating the matching n8n workflows / Square location.
-const SQUARE_APP_ID = "sq0idp-4OS6ecwpn_dBVt1dqsH_Jg";
-const SQUARE_LOCATION_ID = "98TH9CWGZ97N7";
+// Live integration — wired to production Stripe + n8n. Do not change these
+// values without updating the matching n8n workflows / Stripe dashboard.
+const STRIPE_PUBLISHABLE_KEY = "pk_live_51UI6jT2eiso8i6zsDPPGW72Fkv3WuLxmNuhVmSulZSfksut4TlmHARwr5z2MybVM7RtuxtZR4bAUCdIpGMPPiIyN005Ld2TTyN";
 const N8N_SLOTS_WEBHOOK = "https://n8n.coreautomations.org/webhook/get-slots";
-const N8N_BOOKING_WEBHOOK = "https://n8n.coreautomations.org/webhook/7778d431-5e8d-434e-8c02-9385fa22552f";
+const N8N_BOOKING_WEBHOOK = "https://n8n.coreautomations.org/webhook/0f7ca06d-b691-4297-834d-5cbd7e473ff5";
 
 const AVAILABLE_DAYS = [1, 2, 4]; // Mon, Tue, Thu
 const WORK_START_HOUR = 9;
@@ -25,23 +24,49 @@ const MONTH_NAMES = [
 ];
 const DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-declare global {
-  interface Window {
-    Square?: {
-      payments: (appId: string, locationId: string) => {
-        card: () => Promise<{
-          attach: (selector: string) => Promise<void>;
-          tokenize: () => Promise<{ status: string; token?: string; errors?: { code?: string; message?: string }[] }>;
-        }>;
-      };
-    };
-  }
+type StripePaymentMethodResult = {
+  paymentMethod?: { id: string };
+  error?: { code?: string; decline_code?: string; message?: string };
+};
+
+type StripeCardElement = {
+  mount: (selector: string) => void;
+};
+
+type StripeElementBase = {
+  mount: (selector: string) => void;
+};
+
+type StripePaymentRequestPaymentMethodEvent = {
+  paymentMethod: { id: string };
+  complete: (status: "success" | "fail") => void;
+};
+
+type StripePaymentRequest = {
+  canMakePayment: () => Promise<Record<string, boolean> | null>;
+  on: (event: "paymentmethod", handler: (e: StripePaymentRequestPaymentMethodEvent) => void) => void;
+};
+
+interface StripeElements {
+  create(type: "card", options?: Record<string, unknown>): StripeCardElement;
+  create(type: "paymentRequestButton", options: { paymentRequest: StripePaymentRequest }): StripeElementBase;
 }
 
-type SquareCard = {
-  attach: (selector: string) => Promise<void>;
-  tokenize: () => Promise<{ status: string; token?: string; errors?: { code?: string; message?: string }[] }>;
+type StripeInstance = {
+  elements: () => StripeElements;
+  createPaymentMethod: (params: {
+    type: "card";
+    card: StripeCardElement;
+    billing_details?: Record<string, unknown>;
+  }) => Promise<StripePaymentMethodResult>;
+  paymentRequest: (options: Record<string, unknown>) => StripePaymentRequest;
 };
+
+declare global {
+  interface Window {
+    Stripe?: (publishableKey: string) => StripeInstance;
+  }
+}
 
 type BookingState = {
   currentMonth: number;
@@ -54,8 +79,10 @@ type BookingState = {
 export function RcsBooking() {
   const { solution } = rcsContent;
   const rootRef = useRef<HTMLDivElement>(null);
-  const cardRef = useRef<SquareCard | null>(null);
-  const squareInitRef = useRef(false);
+  const stripeRef = useRef<StripeInstance | null>(null);
+  const cardRef = useRef<StripeCardElement | null>(null);
+  const paymentRequestRef = useRef<StripePaymentRequest | null>(null);
+  const stripeInitRef = useRef(false);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -371,15 +398,7 @@ export function RcsBooking() {
       }
     }
 
-    function processPayment() {
-      const btn = q<HTMLButtonElement>("#paymentBtn");
-      const loading = q<HTMLElement>("#paymentLoading");
-      const errEl = q<HTMLElement>("#paymentError");
-
-      if (btn) btn.style.display = "none";
-      if (loading) loading.style.display = "flex";
-      if (errEl) errEl.style.display = "none";
-
+    function buildBookingData(): { from_time: string; to_time: string; timezone: string; customer_details: Record<string, unknown> } {
       const slotTime = state.selectedSlot
         ? parseSlotLabel(state.selectedSlot)
         : { hour: WORK_START_HOUR, minute: WORK_START_MIN };
@@ -388,7 +407,7 @@ export function RcsBooking() {
         : null;
       const slotEndUTC = slotStartUTC ? new Date(slotStartUTC.getTime() + SLOT_DURATION * 60000) : null;
 
-      const bookingData: { from_time: string; to_time: string; timezone: string; customer_details: Record<string, unknown> } = {
+      return {
         from_time: slotStartUTC ? slotStartUTC.toISOString() : "",
         to_time: slotEndUTC ? slotEndUTC.toISOString() : "",
         timezone: "America/Chicago",
@@ -404,52 +423,44 @@ export function RcsBooking() {
           amount: 12500,
         },
       };
+    }
 
-      const card = cardRef.current;
-      if (!card) {
-        handleError("Payment form is still loading. Please wait a moment and try again.");
-        return;
-      }
+    function friendlyStripeError(error?: { code?: string; decline_code?: string; message?: string }) {
+      const key = error?.decline_code || error?.code || "";
+      const friendlyErrors: Record<string, string> = {
+        card_declined: "Your card was declined. Please try a different card.",
+        generic_decline: "Your card was declined. Please contact your bank or try a different card.",
+        insufficient_funds: "Insufficient funds. Please try a different card.",
+        incorrect_number: "Invalid card number. Please check your card details.",
+        invalid_number: "Invalid card number. Please check your card details.",
+        expired_card: "Your card has expired. Please try a different card.",
+        incorrect_cvc: "Invalid security code (CVV). Please check and try again.",
+        invalid_cvc: "Invalid security code (CVV). Please check and try again.",
+        incorrect_zip: "Invalid postal code. Please check your billing address.",
+        processing_error: "There was an error processing your card. Please try again.",
+        card_not_supported: "This card type is not supported. Please try Visa, Mastercard, or Amex.",
+      };
+      return friendlyErrors[key] || error?.message || "Card validation failed. Please check your details and try again.";
+    }
 
-      card
-        .tokenize()
-        .then((result) => {
-          if (result.status === "OK") {
-            bookingData.customer_details.payment_token = result.token;
-            bookingData.customer_details.payment_method = "square_card";
-            return fetch(N8N_BOOKING_WEBHOOK, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(bookingData),
-            });
-          } else {
-            const rawError = result.errors && result.errors.length ? result.errors[0] : {};
-            const errorCode = rawError.code || "";
-            const friendlyErrors: Record<string, string> = {
-              CARD_DECLINED: "Your card was declined. Please try a different card.",
-              INSUFFICIENT_FUNDS: "Insufficient funds. Please try a different card.",
-              INVALID_NUMBER: "Invalid card number. Please check your card details.",
-              INVALID_EXPIRATION: "Your card has expired. Please try a different card.",
-              INVALID_SECURITY_CODE: "Invalid security code (CVV). Please check and try again.",
-              INVALID_POSTAL_CODE: "Invalid postal code. Please check your billing address.",
-              CARD_NOT_SUPPORTED: "This card type is not supported. Please try Visa, Mastercard, or Amex.",
-              BAD_EXPIRY: "Invalid expiration date. Please check your card.",
-              CVV_FAILURE: "Card security code did not match. Please try again.",
-              ADDRESS_VERIFICATION_FAILURE: "Billing address did not match. Please check your details.",
-              GENERIC_DECLINE: "Your card was declined. Please contact your bank or try a different card.",
-            };
-            const errorMsg = friendlyErrors[errorCode] || rawError.message || "Card validation failed. Please check your details and try again.";
-            throw new Error(errorMsg);
-          }
-        })
+    function submitBooking(paymentMethodId: string, prEvent?: StripePaymentRequestPaymentMethodEvent) {
+      const bookingData = buildBookingData();
+      bookingData.customer_details.payment_method_id = paymentMethodId;
+      bookingData.customer_details.payment_method = "stripe_card";
+
+      fetch(N8N_BOOKING_WEBHOOK, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(bookingData),
+      })
         .then((res) => {
-          if (!res) return;
           if (!res.ok) throw new Error("Server error (" + res.status + "). Please try again.");
           return res.json();
         })
         .then((data) => {
-          if (!data) return;
           if (data.success === true || data.status === "success" || data.confirmed === true) {
+            prEvent?.complete("success");
+            const loading = q<HTMLElement>("#paymentLoading");
             if (loading) loading.style.display = "none";
             showSuccess(bookingData as unknown as { customer_details: { first_name: string; last_name: string; email: string } });
           } else {
@@ -460,7 +471,9 @@ export function RcsBooking() {
                   data.message.toLowerCase().indexOf("booked") !== -1 ||
                   data.message.toLowerCase().indexOf("unavailable") !== -1 ||
                   data.message.toLowerCase().indexOf("taken") !== -1));
+            prEvent?.complete("fail");
             if (isDoubleBook) {
+              const loading = q<HTMLElement>("#paymentLoading");
               if (loading) loading.style.display = "none";
               showDoubleBookError();
             } else {
@@ -469,7 +482,45 @@ export function RcsBooking() {
           }
         })
         .catch((err: Error) => {
+          prEvent?.complete("fail");
           handleError(err.message || "Something went wrong. Please try again or contact us at tim@iraideas.com.");
+        });
+    }
+
+    function processCardPayment() {
+      const btn = q<HTMLButtonElement>("#paymentBtn");
+      const loading = q<HTMLElement>("#paymentLoading");
+      const errEl = q<HTMLElement>("#paymentError");
+
+      if (btn) btn.style.display = "none";
+      if (loading) loading.style.display = "flex";
+      if (errEl) errEl.style.display = "none";
+
+      const stripe = stripeRef.current;
+      const card = cardRef.current;
+      if (!stripe || !card) {
+        handleError("Payment form is still loading. Please wait a moment and try again.");
+        return;
+      }
+
+      stripe
+        .createPaymentMethod({
+          type: "card",
+          card,
+          billing_details: {
+            name: `${(q<HTMLInputElement>("#firstName"))?.value ?? ""} ${(q<HTMLInputElement>("#lastName"))?.value ?? ""}`.trim(),
+            email: (q<HTMLInputElement>("#email"))?.value ?? "",
+            phone: (q<HTMLInputElement>("#phone"))?.value ?? "",
+          },
+        })
+        .then((result) => {
+          if (result.error || !result.paymentMethod) {
+            throw new Error(friendlyStripeError(result.error));
+          }
+          submitBooking(result.paymentMethod.id);
+        })
+        .catch((err: Error) => {
+          handleError(err.message);
         });
     }
 
@@ -497,7 +548,7 @@ export function RcsBooking() {
     q<HTMLButtonElement>("#rcsBackTo1")?.addEventListener("click", () => goToStep(1));
     q<HTMLButtonElement>("#rcsNextTo3")?.addEventListener("click", () => goToStep(3));
     q<HTMLButtonElement>("#rcsBackTo2")?.addEventListener("click", () => goToStep(2));
-    q<HTMLButtonElement>("#paymentBtn")?.addEventListener("click", processPayment);
+    q<HTMLButtonElement>("#paymentBtn")?.addEventListener("click", processCardPayment);
 
     qAll<HTMLElement>(".rcs-panel").forEach((p) => {
       p.style.display = "none";
@@ -507,36 +558,71 @@ export function RcsBooking() {
 
     renderCalendar();
 
-    async function initializeSquare() {
-      if (squareInitRef.current) return;
-      if (!window.Square) return;
-      squareInitRef.current = true;
+    async function initializeStripe() {
+      if (stripeInitRef.current) return;
+      if (!window.Stripe) return;
+      stripeInitRef.current = true;
       try {
-        const payments = window.Square.payments(SQUARE_APP_ID, SQUARE_LOCATION_ID);
-        const card = await payments.card();
-        await card.attach("#card-container");
+        const stripe = window.Stripe(STRIPE_PUBLISHABLE_KEY);
+        stripeRef.current = stripe;
+        const elements = stripe.elements();
+
+        const card = elements.create("card", {
+          style: {
+            base: {
+              fontSize: "15px",
+              color: "#1a1a1a",
+              fontFamily: "Inter, sans-serif",
+              "::placeholder": { color: "#9a9a9a" },
+            },
+          },
+        });
+        card.mount("#card-container");
         cardRef.current = card;
+
+        const paymentRequest = stripe.paymentRequest({
+          country: "US",
+          currency: "usd",
+          total: { label: "Retirement Certainty Session", amount: 12500 },
+          requestPayerName: true,
+          requestPayerEmail: true,
+        });
+        paymentRequestRef.current = paymentRequest;
+
+        const canPay = await paymentRequest.canMakePayment();
+        if (canPay) {
+          const prButton = elements.create("paymentRequestButton", { paymentRequest });
+          prButton.mount("#payment-request-button");
+          const prContainer = q<HTMLElement>("#payment-request-button");
+          const prDivider = q<HTMLElement>("#pr-divider");
+          if (prContainer) prContainer.style.display = "block";
+          if (prDivider) prDivider.style.display = "flex";
+        }
+
+        paymentRequest.on("paymentmethod", (event) => {
+          submitBooking(event.paymentMethod.id, event);
+        });
       } catch (e) {
-        console.error("Square init failed:", e);
-        squareInitRef.current = false;
+        console.error("Stripe init failed:", e);
+        stripeInitRef.current = false;
       }
     }
 
-    // In case the Square SDK script already finished loading before this effect ran.
-    initializeSquare();
-    window.addEventListener("rcs-square-loaded", initializeSquare);
+    // In case the Stripe SDK script already finished loading before this effect ran.
+    initializeStripe();
+    window.addEventListener("rcs-stripe-loaded", initializeStripe);
 
     return () => {
-      window.removeEventListener("rcs-square-loaded", initializeSquare);
+      window.removeEventListener("rcs-stripe-loaded", initializeStripe);
     };
   }, []);
 
   return (
     <section id="booking" className="border-b border-r-line bg-r-bg py-20 md:py-28">
       <Script
-        src="https://web.squarecdn.com/v1/square.js"
+        src="https://js.stripe.com/v3/"
         strategy="afterInteractive"
-        onLoad={() => window.dispatchEvent(new Event("rcs-square-loaded"))}
+        onLoad={() => window.dispatchEvent(new Event("rcs-stripe-loaded"))}
       />
       <style>{`
         .cbf-header { text-align: center; margin-bottom: 56px; }
@@ -888,9 +974,16 @@ export function RcsBooking() {
                 Payment Information
               </p>
 
+              <div id="payment-request-button" className="mb-4" style={{ display: "none" }} />
+              <div id="pr-divider" className="mb-4 flex items-center gap-3" style={{ display: "none" }}>
+                <span className="h-px flex-1 bg-r-line" aria-hidden />
+                <span className="text-[11px] font-semibold uppercase tracking-wide text-r-muted">Or Pay With Card</span>
+                <span className="h-px flex-1 bg-r-line" aria-hidden />
+              </div>
+
               <div className="mb-5 overflow-hidden rounded-[var(--radius-brand-control)] border border-r-line">
                 <div className="flex items-center justify-between border-b border-r-line bg-r-bg px-4 py-3">
-                  <span className="text-xs font-semibold text-r-muted">Powered by Square</span>
+                  <span className="text-xs font-semibold text-r-muted">Powered by Stripe</span>
                   <div className="flex gap-1.5">
                     {["VISA", "MC", "AMEX"].map((c) => (
                       <span key={c} className="rounded border border-r-line px-2 py-1 text-[9px] font-bold text-r-muted">
@@ -952,7 +1045,7 @@ export function RcsBooking() {
                 <SuccessRow label="Date & Time (CST)"><span id="successDate">-</span></SuccessRow>
                 <SuccessRow label="Self-Directed Retirement Specialist">Tim Berry</SuccessRow>
                 <SuccessRow label={<>Confirmation sent to <span id="successEmail">-</span></>}><span id="successName">-</span></SuccessRow>
-                <SuccessRow label="Via Square" last>${solution.priceCard.price}.00 Paid</SuccessRow>
+                <SuccessRow label="Via Stripe" last>${solution.priceCard.price}.00 Paid</SuccessRow>
               </div>
             </div>
           </div>
