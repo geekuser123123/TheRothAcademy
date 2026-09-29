@@ -26,7 +26,7 @@ export function LibrarySection() {
         <ul className="mt-12 divide-y divide-r-line border-t border-r-line">
           {libraryRows.map((row) => (
             <li key={row.title}>
-              <Link href="/learn" className="group flex items-center gap-6 py-6 transition-colors hover:bg-r-panel-2">
+              <Link href={row.href} className="group flex items-center gap-6 py-6 transition-colors hover:bg-r-panel-2">
                 <span className="hidden text-xs text-r-gold sm:block">{row.number}</span>
                 <div className="relative h-16 w-24 shrink-0 overflow-hidden rounded-sm border border-r-line">
                   <Image

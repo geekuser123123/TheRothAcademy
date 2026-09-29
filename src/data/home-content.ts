@@ -20,20 +20,6 @@ export const pathways = [
     href: "/services/self-directed-ira",
     image: "/pathways/ira.webp",
   },
-  {
-    number: "03",
-    title: "Existing Plan Support",
-    description: "For accounts already in place that need review or coordination.",
-    href: "/services/existing-plan-support",
-    image: "/pathways/existing-plan.webp",
-  },
-  {
-    number: "04",
-    title: "Advanced Planning",
-    description: "For trusts, entities, and transactions beyond the basics.",
-    href: "/advanced-services",
-    image: "/pathways/advanced-planning.webp",
-  },
 ];
 
 export const assetClasses = [
@@ -41,39 +27,42 @@ export const assetClasses = [
     number: "01",
     label: "Real Estate",
     description: "Direct ownership opportunities.",
-    href: "/services/real-estate-transactions",
+    href: "/goals#real-estate",
     image: "/investments/real-estate.jpg",
   },
   {
     number: "02",
     label: "Private Lending",
     description: "Put capital to work in your community.",
-    href: "/services/private-lending",
+    href: "/goals#private-lending",
     image: "/investments/private-lending.jpg",
   },
   {
     number: "03",
     label: "Precious Metals",
     description: "A time-tested asset class in your plan.",
-    href: "/services/precious-metals",
+    href: "/goals#precious-metals",
     image: "/investments/precious-metals.jpg",
   },
   {
     number: "04",
     label: "Digital Assets",
     description: "A modern asset class with a place in retirement.",
-    href: "/services/digital-assets",
+    href: "/goals#digital-assets",
     image: "/investments/digital-assets.jpg",
   },
   {
     number: "05",
     label: "Stocks & Bonds",
     description: "A flexible foundation for your strategy.",
-    href: "/services/stocks-bonds",
+    href: "/goals#stocks-bonds",
     image: "/investments/stocks-bonds.jpg",
   },
 ];
 
+// No longer used on the homepage (advanced services are de-emphasized on
+// Roth Academy's active sales pages), but kept for AdvancedServicesSection,
+// which is preserved for reuse on Tax Academy / IRA Ideas.
 export const advancedServices = [
   {
     number: "01",
@@ -104,18 +93,18 @@ export const advancedServices = [
 export const standardSteps = [
   {
     number: "01",
-    title: "The Conversation",
-    description: "Tell the team what you want to accomplish and what is already in place.",
+    title: "Choose Your Plan",
+    description: "Tell us your goals and we'll confirm whether a self-directed 401(k) or IRA fits.",
   },
   {
     number: "02",
-    title: "The Right Scope",
-    description: "The appropriate professional reviews the matter. Your proposal defines the work and fee.",
+    title: "Complete Your Setup",
+    description: "Sign your paperwork and get your account established with our team's help.",
   },
   {
     number: "03",
-    title: "The Follow-Through",
-    description: "Confirm your engagement and required funding. Follow the work with an assigned team.",
+    title: "Fund Your Account",
+    description: "Move or roll over funds into your new account, ready to invest in what you understand.",
   },
 ];
 
@@ -123,25 +112,28 @@ export const libraryRows = [
   {
     number: "01",
     category: "The Foundation",
-    title: "Start With the Right Plan.",
-    meta: "Getting started · 6 min read",
-    link: "Your plan, from paperwork to practice",
+    title: "Which Plan Fits Your Goals?",
+    meta: "Compare plans · 4 min read",
+    link: "Self-directed 401(k) vs. self-directed IRA",
+    href: "/plans",
     image: "/library/getting-started.webp",
   },
   {
     number: "02",
     category: "The Opportunity",
-    title: "A Different Way to Think Property.",
+    title: "Explore Real Estate With Retirement Funds.",
     meta: "Real estate · 9 min read",
     link: "Before a retirement plan buys property",
+    href: "/learn/real-estate",
     image: "/library/real-estate.webp",
   },
   {
     number: "03",
-    category: "The Bigger Picture",
-    title: "Ask the Questions That Matter.",
-    meta: "Advanced case studies · 9 min read",
-    link: "Evaluate an advanced planning idea",
+    category: "The Next Step",
+    title: "Explore Your Rollover Options.",
+    meta: "Rollovers · 7 min read",
+    link: "Move an existing account into a self-directed plan",
+    href: "/learn/rollovers",
     image: "/library/case-studies.webp",
   },
 ];
@@ -155,28 +147,33 @@ export const checklistItems = [
 
 export const faqItems = [
   {
-    question: "Where should I start?",
+    question: "Which plan fits my situation?",
     answer:
-      "Start with the account you already have, or the goal you're working toward. The team reviews your current setup, the assets you're interested in, and what's involved before recommending a next step.",
+      "It depends on how you earn. A Self-Directed 401(k) generally fits business owners and the self-employed with no full-time employees other than a spouse. A Self-Directed IRA fits individual investors funding an account on their own, with or without an employer plan. Compare the two on our plans page, or ask the team and we'll help you choose.",
   },
   {
-    question: "What does self-directed mean?",
+    question: "What can I invest in?",
     answer:
-      "A self-directed 401(k) or IRA lets the account hold a wider range of assets — like real estate or private lending — instead of a conventional menu of stocks, bonds, and funds, within the rules that apply to that account type.",
+      "Real estate, private lending, precious metals, digital assets, stocks and bonds, and more — assets your account is eligible to hold, within the rules that apply to that account type and provider. See what's possible on our investment page.",
   },
   {
-    question: "Is Roth Academy a law firm or investment custodian?",
+    question: "Can I use money from an existing retirement account?",
     answer:
-      "No. Roth Academy provides education, onboarding, administrative support, and implementation coordination. It is not a law firm, investment adviser, or custodian. Legal work and individual professional advice require a separate engagement with the appropriate licensed professional.",
+      "In most cases, yes. Funds from an eligible 401(k), IRA, or other retirement account can typically be rolled over into your new self-directed plan without a taxable event when done correctly. Our team walks you through the rollover process during setup.",
   },
   {
-    question: "Do I need a retirement plan to use advanced services?",
+    question: "What does setup cost?",
     answer:
-      "No. Advanced services like trusts, entity structuring, and transaction coordination are available on their own — a self-directed 401(k) or IRA is not required for every engagement.",
+      "Setup includes a one-time fee plus ongoing account fees, with some provider costs billed separately. See the full breakdown on each plan's page, or ask the team for the current pricing that fits your situation.",
   },
   {
-    question: "How do I speak with the team?",
+    question: "How long does setup take?",
     answer:
-      "Use the contact form or the phone number and email in the footer. Tell the team a bit about what you're trying to accomplish so the conversation starts in the right place.",
+      "Most accounts are established within a few weeks of completing your paperwork, though timing can vary with your current provider and how funds are being moved or rolled over.",
+  },
+  {
+    question: "What help do I receive afterward?",
+    answer:
+      "Your team stays available after setup — for account questions, documentation, and ongoing support as you invest. Continuing plan administration and tax-year resources are available through the Tax Academy client experience.",
   },
 ];

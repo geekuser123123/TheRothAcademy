@@ -1,11 +1,9 @@
 import { HeroSection } from "@/components/home/HeroSection";
-import { PathwaysSection } from "@/components/home/PathwaysSection";
 import { AssetClassSection } from "@/components/home/AssetClassSection";
-import { AdvancedServicesSection } from "@/components/home/AdvancedServicesSection";
+import { PathwaysSection } from "@/components/home/PathwaysSection";
 import { StandardSection } from "@/components/home/StandardSection";
-import { StoryTeaserSection } from "@/components/home/StoryTeaserSection";
+import { CompanyCredibilitySection } from "@/components/home/CompanyCredibilitySection";
 import { LibrarySection } from "@/components/home/LibrarySection";
-import { EventSection } from "@/components/home/EventSection";
 import { FaqSection } from "@/components/home/FaqSection";
 import { ClosingStatement } from "@/components/home/ClosingStatement";
 
@@ -13,15 +11,13 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <PathwaysSection />
       <AssetClassSection />
-      <AdvancedServicesSection />
+      <PathwaysSection />
       <StandardSection />
-      <StoryTeaserSection />
+      <CompanyCredibilitySection />
       <LibrarySection />
-      <EventSection />
       <FaqSection />
-      <ClosingStatement />
+      <ClosingStatement heading="Ready to Put Your Retirement Plans in Motion?" />
     </>
   );
 }

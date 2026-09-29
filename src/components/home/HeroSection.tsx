@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, Landmark, Layers, BookOpen, Compass } from "lucide-react";
 import { heroCapabilities } from "@/data/home-content";
+import { planDestinations } from "@/data/site-config";
 
 const icons = { landmark: Landmark, layers: Layers, "book-open": BookOpen, compass: Compass };
 
@@ -52,7 +53,7 @@ export function HeroSection() {
             style={{ fontSize: 11, letterSpacing: "0.14em" }}
           >
             <span className="h-px w-8 bg-r-gold" aria-hidden />
-            Self-Directed Retirement &amp; Advanced Planning
+            Self-Directed IRAs &amp; 401(k)s
           </p>
 
           <h1
@@ -73,26 +74,24 @@ export function HeroSection() {
           </h1>
 
           <p className="mt-6 max-w-lg text-base text-r-muted font-body normal-case">
-            You built the ambition. Give it a bigger field to play on.
-          </p>
-          <p className="mt-2 max-w-lg text-base text-r-muted font-body normal-case">
-            Self-directed 401(k)s. Self-directed IRAs. Advanced planning for what comes after.
+            Put your retirement money to work in opportunities you understand. Explore self-directed
+            IRAs and 401(k)s with a team to help you get started.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link
-              href="/plans"
+              href={planDestinations.openPlan}
               className="inline-flex items-center gap-2 rounded-[var(--radius-brand-control)] bg-r-gold px-6 py-3 text-sm font-semibold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
             >
-              Find my plan
+              Open a Plan
               <ArrowUpRight size={18} aria-hidden />
             </Link>
-            <Link
-              href="/advanced-services"
+            <a
+              href="#investments"
               className="inline-flex items-center gap-2 rounded-[var(--radius-brand-control)] border border-r-line/60 bg-r-bg/30 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-r-white backdrop-blur-sm transition-colors hover:border-r-gold hover:text-r-gold"
             >
-              Explore advanced services
-            </Link>
+              See What&apos;s Possible
+            </a>
           </div>
         </div>
       </section>

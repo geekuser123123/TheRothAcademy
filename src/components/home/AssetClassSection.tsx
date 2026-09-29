@@ -5,7 +5,7 @@ import { assetClasses } from "@/data/home-content";
 
 export function AssetClassSection() {
   return (
-    <section className="border-y border-r-line bg-r-stripe-1 py-20 md:py-28">
+    <section id="investments" className="scroll-mt-24 border-y border-r-line bg-r-stripe-1 py-20 md:py-28">
       <div className="container-brand grid gap-10 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
         <div className="flex min-w-0 flex-col md:justify-between">
           <div>
