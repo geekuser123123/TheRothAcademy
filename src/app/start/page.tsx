@@ -28,7 +28,7 @@ export default function StartPage() {
       </div>
 
       <section className="border-b border-r-line bg-r-bg py-16 md:py-24">
-        <div className="container-brand max-w-2xl">
+        <div className="container-brand max-w-3xl">
           <Suspense fallback={null}>
             <StartForm />
           </Suspense>
