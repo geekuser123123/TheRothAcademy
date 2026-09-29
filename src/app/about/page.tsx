@@ -16,10 +16,11 @@ import {
   storyValues,
   storyClosing,
 } from "@/data/about-content";
+import { standardSteps } from "@/data/home-content";
 
 export const metadata: Metadata = {
-  title: "Our Story",
-  description: "A father who rebuilt. A son who was watching. The family story and the standard behind Roth Academy.",
+  title: "About Roth Academy",
+  description: "Our mission, our team, and how a self-directed 401(k) or IRA gets set up and funded.",
 };
 
 export default function AboutPage() {
@@ -76,6 +77,15 @@ export default function AboutPage() {
         paragraphs={storyClosing.paragraphs}
         signatureName={storyClosing.signatureName}
         signatureRole={storyClosing.signatureRole}
+      />
+
+      <ServiceProcess
+        eyebrow="From Interest To Funded Account"
+        heading={["How A Plan", "Gets Set Up."]}
+        steps={standardSteps}
+        columns={3}
+        linkLabel="See the full process"
+        linkHref="/work-with-us"
       />
 
       <ClosingStatement ghostText="Next Move" />

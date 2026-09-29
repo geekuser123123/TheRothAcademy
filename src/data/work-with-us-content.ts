@@ -1,97 +1,66 @@
 export const workHero = {
-  eyebrow: "How We Work",
-  title: ["A Serious Goal.", "A Clear Agreement."],
+  eyebrow: "How It Works",
+  title: ["From Interest", "To Funded Account."],
   goldLine: 1,
   description:
-    "Bring the ambition. We organize the facts, identify the appropriate professional, and define what it will take to move the work forward.",
+    "A clear path from picking a plan to putting money to work — with a team that stays with you the whole way.",
 };
 
 export const workSteps = [
   {
     number: "01",
-    kicker: "Your First Inquiry",
-    title: "Start With The Outcome",
+    kicker: "Plan Selection",
+    title: "Choose Your Plan",
     description:
-      "Tell the team what you want to accomplish, the people involved, what is already in place, and any deadline. We begin with basic facts.",
+      "Tell the team your goals and how you earn. We confirm whether a Self-Directed 401(k) or IRA fits, or help you compare the two.",
   },
   {
     number: "02",
-    kicker: "Professional Review",
-    title: "Review The Fit",
+    kicker: "Eligibility Confirmation",
+    title: "Confirm You Qualify",
     description:
-      "The team gathers the context for the appropriate professional. The next step may be more information, a paid assessment, a defined project, or a decision that another provider is the better fit.",
+      "For a 401(k), we review your business and participant eligibility. For an IRA, we review your existing accounts and funding source.",
   },
   {
     number: "03",
-    kicker: "Your Written Engagement",
-    title: "Define The Work",
-    description:
-      "Your proposal identifies the provider, assigned professional, deliverables, exclusions, responsibilities, fee, included calls, and completion or review date. The signed agreement and required funding come before substantive work.",
+    kicker: "Signup & Payment",
+    title: "Complete Your Setup Request",
+    description: "Submit your plan-setup request and complete payment to formally start your account.",
   },
   {
     number: "04",
-    kicker: "Coordinated Delivery",
-    title: "Keep It Moving",
+    kicker: "Setup",
+    title: "Your Team Establishes The Account",
     description:
-      "A coordinator organizes communication and the assigned professional handles the agreed work. Your client workspace keeps the relevant requests, tasks, records, and next steps together.",
+      "Your team prepares the plan documents and coordinates account opening with your chosen provider.",
   },
   {
     number: "05",
-    kicker: "Completion Or Next Phase",
-    title: "Finish With Intention",
+    kicker: "Funding",
+    title: "Move Your Money Into Place",
     description:
-      "The team reviews the completed work and records the closeout. Another objective or continuing support receives its own agreed scope.",
+      "Fund your account through a rollover, transfer, or new contribution, ready to invest in what you understand.",
   },
 ];
 
 export const workEngagementBasics = {
-  eyebrow: "Before The Work Starts",
-  heading: ["Know What", "You're Saying Yes To."],
+  eyebrow: "What To Expect",
+  heading: ["Know What", "You're Signing Up For."],
   items: [
     {
       number: "01",
-      title: "The objective",
-      description: "The question or outcome the engagement addresses.",
+      title: "What You'll Need",
+      description: "Basic identification, business details if applicable, and your funding source.",
     },
     {
       number: "02",
-      title: "The deliverables",
-      description: "The documents, assessment, or coordination included.",
+      title: "What's Included",
+      description: "Plan documents, account setup coordination, and team support through your first transaction.",
     },
     {
       number: "03",
-      title: "The boundaries",
-      description: "The work that needs a different or additional scope.",
-    },
-    {
-      number: "04",
-      title: "The people",
-      description: "The professional provider, attorney, and coordinator.",
-    },
-    {
-      number: "05",
-      title: "The fee & calls",
-      description: "The agreed price, funding, and meeting allowance.",
-    },
-    {
-      number: "06",
-      title: "The finish",
-      description: "Completion criteria and a planned review or end date.",
+      title: "Typical Timeline",
+      description: "Most accounts are established within a few weeks of completing your paperwork.",
     },
   ],
 };
-
-export const workEngagementChoices = [
-  {
-    eyebrow: "Defined Project",
-    heading: ["One Objective.", "An Agreed Scope."],
-    description:
-      "A particular setup, review, document package, or transaction. Deliverables, included calls, fees, and completion criteria are set for the work.",
-  },
-  {
-    eyebrow: "Continuing Support",
-    heading: ["An Ongoing Need.", "Its Own Agreement."],
-    description:
-      "Frequency, preparation, communication, fees, and review dates are defined for the agreed period. The team evaluates what the next phase requires.",
-  },
-];
