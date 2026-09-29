@@ -22,6 +22,7 @@ export function LearnDirectory() {
   const filteredGuides = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
     return learnGuides.filter((guide) => {
+      if (!guide.featured) return false;
       if (activeFilter !== "all" && guide.level !== activeFilter) return false;
       if (!normalizedQuery) return true;
       return (

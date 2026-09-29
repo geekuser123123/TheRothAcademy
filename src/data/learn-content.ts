@@ -38,13 +38,36 @@ export type LearnGuide = {
   minutes: number;
   body: string[];
   lesson?: LearnLesson;
+  // Shown in the curated /learn index. Guides without this flag still have
+  // a live page (generateStaticParams covers all of them) but are reserved
+  // for the Tax Academy client experience rather than the sales-facing
+  // library.
+  featured?: boolean;
 };
 
 export const learnGuides: LearnGuide[] = [
   {
+    number: "00",
+    slug: "ira-vs-401k",
+    level: "foundations",
+    featured: true,
+    kicker: "Choosing a plan",
+    title: "Which plan fits: 401(k) or IRA?",
+    description:
+      "The two paths lead to different accounts, different eligibility, and different features. Start by matching the plan to how you earn.",
+    minutes: 5,
+    body: [
+      "A self-directed 401(k) and a self-directed IRA both let you invest in real estate, private lending, and other assets beyond a typical brokerage menu — the difference is less about what you can invest in, and more about how you qualify and how the account is set up.",
+      "A self-directed 401(k) is a business-sponsored plan, built for owner-only businesses — sole proprietors, partnerships, and corporations with no full-time employees other than an owner or spouse. It generally allows higher contribution limits than an IRA and can include a built-in loan provision, when the plan document allows it.",
+      "A self-directed IRA is an individual account, open to anyone with earned income or existing retirement funds to roll over — no business ownership required. It's available as Traditional, Roth, or SEP, and held with a qualified custodian.",
+      "If you're not sure which fits, compare the two side by side, or tell the team about your situation and we'll help you choose.",
+    ],
+  },
+  {
     number: "01",
     slug: "getting-started",
     level: "foundations",
+    featured: true,
     kicker: "Getting started",
     title: "Your plan, from paperwork to practice",
     description:
@@ -86,6 +109,7 @@ export const learnGuides: LearnGuide[] = [
     number: "02",
     slug: "opening-accounts",
     level: "foundations",
+    featured: true,
     kicker: "Bank & brokerage accounts",
     title: "Prepare to open a plan account",
     description:
@@ -127,6 +151,7 @@ export const learnGuides: LearnGuide[] = [
     number: "03",
     slug: "contributions",
     level: "foundations",
+    featured: true,
     kicker: "Contributions",
     title: "Organize your contribution records",
     description:
@@ -168,6 +193,7 @@ export const learnGuides: LearnGuide[] = [
     number: "04",
     slug: "rollovers",
     level: "foundations",
+    featured: true,
     kicker: "Rollovers",
     title: "Prepare for a rollover",
     description:
@@ -374,6 +400,7 @@ export const learnGuides: LearnGuide[] = [
     number: "09",
     slug: "real-estate",
     level: "advanced",
+    featured: true,
     kicker: "Real estate",
     title: "Before a retirement plan buys property",
     description:
@@ -421,6 +448,7 @@ export const learnGuides: LearnGuide[] = [
     number: "10",
     slug: "private-lending",
     level: "advanced",
+    featured: true,
     kicker: "Private lending",
     title: "Prepare a private lending transaction",
     description:

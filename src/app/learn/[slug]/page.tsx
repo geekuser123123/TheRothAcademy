@@ -42,7 +42,7 @@ export default async function LearnGuidePage({ params }: PageProps<"/learn/[slug
           intro={guide.description}
         />
         <LessonBody guide={guide} lesson={lesson} />
-        <LessonRelatedWork slugs={lesson.relatedServiceSlugs} />
+        <LessonRelatedWork />
         <ClosingStatement />
       </>
     );
@@ -92,7 +92,7 @@ export default async function LearnGuidePage({ params }: PageProps<"/learn/[slug
         </div>
       </article>
 
-      <LearnArticleCta guideTitle={guide.title} />
+      <LearnArticleCta />
 
       <section className="bg-r-bg py-16">
         <div className="container-brand max-w-3xl">
