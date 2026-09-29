@@ -68,12 +68,8 @@ export const plansComparison = {
       ],
     },
     {
-      question: "Setup cost",
-      answers: ["[Setup fee: TBD]", "[Setup fee: TBD]"],
-    },
-    {
-      question: "Ongoing cost",
-      answers: ["[Ongoing fee: TBD]", "[Ongoing fee: TBD]"],
+      question: "Price",
+      answers: ["$1,500 all-inclusive", "$1,500 all-inclusive"],
     },
   ],
 };

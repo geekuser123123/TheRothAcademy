@@ -69,8 +69,7 @@ export default function SelfDirected401kPage() {
         heading={service401kPricing.heading}
         intro={service401kPricing.intro}
         included={service401kPricing.included}
-        setupFee={service401kPricing.setupFee}
-        ongoingFee={service401kPricing.ongoingFee}
+        price={service401kPricing.price}
         providerCosts={service401kPricing.providerCosts}
         note={service401kPricing.note}
       />

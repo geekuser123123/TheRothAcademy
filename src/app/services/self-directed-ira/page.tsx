@@ -70,8 +70,7 @@ export default function SelfDirectedIraPage() {
         heading={serviceIraPricing.heading}
         intro={serviceIraPricing.intro}
         included={serviceIraPricing.included}
-        setupFee={serviceIraPricing.setupFee}
-        ongoingFee={serviceIraPricing.ongoingFee}
+        price={serviceIraPricing.price}
         providerCosts={serviceIraPricing.providerCosts}
         note={serviceIraPricing.note}
       />

@@ -51,10 +51,9 @@ export const serviceIraPricing = {
     "Rollover and transfer guidance",
     "Team support through setup and your first transaction",
   ],
-  setupFee: "[Setup fee: TBD]",
-  ongoingFee: "[Ongoing fee: TBD]",
+  price: "$1,500",
   providerCosts: "Custodian and provider fees are billed separately by your account provider. [Provider cost details: TBD]",
-  note: "Final pricing is confirmed during your account review.",
+  note: "One all-inclusive price covers setup and ongoing account support.",
 };
 
 export const serviceIraOverview = {

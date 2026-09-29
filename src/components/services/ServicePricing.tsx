@@ -6,8 +6,7 @@ export function ServicePricing({
   heading,
   intro,
   included,
-  setupFee,
-  ongoingFee,
+  price,
   providerCosts,
   note,
 }: {
@@ -15,8 +14,7 @@ export function ServicePricing({
   heading: string[];
   intro?: string;
   included: string[];
-  setupFee: string;
-  ongoingFee: string;
+  price: string;
   providerCosts: string;
   note?: string;
 }) {
@@ -50,12 +48,8 @@ export function ServicePricing({
 
           <div className="mt-6 space-y-6 border-t border-r-line pt-6">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-r-muted">Setup Fee</p>
-              <p className="mt-1 text-2xl text-r-white">{setupFee}</p>
-            </div>
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-r-muted">Ongoing Fee</p>
-              <p className="mt-1 text-2xl text-r-white">{ongoingFee}</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-r-muted">Price</p>
+              <p className="mt-1 text-4xl text-r-gold">{price}</p>
             </div>
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.15em] text-r-muted">Billed Separately</p>
