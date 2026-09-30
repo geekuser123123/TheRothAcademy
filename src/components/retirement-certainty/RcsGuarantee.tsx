@@ -416,13 +416,13 @@ export function RcsGuarantee() {
                 <div className="gv-seal">
                   <div className="gv-seal-ring">
                     <div className="gv-seal-core">
-                      <div className="gv-pct">250%</div>
+                      <div className="gv-pct">400%</div>
                       <div className="gv-word">Value Guar.</div>
                     </div>
                   </div>
                 </div>
                 <div className="gv-top-text">
-                  <div className="gv-top-title">The 250% Value Guarantee</div>
+                  <div className="gv-top-title">The 400% Value Guarantee</div>
                   <div className="gv-top-sub">
                     Our promise that you&apos;ll walk away with clarity, confidence, and actionable information.
                   </div>
@@ -471,7 +471,7 @@ export function RcsGuarantee() {
             <p className="guarantee-copy">
               We get it. Spending money on a consultation is easy when you know you&apos;re going to get value.
               It&apos;s a lot harder when you&apos;re not sure what you&apos;ll receive in return. That&apos;s
-              exactly why we offer the 250% Value Guarantee, so you can book with complete confidence.
+              exactly why we offer the 400% Value Guarantee, so you can book with complete confidence.
             </p>
 
             <div className="guarantee-highlight">
@@ -505,12 +505,12 @@ export function RcsGuarantee() {
 
             <div className="guarantee-cta-row">
               <a href="#form" className="guarantee-btn">
-                Book My Consultation - $125 →
+                Book Now →
               </a>
               <div className="guarantee-note">
                 15 minutes · Instant confirmation
                 <br />
-                Backed by the 250% Value Guarantee
+                Backed by the 400% Value Guarantee
               </div>
             </div>
           </div>

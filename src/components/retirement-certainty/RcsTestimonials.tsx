@@ -621,14 +621,14 @@ export function RcsTestimonials() {
             </div>
             <div className="tbs-divider" />
             <div className="tbs-stat">
-              <div className="tbs-num">250%</div>
+              <div className="tbs-num">400%</div>
               <div className="tbs-label">Value Guarantee</div>
             </div>
             <div className="tbs-divider" />
             <div className="tbs-text">&quot;Confidence isn&apos;t built on hope. It&apos;s built on knowing.&quot;</div>
           </div>
           <a href="#form" className="tbs-cta">
-            Book My Consultation →
+            Book Now →
           </a>
         </div>
       </div>

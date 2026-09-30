@@ -797,7 +797,7 @@ export function RcsBooking() {
               <svg className="cbf-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
               </svg>
-              250% guarantee
+              400% guarantee
             </div>
           </div>
         </div>
@@ -827,11 +827,11 @@ export function RcsBooking() {
             </div>
             <div className="flex items-start gap-3 rounded-[var(--radius-brand-card)] border border-r-line bg-r-panel/40 p-4">
               <span className="flex h-10 w-10 shrink-0 flex-col items-center justify-center rounded-full bg-r-gold text-r-bg">
-                <span className="text-[10px] font-bold leading-none">250%</span>
+                <span className="text-[10px] font-bold leading-none">400%</span>
               </span>
               <div>
                 <p className="text-sm font-semibold text-r-white normal-case" style={{ fontFamily: "var(--font-body)" }}>
-                  250% Value Guarantee
+                  400% Value Guarantee
                 </p>
                 <p className="mt-1 text-xs text-r-muted font-body normal-case">
                   Contact us within 7 days for a full refund if value isn&apos;t delivered.

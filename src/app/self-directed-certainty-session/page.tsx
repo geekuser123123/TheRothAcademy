@@ -13,7 +13,7 @@ import { RcsFinalCta } from "@/components/retirement-certainty/RcsFinalCta";
 export const metadata: Metadata = {
   title: "Self-Directed Certainty Session",
   description:
-    "Book a focused 15-minute consultation with Self-Directed Retirement Plan Specialist Tim Berry. Get clarity on compliance, prohibited transactions, and your safest path forward, backed by a 250% Value Guarantee.",
+    "Book a focused 15-minute consultation with Self-Directed Retirement Plan Specialist Tim Berry. Get clarity on compliance, prohibited transactions, and your safest path forward, backed by a 400% Value Guarantee.",
   alternates: { canonical: "/self-directed-certainty-session" },
 };
 

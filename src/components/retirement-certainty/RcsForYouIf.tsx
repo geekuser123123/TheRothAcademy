@@ -390,11 +390,11 @@ export function RcsForYouIf() {
         <div className="wtif-header">
           <div>
             <span className="wtif-eyebrow">Who This Is For</span>
-            <h2 className="wtif-title">This Consultation Is For You If…</h2>
+            <h2 className="wtif-title">This Is For You If…</h2>
             <div className="wtif-divider" />
           </div>
           <a href="#form" className="wtif-cta-btn">
-            Get Clarity Today →
+            Book Now →
           </a>
         </div>
 
@@ -426,10 +426,10 @@ export function RcsForYouIf() {
             <div className="wtif-bottom-text">
               Not sure which category you fall into? <span>That&apos;s exactly what we&apos;re here for.</span>
             </div>
-            <div className="wtif-bottom-sub">15 minutes · $125 · Backed by our 250% Value Guarantee</div>
+            <div className="wtif-bottom-sub">15 minutes · $125 · Backed by our 400% Value Guarantee</div>
           </div>
           <a href="#form" className="wtif-cta-btn">
-            Book My Consultation Now →
+            Book Now →
           </a>
         </div>
       </div>

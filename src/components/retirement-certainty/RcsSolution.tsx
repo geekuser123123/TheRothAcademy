@@ -342,6 +342,8 @@ const OFFER_STYLES = `
   line-height: 1.45;
   padding: 11px 12px;
   border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
   transition: background 0.15s;
 }
 
@@ -613,23 +615,23 @@ export function RcsSolution() {
               <div className="offer-card-features">
                 <div className="ocf-label">What&apos;s included in your session</div>
                 {FEATURES.map((feature) => (
-                  <div className="ocf-item" key={feature}>
+                  <a className="ocf-item" href="#form" key={feature}>
                     <div className="ocf-check">{CHECK_ICON}</div>
                     {feature}
-                  </div>
+                  </a>
                 ))}
               </div>
 
               <div className="offer-card-cta">
                 <a href="#form" className="offer-book-btn">
-                  Book My Consultation
+                  Book Now
                   <span className="offer-book-btn-arrow">→</span>
                 </a>
               </div>
 
               <div className="offer-card-guarantee">
                 <div className="ocg-seal">
-                  <div className="ocg-seal-pct">250%</div>
+                  <div className="ocg-seal-pct">400%</div>
                   <div className="ocg-seal-word">
                     Value
                     <br />
@@ -637,7 +639,7 @@ export function RcsSolution() {
                   </div>
                 </div>
                 <div className="ocg-text">
-                  <strong>250% Value Guarantee</strong>
+                  <strong>400% Value Guarantee</strong>
                   <span>
                     If you don&apos;t receive at least 4× the value of your investment, contact us within 7 days for
                     a full refund. No hassle, no arguments.

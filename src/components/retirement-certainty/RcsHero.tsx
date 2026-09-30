@@ -227,7 +227,7 @@ export function RcsHero() {
 
           <div className="hf-card-2">
             <div className="hf-bar" />
-            <div className="hf-num">250%</div>
+            <div className="hf-num">400%</div>
             <div className="hf-label">Value Guarantee or full refund</div>
           </div>
 
