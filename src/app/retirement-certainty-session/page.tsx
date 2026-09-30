@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { RcsHero } from "@/components/retirement-certainty/RcsHero";
+import { RcsViewContentTracker } from "@/components/retirement-certainty/RcsViewContentTracker";
 import { RcsForYouIf } from "@/components/retirement-certainty/RcsForYouIf";
 import { RcsSolution } from "@/components/retirement-certainty/RcsSolution";
 import { RcsTestimonials } from "@/components/retirement-certainty/RcsTestimonials";
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
 export default function RetirementCertaintySessionPage() {
   return (
     <>
+      <RcsViewContentTracker />
       <RcsHero />
       <RcsForYouIf />
       <RcsSolution />

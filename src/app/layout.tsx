@@ -4,6 +4,7 @@ import { Teko, Poppins } from "next/font/google";
 import "./globals.css";
 import { SiteChrome } from "@/components/layout/SiteChrome";
 import { ContactModalProvider } from "@/components/contact/ContactModalProvider";
+import { MetaPixel } from "@/components/analytics/MetaPixel";
 import { siteConfig } from "@/data/site-config";
 
 const teko = Teko({
@@ -54,6 +55,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ContactModalProvider>
           <SiteChrome>{children}</SiteChrome>
         </ContactModalProvider>
+        <MetaPixel />
         <Script
           src="https://link.msgsndr.com/js/external-tracking.js"
           data-tracking-id="tk_b03c38ae759849af9ae29bdaf079e24a"

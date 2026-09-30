@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Script from "next/script";
 import { CreditCard, Check, Clock, ShieldCheck } from "lucide-react";
 import { rcsContent } from "@/data/retirement-certainty-session-content";
+import { generateEventId, getAttributionSnapshot, trackGA4Event, trackPixelEvent } from "@/lib/tracking";
 
 // TEMP: Stripe TEST mode key for end-to-end verification — swap back to the
 // live key (pk_live_51UI6jT2eiso8i6zsDPPGW72Fkv3WuLxmNuhVmSulZSfksut4TlmHARwr5z2MybVM7RtuxtZR4bAUCdIpGMPPiIyN005Ld2TTyN)
@@ -76,6 +77,10 @@ type BookingState = {
   selectedDate: Date | null;
   selectedSlot: string | null;
   currentStep: number;
+  formStarted: boolean;
+  leadEventId: string | null;
+  checkoutEventId: string | null;
+  purchaseEventId: string | null;
 };
 
 export function RcsBooking() {
@@ -99,6 +104,10 @@ export function RcsBooking() {
       selectedDate: null,
       selectedSlot: null,
       currentStep: 1,
+      formStarted: false,
+      leadEventId: null,
+      checkoutEventId: null,
+      purchaseEventId: null,
     };
 
     function chicagoSlotToUTC(year: number, month: number, day: number, hour24: number, minute: number) {
@@ -194,6 +203,10 @@ export function RcsBooking() {
     }
 
     function selectDate(date: Date) {
+      if (!state.formStarted) {
+        state.formStarted = true;
+        trackGA4Event("form_start");
+      }
       state.selectedDate = date;
       state.selectedSlot = null;
       const nextBtn = q<HTMLButtonElement>("#btn-next-1");
@@ -229,6 +242,10 @@ export function RcsBooking() {
           el.className =
             "rcs-slot cursor-pointer rounded-lg border border-r-gold bg-r-gold px-2 py-2.5 text-center text-sm font-semibold text-r-bg transition-colors";
           state.selectedSlot = label;
+          trackGA4Event("appointment_time_selected", {
+            appointment_date: state.selectedDate ? state.selectedDate.toISOString().slice(0, 10) : "",
+            appointment_time: label,
+          });
           const nextBtn = q<HTMLButtonElement>("#btn-next-1");
           if (nextBtn) nextBtn.disabled = false;
         });
@@ -305,6 +322,14 @@ export function RcsBooking() {
           alert("Please fill in all required fields.");
           return;
         }
+
+        state.leadEventId = generateEventId();
+        trackPixelEvent("Lead", {}, state.leadEventId);
+        trackGA4Event("generate_lead");
+
+        state.checkoutEventId = generateEventId();
+        trackPixelEvent("InitiateCheckout", { value: 125.0, currency: "USD" }, state.checkoutEventId);
+        trackGA4Event("begin_checkout", { value: 125.0, currency: "USD" });
       }
 
       qAll<HTMLElement>(".rcs-panel").forEach((p) => {
@@ -369,7 +394,7 @@ export function RcsBooking() {
       goToStep(1);
     }
 
-    function showSuccess(data: { customer_details: { first_name: string; last_name: string; email: string } }) {
+    function showSuccess(data: { customer_details: { first_name: string; last_name: string; email: string } }, transactionId: string) {
       qAll<HTMLElement>(".rcs-panel").forEach((p) => {
         p.style.display = "none";
       });
@@ -386,6 +411,12 @@ export function RcsBooking() {
       if (sn) sn.textContent = data.customer_details.first_name + " " + data.customer_details.last_name;
       const se = q<HTMLElement>("#successEmail");
       if (se) se.textContent = data.customer_details.email;
+
+      // Purchase only fires here, after the server has confirmed the Stripe
+      // charge actually succeeded — never on form submit or a bare page load.
+      trackPixelEvent("Purchase", { value: 125.0, currency: "USD" }, state.purchaseEventId ?? undefined);
+      trackGA4Event("purchase", { transaction_id: transactionId, value: 125.0, currency: "USD" });
+      trackGA4Event("booked_confirmed", { transaction_id: transactionId });
     }
 
     function handleError(message?: string) {
@@ -398,9 +429,16 @@ export function RcsBooking() {
         errEl.textContent = message || "Payment failed. Please try again.";
         errEl.style.display = "block";
       }
+      trackGA4Event("payment_failed", { reason: message || "unknown" });
     }
 
-    function buildBookingData(): { from_time: string; to_time: string; timezone: string; customer_details: Record<string, unknown> } {
+    function buildBookingData(): {
+      from_time: string;
+      to_time: string;
+      timezone: string;
+      customer_details: Record<string, unknown>;
+      attribution: Record<string, unknown>;
+    } {
       const slotTime = state.selectedSlot
         ? parseSlotLabel(state.selectedSlot)
         : { hour: WORK_START_HOUR, minute: WORK_START_MIN };
@@ -424,6 +462,13 @@ export function RcsBooking() {
           selected_slot: state.selectedSlot,
           amount: 12500,
         },
+        attribution: {
+          ...getAttributionSnapshot(),
+          lead_event_id: state.leadEventId,
+          checkout_event_id: state.checkoutEventId,
+          purchase_event_id: state.purchaseEventId,
+          lead_timestamp: state.leadEventId ? new Date().toISOString() : null,
+        },
       };
     }
 
@@ -446,6 +491,9 @@ export function RcsBooking() {
     }
 
     function submitBooking(paymentMethodId: string, prEvent?: StripePaymentRequestPaymentMethodEvent) {
+      if (!state.purchaseEventId) state.purchaseEventId = generateEventId();
+      trackGA4Event("payment_attempted");
+
       const bookingData = buildBookingData();
       bookingData.customer_details.payment_method_id = paymentMethodId;
       bookingData.customer_details.payment_method = "stripe_card";
@@ -464,7 +512,16 @@ export function RcsBooking() {
             prEvent?.complete("success");
             const loading = q<HTMLElement>("#paymentLoading");
             if (loading) loading.style.display = "none";
-            showSuccess(bookingData as unknown as { customer_details: { first_name: string; last_name: string; email: string } });
+            const transactionId =
+              (data.transaction_id as string | undefined) ||
+              (data.payment_intent_id as string | undefined) ||
+              (data.payment_id as string | undefined) ||
+              state.purchaseEventId ||
+              "";
+            showSuccess(
+              bookingData as unknown as { customer_details: { first_name: string; last_name: string; email: string } },
+              transactionId
+            );
           } else {
             const isDoubleBook =
               data.error_code === "SLOT_UNAVAILABLE" ||
