@@ -56,7 +56,11 @@ export function LessonBody({ guide, lesson }: { guide: LearnGuide; lesson: Learn
             </div>
           )}
           {lesson.chapters.map((chapter, index) => (
-            <section key={chapter.heading} id={`chapter-${index}`} className={index > 0 ? "mt-12" : undefined}>
+            <section
+              key={chapter.heading}
+              id={`chapter-${index}`}
+              className={index > 0 ? "mt-12 scroll-mt-32" : "scroll-mt-32"}
+            >
               <span className="font-heading text-xl text-r-gold">{String(index + 1).padStart(2, "0")}</span>
               <h2 className="mt-2 text-2xl md:text-3xl">{chapter.heading}</h2>
               <p className="mt-4 text-sm text-r-muted font-body normal-case">{chapter.paragraph}</p>
@@ -65,7 +69,7 @@ export function LessonBody({ guide, lesson }: { guide: LearnGuide; lesson: Learn
 
           <div
             id="your-checklist"
-            className="mt-14 rounded-[var(--radius-brand-card)] border border-r-line bg-r-panel/60 p-8"
+            className="mt-14 scroll-mt-32 rounded-[var(--radius-brand-card)] border border-r-line bg-r-panel/60 p-8"
           >
             <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-r-gold">
               Put The Knowledge To Work
