@@ -995,18 +995,18 @@ export function RcsBooking() {
                 />
               </div>
 
-              <div className="mt-7 flex items-center justify-between border-t border-r-line pt-6">
+              <div className="mt-7 flex flex-col-reverse gap-3 border-t border-r-line pt-6 sm:flex-row sm:items-center sm:justify-between">
                 <button
                   type="button"
                   id="rcsBackTo1"
-                  className="rounded-[var(--radius-brand-control)] border border-r-line px-5 py-2.5 text-xs font-semibold uppercase tracking-wide text-r-white transition-colors hover:border-r-gold hover:text-r-gold"
+                  className="w-full rounded-[var(--radius-brand-control)] border border-r-line px-5 py-2.5 text-xs font-semibold uppercase tracking-wide text-r-white transition-colors hover:border-r-gold hover:text-r-gold sm:w-auto"
                 >
                   ← Back
                 </button>
                 <button
                   type="button"
                   id="rcsNextTo3"
-                  className="rounded-[var(--radius-brand-control)] bg-r-gold px-8 py-3 text-sm font-bold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
+                  className="w-full rounded-[var(--radius-brand-control)] bg-r-gold px-8 py-3 text-sm font-bold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light sm:w-auto"
                 >
                   Continue to Payment →
                 </button>
@@ -1066,18 +1066,18 @@ export function RcsBooking() {
                 Processing your payment securely...
               </div>
 
-              <div className="flex items-center justify-between border-t border-r-line pt-6">
+              <div className="flex flex-col-reverse gap-3 border-t border-r-line pt-6 sm:flex-row sm:items-center sm:justify-between">
                 <button
                   type="button"
                   id="rcsBackTo2"
-                  className="rounded-[var(--radius-brand-control)] border border-r-line px-5 py-2.5 text-xs font-semibold uppercase tracking-wide text-r-white transition-colors hover:border-r-gold hover:text-r-gold"
+                  className="w-full rounded-[var(--radius-brand-control)] border border-r-line px-5 py-2.5 text-xs font-semibold uppercase tracking-wide text-r-white transition-colors hover:border-r-gold hover:text-r-gold sm:w-auto"
                 >
                   ← Back
                 </button>
                 <button
                   type="button"
                   id="paymentBtn"
-                  className="inline-flex items-center gap-2 rounded-[var(--radius-brand-control)] bg-r-gold px-8 py-3.5 text-sm font-bold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-[var(--radius-brand-control)] bg-r-gold px-8 py-3.5 text-sm font-bold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light sm:w-auto"
                 >
                   <ShieldCheck size={16} aria-hidden />
                   Pay ${solution.priceCard.price} &amp; Confirm Booking
