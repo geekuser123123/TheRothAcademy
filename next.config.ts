@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         destination: "/plans",
         permanent: true,
       },
+      {
+        source: "/retirement-certainty-session",
+        destination: "/self-directed-certainty-session",
+        permanent: true,
+      },
     ];
   },
 };

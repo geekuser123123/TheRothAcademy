@@ -5,7 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
 // Standalone ad-landing pages render without the site header/footer/nav.
-const STANDALONE_PATHS = ["/retirement-certainty-session"];
+const STANDALONE_PATHS = ["/self-directed-certainty-session"];
 
 export function SiteChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();

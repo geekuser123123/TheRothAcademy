@@ -14,10 +14,10 @@ export const metadata: Metadata = {
   title: "Self-Directed Certainty Session",
   description:
     "Book a focused 15-minute consultation with Self-Directed Retirement Plan Specialist Tim Berry. Get clarity on compliance, prohibited transactions, and your safest path forward, backed by a 250% Value Guarantee.",
-  alternates: { canonical: "/retirement-certainty-session" },
+  alternates: { canonical: "/self-directed-certainty-session" },
 };
 
-export default function RetirementCertaintySessionPage() {
+export default function SelfDirectedCertaintySessionPage() {
   return (
     <>
       <RcsViewContentTracker />

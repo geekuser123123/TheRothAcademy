@@ -14,6 +14,6 @@ const inter = Inter({
   display: "swap",
 });
 
-export default function RetirementCertaintySessionLayout({ children }: LayoutProps<"/retirement-certainty-session">) {
+export default function SelfDirectedCertaintySessionLayout({ children }: LayoutProps<"/self-directed-certainty-session">) {
   return <div className={`${playfairDisplay.variable} ${inter.variable}`}>{children}</div>;
 }
