@@ -18,6 +18,7 @@ export default function ContactPage() {
         title={contactHero.title}
         goldLine={contactHero.goldLine}
         description={contactHero.description}
+        imageSrc="/contact/hero.webp"
       />
 
       <section className="border-b border-r-line bg-r-bg py-16 md:py-24">
