@@ -52,7 +52,7 @@ export const rcsContent = {
 
   solution: {
     eyebrow: "The Solution",
-    title: "Introducing the Retirement Certainty Session",
+    title: "Introducing the Self-Directed Certainty Session",
     description:
       "A focused 15-minute consultation designed to provide clarity, confidence, and direction regarding your self-directed retirement account. For more than 25 years, we have helped investors navigate the complex rules governing self-directed retirement plans.",
     steps: [
@@ -84,7 +84,7 @@ export const rcsContent = {
     ],
     priceCard: {
       label: "15-Minute Expert Consultation",
-      title: "Retirement Certainty Session",
+      title: "Self-Directed Certainty Session",
       subtitle: "Direct access to a specialist · Secure online booking",
       price: "125",
       priceNote: "One-Time Fee",
@@ -305,7 +305,7 @@ export const rcsContent = {
       {
         question: "What if I need more help after the session?",
         answer:
-          "If further assistance is required beyond the 15 minutes, additional services can be discussed at the conclusion of your consultation. The Retirement Certainty Session is often the first step toward a more complete review when needed.",
+          "If further assistance is required beyond the 15 minutes, additional services can be discussed at the conclusion of your consultation. The Self-Directed Certainty Session is often the first step toward a more complete review when needed.",
       },
       {
         question: "Why is the consultation only $125?",

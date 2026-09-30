@@ -343,7 +343,7 @@ const FAQS = [
   },
   {
     q: "What if I need more help after the session?",
-    a: "If further assistance is required beyond the 15 minutes, additional services can be discussed at the conclusion of your consultation. The Retirement Certainty Session is often the first step toward a more complete review when needed.",
+    a: "If further assistance is required beyond the 15 minutes, additional services can be discussed at the conclusion of your consultation. The Self-Directed Certainty Session is often the first step toward a more complete review when needed.",
   },
   {
     q: "Why is the consultation only $125?",

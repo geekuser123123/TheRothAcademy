@@ -530,7 +530,7 @@ export function RcsSolution() {
         <div className="offer-inner">
           <div className="offer-left">
             <span className="offer-eyebrow">The Solution</span>
-            <h2 className="offer-title">Introducing the Retirement Certainty Session</h2>
+            <h2 className="offer-title">Introducing the Self-Directed Certainty Session</h2>
             <div className="offer-divider" />
             <p className="offer-desc">
               A focused 15-minute consultation designed to provide clarity, confidence, and direction regarding your
@@ -568,7 +568,7 @@ export function RcsSolution() {
                   <span className="oct-badge-dot" />
                   15-Minute Expert Consultation
                 </div>
-                <div className="oct-title">Retirement Certainty Session</div>
+                <div className="oct-title">Self-Directed Certainty Session</div>
                 <div className="oct-subtitle">Direct access to a specialist · Secure online booking</div>
 
                 <div className="oct-price-block">

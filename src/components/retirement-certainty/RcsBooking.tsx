@@ -585,7 +585,7 @@ export function RcsBooking() {
         const paymentRequest = stripe.paymentRequest({
           country: "US",
           currency: "usd",
-          total: { label: "Retirement Certainty Session", amount: 12500 },
+          total: { label: "Self-Directed Certainty Session", amount: 12500 },
           requestPayerName: true,
           requestPayerEmail: true,
         });
@@ -709,7 +709,7 @@ export function RcsBooking() {
             <span className="cbf-eyebrow-dot" />
             Reserve Your Session
           </div>
-          <h2 className="cbf-title">Book Your Retirement Certainty Session</h2>
+          <h2 className="cbf-title">Book Your Self-Directed Certainty Session</h2>
           <div className="cbf-divider" />
           <p className="cbf-subtitle">Select a date and time, fill in your details, and complete your secure $125 payment.</p>
           <div className="cbf-trust-row">
@@ -788,7 +788,7 @@ export function RcsBooking() {
               <div className="flex items-center gap-2.5">
                 <span className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-r-gold" />
                 <span className="text-sm font-semibold text-r-white">
-                  Retirement Certainty Session: ${solution.priceCard.price}
+                  Self-Directed Certainty Session: ${solution.priceCard.price}
                 </span>
               </div>
               <div className="hidden items-center gap-1.5 text-xs text-r-muted sm:flex">
@@ -959,7 +959,7 @@ export function RcsBooking() {
             {/* Step 3 — Payment */}
             <div id="panel-3" className="rcs-panel p-6 sm:p-8">
               <div className="mb-6 rounded-[var(--radius-brand-control)] border border-r-gold/25 bg-r-gold/[0.06] p-5">
-                <Row label="Retirement Certainty Session (15 min)" value={`$${solution.priceCard.price}.00`} />
+                <Row label="Self-Directed Certainty Session (15 min)" value={`$${solution.priceCard.price}.00`} />
                 <Row label="Consultant" value="Tim Berry" />
                 <Row label="Date & Time" value={<span id="paymentDateTime">-</span>} />
                 <Row label="Total Due Today" value={`$${solution.priceCard.price}.00`} bold />
@@ -1040,7 +1040,7 @@ export function RcsBooking() {
                 Booking Confirmed!
               </h3>
               <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-r-muted font-body normal-case">
-                Your Retirement Certainty Session with Tim Berry has been booked and payment received. A confirmation
+                Your Self-Directed Certainty Session with Tim Berry has been booked and payment received. A confirmation
                 email is on its way.
               </p>
               <div className="mx-auto mt-7 inline-block min-w-[280px] rounded-[var(--radius-brand-card)] border border-r-line bg-r-panel/40 p-6 text-left">
