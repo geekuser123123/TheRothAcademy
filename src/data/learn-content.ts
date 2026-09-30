@@ -62,6 +62,37 @@ export const learnGuides: LearnGuide[] = [
       "A self-directed IRA is an individual account, open to anyone with earned income or existing retirement funds to roll over, no business ownership required. It's available as Traditional, Roth, or SEP, and held with a qualified custodian.",
       "If you're not sure which fits, compare the two side by side, or tell the team about your situation and we'll help you choose.",
     ],
+    lesson: {
+      chapters: [
+        {
+          heading: "What they have in common",
+          paragraph:
+            "A self-directed 401(k) and a self-directed IRA both let you invest in real estate, private lending, and other assets beyond a typical brokerage menu: the difference is less about what you can invest in, and more about how you qualify and how the account is set up.",
+        },
+        {
+          heading: "The self-directed 401(k) path",
+          paragraph:
+            "A self-directed 401(k) is a business-sponsored plan, built for owner-only businesses, sole proprietors, partnerships, and corporations with no full-time employees other than an owner or spouse. It generally allows higher contribution limits than an IRA and can include a built-in loan provision, when the plan document allows it.",
+        },
+        {
+          heading: "The self-directed IRA path",
+          paragraph:
+            "A self-directed IRA is an individual account, open to anyone with earned income or existing retirement funds to roll over, no business ownership required. It's available as Traditional, Roth, or SEP, and held with a qualified custodian.",
+        },
+        {
+          heading: "How to decide",
+          paragraph:
+            "If you're not sure which fits, compare the two side by side, or tell the team about your situation and we'll help you choose.",
+        },
+      ],
+      checklist: [
+        "Confirm whether you have a business with no full-time employees other than an owner or spouse",
+        "Note your earned income and any retirement funds available to roll over",
+        "Compare 401(k) vs. IRA contribution limits for your situation",
+        "Decide whether a built-in loan provision matters to you",
+      ],
+      relatedServiceSlugs: ["self-directed-401k", "self-directed-ira"],
+    },
   },
   {
     number: "01",
