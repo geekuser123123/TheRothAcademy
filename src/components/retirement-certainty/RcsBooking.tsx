@@ -143,6 +143,20 @@ export function RcsBooking() {
       return { hour, minute };
     }
 
+    // Apple Pay / Google Pay hand back the wallet's saved phone number as
+    // whatever string the OS stored (often missing the "+1" country code,
+    // e.g. "(555) 123-4567"), which Zoho's booking API rejects outright.
+    // Coerce anything we get, from a wallet or the manual field, into E.164.
+    function normalizePhone(raw: string) {
+      const stripped = raw.trim().replace(/[^\d+]/g, "");
+      const hasPlus = stripped.startsWith("+");
+      const digits = stripped.replace(/\+/g, "");
+      if (hasPlus) return "+" + digits;
+      if (digits.length === 10) return "+1" + digits;
+      if (digits.length === 11 && digits.startsWith("1")) return "+" + digits;
+      return digits ? "+" + digits : "";
+    }
+
     function minutesToTime(m: number) {
       const h = Math.floor(m / 60);
       const min = m % 60;
@@ -479,7 +493,7 @@ export function RcsBooking() {
           first_name: (q<HTMLInputElement>("#firstName"))?.value ?? "",
           last_name: (q<HTMLInputElement>("#lastName"))?.value ?? "",
           email: (q<HTMLInputElement>("#email"))?.value ?? "",
-          phone: (q<HTMLInputElement>("#phone"))?.value ?? "",
+          phone: normalizePhone((q<HTMLInputElement>("#phone"))?.value ?? ""),
           account_type: (q<HTMLSelectElement>("#accountType"))?.value ?? "",
           primary_concern: (q<HTMLSelectElement>("#primaryConcern"))?.value ?? "",
           description: (q<HTMLTextAreaElement>("#description"))?.value ?? "",
@@ -827,7 +841,7 @@ export function RcsBooking() {
             first_name: firstName,
             last_name: lastName,
             email: event.payerEmail || "",
-            phone: event.payerPhone || "",
+            phone: normalizePhone(event.payerPhone || ""),
             account_type: "Not specified (fast checkout)",
             primary_concern: "Not specified (fast checkout)",
             description:
