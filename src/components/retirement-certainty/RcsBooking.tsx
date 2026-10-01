@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Script from "next/script";
-import { CreditCard, Check, Clock, ShieldCheck } from "lucide-react";
+import { CreditCard, Check, Clock, ShieldCheck, Zap } from "lucide-react";
 import { rcsContent } from "@/data/retirement-certainty-session-content";
 import { generateEventId, getAttributionSnapshot, trackGA4Event, trackPixelEvent } from "@/lib/tracking";
 
@@ -207,29 +207,12 @@ export function RcsBooking() {
 
     let fastPayAvailable = false;
 
-    // The button's container is made visible (display) exactly once, the
-    // moment it's mounted — see initializeStripe(). Apple Pay's button can
-    // fail to render if mounted into a display:none container, and simply
-    // un-hiding the container later does not fix it. So this only ever
-    // toggles opacity/pointer-events afterward, never display, to gate
-    // "ready for this booking" without touching the hidden-at-mount issue.
     function updateFastPayVisibility() {
-      const wrap = q<HTMLElement>("#fast-payment-button");
+      const wrap = q<HTMLElement>("#fast-pay-card");
       const divider = q<HTMLElement>("#fast-pay-divider");
       const ready = fastPayAvailable && !!state.selectedDate && !!state.selectedSlot;
-      if (wrap) {
-        wrap.style.opacity = ready ? "1" : "0";
-        wrap.style.pointerEvents = ready ? "auto" : "none";
-        wrap.style.height = ready ? "auto" : "0";
-        wrap.style.overflow = ready ? "visible" : "hidden";
-        wrap.style.marginBottom = ready ? "12px" : "0";
-      }
-      if (divider) {
-        divider.style.opacity = ready ? "1" : "0";
-        divider.style.height = ready ? "auto" : "0";
-        divider.style.overflow = ready ? "visible" : "hidden";
-        divider.style.marginBottom = ready ? "28px" : "0";
-      }
+      if (wrap) wrap.style.display = ready ? "block" : "none";
+      if (divider) divider.style.display = ready ? "flex" : "none";
     }
 
     function selectDate(date: Date) {
@@ -779,16 +762,19 @@ export function RcsBooking() {
             // object above).
             const fastElements = stripe.elements();
             const fastPrButton = fastElements.create("paymentRequestButton", { paymentRequest });
-            fastPrButton.mount("#fast-payment-button");
-            // Make both containers display:block/flex immediately, same tick
-            // as mounting — matching the panel-3 button above, which is the
-            // proven working pattern. updateFastPayVisibility() then layers
-            // the collapsed-until-ready state on top via opacity/height,
-            // never display, so this never mounts into a hidden container.
-            const fastWrap = q<HTMLElement>("#fast-payment-button");
+
+            // Make the card (the button's ancestor) display:block *before*
+            // mounting into it, same tick — matching the panel-3 button,
+            // which is the proven working pattern. updateFastPayVisibility()
+            // then layers the collapsed-until-ready state on top via
+            // opacity/height, never display, so this never mounts into a
+            // hidden container.
+            const fastCard = q<HTMLElement>("#fast-pay-card");
             const fastDivider = q<HTMLElement>("#fast-pay-divider");
-            if (fastWrap) fastWrap.style.display = "block";
+            if (fastCard) fastCard.style.display = "block";
             if (fastDivider) fastDivider.style.display = "flex";
+
+            fastPrButton.mount("#fast-payment-button");
             fastPayAvailable = true;
             updateFastPayVisibility();
           } catch (fastErr) {
@@ -811,7 +797,7 @@ export function RcsBooking() {
 
           const loading = q<HTMLElement>("#fastPayLoading");
           const errEl = q<HTMLElement>("#fastPayError");
-          const wrap = q<HTMLElement>("#fast-payment-button");
+          const wrap = q<HTMLElement>("#fast-pay-card");
           const divider = q<HTMLElement>("#fast-pay-divider");
           if (wrap) wrap.style.display = "none";
           if (divider) divider.style.display = "none";
@@ -1099,7 +1085,16 @@ export function RcsBooking() {
                 </div>
               </div>
 
-              <div id="fast-payment-button" className="mb-3" style={{ display: "none" }} />
+              <div
+                id="fast-pay-card"
+                style={{ display: "none" }}
+                className="mb-3 rounded-[var(--radius-brand-card)] border border-r-gold/50 bg-r-gold/[0.08] p-4 shadow-lg shadow-r-gold/5"
+              >
+                <p className="mb-3 flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-r-gold">
+                  <Zap size={13} aria-hidden /> Fastest way to book — skip the form
+                </p>
+                <div id="fast-payment-button" />
+              </div>
               <div id="fastPayLoading" style={{ display: "none" }} className="mb-3 flex items-center justify-center gap-3 py-3 text-sm text-r-muted">
                 <span className="h-4 w-4 animate-spin rounded-full border-2 border-r-line border-t-r-gold" />
                 Processing your payment securely...
@@ -1118,7 +1113,7 @@ export function RcsBooking() {
                   type="button"
                   id="btn-next-1"
                   disabled
-                  className="rounded-[var(--radius-brand-control)] bg-r-gold px-8 py-3 text-sm font-bold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light disabled:cursor-not-allowed disabled:bg-r-line disabled:text-r-muted"
+                  className="rounded-[var(--radius-brand-control)] border border-r-line bg-transparent px-8 py-3 text-sm font-semibold uppercase tracking-wide text-r-white transition-colors hover:border-r-gold hover:text-r-gold disabled:cursor-not-allowed disabled:border-r-line/40 disabled:text-r-muted"
                 >
                   Continue to Details →
                 </button>
