@@ -456,7 +456,6 @@ export function RcsTestimonials() {
     let current = 0;
     let perPage = 3;
     const gap = 24;
-    let autoTimer: ReturnType<typeof setInterval> | undefined;
 
     function pages() {
       return total - perPage + 1;
@@ -482,9 +481,7 @@ export function RcsTestimonials() {
         d.className = "testi-dot" + (i === 0 ? " active" : "");
         d.setAttribute("aria-label", "Slide " + (i + 1));
         d.addEventListener("click", () => {
-          stopAuto();
           goTo(i);
-          startAuto();
         });
         dotsWrap!.appendChild(d);
       }
@@ -506,28 +503,8 @@ export function RcsTestimonials() {
       goTo(current - 1 < 0 ? pages() - 1 : current - 1);
     }
 
-    function startAuto() {
-      autoTimer = setInterval(next, 4500);
-    }
-    function stopAuto() {
-      clearInterval(autoTimer);
-    }
-
-    function onNext() {
-      stopAuto();
-      next();
-      startAuto();
-    }
-    function onPrev() {
-      stopAuto();
-      prev();
-      startAuto();
-    }
-
-    nextBtn.addEventListener("click", onNext);
-    prevBtn.addEventListener("click", onPrev);
-    viewport.parentElement?.addEventListener("mouseenter", stopAuto);
-    viewport.parentElement?.addEventListener("mouseleave", startAuto);
+    nextBtn.addEventListener("click", next);
+    prevBtn.addEventListener("click", prev);
 
     function init() {
       perPage = window.innerWidth <= 640 ? 1 : window.innerWidth <= 1024 ? 2 : 3;
@@ -538,15 +515,11 @@ export function RcsTestimonials() {
 
     window.addEventListener("resize", init);
     init();
-    startAuto();
 
     return () => {
       window.removeEventListener("resize", init);
-      nextBtn.removeEventListener("click", onNext);
-      prevBtn.removeEventListener("click", onPrev);
-      viewport.parentElement?.removeEventListener("mouseenter", stopAuto);
-      viewport.parentElement?.removeEventListener("mouseleave", startAuto);
-      stopAuto();
+      nextBtn.removeEventListener("click", next);
+      prevBtn.removeEventListener("click", prev);
     };
   }, []);
 
