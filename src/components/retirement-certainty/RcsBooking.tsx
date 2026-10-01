@@ -92,7 +92,6 @@ export function RcsBooking() {
   const stripeRef = useRef<StripeInstance | null>(null);
   const cardRef = useRef<StripeCardElement | null>(null);
   const paymentRequestRef = useRef<StripePaymentRequest | null>(null);
-  const fastPaymentRequestRef = useRef<StripePaymentRequest | null>(null);
   const stripeInitRef = useRef(false);
 
   useEffect(() => {
@@ -729,12 +728,20 @@ export function RcsBooking() {
         card.mount("#card-container");
         cardRef.current = card;
 
+        // A single PaymentRequest instance backs both buttons (the regular one
+        // on the Payment step, and the fast-checkout one on Date & Time).
+        // Mounting two separate stripe.paymentRequest() instances on the same
+        // page was unreliable for Apple Pay in Safari — only the first ever
+        // resolved canMakePayment() — so both buttons share this one object,
+        // and the "paymentmethod" handler below branches on which step is
+        // active to know which one was actually tapped.
         const paymentRequest = stripe.paymentRequest({
           country: "US",
           currency: "usd",
           total: { label: "Self-Directed Certainty Session", amount: 12500 },
           requestPayerName: true,
           requestPayerEmail: true,
+          requestPayerPhone: true,
         });
         paymentRequestRef.current = paymentRequest;
 
@@ -746,34 +753,21 @@ export function RcsBooking() {
           const prDivider = q<HTMLElement>("#pr-divider");
           if (prContainer) prContainer.style.display = "block";
           if (prDivider) prDivider.style.display = "flex";
-        }
 
-        paymentRequest.on("paymentmethod", (event) => {
-          submitBooking(event.paymentMethod.id, event);
-        });
-
-        // Separate instance for the Date & Time step's "fast checkout" button:
-        // also requests phone so the whole contact card can come straight from
-        // the Apple Pay / Google Pay sheet, skipping the Your Details form.
-        const fastPaymentRequest = stripe.paymentRequest({
-          country: "US",
-          currency: "usd",
-          total: { label: "Self-Directed Certainty Session", amount: 12500 },
-          requestPayerName: true,
-          requestPayerEmail: true,
-          requestPayerPhone: true,
-        });
-        fastPaymentRequestRef.current = fastPaymentRequest;
-
-        const canPayFast = await fastPaymentRequest.canMakePayment();
-        if (canPayFast) {
-          const fastPrButton = elements.create("paymentRequestButton", { paymentRequest: fastPaymentRequest });
+          const fastPrButton = elements.create("paymentRequestButton", { paymentRequest });
           fastPrButton.mount("#fast-payment-button");
           fastPayAvailable = true;
           updateFastPayVisibility();
         }
 
-        fastPaymentRequest.on("paymentmethod", (event) => {
+        paymentRequest.on("paymentmethod", (event) => {
+          if (state.currentStep !== 1) {
+            submitBooking(event.paymentMethod.id, event);
+            return;
+          }
+
+          // Fast checkout: user tapped the wallet button on Date & Time,
+          // never saw the Your Details form.
           if (!state.selectedDate || !state.selectedSlot) {
             event.complete("fail");
             return;
