@@ -1091,7 +1091,7 @@ export function RcsBooking() {
                 className="mb-3 rounded-[var(--radius-brand-card)] border border-r-gold/50 bg-r-gold/[0.08] p-4 shadow-lg shadow-r-gold/5"
               >
                 <p className="mb-3 flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-r-gold">
-                  <Zap size={13} aria-hidden /> Fastest way to book — skip the form
+                  <Zap size={13} aria-hidden /> Fastest way to book - skip the form
                 </p>
                 <div id="fast-payment-button" />
               </div>
