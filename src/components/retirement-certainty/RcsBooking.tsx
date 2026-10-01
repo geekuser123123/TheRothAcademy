@@ -207,12 +207,29 @@ export function RcsBooking() {
 
     let fastPayAvailable = false;
 
+    // The button's container is made visible (display) exactly once, the
+    // moment it's mounted — see initializeStripe(). Apple Pay's button can
+    // fail to render if mounted into a display:none container, and simply
+    // un-hiding the container later does not fix it. So this only ever
+    // toggles opacity/pointer-events afterward, never display, to gate
+    // "ready for this booking" without touching the hidden-at-mount issue.
     function updateFastPayVisibility() {
       const wrap = q<HTMLElement>("#fast-payment-button");
       const divider = q<HTMLElement>("#fast-pay-divider");
       const ready = fastPayAvailable && !!state.selectedDate && !!state.selectedSlot;
-      if (wrap) wrap.style.display = ready ? "block" : "none";
-      if (divider) divider.style.display = ready ? "flex" : "none";
+      if (wrap) {
+        wrap.style.opacity = ready ? "1" : "0";
+        wrap.style.pointerEvents = ready ? "auto" : "none";
+        wrap.style.height = ready ? "auto" : "0";
+        wrap.style.overflow = ready ? "visible" : "hidden";
+        wrap.style.marginBottom = ready ? "12px" : "0";
+      }
+      if (divider) {
+        divider.style.opacity = ready ? "1" : "0";
+        divider.style.height = ready ? "auto" : "0";
+        divider.style.overflow = ready ? "visible" : "hidden";
+        divider.style.marginBottom = ready ? "28px" : "0";
+      }
     }
 
     function selectDate(date: Date) {
@@ -745,7 +762,17 @@ export function RcsBooking() {
         });
         paymentRequestRef.current = paymentRequest;
 
+        const debugEl = q<HTMLElement>("#rcsDebugStatus");
+        const setDebug = (msg: string) => {
+          if (debugEl) {
+            debugEl.style.display = "block";
+            debugEl.textContent += (debugEl.textContent ? " | " : "") + msg;
+          }
+        };
+
         const canPay = await paymentRequest.canMakePayment();
+        setDebug("canMakePayment: " + JSON.stringify(canPay));
+
         if (canPay) {
           const prButton = elements.create("paymentRequestButton", { paymentRequest });
           prButton.mount("#payment-request-button");
@@ -754,10 +781,24 @@ export function RcsBooking() {
           if (prContainer) prContainer.style.display = "block";
           if (prDivider) prDivider.style.display = "flex";
 
-          const fastPrButton = elements.create("paymentRequestButton", { paymentRequest });
-          fastPrButton.mount("#fast-payment-button");
-          fastPayAvailable = true;
-          updateFastPayVisibility();
+          try {
+            const fastPrButton = elements.create("paymentRequestButton", { paymentRequest });
+            fastPrButton.mount("#fast-payment-button");
+            // Make both containers display:block/flex immediately, same tick
+            // as mounting — matching the panel-3 button above, which is the
+            // proven working pattern. updateFastPayVisibility() then layers
+            // the collapsed-until-ready state on top via opacity/height,
+            // never display, so this never mounts into a hidden container.
+            const fastWrap = q<HTMLElement>("#fast-payment-button");
+            const fastDivider = q<HTMLElement>("#fast-pay-divider");
+            if (fastWrap) fastWrap.style.display = "block";
+            if (fastDivider) fastDivider.style.display = "flex";
+            fastPayAvailable = true;
+            updateFastPayVisibility();
+            setDebug("fast button mounted OK");
+          } catch (fastErr) {
+            setDebug("fast button error: " + (fastErr instanceof Error ? fastErr.message : String(fastErr)));
+          }
         }
 
         paymentRequest.on("paymentmethod", (event) => {
@@ -808,6 +849,11 @@ export function RcsBooking() {
         });
       } catch (e) {
         console.error("Stripe init failed:", e);
+        const debugEl = q<HTMLElement>("#rcsDebugStatus");
+        if (debugEl) {
+          debugEl.style.display = "block";
+          debugEl.textContent = "Stripe init failed: " + (e instanceof Error ? e.message : String(e));
+        }
         stripeInitRef.current = false;
       }
     }
@@ -1027,6 +1073,11 @@ export function RcsBooking() {
 
             {/* Step 1 — Date & Time */}
             <div id="panel-1" className="rcs-panel p-6 sm:p-8">
+              <div
+                id="rcsDebugStatus"
+                style={{ display: "none" }}
+                className="mb-4 rounded-md border border-yellow-400/40 bg-yellow-400/10 p-2 text-[10px] text-yellow-300 break-words"
+              />
               <p className="mb-4 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-r-gold">
                 Pick a Date <span className="h-px flex-1 bg-r-line" aria-hidden />
               </p>
