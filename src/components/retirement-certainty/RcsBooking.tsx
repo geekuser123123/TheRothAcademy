@@ -782,7 +782,13 @@ export function RcsBooking() {
           if (prDivider) prDivider.style.display = "flex";
 
           try {
-            const fastPrButton = elements.create("paymentRequestButton", { paymentRequest });
+            // Stripe only allows one Element of a given type per Elements
+            // group — the error "Can only create one Element of type
+            // paymentRequestButton" confirmed this is why the fast button
+            // never mounted. A second, separate elements() group (still
+            // backed by the same paymentRequest object above) fixes it.
+            const fastElements = stripe.elements();
+            const fastPrButton = fastElements.create("paymentRequestButton", { paymentRequest });
             fastPrButton.mount("#fast-payment-button");
             // Make both containers display:block/flex immediately, same tick
             // as mounting — matching the panel-3 button above, which is the
