@@ -241,20 +241,20 @@ export function RcsBooking() {
         return;
       }
       const grid = document.createElement("div");
-      grid.className = "grid grid-cols-3 gap-2 sm:grid-cols-4 sm:gap-2.5";
+      grid.className = "grid grid-cols-4 gap-1.5";
       slots.forEach((slot) => {
         const label = typeof slot === "object" ? slot.label : slot;
         const el = document.createElement("div");
         el.className =
-          "cursor-pointer rounded-lg border border-r-line bg-r-bg px-2 py-2.5 text-center text-sm font-semibold text-r-white transition-colors hover:border-r-gold hover:bg-r-gold/10";
+          "cursor-pointer rounded-lg border border-r-line bg-r-bg px-1 py-2 text-center text-xs font-semibold text-r-white transition-colors hover:border-r-gold hover:bg-r-gold/10";
         el.textContent = label;
         el.addEventListener("click", () => {
           qAll<HTMLElement>(".rcs-slot").forEach((s) => {
             s.className =
-              "rcs-slot cursor-pointer rounded-lg border border-r-line bg-r-bg px-2 py-2.5 text-center text-sm font-semibold text-r-white transition-colors hover:border-r-gold hover:bg-r-gold/10";
+              "rcs-slot cursor-pointer rounded-lg border border-r-line bg-r-bg px-1 py-2 text-center text-xs font-semibold text-r-white transition-colors hover:border-r-gold hover:bg-r-gold/10";
           });
           el.className =
-            "rcs-slot cursor-pointer rounded-lg border border-r-gold bg-r-gold px-2 py-2.5 text-center text-sm font-semibold text-r-bg transition-colors";
+            "rcs-slot cursor-pointer rounded-lg border border-r-gold bg-r-gold px-1 py-2 text-center text-xs font-semibold text-r-bg transition-colors";
           state.selectedSlot = label;
           trackGA4Event("appointment_time_selected", {
             appointment_date: state.selectedDate ? state.selectedDate.toISOString().slice(0, 10) : "",
@@ -263,6 +263,11 @@ export function RcsBooking() {
           const nextBtn = q<HTMLButtonElement>("#btn-next-1");
           if (nextBtn) nextBtn.disabled = false;
           updateFastPayVisibility();
+          // Bring the fast-checkout card into view immediately so people
+          // don't have to scroll further to find it after picking a time.
+          window.setTimeout(() => {
+            q<HTMLElement>("#fast-pay-card")?.scrollIntoView({ behavior: "smooth", block: "center" });
+          }, 50);
         });
         el.classList.add("rcs-slot");
         grid.appendChild(el);
@@ -417,7 +422,10 @@ export function RcsBooking() {
       const stepsBar = q<HTMLElement>("#stepsBar");
       if (stepsBar) stepsBar.style.display = "none";
       const success = q<HTMLElement>("#successScreen");
-      if (success) success.style.display = "block";
+      if (success) {
+        success.style.display = "block";
+        success.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
       const dateStr = state.selectedDate
         ? state.selectedDate.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" })
         : "";

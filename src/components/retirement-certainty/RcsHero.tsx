@@ -200,7 +200,7 @@ export function RcsHero() {
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
-              href="#booking"
+              href="#form"
               className="inline-flex items-center gap-2 rounded-[var(--radius-brand-control)] bg-r-gold px-6 py-3 text-sm font-semibold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light"
             >
               {hero.cta}
