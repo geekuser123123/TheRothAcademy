@@ -42,6 +42,9 @@ type StripeElementBase = {
 
 type StripePaymentRequestPaymentMethodEvent = {
   paymentMethod: { id: string };
+  payerName?: string;
+  payerEmail?: string;
+  payerPhone?: string;
   complete: (status: "success" | "fail") => void;
 };
 
@@ -89,6 +92,7 @@ export function RcsBooking() {
   const stripeRef = useRef<StripeInstance | null>(null);
   const cardRef = useRef<StripeCardElement | null>(null);
   const paymentRequestRef = useRef<StripePaymentRequest | null>(null);
+  const fastPaymentRequestRef = useRef<StripePaymentRequest | null>(null);
   const stripeInitRef = useRef(false);
 
   useEffect(() => {
@@ -202,6 +206,16 @@ export function RcsBooking() {
       }
     }
 
+    let fastPayAvailable = false;
+
+    function updateFastPayVisibility() {
+      const wrap = q<HTMLElement>("#fast-payment-button");
+      const divider = q<HTMLElement>("#fast-pay-divider");
+      const ready = fastPayAvailable && !!state.selectedDate && !!state.selectedSlot;
+      if (wrap) wrap.style.display = ready ? "block" : "none";
+      if (divider) divider.style.display = ready ? "flex" : "none";
+    }
+
     function selectDate(date: Date) {
       if (!state.formStarted) {
         state.formStarted = true;
@@ -213,6 +227,7 @@ export function RcsBooking() {
       if (nextBtn) nextBtn.disabled = true;
       renderCalendar();
       fetchSlots(date);
+      updateFastPayVisibility();
     }
 
     function displaySlots(slots: (string | { label: string })[], container: HTMLElement) {
@@ -248,6 +263,7 @@ export function RcsBooking() {
           });
           const nextBtn = q<HTMLButtonElement>("#btn-next-1");
           if (nextBtn) nextBtn.disabled = false;
+          updateFastPayVisibility();
         });
         el.classList.add("rcs-slot");
         grid.appendChild(el);
@@ -391,6 +407,7 @@ export function RcsBooking() {
         slotsContent.innerHTML =
           '<div class="rounded-lg border border-dashed border-r-line bg-r-panel/40 p-8 text-center text-sm text-r-muted">Please select a date to see available time slots</div>';
       }
+      updateFastPayVisibility();
       goToStep(1);
     }
 
@@ -432,7 +449,7 @@ export function RcsBooking() {
       trackGA4Event("payment_failed", { reason: message || "unknown" });
     }
 
-    function buildBookingData(): {
+    function buildBookingData(customerOverride?: Record<string, unknown>): {
       from_time: string;
       to_time: string;
       timezone: string;
@@ -451,7 +468,7 @@ export function RcsBooking() {
         from_time: slotStartUTC ? slotStartUTC.toISOString() : "",
         to_time: slotEndUTC ? slotEndUTC.toISOString() : "",
         timezone: "America/Chicago",
-        customer_details: {
+        customer_details: customerOverride ?? {
           first_name: (q<HTMLInputElement>("#firstName"))?.value ?? "",
           last_name: (q<HTMLInputElement>("#lastName"))?.value ?? "",
           email: (q<HTMLInputElement>("#email"))?.value ?? "",
@@ -543,6 +560,79 @@ export function RcsBooking() {
         .catch((err: Error) => {
           prEvent?.complete("fail");
           handleError(err.message || "Something went wrong. Please try again or contact us at tim@iraideas.com.");
+        });
+    }
+
+    function handleFastPayError(message?: string) {
+      const loading = q<HTMLElement>("#fastPayLoading");
+      const errEl = q<HTMLElement>("#fastPayError");
+      if (loading) loading.style.display = "none";
+      if (errEl) {
+        errEl.textContent = message || "Payment failed. Please try again, or continue below to pay by card.";
+        errEl.style.display = "block";
+      }
+      updateFastPayVisibility();
+      trackGA4Event("payment_failed", { reason: message || "unknown" });
+    }
+
+    // Fast checkout: skips the "Your Details" step entirely. Name, email, and
+    // phone come straight from the Apple Pay / Google Pay sheet instead of a
+    // typed form, so account type / primary concern / description are never
+    // collected here — Tim asks about the situation live at the start of the call.
+    function submitFastBooking(prEvent: StripePaymentRequestPaymentMethodEvent, customerDetails: Record<string, unknown>) {
+      if (!state.purchaseEventId) state.purchaseEventId = generateEventId();
+      trackGA4Event("payment_attempted");
+
+      const bookingData = buildBookingData(customerDetails);
+      bookingData.customer_details.payment_method_id = prEvent.paymentMethod.id;
+      bookingData.customer_details.payment_method = "stripe_wallet_fast";
+
+      fetch(N8N_BOOKING_WEBHOOK, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(bookingData),
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error("Server error (" + res.status + "). Please try again.");
+          return res.json();
+        })
+        .then((data) => {
+          if (data.success === true || data.status === "success" || data.confirmed === true) {
+            prEvent.complete("success");
+            const loading = q<HTMLElement>("#fastPayLoading");
+            if (loading) loading.style.display = "none";
+            const transactionId =
+              (data.transaction_id as string | undefined) ||
+              (data.payment_intent_id as string | undefined) ||
+              (data.payment_id as string | undefined) ||
+              state.purchaseEventId ||
+              "";
+            showSuccess(
+              bookingData as unknown as { customer_details: { first_name: string; last_name: string; email: string } },
+              transactionId
+            );
+          } else {
+            const isDoubleBook =
+              data.error_code === "SLOT_UNAVAILABLE" ||
+              (data.message &&
+                (data.message.toLowerCase().indexOf("slot") !== -1 ||
+                  data.message.toLowerCase().indexOf("booked") !== -1 ||
+                  data.message.toLowerCase().indexOf("unavailable") !== -1 ||
+                  data.message.toLowerCase().indexOf("taken") !== -1));
+            prEvent.complete("fail");
+            if (isDoubleBook) {
+              state.selectedSlot = null;
+              const nextBtn = q<HTMLButtonElement>("#btn-next-1");
+              if (nextBtn) nextBtn.disabled = true;
+              handleFastPayError("This time slot was just booked by someone else. Please pick a different time.");
+            } else {
+              throw new Error(data.message || data.error || "Booking could not be confirmed. Please try again.");
+            }
+          }
+        })
+        .catch((err: Error) => {
+          prEvent.complete("fail");
+          handleFastPayError(err.message || "Something went wrong. Please try again or contact us at tim@iraideas.com.");
         });
     }
 
@@ -660,6 +750,67 @@ export function RcsBooking() {
 
         paymentRequest.on("paymentmethod", (event) => {
           submitBooking(event.paymentMethod.id, event);
+        });
+
+        // Separate instance for the Date & Time step's "fast checkout" button:
+        // also requests phone so the whole contact card can come straight from
+        // the Apple Pay / Google Pay sheet, skipping the Your Details form.
+        const fastPaymentRequest = stripe.paymentRequest({
+          country: "US",
+          currency: "usd",
+          total: { label: "Self-Directed Certainty Session", amount: 12500 },
+          requestPayerName: true,
+          requestPayerEmail: true,
+          requestPayerPhone: true,
+        });
+        fastPaymentRequestRef.current = fastPaymentRequest;
+
+        const canPayFast = await fastPaymentRequest.canMakePayment();
+        if (canPayFast) {
+          const fastPrButton = elements.create("paymentRequestButton", { paymentRequest: fastPaymentRequest });
+          fastPrButton.mount("#fast-payment-button");
+          fastPayAvailable = true;
+          updateFastPayVisibility();
+        }
+
+        fastPaymentRequest.on("paymentmethod", (event) => {
+          if (!state.selectedDate || !state.selectedSlot) {
+            event.complete("fail");
+            return;
+          }
+
+          const loading = q<HTMLElement>("#fastPayLoading");
+          const errEl = q<HTMLElement>("#fastPayError");
+          const wrap = q<HTMLElement>("#fast-payment-button");
+          const divider = q<HTMLElement>("#fast-pay-divider");
+          if (wrap) wrap.style.display = "none";
+          if (divider) divider.style.display = "none";
+          if (loading) loading.style.display = "flex";
+          if (errEl) errEl.style.display = "none";
+
+          const nameParts = (event.payerName || "").trim().split(/\s+/).filter(Boolean);
+          const firstName = nameParts[0] || "";
+          const lastName = nameParts.slice(1).join(" ");
+
+          state.leadEventId = generateEventId();
+          trackPixelEvent("Lead", {}, state.leadEventId);
+          trackGA4Event("generate_lead");
+          state.checkoutEventId = generateEventId();
+          trackPixelEvent("InitiateCheckout", { value: 125.0, currency: "USD" }, state.checkoutEventId);
+          trackGA4Event("begin_checkout", { value: 125.0, currency: "USD" });
+
+          submitFastBooking(event, {
+            first_name: firstName,
+            last_name: lastName,
+            email: event.payerEmail || "",
+            phone: event.payerPhone || "",
+            account_type: "Not specified (fast checkout)",
+            primary_concern: "Not specified (fast checkout)",
+            description:
+              "Booked via fast Apple Pay/Google Pay checkout — no additional details provided. Please ask about their situation at the start of the call.",
+            selected_slot: state.selectedSlot,
+            amount: 12500,
+          });
         });
       } catch (e) {
         console.error("Stripe init failed:", e);
@@ -916,6 +1067,20 @@ export function RcsBooking() {
                 <div className="rounded-lg border border-dashed border-r-line bg-r-panel/40 p-8 text-center text-sm text-r-muted">
                   Please select a date to see available time slots
                 </div>
+              </div>
+
+              <div id="fast-payment-button" className="mb-3" style={{ display: "none" }} />
+              <div id="fastPayLoading" style={{ display: "none" }} className="mb-3 flex items-center justify-center gap-3 py-3 text-sm text-r-muted">
+                <span className="h-4 w-4 animate-spin rounded-full border-2 border-r-line border-t-r-gold" />
+                Processing your payment securely...
+              </div>
+              <div id="fastPayError" style={{ display: "none" }} className="mb-3 rounded-md border border-red-400/40 bg-red-400/10 p-3 text-xs text-red-300" />
+              <div id="fast-pay-divider" className="mb-7 flex items-center gap-3" style={{ display: "none" }}>
+                <span className="h-px flex-1 bg-r-line" aria-hidden />
+                <span className="text-[11px] font-semibold uppercase tracking-wide text-r-muted">
+                  Or continue with your details
+                </span>
+                <span className="h-px flex-1 bg-r-line" aria-hidden />
               </div>
 
               <div className="flex items-center justify-end border-t border-r-line pt-6">
