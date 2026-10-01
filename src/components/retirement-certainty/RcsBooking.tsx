@@ -762,16 +762,7 @@ export function RcsBooking() {
         });
         paymentRequestRef.current = paymentRequest;
 
-        const debugEl = q<HTMLElement>("#rcsDebugStatus");
-        const setDebug = (msg: string) => {
-          if (debugEl) {
-            debugEl.style.display = "block";
-            debugEl.textContent += (debugEl.textContent ? " | " : "") + msg;
-          }
-        };
-
         const canPay = await paymentRequest.canMakePayment();
-        setDebug("canMakePayment: " + JSON.stringify(canPay));
 
         if (canPay) {
           const prButton = elements.create("paymentRequestButton", { paymentRequest });
@@ -783,10 +774,9 @@ export function RcsBooking() {
 
           try {
             // Stripe only allows one Element of a given type per Elements
-            // group — the error "Can only create one Element of type
-            // paymentRequestButton" confirmed this is why the fast button
-            // never mounted. A second, separate elements() group (still
-            // backed by the same paymentRequest object above) fixes it.
+            // group, so the fast-checkout button needs its own separate
+            // elements() group (still backed by the same paymentRequest
+            // object above).
             const fastElements = stripe.elements();
             const fastPrButton = fastElements.create("paymentRequestButton", { paymentRequest });
             fastPrButton.mount("#fast-payment-button");
@@ -801,9 +791,8 @@ export function RcsBooking() {
             if (fastDivider) fastDivider.style.display = "flex";
             fastPayAvailable = true;
             updateFastPayVisibility();
-            setDebug("fast button mounted OK");
           } catch (fastErr) {
-            setDebug("fast button error: " + (fastErr instanceof Error ? fastErr.message : String(fastErr)));
+            console.error("Fast checkout button failed to mount:", fastErr);
           }
         }
 
@@ -855,11 +844,6 @@ export function RcsBooking() {
         });
       } catch (e) {
         console.error("Stripe init failed:", e);
-        const debugEl = q<HTMLElement>("#rcsDebugStatus");
-        if (debugEl) {
-          debugEl.style.display = "block";
-          debugEl.textContent = "Stripe init failed: " + (e instanceof Error ? e.message : String(e));
-        }
         stripeInitRef.current = false;
       }
     }
@@ -1079,11 +1063,6 @@ export function RcsBooking() {
 
             {/* Step 1 — Date & Time */}
             <div id="panel-1" className="rcs-panel p-6 sm:p-8">
-              <div
-                id="rcsDebugStatus"
-                style={{ display: "none" }}
-                className="mb-4 rounded-md border border-yellow-400/40 bg-yellow-400/10 p-2 text-[10px] text-yellow-300 break-words"
-              />
               <p className="mb-4 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-r-gold">
                 Pick a Date <span className="h-px flex-1 bg-r-line" aria-hidden />
               </p>
