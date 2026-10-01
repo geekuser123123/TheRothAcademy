@@ -241,7 +241,7 @@ export function RcsBooking() {
         return;
       }
       const grid = document.createElement("div");
-      grid.className = "grid grid-cols-2 gap-2.5 sm:grid-cols-4";
+      grid.className = "grid grid-cols-3 gap-2 sm:grid-cols-4 sm:gap-2.5";
       slots.forEach((slot) => {
         const label = typeof slot === "object" ? slot.label : slot;
         const el = document.createElement("div");
