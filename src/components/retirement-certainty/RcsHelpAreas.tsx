@@ -71,6 +71,9 @@ const FOCUS_STYLES = `
   padding: 32px 28px 28px;
   position: relative;
   overflow: hidden;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
   transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
 }
 
@@ -445,7 +448,7 @@ export function RcsHelpAreas() {
 
         <div className="focus-grid">
           {CARDS.map((card) => (
-            <div className={"focus-card " + card.cls} key={card.title}>
+            <a className={"focus-card " + card.cls} href="#form" key={card.title}>
               <div className="fc-number">{card.number}</div>
               <div className="fc-icon-wrap">{card.icon}</div>
               <div className="fc-title">{card.title}</div>
@@ -464,7 +467,7 @@ export function RcsHelpAreas() {
                 </div>
                 <div className="fc-arrow">{ARROW_ICON}</div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
 
