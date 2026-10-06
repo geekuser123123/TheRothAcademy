@@ -589,7 +589,7 @@ export function RcsTestimonials() {
             </div>
             <div className="tbs-divider" />
             <div className="tbs-stat">
-              <div className="tbs-num">$150</div>
+              <div className="tbs-num">$125</div>
               <div className="tbs-label">Flat Fee</div>
             </div>
             <div className="tbs-divider" />
