@@ -6,11 +6,7 @@ import { CreditCard, Check, Clock, ShieldCheck, Zap } from "lucide-react";
 import { rcsContent } from "@/data/retirement-certainty-session-content";
 import { generateEventId, getAttributionSnapshot, trackGA4Event, trackPixelEvent } from "@/lib/tracking";
 
-// TEMP: Stripe TEST mode key for end-to-end verification — swap back to the
-// live key (pk_live_51UI6jT2eiso8i6zsDPPGW72Fkv3WuLxmNuhVmSulZSfksut4TlmHARwr5z2MybVM7RtuxtZR4bAUCdIpGMPPiIyN005Ld2TTyN)
-// once testing is confirmed working, and switch the n8n "Charge Stripe" node
-// back to the live restricted key at the same time.
-const STRIPE_PUBLISHABLE_KEY = "pk_test_51UI6ja2c0Q84dTy8JJT3865xKgK10bn2HvHDSVIzY8rFMFDHNEai9YXDRId8A37bdeET4Bgk11pWlepaxcHXwfs100LGKoYcxw";
+const STRIPE_PUBLISHABLE_KEY = "pk_live_51UI6jT2eiso8i6zsDPPGW72Fkv3WuLxmNuhVmSulZSfksut4TlmHARwr5z2MybVM7RtuxtZR4bAUCdIpGMPPiIyN005Ld2TTyN";
 const N8N_SLOTS_WEBHOOK = "https://n8n.coreautomations.org/webhook/get-slots";
 const N8N_BOOKING_WEBHOOK = "https://n8n.coreautomations.org/webhook/0f7ca06d-b691-4297-834d-5cbd7e473ff5";
 
