@@ -195,7 +195,7 @@ export function RcsHero() {
         }}
       />
 
-      <div className="container-brand relative grid gap-14 pb-16 pt-40 md:grid-cols-[1.2fr_1fr] md:items-center md:pb-24 md:pt-48">
+      <div className="container-brand relative grid gap-14 pb-16 pt-20 md:grid-cols-[1.2fr_1fr] md:items-center md:pb-24 md:pt-48">
         <div className="min-w-0">
           <p
             className="flex items-center gap-3 font-semibold uppercase text-r-gold"
