@@ -162,6 +162,29 @@ export function RcsHero() {
   return (
     <section className="relative overflow-hidden border-b border-r-line bg-r-stripe-2">
       <style>{HERO_RIGHT_STYLES}</style>
+
+      <video
+        aria-hidden
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+      >
+        <source src="/videos/rcs-hero-background.mp4" type="video/mp4" />
+      </video>
+
+      {/* Scrim for text legibility over the video */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(100deg, rgba(12,12,12,0.93) 0%, rgba(12,12,12,0.86) 35%, rgba(12,12,12,0.55) 62%, rgba(12,12,12,0.72) 100%), linear-gradient(0deg, rgba(12,12,12,0.85) 0%, rgba(12,12,12,0.15) 30%, rgba(12,12,12,0.3) 100%)",
+        }}
+      />
+
       <div
         aria-hidden
         className="pointer-events-none absolute -right-[15%] top-1/2 h-[140%] w-[65%] -translate-y-1/2 rounded-full opacity-30 mix-blend-screen md:-right-[5%] md:w-[50%]"
