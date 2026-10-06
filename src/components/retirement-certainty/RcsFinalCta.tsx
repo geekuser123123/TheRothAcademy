@@ -382,7 +382,7 @@ const TRUST_ITEMS = [
 
 const STATS = [
   { num: "25+", label: "Years of Specialist Experience" },
-  { num: "$125", label: "Flat Consultation Fee" },
+  { num: "$150", label: "Flat Consultation Fee" },
   { num: "400%", label: "Value Guarantee or Refund" },
 ];
 

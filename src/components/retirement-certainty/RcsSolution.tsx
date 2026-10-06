@@ -575,7 +575,7 @@ export function RcsSolution() {
 
                 <div className="oct-price-block">
                   <div className="oct-currency">$</div>
-                  <div className="oct-price">125</div>
+                  <div className="oct-price">150</div>
                   <div className="oct-price-right">
                     <div className="oct-price-tag">One-Time Fee</div>
                     <div className="oct-price-note">

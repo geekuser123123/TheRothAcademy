@@ -362,8 +362,8 @@ export function RcsBooking() {
         trackGA4Event("generate_lead");
 
         state.checkoutEventId = generateEventId();
-        trackPixelEvent("InitiateCheckout", { value: 125.0, currency: "USD" }, state.checkoutEventId);
-        trackGA4Event("begin_checkout", { value: 125.0, currency: "USD" });
+        trackPixelEvent("InitiateCheckout", { value: 150.0, currency: "USD" }, state.checkoutEventId);
+        trackGA4Event("begin_checkout", { value: 150.0, currency: "USD" });
       }
 
       qAll<HTMLElement>(".rcs-panel").forEach((p) => {
@@ -452,8 +452,8 @@ export function RcsBooking() {
 
       // Purchase only fires here, after the server has confirmed the Stripe
       // charge actually succeeded — never on form submit or a bare page load.
-      trackPixelEvent("Purchase", { value: 125.0, currency: "USD" }, state.purchaseEventId ?? undefined);
-      trackGA4Event("purchase", { transaction_id: transactionId, value: 125.0, currency: "USD" });
+      trackPixelEvent("Purchase", { value: 150.0, currency: "USD" }, state.purchaseEventId ?? undefined);
+      trackGA4Event("purchase", { transaction_id: transactionId, value: 150.0, currency: "USD" });
       trackGA4Event("booked_confirmed", { transaction_id: transactionId });
     }
 
@@ -498,7 +498,7 @@ export function RcsBooking() {
           primary_concern: (q<HTMLSelectElement>("#primaryConcern"))?.value ?? "",
           description: (q<HTMLTextAreaElement>("#description"))?.value ?? "",
           selected_slot: state.selectedSlot,
-          amount: 12500,
+          amount: 15000,
         },
         attribution: {
           ...getAttributionSnapshot(),
@@ -760,7 +760,7 @@ export function RcsBooking() {
         const paymentRequest = stripe.paymentRequest({
           country: "US",
           currency: "usd",
-          total: { label: "Self-Directed Certainty Session", amount: 12500 },
+          total: { label: "Self-Directed Certainty Session", amount: 15000 },
           requestPayerName: true,
           requestPayerEmail: true,
           requestPayerPhone: true,
@@ -834,8 +834,8 @@ export function RcsBooking() {
           trackPixelEvent("Lead", {}, state.leadEventId);
           trackGA4Event("generate_lead");
           state.checkoutEventId = generateEventId();
-          trackPixelEvent("InitiateCheckout", { value: 125.0, currency: "USD" }, state.checkoutEventId);
-          trackGA4Event("begin_checkout", { value: 125.0, currency: "USD" });
+          trackPixelEvent("InitiateCheckout", { value: 150.0, currency: "USD" }, state.checkoutEventId);
+          trackGA4Event("begin_checkout", { value: 150.0, currency: "USD" });
 
           submitFastBooking(event, {
             first_name: firstName,
@@ -847,7 +847,7 @@ export function RcsBooking() {
             description:
               "Booked via fast Apple Pay/Google Pay checkout — no additional details provided. Please ask about their situation at the start of the call.",
             selected_slot: state.selectedSlot,
-            amount: 12500,
+            amount: 15000,
           });
         });
       } catch (e) {
@@ -957,7 +957,7 @@ export function RcsBooking() {
           </div>
           <h2 className="cbf-title">Book Your Self-Directed Certainty Session</h2>
           <div className="cbf-divider" />
-          <p className="cbf-subtitle">Select a date and time, fill in your details, and complete your secure $125 payment.</p>
+          <p className="cbf-subtitle">Select a date and time, fill in your details, and complete your secure $150 payment.</p>
           <div className="cbf-trust-row">
             <div className="cbf-trust-item">
               <svg className="cbf-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
