@@ -449,7 +449,7 @@ export function RcsGuarantee() {
 
               <div className="gv-stats-row">
                 <div className="gv-stat">
-                  <div className="gv-stat-num">$125</div>
+                  <div className="gv-stat-num">$1</div>
                   <div className="gv-stat-label">Flat Fee</div>
                 </div>
                 <div className="gv-stat">
@@ -476,7 +476,7 @@ export function RcsGuarantee() {
 
             <div className="guarantee-highlight">
               <p>
-                If you don&apos;t feel you received at least four times the value of your $125 investment, simply
+                If you don&apos;t feel you received at least four times the value of your $1 investment, simply
                 contact us within 7 days and we&apos;ll make it right. No hassle. No arguments.
               </p>
             </div>
