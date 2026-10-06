@@ -346,7 +346,7 @@ const FAQS = [
     a: "If further assistance is required beyond the 15 minutes, additional services can be discussed at the conclusion of your consultation. The Self-Directed Certainty Session is often the first step toward a more complete review when needed.",
   },
   {
-    q: "Why is the consultation only $1?",
+    q: "Why is the consultation only $125?",
     a: "Our goal is to make professional guidance accessible before small issues become larger problems. Many investors simply need clarity on one specific question or transaction. This focused session is designed to provide exactly that quickly and affordably.",
   },
 ];
