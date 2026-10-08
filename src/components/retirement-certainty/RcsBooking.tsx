@@ -337,10 +337,10 @@ export function RcsBooking() {
       }
 
       if (step === 3) {
-        const fields = ["firstName", "lastName", "email", "phone", "accountType", "primaryConcern", "description"];
+        const fields = ["firstName", "lastName", "email", "phone"];
         let valid = true;
         fields.forEach((id) => {
-          const el = q<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>("#" + id);
+          const el = q<HTMLInputElement>("#" + id);
           if (!el || !el.value.trim()) {
             valid = false;
             if (el) el.style.borderColor = "#e53e3e";
@@ -490,9 +490,6 @@ export function RcsBooking() {
           last_name: (q<HTMLInputElement>("#lastName"))?.value ?? "",
           email: (q<HTMLInputElement>("#email"))?.value ?? "",
           phone: normalizePhone((q<HTMLInputElement>("#phone"))?.value ?? ""),
-          account_type: (q<HTMLSelectElement>("#accountType"))?.value ?? "",
-          primary_concern: (q<HTMLSelectElement>("#primaryConcern"))?.value ?? "",
-          description: (q<HTMLTextAreaElement>("#description"))?.value ?? "",
           selected_slot: state.selectedSlot,
           amount: 12500,
         },
@@ -594,8 +591,7 @@ export function RcsBooking() {
 
     // Fast checkout: skips the "Your Details" step entirely. Name, email, and
     // phone come straight from the Apple Pay / Google Pay sheet instead of a
-    // typed form, so account type / primary concern / description are never
-    // collected here — Tim asks about the situation live at the start of the call.
+    // typed form — Tim asks about the situation live at the start of the call.
     function submitFastBooking(prEvent: StripePaymentRequestPaymentMethodEvent, customerDetails: Record<string, unknown>) {
       if (!state.purchaseEventId) state.purchaseEventId = generateEventId();
       trackGA4Event("payment_attempted");
@@ -838,10 +834,6 @@ export function RcsBooking() {
             last_name: lastName,
             email: event.payerEmail || "",
             phone: normalizePhone(event.payerPhone || ""),
-            account_type: "Not specified (fast checkout)",
-            primary_concern: "Not specified (fast checkout)",
-            description:
-              "Booked via fast Apple Pay/Google Pay checkout — no additional details provided. Please ask about their situation at the start of the call.",
             selected_slot: state.selectedSlot,
             amount: 12500,
           });
@@ -1165,42 +1157,6 @@ export function RcsBooking() {
                 <Field id="lastName" label="Last Name" type="text" />
                 <Field id="email" label="Email Address" type="email" />
                 <Field id="phone" label="Phone Number" type="tel" placeholder="+1 (555) 000-0000" />
-                <SelectField
-                  id="accountType"
-                  label="Type of Account"
-                  placeholder="Select account type"
-                  options={[
-                    ["self-directed-ira", "Self-Directed IRA"],
-                    ["solo-401k", "Solo 401(k)"],
-                    ["both", "Both IRA & 401(k)"],
-                    ["not-sure", "Not Sure Yet"],
-                  ]}
-                />
-                <SelectField
-                  id="primaryConcern"
-                  label="Primary Concern"
-                  placeholder="Select your concern"
-                  options={[
-                    ["prohibited-transaction", "Prohibited Transaction"],
-                    ["real-estate", "Real Estate Transaction"],
-                    ["private-lending", "Private Lending"],
-                    ["checkbook-llc", "Checkbook LLC"],
-                    ["general-compliance", "General Compliance"],
-                    ["pre-investment", "Pre-Investment Question"],
-                    ["other", "Other"],
-                  ]}
-                />
-              </div>
-              <div className="mt-4 flex flex-col gap-1.5">
-                <label htmlFor="description" className="text-xs font-bold text-r-white">
-                  Brief Description <span className="text-red-400">*</span>
-                </label>
-                <textarea
-                  id="description"
-                  required
-                  rows={4}
-                  className="w-full resize-y rounded-[var(--radius-brand-control)] border border-r-line bg-r-bg px-3.5 py-2.5 text-sm text-r-white outline-none transition-colors focus:border-r-gold"
-                />
               </div>
 
               <div className="mt-7 flex flex-col-reverse gap-3 border-t border-r-line pt-6 sm:flex-row sm:items-center sm:justify-between">
@@ -1345,41 +1301,6 @@ function Field({
         placeholder={placeholder}
         className="w-full rounded-[var(--radius-brand-control)] border border-r-line bg-r-bg px-3.5 py-2.5 text-sm text-r-white outline-none transition-colors focus:border-r-gold"
       />
-    </div>
-  );
-}
-
-function SelectField({
-  id,
-  label,
-  placeholder,
-  options,
-}: {
-  id: string;
-  label: string;
-  placeholder: string;
-  options: [string, string][];
-}) {
-  return (
-    <div className="flex flex-col gap-1.5">
-      <label htmlFor={id} className="text-xs font-bold text-r-white">
-        {label} <span className="text-red-400">*</span>
-      </label>
-      <select
-        id={id}
-        required
-        defaultValue=""
-        className="w-full cursor-pointer rounded-[var(--radius-brand-control)] border border-r-line bg-r-bg px-3.5 py-2.5 text-sm text-r-white outline-none transition-colors focus:border-r-gold"
-      >
-        <option value="" disabled>
-          {placeholder}
-        </option>
-        {options.map(([value, label2]) => (
-          <option key={value} value={value}>
-            {label2}
-          </option>
-        ))}
-      </select>
     </div>
   );
 }
