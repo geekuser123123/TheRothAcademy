@@ -45,7 +45,7 @@ export const rcsContent = {
     ],
     banner: {
       text: "Not sure which category you fall into? That's exactly what we're here for.",
-      meta: "15 minutes · $0.50 · Backed by our 400% Value Guarantee",
+      meta: "15 minutes · $125 · Backed by our 400% Value Guarantee",
       cta: "Book Now",
     },
   },
@@ -86,7 +86,7 @@ export const rcsContent = {
       label: "15-Minute Expert Consultation",
       title: "Self-Directed Certainty Session",
       subtitle: "Direct access to a specialist · Secure online booking",
-      price: "0.50",
+      price: "125",
       priceNote: "One-Time Fee",
       priceSub: "No recurring charges. No hidden fees.",
       pills: ["15 focused minutes", "Secure payment", "Instant confirm"],
@@ -115,7 +115,7 @@ export const rcsContent = {
     cta: "Book Now",
     stats: [
       { value: "25+", label: "Years Experience" },
-      { value: "$0.50", label: "Flat Fee" },
+      { value: "$125", label: "Flat Fee" },
       { value: "400%", label: "Value Guarantee" },
     ],
     quote: "Confidence isn't built on hope. It's built on knowing.",
@@ -220,7 +220,7 @@ export const rcsContent = {
         "Bring your most pressing question and walk away with clarity, direction, and a path forward, backed by more than 25 years of specialist experience.",
       stats: [
         { value: "15", label: "Minutes" },
-        { value: "$0.50", label: "Flat Fee" },
+        { value: "$125", label: "Flat Fee" },
         { value: "400%", label: "Guarantee" },
       ],
     },
@@ -241,7 +241,7 @@ export const rcsContent = {
       "Refund issued to original payment method within 5–10 days",
     ],
     stats: [
-      { value: "$0.50", label: "Flat Fee" },
+      { value: "$125", label: "Flat Fee" },
       { value: "15", label: "Minutes" },
       { value: "7", label: "Day Window" },
     ],
@@ -249,7 +249,7 @@ export const rcsContent = {
     description:
       "We get it. Spending money on a consultation is easy when you know you're going to get value. It's a lot harder when you're not sure what you'll receive in return. That's exactly why we offer the 400% Value Guarantee, so you can book with complete confidence.",
     description2:
-      "If you don't feel you received at least four times the value of your $0.50 investment, simply contact us within 7 days and we'll make it right. No hassle. No arguments.",
+      "If you don't feel you received at least four times the value of your $125 investment, simply contact us within 7 days and we'll make it right. No hassle. No arguments.",
     steps: [
       "Complete your consultation: attend your full 15-minute session",
       "Request within 7 days: email tim@iraideas.com if you're not satisfied",
@@ -308,7 +308,7 @@ export const rcsContent = {
           "If further assistance is required beyond the 15 minutes, additional services can be discussed at the conclusion of your consultation. The Self-Directed Certainty Session is often the first step toward a more complete review when needed.",
       },
       {
-        question: "Why is the consultation only $0.50?",
+        question: "Why is the consultation only $125?",
         answer:
           "Our goal is to make professional guidance accessible before small issues become larger problems. Many investors simply need clarity on one specific question or transaction. This focused session is designed to provide exactly that: quickly and affordably.",
       },
@@ -326,7 +326,7 @@ export const rcsContent = {
     quoteAttribution: "IRA Ideas LLC · 25+ Years of Specialist Experience",
     stats: [
       { value: "25+", label: "Years of Specialist Experience" },
-      { value: "$0.50", label: "Flat Consultation Fee" },
+      { value: "$125", label: "Flat Consultation Fee" },
       { value: "400%", label: "Value Guarantee or Refund" },
     ],
     footerGuarantee: {

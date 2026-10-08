@@ -486,7 +486,7 @@ export function RcsHelpAreas() {
             </div>
             <div className="fb-stat-sep" />
             <div className="fb-stat">
-              <div className="fb-stat-num">$0.50</div>
+              <div className="fb-stat-num">$125</div>
               <div className="fb-stat-label">Flat Fee</div>
             </div>
             <div className="fb-stat-sep" />
