@@ -490,6 +490,7 @@ export function RcsBooking() {
           last_name: (q<HTMLInputElement>("#lastName"))?.value ?? "",
           email: (q<HTMLInputElement>("#email"))?.value ?? "",
           phone: normalizePhone((q<HTMLInputElement>("#phone"))?.value ?? ""),
+          description: (q<HTMLTextAreaElement>("#description"))?.value ?? "",
           selected_slot: state.selectedSlot,
           amount: 12500,
         },
@@ -1157,6 +1158,17 @@ export function RcsBooking() {
                 <Field id="lastName" label="Last Name" type="text" />
                 <Field id="email" label="Email Address" type="email" />
                 <Field id="phone" label="Phone Number" type="tel" placeholder="+1 (555) 000-0000" />
+              </div>
+              <div className="mt-4 flex flex-col gap-1.5">
+                <label htmlFor="description" className="text-xs font-bold text-r-white">
+                  Brief Description
+                </label>
+                <p className="text-xs text-r-muted">Optional — you can also just tell us on the call.</p>
+                <textarea
+                  id="description"
+                  rows={4}
+                  className="w-full resize-y rounded-[var(--radius-brand-control)] border border-r-line bg-r-bg px-3.5 py-2.5 text-sm text-r-white outline-none transition-colors focus:border-r-gold"
+                />
               </div>
 
               <div className="mt-7 flex flex-col-reverse gap-3 border-t border-r-line pt-6 sm:flex-row sm:items-center sm:justify-between">
