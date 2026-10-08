@@ -7,7 +7,7 @@ export function RcsViewContentTracker() {
   useEffect(() => {
     trackPixelEvent(
       "ViewContent",
-      { content_name: "Self-Directed Certainty Session", content_type: "product", value: 125.0, currency: "USD" },
+      { content_name: "Self-Directed Certainty Session", content_type: "product", value: 0.5, currency: "USD" },
       generateEventId()
     );
   }, []);

@@ -426,7 +426,7 @@ export function RcsForYouIf() {
             <div className="wtif-bottom-text">
               Not sure which category you fall into? <span>That&apos;s exactly what we&apos;re here for.</span>
             </div>
-            <div className="wtif-bottom-sub">15 minutes · $125 · Backed by our 400% Value Guarantee</div>
+            <div className="wtif-bottom-sub">15 minutes · $0.50 · Backed by our 400% Value Guarantee</div>
           </div>
           <a href="#form" className="wtif-cta-btn">
             Book Now →
