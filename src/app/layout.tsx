@@ -60,7 +60,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <GoogleAnalytics />
         <Script
           src="https://link.msgsndr.com/js/external-tracking.js"
-          data-tracking-id="tk_b03c38ae759849af9ae29bdaf079e24a"
+          data-tracking-id="tk_b672872bbdde46d7a40c48458780fc5f"
           strategy="afterInteractive"
         />
       </body>
