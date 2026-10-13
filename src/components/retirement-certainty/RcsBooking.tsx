@@ -82,7 +82,13 @@ type BookingState = {
   purchaseEventId: string | null;
 };
 
-export function RcsBooking() {
+export function RcsBooking({
+  titleOverride,
+  subtitleOverride,
+}: {
+  titleOverride?: string;
+  subtitleOverride?: string;
+} = {}) {
   const { solution } = rcsContent;
   const rootRef = useRef<HTMLDivElement>(null);
   const stripeRef = useRef<StripeInstance | null>(null);
@@ -944,9 +950,11 @@ export function RcsBooking() {
             <span className="cbf-eyebrow-dot" />
             Reserve Your Session
           </div>
-          <h2 className="cbf-title">Book Your Self-Directed Certainty Session</h2>
+          <h2 className="cbf-title">{titleOverride ?? "Book Your Self-Directed Certainty Session"}</h2>
           <div className="cbf-divider" />
-          <p className="cbf-subtitle">Select a date and time, fill in your details, and complete your secure $125 payment.</p>
+          <p className="cbf-subtitle">
+            {subtitleOverride ?? "Select a date and time, fill in your details, and complete your secure $125 payment."}
+          </p>
           <div className="cbf-trust-row">
             <div className="cbf-trust-item">
               <svg className="cbf-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
