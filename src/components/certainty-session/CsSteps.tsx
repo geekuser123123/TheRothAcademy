@@ -6,10 +6,14 @@ const STEPS_STYLES = `
 }
 
 .cs-steps-container {
-  max-width: 800px;
+  max-width: 1300px;
   margin: 0 auto;
   padding: 0 32px;
+}
+
+.cs-steps-header {
   text-align: center;
+  margin-bottom: 48px;
 }
 
 .cs-steps-eyebrow {
@@ -45,26 +49,32 @@ const STEPS_STYLES = `
   line-height: 1.8;
   color: #6B7880;
   max-width: 560px;
-  margin: 0 auto 48px;
+  margin: 0 auto;
 }
 
-.cs-steps-list {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  text-align: left;
+.cs-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
 
-.cs-step {
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
+.cs-step-card {
+  background: #ffffff;
+  border: 1px solid #E2E5E9;
+  border-radius: 12px;
+  padding: 32px 28px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+
+.cs-step-card:hover {
+  box-shadow: 0 16px 40px rgba(0,0,0,0.09);
+  transform: translateY(-4px);
 }
 
 .cs-step-num {
   width: 44px;
   height: 44px;
-  min-width: 44px;
   background: #0C0C0C;
   border-radius: 10px;
   display: flex;
@@ -75,13 +85,16 @@ const STEPS_STYLES = `
   font-weight: 700;
   color: #B89958;
   box-shadow: 0 4px 14px rgba(12,12,12,0.25);
+  margin-bottom: 20px;
 }
 
 .cs-step-title {
-  font-size: 16px;
+  font-family: var(--font-playfair-display), 'Playfair Display', serif;
+  font-size: 18px;
   font-weight: 700;
   color: #0C0C0C;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
+  line-height: 1.25;
 }
 
 .cs-step-desc {
@@ -97,11 +110,22 @@ const STEPS_STYLES = `
   font-size: 12px;
   line-height: 1.7;
   color: #9AA3AA;
+  text-align: center;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media(max-width: 900px) {
+  .cs-steps-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media(max-width: 640px) {
   .cs-steps-section { padding: 36px 0; }
   .cs-steps-container { padding: 0 20px; }
+  .cs-step-card { padding: 26px 22px; }
 }
 `;
 
@@ -125,22 +149,22 @@ export function CsSteps() {
     <section className="cs-steps-section">
       <style>{STEPS_STYLES}</style>
       <div className="cs-steps-container">
-        <span className="cs-steps-eyebrow">The Process</span>
-        <h2 className="cs-steps-title">What Happens During Your 15-Minute Session?</h2>
-        <div className="cs-steps-divider" />
-        <p className="cs-steps-desc">
-          Bring your most important IRA or 401(k) question. We&apos;ll focus on that specific issue and help you
-          understand the potential risks and next steps.
-        </p>
+        <div className="cs-steps-header">
+          <span className="cs-steps-eyebrow">The Process</span>
+          <h2 className="cs-steps-title">What Happens During Your 15-Minute Session?</h2>
+          <div className="cs-steps-divider" />
+          <p className="cs-steps-desc">
+            Bring your most important IRA or 401(k) question. We&apos;ll focus on that specific issue and help you
+            understand the potential risks and next steps.
+          </p>
+        </div>
 
-        <div className="cs-steps-list">
+        <div className="cs-steps-grid">
           {STEPS.map((step, index) => (
-            <div className="cs-step" key={step.title}>
+            <div className="cs-step-card" key={step.title}>
               <div className="cs-step-num">{index + 1}</div>
-              <div>
-                <div className="cs-step-title">{step.title}</div>
-                <div className="cs-step-desc">{step.desc}</div>
-              </div>
+              <div className="cs-step-title">{step.title}</div>
+              <div className="cs-step-desc">{step.desc}</div>
             </div>
           ))}
         </div>
