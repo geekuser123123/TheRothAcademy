@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AnnouncementBar } from "@/components/shared/AnnouncementBar";
 import { RcsHero } from "@/components/retirement-certainty/RcsHero";
 import { RcsViewContentTracker } from "@/components/retirement-certainty/RcsViewContentTracker";
 import { RcsForYouIf } from "@/components/retirement-certainty/RcsForYouIf";
@@ -20,6 +21,7 @@ export const metadata: Metadata = {
 export default function SelfDirectedCertaintySessionPage() {
   return (
     <>
+      <AnnouncementBar />
       <RcsViewContentTracker />
       <RcsHero />
       <RcsForYouIf />

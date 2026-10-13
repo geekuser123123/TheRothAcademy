@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AnnouncementBar } from "@/components/shared/AnnouncementBar";
 import { RcsViewContentTracker } from "@/components/retirement-certainty/RcsViewContentTracker";
 import { RcsBooking } from "@/components/retirement-certainty/RcsBooking";
 import { CsHero } from "@/components/certainty-session/CsHero";
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
 export default function CertaintySessionPage() {
   return (
     <>
+      <AnnouncementBar />
       <RcsViewContentTracker />
       <CsHero />
       <CsForYouIf />
