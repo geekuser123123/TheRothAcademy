@@ -27,6 +27,14 @@ export default function CertaintySessionPage() {
       <RcsBooking
         titleOverride="Get Clarity on Your Most Important IRA or 401(k) Question"
         subtitleOverride="Book 15 focused minutes with Tim Berry for a flat $125. Select a time, enter your details, and complete your secure payment."
+        summaryItemsOverride={[
+          "15-minute consultation with Tim Berry",
+          "One primary transaction or compliance concern",
+          "$125 one-time payment",
+          "Secure booking and payment",
+          "No recurring charges",
+        ]}
+        guaranteeTextOverride="If you don't feel you received at least four times the value of your $125 session, contact tim@iraideas.com within 7 days to request a full refund."
       />
       <CsTestimonials />
       <CsFaq />

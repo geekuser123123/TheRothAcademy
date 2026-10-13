@@ -1,5 +1,6 @@
 const TESTI_STYLES = `
 .cs-testi-section {
+  background: linear-gradient(150deg, #0C0C0C 0%, #1a1a1a 100%);
   padding: 50px 0;
   font-family: var(--font-inter), 'Inter', sans-serif;
   position: relative;

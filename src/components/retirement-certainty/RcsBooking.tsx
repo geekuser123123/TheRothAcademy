@@ -85,9 +85,13 @@ type BookingState = {
 export function RcsBooking({
   titleOverride,
   subtitleOverride,
+  summaryItemsOverride,
+  guaranteeTextOverride,
 }: {
   titleOverride?: string;
   subtitleOverride?: string;
+  summaryItemsOverride?: string[];
+  guaranteeTextOverride?: string;
 } = {}) {
   const { solution } = rcsContent;
   const rootRef = useRef<HTMLDivElement>(null);
@@ -999,7 +1003,15 @@ export function RcsBooking({
               <p className="mt-2 text-5xl text-r-gold">${solution.priceCard.price}</p>
               <p className="mt-1 text-xs text-r-muted font-body normal-case">15-Minute Expert Consultation</p>
               <div className="mt-6 space-y-3 border-t border-r-line pt-6">
-                {["Review your compliance concern", "Identify compliance risks", "Clarify applicable IRS rules", "Determine safest path forward", "Discuss corrective actions"].map(
+                {(
+                  summaryItemsOverride ?? [
+                    "Review your compliance concern",
+                    "Identify compliance risks",
+                    "Clarify applicable IRS rules",
+                    "Determine safest path forward",
+                    "Discuss corrective actions",
+                  ]
+                ).map(
                   (feat) => (
                     <div key={feat} className="flex items-center gap-2.5 text-xs text-r-white font-body normal-case">
                       <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-r-gold/15">
@@ -1020,7 +1032,7 @@ export function RcsBooking({
                   400% Value Guarantee
                 </p>
                 <p className="mt-1 text-xs text-r-muted font-body normal-case">
-                  Contact us within 7 days for a full refund if value isn&apos;t delivered.
+                  {guaranteeTextOverride ?? "Contact us within 7 days for a full refund if value isn't delivered."}
                 </p>
               </div>
             </div>
