@@ -502,7 +502,7 @@ export function RcsBooking({
           phone: normalizePhone((q<HTMLInputElement>("#phone"))?.value ?? ""),
           description: (q<HTMLTextAreaElement>("#description"))?.value ?? "",
           selected_slot: state.selectedSlot,
-          amount: 12500,
+          amount: 50,
         },
         attribution: {
           ...getAttributionSnapshot(),
@@ -763,7 +763,7 @@ export function RcsBooking({
         const paymentRequest = stripe.paymentRequest({
           country: "US",
           currency: "usd",
-          total: { label: "Self-Directed Certainty Session", amount: 12500 },
+          total: { label: "Self-Directed Certainty Session", amount: 50 },
           requestPayerName: true,
           requestPayerEmail: true,
           requestPayerPhone: true,
@@ -846,7 +846,7 @@ export function RcsBooking({
             email: event.payerEmail || "",
             phone: normalizePhone(event.payerPhone || ""),
             selected_slot: state.selectedSlot,
-            amount: 12500,
+            amount: 50,
           });
         });
       } catch (e) {
