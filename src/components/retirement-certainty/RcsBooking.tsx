@@ -7,8 +7,8 @@ import { rcsContent } from "@/data/retirement-certainty-session-content";
 import { generateEventId, getAttributionSnapshot, trackGA4Event, trackPixelEvent } from "@/lib/tracking";
 
 const STRIPE_PUBLISHABLE_KEY = "pk_live_51UI6jT2eiso8i6zsDPPGW72Fkv3WuLxmNuhVmSulZSfksut4TlmHARwr5z2MybVM7RtuxtZR4bAUCdIpGMPPiIyN005Ld2TTyN";
-const N8N_SLOTS_WEBHOOK = "https://n8n.coreautomations.org/webhook/get-slots";
-const N8N_BOOKING_WEBHOOK = "https://n8n.coreautomations.org/webhook/0f7ca06d-b691-4297-834d-5cbd7e473ff5";
+const N8N_SLOTS_WEBHOOK = "https://n8n.coreautomations.org/webhook/get-slots-ghl";
+const N8N_BOOKING_WEBHOOK = "https://n8n.coreautomations.org/webhook/roth-certainty-ghl";
 
 const AVAILABLE_DAYS = [1, 2, 4]; // Mon, Tue, Thu
 const WORK_START_HOUR = 9;
