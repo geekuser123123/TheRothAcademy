@@ -6,7 +6,7 @@ import { CreditCard, Check, Clock, ShieldCheck, Zap } from "lucide-react";
 import { rcsContent } from "@/data/retirement-certainty-session-content";
 import { generateEventId, getAttributionSnapshot, trackGA4Event, trackPixelEvent } from "@/lib/tracking";
 
-const STRIPE_PUBLISHABLE_KEY = "pk_test_51UI6ja2c0Q84dTy8JJT3865xKgK10bn2HvHDSVIzY8rFMFDHNEai9YXDRId8A37bdeET4Bgk11pWlepaxcHXwfs100LGKoYcxw";
+const STRIPE_PUBLISHABLE_KEY = "pk_live_51UI6jT2eiso8i6zsDPPGW72Fkv3WuLxmNuhVmSulZSfksut4TlmHARwr5z2MybVM7RtuxtZR4bAUCdIpGMPPiIyN005Ld2TTyN";
 const N8N_SLOTS_WEBHOOK = "https://n8n.coreautomations.org/webhook/get-slots-ghl";
 const N8N_BOOKING_WEBHOOK = "https://n8n.coreautomations.org/webhook/roth-certainty-ghl";
 
