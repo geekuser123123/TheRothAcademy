@@ -188,7 +188,7 @@ const FINAL_CTA_STYLES = `
 .cs-fcs-bottom-closing {
   font-size: 12px;
   color: rgba(255,255,255,0.3);
-  max-width: 460px;
+  max-width: 640px;
   line-height: 1.6;
 }
 
@@ -250,8 +250,9 @@ export function CsFinalCta() {
               </div>
             </div>
             <div className="cs-fcs-bottom-closing">
-              Consultations are for plan administration purposes and are not legal advice; no attorney-client
-              relationship is formed.
+              The Retirement Certainty Session is a focused consultation for plan administration purposes, not a
+              comprehensive compliance audit or legal advice. No attorney-client relationship is formed, and no
+              specific tax, IRS, or financial outcome is promised or guaranteed.
             </div>
           </div>
           <div className="cs-fcs-bottom-right">© 2026 THE ROTH ACADEMY. All Rights Reserved.</div>
