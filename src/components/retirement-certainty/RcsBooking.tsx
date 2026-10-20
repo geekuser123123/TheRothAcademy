@@ -9,6 +9,7 @@ import { generateEventId, getAttributionSnapshot, trackGA4Event, trackPixelEvent
 const STRIPE_PUBLISHABLE_KEY = "pk_test_51UI6ja2c0Q84dTy8JJT3865xKgK10bn2HvHDSVIzY8rFMFDHNEai9YXDRId8A37bdeET4Bgk11pWlepaxcHXwfs100LGKoYcxw";
 const N8N_SLOTS_WEBHOOK = "https://n8n.coreautomations.org/webhook/get-slots-ghl";
 const N8N_BOOKING_WEBHOOK = "https://n8n.coreautomations.org/webhook/roth-certainty-ghl";
+const N8N_PARTIAL_LEAD_WEBHOOK = "https://n8n.coreautomations.org/webhook/save-lead-ghl";
 
 const AVAILABLE_DAYS = [1, 2, 4]; // Mon, Tue, Thu
 const WORK_START_HOUR = 9;
@@ -80,6 +81,7 @@ type BookingState = {
   leadEventId: string | null;
   checkoutEventId: string | null;
   purchaseEventId: string | null;
+  partialLeadSaved: boolean;
 };
 
 export function RcsBooking({
@@ -117,6 +119,7 @@ export function RcsBooking({
       leadEventId: null,
       checkoutEventId: null,
       purchaseEventId: null,
+      partialLeadSaved: false,
     };
 
     function chicagoSlotToUTC(year: number, month: number, day: number, hour24: number, minute: number) {
@@ -226,13 +229,58 @@ export function RcsBooking({
     }
 
     let fastPayAvailable = false;
+    let wasFastPayReady = false;
+
+    function areDetailsValid() {
+      return ["firstName", "lastName", "email", "phone"].every((id) => {
+        const el = q<HTMLInputElement>("#" + id);
+        return !!el && !!el.value.trim();
+      });
+    }
+
+    function maybeFireLeadEvents() {
+      if (state.leadEventId) return;
+      state.leadEventId = generateEventId();
+      trackPixelEvent("Lead", {}, state.leadEventId);
+      trackGA4Event("generate_lead");
+      state.checkoutEventId = generateEventId();
+      trackPixelEvent("InitiateCheckout", { value: 125.0, currency: "USD" }, state.checkoutEventId);
+      trackGA4Event("begin_checkout", { value: 125.0, currency: "USD" });
+    }
+
+    function savePartialLead() {
+      if (state.partialLeadSaved) return;
+      const email = (q<HTMLInputElement>("#email"))?.value.trim() ?? "";
+      const phone = (q<HTMLInputElement>("#phone"))?.value.trim() ?? "";
+      if (!email && !phone) return;
+
+      state.partialLeadSaved = true;
+      const data = buildBookingData();
+      delete data.customer_details.amount;
+
+      fetch(N8N_PARTIAL_LEAD_WEBHOOK, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+        keepalive: true,
+      }).catch(() => {});
+    }
 
     function updateFastPayVisibility() {
       const wrap = q<HTMLElement>("#fast-pay-card");
       const divider = q<HTMLElement>("#fast-pay-divider");
-      const ready = fastPayAvailable && !!state.selectedDate && !!state.selectedSlot;
+      const ready = fastPayAvailable && areDetailsValid();
       if (wrap) wrap.style.display = ready ? "block" : "none";
       if (divider) divider.style.display = ready ? "flex" : "none";
+      if (ready) {
+        maybeFireLeadEvents();
+        if (!wasFastPayReady) {
+          window.setTimeout(() => {
+            q<HTMLElement>("#fast-pay-card")?.scrollIntoView({ behavior: "smooth", block: "center" });
+          }, 50);
+        }
+      }
+      wasFastPayReady = ready;
     }
 
     function selectDate(date: Date) {
@@ -246,7 +294,6 @@ export function RcsBooking({
       if (nextBtn) nextBtn.disabled = true;
       renderCalendar();
       fetchSlots(date);
-      updateFastPayVisibility();
     }
 
     function displaySlots(slots: (string | { label: string })[], container: HTMLElement) {
@@ -282,12 +329,6 @@ export function RcsBooking({
           });
           const nextBtn = q<HTMLButtonElement>("#btn-next-1");
           if (nextBtn) nextBtn.disabled = false;
-          updateFastPayVisibility();
-          // Bring the fast-checkout card into view immediately so people
-          // don't have to scroll further to find it after picking a time.
-          window.setTimeout(() => {
-            q<HTMLElement>("#fast-pay-card")?.scrollIntoView({ behavior: "smooth", block: "center" });
-          }, 50);
         });
         el.classList.add("rcs-slot");
         grid.appendChild(el);
@@ -363,13 +404,7 @@ export function RcsBooking({
           return;
         }
 
-        state.leadEventId = generateEventId();
-        trackPixelEvent("Lead", {}, state.leadEventId);
-        trackGA4Event("generate_lead");
-
-        state.checkoutEventId = generateEventId();
-        trackPixelEvent("InitiateCheckout", { value: 125.0, currency: "USD" }, state.checkoutEventId);
-        trackGA4Event("begin_checkout", { value: 125.0, currency: "USD" });
+        maybeFireLeadEvents();
       }
 
       qAll<HTMLElement>(".rcs-panel").forEach((p) => {
@@ -600,14 +635,14 @@ export function RcsBooking({
       trackGA4Event("payment_failed", { reason: message || "unknown" });
     }
 
-    // Fast checkout: skips the "Your Details" step entirely. Name, email, and
-    // phone come straight from the Apple Pay / Google Pay sheet instead of a
-    // typed form — Tim asks about the situation live at the start of the call.
-    function submitFastBooking(prEvent: StripePaymentRequestPaymentMethodEvent, customerDetails: Record<string, unknown>) {
+    // Wallet tap on the Details step: the form fields are already filled in
+    // (the button only appears once they are), so this builds the booking
+    // payload from the DOM the same way the card path does.
+    function submitFastBooking(prEvent: StripePaymentRequestPaymentMethodEvent) {
       if (!state.purchaseEventId) state.purchaseEventId = generateEventId();
       trackGA4Event("payment_attempted");
 
-      const bookingData = buildBookingData(customerDetails);
+      const bookingData = buildBookingData();
       bookingData.customer_details.payment_method_id = prEvent.paymentMethod.id;
       bookingData.customer_details.payment_method = "stripe_wallet_fast";
 
@@ -718,10 +753,20 @@ export function RcsBooking({
     });
 
     q<HTMLButtonElement>("#btn-next-1")?.addEventListener("click", () => goToStep(2));
-    q<HTMLButtonElement>("#rcsBackTo1")?.addEventListener("click", () => goToStep(1));
-    q<HTMLButtonElement>("#rcsNextTo3")?.addEventListener("click", () => goToStep(3));
+    q<HTMLButtonElement>("#rcsBackTo1")?.addEventListener("click", () => {
+      savePartialLead();
+      goToStep(1);
+    });
+    q<HTMLButtonElement>("#rcsNextTo3")?.addEventListener("click", () => {
+      savePartialLead();
+      goToStep(3);
+    });
     q<HTMLButtonElement>("#rcsBackTo2")?.addEventListener("click", () => goToStep(2));
     q<HTMLButtonElement>("#paymentBtn")?.addEventListener("click", processCardPayment);
+
+    ["firstName", "lastName", "email", "phone"].forEach((id) => {
+      q<HTMLInputElement>("#" + id)?.addEventListener("input", updateFastPayVisibility);
+    });
 
     qAll<HTMLElement>(".rcs-panel").forEach((p) => {
       p.style.display = "none";
@@ -754,7 +799,7 @@ export function RcsBooking({
         cardRef.current = card;
 
         // A single PaymentRequest instance backs both buttons (the regular one
-        // on the Payment step, and the fast-checkout one on Date & Time).
+        // on the Payment step, and the fast-checkout one on the Details step).
         // Mounting two separate stripe.paymentRequest() instances on the same
         // page was unreliable for Apple Pay in Safari — only the first ever
         // resolved canMakePayment() — so both buttons share this one object,
@@ -808,14 +853,15 @@ export function RcsBooking({
         }
 
         paymentRequest.on("paymentmethod", (event) => {
-          if (state.currentStep !== 1) {
+          if (state.currentStep !== 2) {
             submitBooking(event.paymentMethod.id, event);
             return;
           }
 
-          // Fast checkout: user tapped the wallet button on Date & Time,
-          // never saw the Your Details form.
-          if (!state.selectedDate || !state.selectedSlot) {
+          // Wallet tap on the Details step: the form is already filled in,
+          // so this reuses the typed fields instead of the wallet's own
+          // payer name/email/phone.
+          if (!areDetailsValid()) {
             event.complete("fail");
             return;
           }
@@ -829,25 +875,8 @@ export function RcsBooking({
           if (loading) loading.style.display = "flex";
           if (errEl) errEl.style.display = "none";
 
-          const nameParts = (event.payerName || "").trim().split(/\s+/).filter(Boolean);
-          const firstName = nameParts[0] || "";
-          const lastName = nameParts.slice(1).join(" ");
-
-          state.leadEventId = generateEventId();
-          trackPixelEvent("Lead", {}, state.leadEventId);
-          trackGA4Event("generate_lead");
-          state.checkoutEventId = generateEventId();
-          trackPixelEvent("InitiateCheckout", { value: 125.0, currency: "USD" }, state.checkoutEventId);
-          trackGA4Event("begin_checkout", { value: 125.0, currency: "USD" });
-
-          submitFastBooking(event, {
-            first_name: firstName,
-            last_name: lastName,
-            email: event.payerEmail || "",
-            phone: normalizePhone(event.payerPhone || ""),
-            selected_slot: state.selectedSlot,
-            amount: 12500,
-          });
+          maybeFireLeadEvents();
+          submitFastBooking(event);
         });
       } catch (e) {
         console.error("Stripe init failed:", e);
@@ -1116,29 +1145,6 @@ export function RcsBooking({
                 </div>
               </div>
 
-              <div
-                id="fast-pay-card"
-                style={{ display: "none" }}
-                className="mb-3 rounded-[var(--radius-brand-card)] border border-r-gold/50 bg-r-gold/[0.08] p-4 shadow-lg shadow-r-gold/5"
-              >
-                <p className="mb-3 flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-r-gold">
-                  <Zap size={13} aria-hidden /> Fastest way to book - skip the form
-                </p>
-                <div id="fast-payment-button" />
-              </div>
-              <div id="fastPayLoading" style={{ display: "none" }} className="mb-3 flex items-center justify-center gap-3 py-3 text-sm text-r-muted">
-                <span className="h-4 w-4 animate-spin rounded-full border-2 border-r-line border-t-r-gold" />
-                Processing your payment securely...
-              </div>
-              <div id="fastPayError" style={{ display: "none" }} className="mb-3 rounded-md border border-red-400/40 bg-red-400/10 p-3 text-xs text-red-300" />
-              <div id="fast-pay-divider" className="mb-7 flex items-center gap-3" style={{ display: "none" }}>
-                <span className="h-px flex-1 bg-r-line" aria-hidden />
-                <span className="text-[11px] font-semibold uppercase tracking-wide text-r-muted">
-                  Or continue with your details
-                </span>
-                <span className="h-px flex-1 bg-r-line" aria-hidden />
-              </div>
-
               <div className="flex items-center justify-end border-t border-r-line pt-6">
                 <button
                   type="button"
@@ -1191,6 +1197,29 @@ export function RcsBooking({
                 />
               </div>
 
+              <div
+                id="fast-pay-card"
+                style={{ display: "none" }}
+                className="mt-7 rounded-[var(--radius-brand-card)] border border-r-gold/50 bg-r-gold/[0.08] p-4 shadow-lg shadow-r-gold/5"
+              >
+                <p className="mb-3 flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-r-gold">
+                  <Zap size={13} aria-hidden /> Pay instantly with Apple Pay or Google Pay
+                </p>
+                <div id="fast-payment-button" />
+              </div>
+              <div id="fastPayLoading" style={{ display: "none" }} className="mt-3 flex items-center justify-center gap-3 py-3 text-sm text-r-muted">
+                <span className="h-4 w-4 animate-spin rounded-full border-2 border-r-line border-t-r-gold" />
+                Processing your payment securely...
+              </div>
+              <div id="fastPayError" style={{ display: "none" }} className="mt-3 rounded-md border border-red-400/40 bg-red-400/10 p-3 text-xs text-red-300" />
+              <div id="fast-pay-divider" className="mt-7 flex items-center gap-3" style={{ display: "none" }}>
+                <span className="h-px flex-1 bg-r-line" aria-hidden />
+                <span className="text-[11px] font-semibold uppercase tracking-wide text-r-muted">
+                  Or continue below to pay by card
+                </span>
+                <span className="h-px flex-1 bg-r-line" aria-hidden />
+              </div>
+
               <div className="mt-7 flex flex-col-reverse gap-3 border-t border-r-line pt-6 sm:flex-row sm:items-center sm:justify-between">
                 <button
                   type="button"
@@ -1204,7 +1233,7 @@ export function RcsBooking({
                   id="rcsNextTo3"
                   className="w-full rounded-[var(--radius-brand-control)] bg-r-gold px-8 py-3 text-sm font-bold uppercase tracking-wide text-r-bg transition-colors hover:bg-r-gold-light sm:w-auto"
                 >
-                  Continue to Payment →
+                  Proceed to Next Step →
                 </button>
               </div>
             </div>
