@@ -309,10 +309,9 @@ const FINAL_CTA_STYLES = `
 }
 
 .fcs-bottom-closing {
-  font-size: 13px;
+  font-size: 12px;
   color: rgba(255,255,255,0.3);
-  font-style: italic;
-  max-width: 400px;
+  max-width: 460px;
   line-height: 1.6;
 }
 
@@ -321,15 +320,6 @@ const FINAL_CTA_STYLES = `
   color: rgba(255,255,255,0.25);
   text-align: right;
   line-height: 1.6;
-}
-
-.fcs-legal-disclaimer {
-  padding: 20px 0 32px;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  font-size: 11px;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.3);
-  max-width: 900px;
 }
 
 @media(max-width: 1024px) {
@@ -471,13 +461,12 @@ export function RcsFinalCta() {
                 <span>Full refund within 7 days if value isn&apos;t delivered.</span>
               </div>
             </div>
-            <div className="fcs-bottom-closing">&quot;Confidence isn&apos;t built on hope. It&apos;s built on knowing.&quot;</div>
+            <div className="fcs-bottom-closing">
+              Consultations are for plan administration purposes and are not legal advice; no attorney-client
+              relationship is formed.
+            </div>
           </div>
           <div className="fcs-bottom-right">© 2026 THE ROTH ACADEMY. All Rights Reserved.</div>
-        </div>
-        <div className="fcs-legal-disclaimer">
-          Consultations are for plan administration purposes and are not legal advice; no attorney-client
-          relationship is formed.
         </div>
       </div>
     </section>
