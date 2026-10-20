@@ -192,6 +192,15 @@ const FINAL_CTA_STYLES = `
   line-height: 1.6;
 }
 
+.cs-fcs-legal-disclaimer {
+  padding: 20px 0 32px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  font-size: 11px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.3);
+  max-width: 900px;
+}
+
 @media(max-width: 1024px) {
   .cs-fcs-bottom { flex-direction: column; align-items: flex-start; }
   .cs-fcs-bottom-right { text-align: left; }
@@ -244,6 +253,10 @@ export function CsFinalCta() {
             </div>
           </div>
           <div className="cs-fcs-bottom-right">© 2026 THE ROTH ACADEMY. All Rights Reserved.</div>
+        </div>
+        <div className="cs-fcs-legal-disclaimer">
+          Consultations are for plan administration purposes and are not legal advice; no attorney-client
+          relationship is formed.
         </div>
       </div>
     </section>
