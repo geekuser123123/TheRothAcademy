@@ -71,6 +71,7 @@ const STYLES = `
 .apply-progress-label {
   display: flex;
   justify-content: space-between;
+  gap: 12px;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
