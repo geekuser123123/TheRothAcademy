@@ -55,7 +55,7 @@ const STYLES = `
 
 .apply-wordmark {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 28px;
 }
 
 .apply-wordmark a {
@@ -526,7 +526,7 @@ export function ApplyWizard() {
 
       <div className="apply-wordmark">
         <Link href="/">
-          <Image src="/roth-logo.png" alt="Roth Academy" width={71} height={78} className="h-16 w-auto" priority />
+          <Image src="/roth-logo.png" alt="Roth Academy" width={71} height={78} className="h-24 w-auto" priority />
         </Link>
       </div>
 
