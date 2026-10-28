@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { PLANS, ELIGIBILITY_QUESTIONS, ANNUAL_MAINTENANCE, type PlanId } from "@/data/apply-content";
 import { siteConfig } from "@/data/site-config";
 import { generateEventId, getAttributionSnapshot, trackGA4Event } from "@/lib/tracking";
 
-// Not yet live — see the n8n workflow spec given alongside this build. Creates/
+// Not yet live; see the n8n workflow spec given alongside this build. Creates/
 // updates the GHL contact + opportunity on lead capture, and again whenever the
 // eligibility outcome (pass, or which question stopped it) is known.
 const N8N_APPLY_WEBHOOK = "https://n8n.coreautomations.org/webhook/apply-lead-ghl";
@@ -58,15 +59,7 @@ const STYLES = `
 }
 
 .apply-wordmark a {
-  font-family: var(--font-playfair-display), 'Playfair Display', serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: #F4F1EA;
-  text-decoration: none;
-}
-
-.apply-wordmark span {
-  color: #B89958;
+  display: inline-block;
 }
 
 .apply-progress-wrap {
@@ -533,7 +526,7 @@ export function ApplyWizard() {
 
       <div className="apply-wordmark">
         <Link href="/">
-          Roth <span>Academy</span>
+          <Image src="/roth-logo.png" alt="Roth Academy" width={71} height={78} className="h-16 w-auto" priority />
         </Link>
       </div>
 
@@ -597,7 +590,7 @@ function PlanSelectionView({ onChoose, onHelpMeChoose }: { onChoose: (id: PlanId
       <div className="apply-eyebrow">Get Started</div>
       <h1 className="apply-h1">Let&apos;s Get Your Retirement Plan Started</h1>
       <p className="apply-sub">
-        Choose the plan that&apos;s right for you. We&apos;ll guide you through the process step by step — no
+        Choose the plan that&apos;s right for you. We&apos;ll guide you through the process step by step. No
         retirement-plan experience needed.
       </p>
 
@@ -634,7 +627,7 @@ function HelpMeChooseView({ onPick, onBack }: { onPick: (id: PlanId) => void; on
     <>
       <div className="apply-eyebrow">Help Me Choose</div>
       <h1 className="apply-h1">Do you currently operate a business or work for yourself?</h1>
-      <p className="apply-sub">This quick question points you toward the right starting plan — it isn&apos;t personalized legal or tax advice.</p>
+      <p className="apply-sub">This quick question points you toward the right starting plan. It isn&apos;t personalized legal or tax advice.</p>
 
       <div className="apply-choice-group">
         {(["yes", "no", "unsure"] as const).map((v) => (
@@ -671,7 +664,7 @@ function HelpMeChooseView({ onPick, onBack }: { onPick: (id: PlanId) => void; on
 
       {answer === "unsure" && (
         <div className="apply-summary-box">
-          No problem — take a look at both options below, or book a Retirement Certainty Session with Tim Berry to
+          No problem. Take a look at both options below, or book a Retirement Certainty Session with Tim Berry to
           talk it through before deciding.
           <div className="apply-cta-row">
             <button type="button" className="apply-cta-primary" onClick={onBack} style={{ border: "none", cursor: "pointer" }}>
@@ -828,7 +821,7 @@ function OutcomeView({ plan, outcome, lead }: { plan: PlanId; outcome: Outcome; 
         <p className="apply-sub">{outcome.message}</p>
 
         <div className="apply-summary-box">
-          Good news — nothing is lost. We&apos;ve saved what you&apos;ve entered so far, {lead.firstName || "there"},
+          Good news: nothing is lost. We&apos;ve saved what you&apos;ve entered so far, {lead.firstName || "there"},
           and a specialist can pick up right where you left off.
         </div>
 
@@ -848,10 +841,10 @@ function OutcomeView({ plan, outcome, lead }: { plan: PlanId; outcome: Outcome; 
     <>
       <div className="apply-outcome-icon go">✓</div>
       <div className="apply-eyebrow">You&apos;re Eligible</div>
-      <h1 className="apply-h1">Great News — You&apos;re a Fit for the {PLANS[plan].shortName}</h1>
+      <h1 className="apply-h1">Great News: You&apos;re a Fit for the {PLANS[plan].shortName}</h1>
       <p className="apply-sub">
-        We&apos;ve saved your progress, {lead.firstName || "there"}. The full online application — where you&apos;ll
-        finish your details, review your order form, and pay securely — is being finalized now. We&apos;ll email you
+        We&apos;ve saved your progress, {lead.firstName || "there"}. The full online application, where you&apos;ll
+        finish your details, review your order form, and pay securely, is being finalized now. We&apos;ll email you
         the moment it&apos;s ready to pick up right where you left off.
       </p>
 

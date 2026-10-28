@@ -48,7 +48,7 @@ export const ELIGIBILITY_QUESTIONS: Record<PlanId, EligibilityQuestion[]> = {
       stopValues: ["no", "not_sure"],
       stopMessage: (answer) =>
         answer === "no"
-          ? "A Solo 401(k) is built for business owners and self-employed individuals. Since you don't currently operate a business, this product isn't a fit — but a Self-Directed IRA may be."
+          ? "A Solo 401(k) is built for business owners and self-employed individuals. Since you don't currently operate a business, this product isn't a fit, but a Self-Directed IRA may be."
           : "Our automated system can't determine Solo 401(k) eligibility without knowing whether you operate a business or self-employed work. Let's get you a straight answer from a specialist instead.",
     },
     {
@@ -62,7 +62,7 @@ export const ELIGIBILITY_QUESTIONS: Record<PlanId, EligibilityQuestion[]> = {
       ],
       stopValues: ["yes", "not_sure"],
       stopMessage: () =>
-        "Having employees doesn't necessarily prevent you from establishing any 401(k) — but this simplified online product is built for owner-only businesses, so it may not be appropriate here. A specialist can review your specific situation.",
+        "Having employees doesn't necessarily prevent you from establishing any 401(k), but this simplified online product is built for owner-only businesses, so it may not be appropriate here. A specialist can review your specific situation.",
     },
     {
       id: "other_businesses",
@@ -74,7 +74,7 @@ export const ELIGIBILITY_QUESTIONS: Record<PlanId, EligibilityQuestion[]> = {
       ],
       stopValues: ["yes", "not_sure"],
       stopMessage: () =>
-        "Ownership in related businesses can affect retirement plan eligibility under controlled-group rules. This doesn't necessarily mean you're ineligible — it just means this needs a closer look before we can process an automated signup.",
+        "Ownership in related businesses can affect retirement plan eligibility under controlled-group rules. This doesn't necessarily mean you're ineligible. It just means this needs a closer look before we can process an automated signup.",
     },
     {
       id: "existing_plan",
