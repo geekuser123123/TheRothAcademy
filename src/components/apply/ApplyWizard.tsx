@@ -578,7 +578,17 @@ export function ApplyWizard() {
             />
           )}
 
-          {step === "outcome" && outcome && plan && <OutcomeView plan={plan} outcome={outcome} lead={lead} />}
+          {step === "outcome" && outcome && plan && (
+            <OutcomeView
+              plan={plan}
+              outcome={outcome}
+              lead={lead}
+              onBack={() => {
+                setOutcome(null);
+                setStep("eligibility");
+              }}
+            />
+          )}
         </div>
       </div>
     </div>
@@ -812,7 +822,17 @@ function EligibilityView({
   );
 }
 
-function OutcomeView({ plan, outcome, lead }: { plan: PlanId; outcome: Outcome; lead: LeadData }) {
+function OutcomeView({
+  plan,
+  outcome,
+  lead,
+  onBack,
+}: {
+  plan: PlanId;
+  outcome: Outcome;
+  lead: LeadData;
+  onBack: () => void;
+}) {
   if (outcome.kind === "stopped") {
     return (
       <>
@@ -833,6 +853,12 @@ function OutcomeView({ plan, outcome, lead }: { plan: PlanId; outcome: Outcome; 
           <a className="apply-cta-secondary" href={`tel:${siteConfig.phoneTel}`}>
             Call {siteConfig.phone}
           </a>
+        </div>
+
+        <div className="apply-nav-row">
+          <button type="button" className="apply-btn-back" onClick={onBack}>
+            ← Back to that question
+          </button>
         </div>
       </>
     );
@@ -861,6 +887,12 @@ function OutcomeView({ plan, outcome, lead }: { plan: PlanId; outcome: Outcome; 
         <Link className="apply-cta-secondary" href="/">
           Return Home
         </Link>
+      </div>
+
+      <div className="apply-nav-row">
+        <button type="button" className="apply-btn-back" onClick={onBack}>
+          ← Back to review your answers
+        </button>
       </div>
     </>
   );
