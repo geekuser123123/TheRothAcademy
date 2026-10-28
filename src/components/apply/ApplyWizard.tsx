@@ -27,9 +27,23 @@ type Outcome =
 const STYLES = `
 .apply-root {
   min-height: 100vh;
-  background: #FAF8F3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(180deg, rgba(9,10,11,0.55) 0%, rgba(9,10,11,0.45) 45%, rgba(9,10,11,0.6) 100%),
+    url('/gold-dust-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   font-family: var(--font-inter), 'Inter', sans-serif;
   color: #1E1C19;
+  padding: 40px 0;
+}
+
+@media (max-width: 640px) {
+  .apply-root { background-attachment: scroll; }
 }
 
 .apply-shell {
@@ -47,7 +61,7 @@ const STYLES = `
   font-family: var(--font-playfair-display), 'Playfair Display', serif;
   font-size: 20px;
   font-weight: 700;
-  color: #1E1C19;
+  color: #F4F1EA;
   text-decoration: none;
 }
 
@@ -68,14 +82,14 @@ const STYLES = `
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #8a8376;
+  color: rgba(244,241,234,0.65);
   margin-bottom: 8px;
 }
 
 .apply-progress-track {
   height: 6px;
   border-radius: 999px;
-  background: #EAE4D7;
+  background: rgba(244,241,234,0.18);
   overflow: hidden;
 }
 
