@@ -452,6 +452,19 @@ export function ApplyWizard() {
       .finally(() => setStartingApplication(false));
   }
 
+  // Readable "Question: Answer" lines for GHL, built from the same question
+  // text/option labels shown on screen, instead of a raw {id: value} dump.
+  function formatEligibilitySummary(planId: PlanId, forAnswers: Record<string, string>) {
+    const lines: string[] = [];
+    for (const q of ELIGIBILITY_QUESTIONS[planId]) {
+      const raw = forAnswers[q.id];
+      if (!raw) continue;
+      const label = q.options.find((o) => o.value === raw)?.label ?? raw;
+      lines.push(`${q.question}: ${label}`);
+    }
+    return lines.join("\n");
+  }
+
   function postApplyEvent(payload: Record<string, unknown>) {
     fetch(N8N_APPLY_WEBHOOK, {
       method: "POST",
@@ -510,7 +523,7 @@ export function ApplyWizard() {
       postApplyEvent({
         stage: "eligibility_stopped",
         customer_details: lead,
-        eligibility_answers: nextAnswers,
+        eligibility_answers: formatEligibilitySummary(plan, nextAnswers),
         stopped_question: q.id,
       });
       setStep("outcome");
@@ -525,7 +538,7 @@ export function ApplyWizard() {
       postApplyEvent({
         stage: "eligibility_passed",
         customer_details: lead,
-        eligibility_answers: nextAnswers,
+        eligibility_answers: formatEligibilitySummary(plan, nextAnswers),
       });
       setStep("outcome");
     }
