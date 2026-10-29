@@ -418,17 +418,30 @@ function stepIndex(step: Step) {
   return i === -1 ? 0 : i;
 }
 
-export function ApplyWizard() {
-  const [step, setStep] = useState<Step>("plan");
-  const [plan, setPlan] = useState<PlanId | null>(null);
-  const [lead, setLead] = useState<LeadData>({ firstName: "", lastName: "", email: "", phone: "" });
+export type ResumeData = {
+  applicationId: string;
+  resumeToken: string;
+  plan: PlanId;
+  leadFirstName: string;
+  initialSectionData: Record<string, Record<string, string>>;
+  initialSectionIndex: number;
+  ssnOnFile: boolean;
+  alreadyComplete: boolean;
+};
+
+export function ApplyWizard({ resume }: { resume?: ResumeData } = {}) {
+  const [step, setStep] = useState<Step>(resume ? "application" : "plan");
+  const [plan, setPlan] = useState<PlanId | null>(resume?.plan ?? null);
+  const [lead, setLead] = useState<LeadData>({ firstName: resume?.leadFirstName ?? "", lastName: "", email: "", phone: "" });
   const [leadErrors, setLeadErrors] = useState<Record<string, boolean>>({});
   const [qIndex, setQIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [outcome, setOutcome] = useState<Outcome | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [leadEventId] = useState(() => generateEventId());
-  const [application, setApplication] = useState<{ id: string; resumeToken: string } | null>(null);
+  const [application, setApplication] = useState<{ id: string; resumeToken: string } | null>(
+    resume ? { id: resume.applicationId, resumeToken: resume.resumeToken } : null
+  );
   const [startingApplication, setStartingApplication] = useState(false);
 
   function startApplication() {
@@ -630,7 +643,15 @@ export function ApplyWizard() {
           )}
 
           {step === "application" && application && plan && (
-            <ApplicationWizard applicationId={application.id} resumeToken={application.resumeToken} plan={plan} />
+            <ApplicationWizard
+              applicationId={application.id}
+              resumeToken={application.resumeToken}
+              plan={plan}
+              initialSectionData={resume?.initialSectionData}
+              initialSectionIndex={resume?.initialSectionIndex}
+              ssnOnFile={resume?.ssnOnFile}
+              alreadyComplete={resume?.alreadyComplete}
+            />
           )}
         </div>
       </div>

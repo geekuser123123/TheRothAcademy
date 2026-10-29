@@ -24,7 +24,10 @@ const STYLES = `
   color: #1E1C19;
 }
 .aw-sub { font-size: 14px; line-height: 1.6; color: #6b6558; margin-bottom: 24px; }
-.aw-save-status { font-size: 11px; color: #8a8376; text-align: right; margin-bottom: 10px; min-height: 14px; }
+.aw-save-status-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; min-height: 14px; }
+.aw-save-status { font-size: 11px; color: #8a8376; }
+.aw-resume-link { background: none; border: none; padding: 0; color: #8a8376; font-size: 11px; font-weight: 700; text-decoration: underline; cursor: pointer; }
+.aw-resume-link:hover { color: #B89958; }
 .aw-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
 .aw-field label { font-size: 12.5px; font-weight: 700; color: #1E1C19; }
 .aw-field .aw-helper { font-size: 12px; color: #8a8376; margin-top: -2px; }
@@ -115,7 +118,15 @@ const STYLES = `
 .aw-ssn-toggle:hover { color: #B89958; }
 `;
 
-type Props = { applicationId: string; resumeToken: string; plan: PlanId };
+type Props = {
+  applicationId: string;
+  resumeToken: string;
+  plan: PlanId;
+  initialSectionData?: Record<string, Record<string, string>>;
+  initialSectionIndex?: number;
+  ssnOnFile?: boolean;
+  alreadyComplete?: boolean;
+};
 
 function visibleFields(section: ApplicationSection, values: Record<string, string>) {
   return section.fields.filter((f) => !f.showIf || f.showIf(values));
@@ -228,15 +239,29 @@ function SsnInput({
   );
 }
 
-export function ApplicationWizard({ applicationId, resumeToken, plan }: Props) {
+export function ApplicationWizard({
+  applicationId,
+  resumeToken,
+  plan,
+  initialSectionData,
+  initialSectionIndex,
+  ssnOnFile = false,
+  alreadyComplete = false,
+}: Props) {
   const sections = getApplicationSections(plan);
-  const [sectionIndex, setSectionIndex] = useState(0);
-  const [sectionData, setSectionData] = useState<Record<string, Record<string, string>>>({});
+  const [sectionIndex, setSectionIndex] = useState(initialSectionIndex ?? 0);
+  const [sectionData, setSectionData] = useState<Record<string, Record<string, string>>>(initialSectionData ?? {});
   const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "saved">("idle");
-  const [complete, setComplete] = useState(false);
+  const [complete, setComplete] = useState(alreadyComplete);
   const [finishing, setFinishing] = useState(false);
-  const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const pendingSave = useRef<{ sectionId: string; fieldId: string; value: string } | null>(null);
+  const [resumeCopied, setResumeCopied] = useState(false);
+  // Keyed per "sectionId:fieldId" so editing one field doesn't cancel
+  // another field's pending autosave -- a single shared timer/ref here
+  // would silently drop every edit but the most recent one whenever two
+  // different fields change within the same 700ms window (fast typing,
+  // browser autofill, paste).
+  const saveTimers = useRef<Record<string, ReturnType<typeof setTimeout>>>({});
+  const pendingSaves = useRef<Record<string, { sectionId: string; fieldId: string; value: string }>>({});
 
   const section = sections[sectionIndex];
   const values = sectionData[section.id] ?? {};
@@ -259,32 +284,35 @@ export function ApplicationWizard({ applicationId, resumeToken, plan }: Props) {
   function setValue(fieldId: string, value: string) {
     const sectionId = section.id;
     setSectionData((prev) => ({ ...prev, [sectionId]: { ...(prev[sectionId] ?? {}), [fieldId]: value } }));
-    pendingSave.current = { sectionId, fieldId, value };
-    if (saveTimer.current) clearTimeout(saveTimer.current);
-    saveTimer.current = setTimeout(() => {
-      pendingSave.current = null;
+    const key = `${sectionId}:${fieldId}`;
+    pendingSaves.current[key] = { sectionId, fieldId, value };
+    if (saveTimers.current[key]) clearTimeout(saveTimers.current[key]);
+    saveTimers.current[key] = setTimeout(() => {
+      delete pendingSaves.current[key];
+      delete saveTimers.current[key];
       save(sectionId, fieldId, value);
     }, 700);
   }
 
-  // Navigating away (section change, or Finish) can land within the 700ms
-  // debounce window of the last keystroke — flush it immediately so nothing
-  // typed right before "Continue"/"Finish" is silently dropped.
+  // Navigating away (section change, Finish, or "Save & finish later") can
+  // land within the 700ms debounce window of a recent keystroke -- flush
+  // every still-pending field immediately so nothing typed right before
+  // leaving is silently dropped.
   function flushPending() {
-    if (saveTimer.current) {
-      clearTimeout(saveTimer.current);
-      saveTimer.current = null;
-    }
-    if (pendingSave.current) {
-      const { sectionId, fieldId, value } = pendingSave.current;
-      pendingSave.current = null;
-      return save(sectionId, fieldId, value);
-    }
-    return Promise.resolve();
+    const pending = Object.values(pendingSaves.current);
+    Object.values(saveTimers.current).forEach(clearTimeout);
+    saveTimers.current = {};
+    pendingSaves.current = {};
+    if (pending.length === 0) return Promise.resolve();
+    return Promise.all(pending.map((p) => save(p.sectionId, p.fieldId, p.value)));
   }
 
   function validateSection() {
-    return visibleFields(section, values).every((f) => !f.required || (values[f.id] ?? "").trim() !== "");
+    return visibleFields(section, values).every((f) => {
+      if (!f.required) return true;
+      if (f.type === "ssn" && ssnOnFile) return true;
+      return (values[f.id] ?? "").trim() !== "";
+    });
   }
 
   async function next() {
@@ -316,6 +344,20 @@ export function ApplicationWizard({ applicationId, resumeToken, plan }: Props) {
 
   function back() {
     if (sectionIndex > 0) setSectionIndex(sectionIndex - 1);
+  }
+
+  async function copyResumeLink() {
+    await flushPending();
+    const url = `${window.location.origin}/apply/resume?id=${applicationId}&token=${resumeToken}`;
+    navigator.clipboard
+      .writeText(url)
+      .then(() => {
+        setResumeCopied(true);
+        setTimeout(() => setResumeCopied(false), 2500);
+      })
+      .catch(() => {
+        window.prompt("Copy your resume link:", url);
+      });
   }
 
   if (complete) {
@@ -355,8 +397,13 @@ export function ApplicationWizard({ applicationId, resumeToken, plan }: Props) {
       <h2 className="aw-h2">{section.title}</h2>
       {section.subtitle && <p className="aw-sub">{section.subtitle}</p>}
 
-      <div className="aw-save-status">
-        {saveStatus === "saving" ? "Saving..." : saveStatus === "saved" ? "Saved" : ""}
+      <div className="aw-save-status-row">
+        <button type="button" className="aw-resume-link" onClick={copyResumeLink}>
+          {resumeCopied ? "Link copied" : "Save & finish later"}
+        </button>
+        <span className="aw-save-status">
+          {saveStatus === "saving" ? "Saving..." : saveStatus === "saved" ? "Saved" : ""}
+        </span>
       </div>
 
       {visibleFields(section, values).map((field) => (
@@ -366,6 +413,9 @@ export function ApplicationWizard({ applicationId, resumeToken, plan }: Props) {
             {field.required ? " *" : ""}
           </label>
           {field.helper && <div className="aw-helper">{field.helper}</div>}
+          {field.type === "ssn" && ssnOnFile && !values[field.id] && (
+            <div className="aw-helper">We already have this on file. Leave blank to keep it, or enter a new one to replace it.</div>
+          )}
           <FieldInput field={field} value={values[field.id] ?? ""} onChange={(v) => setValue(field.id, v)} />
         </div>
       ))}

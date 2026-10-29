@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getDb, encryptSSN, getSsnEncryptionKey } from "@/lib/applications-db";
+import { getDb, encryptSSN, getSsnEncryptionKey, getApplicationByToken } from "@/lib/applications-db";
 
 const JSON_SECTIONS = ["personal_info", "spouse_info", "business_info", "retirement_accounts", "setup_details"] as const;
 type JsonSection = (typeof JSON_SECTIONS)[number];
@@ -13,36 +13,15 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
   const token = new URL(request.url).searchParams.get("token");
   if (!token) return NextResponse.json({ error: "Missing resume token" }, { status: 400 });
 
-  let db;
+  let application;
   try {
-    db = await getDb();
+    application = await getApplicationByToken(id, token);
   } catch {
     return NextResponse.json({ error: "Database is not configured yet" }, { status: 503 });
   }
 
-  const row = await db
-    .prepare(
-      `SELECT id, plan, status, lead_first_name, lead_last_name, lead_email, lead_phone, eligibility_answers,
-              personal_info, spouse_info, business_info, retirement_accounts, setup_details,
-              current_section, ssn_encrypted
-         FROM applications WHERE id = ?1 AND resume_token = ?2`
-    )
-    .bind(id, token)
-    .first<Record<string, unknown>>();
-
-  if (!row) return NextResponse.json({ error: "Not found" }, { status: 404 });
-
-  const { ssn_encrypted, ...rest } = row;
-  return NextResponse.json({
-    ...rest,
-    eligibilityAnswers: rest.eligibility_answers ? JSON.parse(rest.eligibility_answers as string) : null,
-    personalInfo: rest.personal_info ? JSON.parse(rest.personal_info as string) : {},
-    spouseInfo: rest.spouse_info ? JSON.parse(rest.spouse_info as string) : {},
-    businessInfo: rest.business_info ? JSON.parse(rest.business_info as string) : {},
-    retirementAccounts: rest.retirement_accounts ? JSON.parse(rest.retirement_accounts as string) : {},
-    setupDetails: rest.setup_details ? JSON.parse(rest.setup_details as string) : {},
-    ssnOnFile: Boolean(ssn_encrypted),
-  });
+  if (!application) return NextResponse.json({ error: "Not found" }, { status: 404 });
+  return NextResponse.json(application);
 }
 
 export async function PATCH(request: Request, { params }: { params: Promise<{ id: string }> }) {
@@ -83,13 +62,19 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
     return NextResponse.json({ error: "Invalid section" }, { status: 400 });
   }
 
-  const existing = await db.prepare(`SELECT ${section} FROM applications WHERE id = ?1`).bind(id).first<Record<string, string | null>>();
-  const merged = { ...(existing?.[section] ? JSON.parse(existing[section] as string) : {}), ...data };
-
+  // Merged with SQLite's json_patch() directly in the UPDATE, not via a
+  // SELECT-then-merge-then-write in application code -- two PATCH requests
+  // for the same section (e.g. two fields filled within a second of each
+  // other, each independently debounced) can genuinely overlap, and a
+  // read-modify-write here would let the slower one silently clobber the
+  // faster one's field. json_patch runs atomically inside the single
+  // UPDATE statement, so there's no window for that race.
   const currentSectionUpdate = typeof body?.currentSection === "string" ? body.currentSection : section;
   await db
-    .prepare(`UPDATE applications SET ${section} = ?1, current_section = ?2, updated_at = datetime('now') WHERE id = ?3`)
-    .bind(JSON.stringify(merged), currentSectionUpdate, id)
+    .prepare(
+      `UPDATE applications SET ${section} = json_patch(COALESCE(${section}, '{}'), ?1), current_section = ?2, updated_at = datetime('now') WHERE id = ?3`
+    )
+    .bind(JSON.stringify(data), currentSectionUpdate, id)
     .run();
 
   return NextResponse.json({ ok: true });

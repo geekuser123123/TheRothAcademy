@@ -1,8 +1,64 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
+import type { ApplicationSectionId } from "@/data/application-content";
+import type { PlanId } from "@/data/apply-content";
 
 export async function getDb() {
   const { env } = await getCloudflareContext({ async: true });
   return env.DB;
+}
+
+export type ApplicationRecord = {
+  id: string;
+  plan: PlanId;
+  status: "in_progress" | "complete";
+  leadFirstName: string;
+  leadLastName: string;
+  leadEmail: string;
+  leadPhone: string;
+  eligibilityAnswers: Record<string, string> | null;
+  sections: Record<ApplicationSectionId, Record<string, string>>;
+  currentSection: string;
+  ssnOnFile: boolean;
+};
+
+// Shared by the resume-by-link page and the GET /api/applications/[id]
+// route, so both read the application the same way and never leak the
+// encrypted SSN columns to a response.
+export async function getApplicationByToken(id: string, token: string): Promise<ApplicationRecord | null> {
+  const db = await getDb();
+  const row = await db
+    .prepare(
+      `SELECT id, plan, status, lead_first_name, lead_last_name, lead_email, lead_phone, eligibility_answers,
+              personal_info, spouse_info, business_info, retirement_accounts, setup_details,
+              current_section, ssn_encrypted
+         FROM applications WHERE id = ?1 AND resume_token = ?2`
+    )
+    .bind(id, token)
+    .first<Record<string, unknown>>();
+
+  if (!row) return null;
+
+  const parse = (col: unknown) => (col ? JSON.parse(col as string) : {});
+
+  return {
+    id: row.id as string,
+    plan: row.plan as PlanId,
+    status: row.status as "in_progress" | "complete",
+    leadFirstName: row.lead_first_name as string,
+    leadLastName: row.lead_last_name as string,
+    leadEmail: row.lead_email as string,
+    leadPhone: row.lead_phone as string,
+    eligibilityAnswers: row.eligibility_answers ? JSON.parse(row.eligibility_answers as string) : null,
+    sections: {
+      personal_info: parse(row.personal_info),
+      spouse_info: parse(row.spouse_info),
+      business_info: parse(row.business_info),
+      retirement_accounts: parse(row.retirement_accounts),
+      setup_details: parse(row.setup_details),
+    },
+    currentSection: (row.current_section as string) ?? "personal_info",
+    ssnOnFile: Boolean(row.ssn_encrypted),
+  };
 }
 
 export async function getSsnEncryptionKey() {

@@ -21,7 +21,9 @@
   ],
   // Placeholder only — the real value is set with
   // `wrangler secret put SSN_ENCRYPTION_KEY`, which overrides this in
-  // production. Locally, set SSN_ENCRYPTION_KEY in .env.local instead.
+  // production. Locally, set SSN_ENCRYPTION_KEY in a gitignored .dev.vars
+  // file instead (wrangler reads it automatically; .env.local is not used
+  // for Cloudflare bindings by the installed @opennextjs/cloudflare version).
   "vars": {
     "SSN_ENCRYPTION_KEY": ""
   }
