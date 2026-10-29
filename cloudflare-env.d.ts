@@ -6,6 +6,7 @@ declare global {
   interface CloudflareEnv {
     DB: D1Database;
     SSN_ENCRYPTION_KEY: string;
+    ABANDONED_CHECK_SECRET: string;
   }
 }
 

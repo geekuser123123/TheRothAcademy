@@ -7,6 +7,11 @@ export async function getDb() {
   return env.DB;
 }
 
+export async function getAbandonedCheckSecret() {
+  const { env } = await getCloudflareContext({ async: true });
+  return env.ABANDONED_CHECK_SECRET;
+}
+
 export type ApplicationRecord = {
   id: string;
   plan: PlanId;
