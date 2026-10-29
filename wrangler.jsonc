@@ -11,13 +11,11 @@
   "observability": {
     "enabled": true
   },
-  // Create with: wrangler d1 create roth-academy-applications
-  // Then replace database_id below with the id that command prints.
   "d1_databases": [
     {
       "binding": "DB",
       "database_name": "roth-academy-applications",
-      "database_id": "REPLACE_WITH_REAL_DATABASE_ID",
+      "database_id": "7b4f86ad-e148-4271-9a7e-99344bfa46b6",
       "migrations_dir": "migrations"
     }
   ],
