@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getDb } from "@/lib/applications-db";
-import { getApplicationSections, type ApplicationSectionId } from "@/data/application-content";
+import { getApplicationSections, summarizeSectionValues, type ApplicationSectionId } from "@/data/application-content";
 import type { PlanId } from "@/data/apply-content";
 
 // Fires once, when the client finishes Step 4. Pushes a summary of the
@@ -10,22 +10,15 @@ import type { PlanId } from "@/data/apply-content";
 const N8N_COMPLETE_WEBHOOK = "https://n8n.coreautomations.org/webhook/application-complete-ghl";
 
 // Renders the application as labeled "Field: value" lines grouped under each
-// section's title, using the same labels/options shown in the wizard UI —
-// so GHL shows something a staff member can skim, not a raw JSON blob.
+// section's title, using the same labels/options shown in the wizard UI and
+// the review screen — so GHL shows something a staff member can skim, not a
+// raw JSON blob.
 function formatApplicationSummary(plan: PlanId, dataBySection: Record<ApplicationSectionId, Record<string, string>>) {
   const blocks: string[] = [];
   for (const section of getApplicationSections(plan)) {
-    const values = dataBySection[section.id] ?? {};
-    const lines: string[] = [];
-    for (const field of section.fields) {
-      if (field.type === "ssn") continue;
-      const raw = values[field.id];
-      if (!raw) continue;
-      const label = field.options?.find((o) => o.value === raw)?.label ?? raw;
-      lines.push(`${field.label}: ${label}`);
-    }
+    const lines = summarizeSectionValues(section, dataBySection[section.id] ?? {});
     if (lines.length > 0) {
-      blocks.push(`${section.title.toUpperCase()}\n${lines.join("\n")}`);
+      blocks.push(`${section.title.toUpperCase()}\n${lines.map((l) => `${l.label}: ${l.value}`).join("\n")}`);
     }
   }
   return blocks.join("\n\n");

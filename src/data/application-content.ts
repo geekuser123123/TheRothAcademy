@@ -224,3 +224,21 @@ const SETUP_DETAILS: Record<PlanId, ApplicationSection> = {
 export function getApplicationSections(plan: PlanId): ApplicationSection[] {
   return [PERSONAL_INFO, SPOUSE_INFO[plan], BUSINESS_INFO[plan], RETIREMENT_ACCOUNTS, SETUP_DETAILS[plan]];
 }
+
+export type SummaryLine = { fieldId: string; label: string; value: string };
+
+// Shared by the review screen and the GHL completion summary, so both read
+// a section's answers the same way: skip the SSN (never shown back),
+// skip unanswered fields, and resolve radio/select values to their
+// display labels instead of raw option codes.
+export function summarizeSectionValues(section: ApplicationSection, values: Record<string, string>): SummaryLine[] {
+  const lines: SummaryLine[] = [];
+  for (const field of section.fields) {
+    if (field.type === "ssn") continue;
+    const raw = values[field.id];
+    if (!raw) continue;
+    const label = field.options?.find((o) => o.value === raw)?.label ?? raw;
+    lines.push({ fieldId: field.id, label: field.label, value: label });
+  }
+  return lines;
+}

@@ -2,8 +2,17 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
-import type { PlanId } from "@/data/apply-content";
-import { getApplicationSections, type ApplicationField, type ApplicationSection } from "@/data/application-content";
+import {
+  PLANS,
+  ANNUAL_MAINTENANCE,
+  UPGRADES,
+  UPGRADE_BUNDLE_DISCOUNT,
+  UPGRADES_ENABLED,
+  calculateUpgradeTotal,
+  type PlanId,
+  type UpgradeId,
+} from "@/data/apply-content";
+import { getApplicationSections, summarizeSectionValues, type ApplicationField, type ApplicationSection } from "@/data/application-content";
 
 const STYLES = `
 .aw-card { color: #1E1C19; }
@@ -116,6 +125,50 @@ const STYLES = `
   border-radius: 6px;
 }
 .aw-ssn-toggle:hover { color: #B89958; }
+.aw-review-plan {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #FBF7EF;
+  border: 1px solid #ECE5D6;
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-bottom: 20px;
+}
+.aw-review-plan-name { font-weight: 700; font-size: 15px; color: #1E1C19; }
+.aw-review-plan-sub { font-size: 12px; color: #8a8376; margin-top: 2px; }
+.aw-review-plan-price { font-weight: 700; font-size: 18px; color: #1E1C19; }
+.aw-review-section { border-top: 1px solid #ECE5D6; padding: 18px 0; }
+.aw-review-section-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.aw-review-section-head h3 {
+  font-family: var(--font-playfair-display), 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1E1C19;
+}
+.aw-review-edit { background: none; border: none; padding: 0; color: #B89958; font-size: 12px; font-weight: 700; text-decoration: underline; cursor: pointer; }
+.aw-review-edit:hover { color: #8a7238; }
+.aw-review-row { display: flex; justify-content: space-between; gap: 16px; font-size: 13.5px; padding: 5px 0; color: #1E1C19; }
+.aw-review-row span:first-child { color: #8a8376; }
+.aw-review-row span:last-child { text-align: right; font-weight: 600; }
+.aw-review-empty { font-size: 13px; color: #8a8376; font-style: italic; }
+.aw-upgrade-choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border: 1.5px solid #ECE5D6;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 13.5px;
+  color: #1E1C19;
+}
+.aw-upgrade-choice input { margin-top: 3px; }
+.aw-review-total { border-top: 2px solid #1E1C19; margin-top: 10px; padding-top: 14px; }
+.aw-review-total .aw-review-row { font-size: 15px; font-weight: 700; }
+.aw-review-row-sub { font-size: 12px !important; font-weight: 400 !important; color: #8a8376 !important; }
+.aw-review-row-sub span { font-weight: 400 !important; color: #8a8376 !important; }
 `;
 
 type Props = {
@@ -255,6 +308,9 @@ export function ApplicationWizard({
   const [complete, setComplete] = useState(alreadyComplete);
   const [finishing, setFinishing] = useState(false);
   const [resumeCopied, setResumeCopied] = useState(false);
+  const [reviewing, setReviewing] = useState(false);
+  const [cameFromReview, setCameFromReview] = useState(false);
+  const [selectedUpgrades, setSelectedUpgrades] = useState<UpgradeId[]>([]);
   // Keyed per "sectionId:fieldId" so editing one field doesn't cancel
   // another field's pending autosave -- a single shared timer/ref here
   // would silently drop every edit but the most recent one whenever two
@@ -320,14 +376,34 @@ export function ApplicationWizard({
       alert("Please fill in all required fields.");
       return;
     }
+    await flushPending();
+
+    // Editing a single section from the review screen always returns there,
+    // whichever section it was -- there's no "next section" to walk through.
+    if (cameFromReview) {
+      setCameFromReview(false);
+      setReviewing(true);
+      return;
+    }
     if (sectionIndex + 1 < sections.length) {
-      await flushPending();
       setSectionIndex(sectionIndex + 1);
       return;
     }
+    setReviewing(true);
+  }
 
+  function back() {
+    if (sectionIndex > 0) setSectionIndex(sectionIndex - 1);
+  }
+
+  function editSection(index: number) {
+    setSectionIndex(index);
+    setCameFromReview(true);
+    setReviewing(false);
+  }
+
+  async function finishApplication() {
     setFinishing(true);
-    await flushPending();
     try {
       await fetch(`/api/applications/${applicationId}/complete`, {
         method: "POST",
@@ -340,10 +416,6 @@ export function ApplicationWizard({
     }
     setFinishing(false);
     setComplete(true);
-  }
-
-  function back() {
-    if (sectionIndex > 0) setSectionIndex(sectionIndex - 1);
   }
 
   async function copyResumeLink() {
@@ -360,6 +432,116 @@ export function ApplicationWizard({
       });
   }
 
+  if (reviewing && !complete) {
+    const planInfo = PLANS[plan];
+    const upgradesTotal = UPGRADES_ENABLED ? calculateUpgradeTotal(selectedUpgrades) : 0;
+    const amountDueToday = planInfo.price + upgradesTotal;
+
+    return (
+      <div className="aw-card">
+        <style>{STYLES}</style>
+        <div className="aw-eyebrow">Review Your Application</div>
+        <h2 className="aw-h2">Everything Look Right?</h2>
+        <p className="aw-sub">
+          Review your answers below. You can edit any section before continuing, nothing needs to be re-entered.
+        </p>
+
+        <div className="aw-review-plan">
+          <div>
+            <div className="aw-review-plan-name">{planInfo.name}</div>
+            <div className="aw-review-plan-sub">Setup fee</div>
+          </div>
+          <div className="aw-review-plan-price">${planInfo.price.toLocaleString()}</div>
+        </div>
+
+        {sections.map((s, i) => {
+          const lines = summarizeSectionValues(s, sectionData[s.id] ?? {});
+          return (
+            <div className="aw-review-section" key={s.id}>
+              <div className="aw-review-section-head">
+                <h3>{s.title}</h3>
+                <button type="button" className="aw-review-edit" onClick={() => editSection(i)}>
+                  Edit
+                </button>
+              </div>
+              {s.id === "personal_info" && (
+                <div className="aw-review-row">
+                  <span>Social Security Number</span>
+                  <span>{ssnOnFile || sectionData.personal_info?.ssn ? "On file" : "Not provided"}</span>
+                </div>
+              )}
+              {lines.length === 0 ? (
+                <p className="aw-review-empty">Nothing entered.</p>
+              ) : (
+                lines.map((l) => (
+                  <div className="aw-review-row" key={l.fieldId}>
+                    <span>{l.label}</span>
+                    <span>{l.value}</span>
+                  </div>
+                ))
+              )}
+            </div>
+          );
+        })}
+
+        {UPGRADES_ENABLED && (
+          <div className="aw-review-section">
+            <div className="aw-review-section-head">
+              <h3>Optional Upgrades</h3>
+            </div>
+            <p className="aw-sub" style={{ marginBottom: 12 }}>
+              Would you like extra help getting started? Neither is required.
+            </p>
+            {(Object.keys(UPGRADES) as UpgradeId[]).map((id) => {
+              const u = UPGRADES[id];
+              const checked = selectedUpgrades.includes(id);
+              return (
+                <label key={id} className="aw-upgrade-choice">
+                  <input
+                    type="checkbox"
+                    checked={checked}
+                    onChange={() =>
+                      setSelectedUpgrades((prev) => (checked ? prev.filter((x) => x !== id) : [...prev, id]))
+                    }
+                  />
+                  <span>
+                    <strong>{u.name}</strong> — ${u.price}
+                    <div className="aw-helper">{u.description}</div>
+                  </span>
+                </label>
+              );
+            })}
+            {selectedUpgrades.length === 2 && (
+              <p className="aw-helper">
+                Both upgrades selected: ${UPGRADE_BUNDLE_DISCOUNT} bundle discount applied automatically.
+              </p>
+            )}
+          </div>
+        )}
+
+        <div className="aw-review-total">
+          <div className="aw-review-row">
+            <span>Amount due today</span>
+            <span>${amountDueToday.toLocaleString()}</span>
+          </div>
+          <div className="aw-review-row aw-review-row-sub">
+            <span>Annual Tax Academy maintenance</span>
+            <span>${ANNUAL_MAINTENANCE}/year, billed each May</span>
+          </div>
+        </div>
+
+        <div className="aw-nav-row">
+          <button type="button" className="aw-btn-back" onClick={() => setReviewing(false)} disabled={finishing}>
+            ← Back to Application
+          </button>
+          <button type="button" className="aw-btn-primary" onClick={finishApplication} disabled={finishing}>
+            {finishing ? "Submitting..." : "Continue to Secure Payment →"}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   if (complete) {
     return (
       <div className="aw-card">
@@ -367,8 +549,8 @@ export function ApplicationWizard({
         <div className="aw-eyebrow">Application Saved</div>
         <h2 className="aw-h2">That&apos;s Everything We Need For Now</h2>
         <p className="aw-sub">
-          Your answers are saved. Review, optional upgrades, and secure payment are the next part of this
-          application, which is still being finalized.
+          Your answers are saved. Secure payment is the next part of this application, which is still being
+          finalized.
         </p>
         <div className="aw-complete-box">
           <p>
@@ -421,12 +603,20 @@ export function ApplicationWizard({
       ))}
 
       <div className="aw-nav-row">
-        <button type="button" className="aw-btn-back" onClick={back} disabled={sectionIndex === 0 || finishing}>
-          ← Back
-        </button>
-        <button type="button" className="aw-btn-primary" onClick={next} disabled={finishing}>
-          {sectionIndex + 1 < sections.length ? "Continue →" : finishing ? "Finishing..." : "Finish"}
-        </button>
+        {cameFromReview ? (
+          <button type="button" className="aw-btn-primary" onClick={next} style={{ marginLeft: "auto" }}>
+            Save & Return to Review
+          </button>
+        ) : (
+          <>
+            <button type="button" className="aw-btn-back" onClick={back} disabled={sectionIndex === 0}>
+              ← Back
+            </button>
+            <button type="button" className="aw-btn-primary" onClick={next}>
+              {sectionIndex + 1 < sections.length ? "Continue →" : "Review & Continue →"}
+            </button>
+          </>
+        )}
       </div>
     </div>
   );

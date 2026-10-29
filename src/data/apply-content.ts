@@ -22,6 +22,37 @@ export const PLANS: Record<
 
 export const ANNUAL_MAINTENANCE = 225;
 
+export type UpgradeId = "priority_processing" | "rollover_concierge";
+
+export const UPGRADES: Record<UpgradeId, { name: string; price: number; description: string }> = {
+  priority_processing: {
+    name: "Priority Processing",
+    price: 295,
+    description: "Move your completed application to the front of the internal processing queue.",
+  },
+  rollover_concierge: {
+    name: "White-Glove Rollover Concierge",
+    price: 495,
+    description:
+      "A dedicated specialist assists with eligible retirement-account transfers and rollovers, including paperwork, coordination, and follow-up.",
+  },
+};
+
+export const UPGRADE_BUNDLE_DISCOUNT = 95;
+
+// Spec section 13: "these upgrades are not expressly described in the
+// attached order forms... do not activate upgrade purchases until their
+// scope, charges, and purchase-specific disclosures are approved... hide
+// the options until they are approved." The pricing/selection logic is
+// built and correct below; flip this once that approval is in place.
+export const UPGRADES_ENABLED = false;
+
+export function calculateUpgradeTotal(selected: UpgradeId[]): number {
+  const subtotal = selected.reduce((sum, id) => sum + UPGRADES[id].price, 0);
+  const bothSelected = selected.includes("priority_processing") && selected.includes("rollover_concierge");
+  return bothSelected ? subtotal - UPGRADE_BUNDLE_DISCOUNT : subtotal;
+}
+
 export type EligibilityOption = { value: string; label: string };
 
 export type EligibilityQuestion = {
