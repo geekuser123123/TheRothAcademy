@@ -10,5 +10,21 @@
   },
   "observability": {
     "enabled": true
+  },
+  // Create with: wrangler d1 create roth-academy-applications
+  // Then replace database_id below with the id that command prints.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "roth-academy-applications",
+      "database_id": "REPLACE_WITH_REAL_DATABASE_ID",
+      "migrations_dir": "migrations"
+    }
+  ],
+  // Placeholder only — the real value is set with
+  // `wrangler secret put SSN_ENCRYPTION_KEY`, which overrides this in
+  // production. Locally, set SSN_ENCRYPTION_KEY in .env.local instead.
+  "vars": {
+    "SSN_ENCRYPTION_KEY": ""
   }
 }

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { ApplicationWizard } from "./ApplicationWizard";
 import { PLANS, ELIGIBILITY_QUESTIONS, ANNUAL_MAINTENANCE, type PlanId } from "@/data/apply-content";
 import { siteConfig } from "@/data/site-config";
 import { generateEventId, getAttributionSnapshot, trackGA4Event } from "@/lib/tracking";
@@ -12,7 +13,7 @@ import { generateEventId, getAttributionSnapshot, trackGA4Event } from "@/lib/tr
 // eligibility outcome (pass, or which question stopped it) is known.
 const N8N_APPLY_WEBHOOK = "https://n8n.coreautomations.org/webhook/apply-lead-ghl";
 
-type Step = "plan" | "help-me-choose" | "lead" | "eligibility" | "outcome";
+type Step = "plan" | "help-me-choose" | "lead" | "eligibility" | "outcome" | "application";
 
 type LeadData = {
   firstName: string;
@@ -427,6 +428,29 @@ export function ApplyWizard() {
   const [outcome, setOutcome] = useState<Outcome | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [leadEventId] = useState(() => generateEventId());
+  const [application, setApplication] = useState<{ id: string; resumeToken: string } | null>(null);
+  const [startingApplication, setStartingApplication] = useState(false);
+
+  function startApplication() {
+    setStartingApplication(true);
+    fetch("/api/applications", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ plan, lead, eligibilityAnswers: answers }),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Could not start application");
+        return res.json();
+      })
+      .then((data: { id: string; resumeToken: string }) => {
+        setApplication(data);
+        setStep("application");
+      })
+      .catch(() => {
+        alert("We couldn't start your application right now. Please try again in a moment.");
+      })
+      .finally(() => setStartingApplication(false));
+  }
 
   function postApplyEvent(payload: Record<string, unknown>) {
     fetch(N8N_APPLY_WEBHOOK, {
@@ -531,7 +555,7 @@ export function ApplyWizard() {
         </Link>
       </div>
 
-      {step !== "plan" && step !== "help-me-choose" && (
+      {step !== "plan" && step !== "help-me-choose" && step !== "application" && (
         <div className="apply-progress-wrap">
           <div className="apply-progress-label">
             <span>
@@ -587,7 +611,13 @@ export function ApplyWizard() {
                 setOutcome(null);
                 setStep("eligibility");
               }}
+              onStartApplication={startApplication}
+              startingApplication={startingApplication}
             />
+          )}
+
+          {step === "application" && application && plan && (
+            <ApplicationWizard applicationId={application.id} resumeToken={application.resumeToken} plan={plan} />
           )}
         </div>
       </div>
@@ -827,11 +857,15 @@ function OutcomeView({
   outcome,
   lead,
   onBack,
+  onStartApplication,
+  startingApplication,
 }: {
   plan: PlanId;
   outcome: Outcome;
   lead: LeadData;
   onBack: () => void;
+  onStartApplication: () => void;
+  startingApplication: boolean;
 }) {
   if (outcome.kind === "stopped") {
     return (
@@ -870,9 +904,8 @@ function OutcomeView({
       <div className="apply-eyebrow">You&apos;re Eligible</div>
       <h1 className="apply-h1">Great News: You&apos;re a Fit for the {PLANS[plan].shortName}</h1>
       <p className="apply-sub">
-        We&apos;ve saved your progress, {lead.firstName || "there"}. The full online application, where you&apos;ll
-        finish your details, review your order form, and pay securely, is being finalized now. We&apos;ll email you
-        the moment it&apos;s ready to pick up right where you left off.
+        We&apos;ve saved your progress, {lead.firstName || "there"}. Continue below to finish your details, review
+        your order form, and pay securely.
       </p>
 
       <div className="apply-summary-box">
@@ -881,11 +914,11 @@ function OutcomeView({
       </div>
 
       <div className="apply-cta-row">
-        <Link className="apply-cta-primary" href="/self-directed-certainty-session">
-          Talk to a Specialist Now Instead
-        </Link>
-        <Link className="apply-cta-secondary" href="/">
-          Return Home
+        <button type="button" className="apply-cta-primary" onClick={onStartApplication} disabled={startingApplication} style={{ border: "none", cursor: "pointer" }}>
+          {startingApplication ? "Starting..." : "Continue to Application →"}
+        </button>
+        <Link className="apply-cta-secondary" href="/self-directed-certainty-session">
+          Talk to a Specialist Instead
         </Link>
       </div>
 

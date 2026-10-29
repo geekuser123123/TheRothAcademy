@@ -1,4 +1,7 @@
 import type { NextConfig } from "next";
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
+
+initOpenNextCloudflareForDev({ envFiles: [".env.local"] });
 
 const nextConfig: NextConfig = {
   async redirects() {
