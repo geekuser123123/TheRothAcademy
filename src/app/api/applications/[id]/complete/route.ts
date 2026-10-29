@@ -1,11 +1,35 @@
 import { NextResponse } from "next/server";
 import { getDb } from "@/lib/applications-db";
+import { getApplicationSections, type ApplicationSectionId } from "@/data/application-content";
+import type { PlanId } from "@/data/apply-content";
 
 // Fires once, when the client finishes Step 4. Pushes a summary of the
-// application into GHL (contact custom fields + a full JSON dump) and moves
-// the opportunity to the "Application Completed" stage. The SSN itself is
-// never included — only whether one is on file.
+// application into GHL (contact custom fields + a readable section-by-section
+// summary) and moves the opportunity to the "Application Completed" stage.
+// The SSN itself is never included — only whether one is on file.
 const N8N_COMPLETE_WEBHOOK = "https://n8n.coreautomations.org/webhook/application-complete-ghl";
+
+// Renders the application as labeled "Field: value" lines grouped under each
+// section's title, using the same labels/options shown in the wizard UI —
+// so GHL shows something a staff member can skim, not a raw JSON blob.
+function formatApplicationSummary(plan: PlanId, dataBySection: Record<ApplicationSectionId, Record<string, string>>) {
+  const blocks: string[] = [];
+  for (const section of getApplicationSections(plan)) {
+    const values = dataBySection[section.id] ?? {};
+    const lines: string[] = [];
+    for (const field of section.fields) {
+      if (field.type === "ssn") continue;
+      const raw = values[field.id];
+      if (!raw) continue;
+      const label = field.options?.find((o) => o.value === raw)?.label ?? raw;
+      lines.push(`${field.label}: ${label}`);
+    }
+    if (lines.length > 0) {
+      blocks.push(`${section.title.toUpperCase()}\n${lines.join("\n")}`);
+    }
+  }
+  return blocks.join("\n\n");
+}
 
 export async function POST(request: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -59,7 +83,13 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     hasSpouseInvolvement,
     willTransferRetirement: retirementAccounts.will_transfer ?? "",
     ssnOnFile: row.ssn_encrypted ? "yes" : "no",
-    applicationData: JSON.stringify({ personalInfo, spouseInfo, businessInfo, retirementAccounts, setupDetails }),
+    applicationData: formatApplicationSummary(plan, {
+      personal_info: personalInfo,
+      spouse_info: spouseInfo,
+      business_info: businessInfo,
+      retirement_accounts: retirementAccounts,
+      setup_details: setupDetails,
+    }),
   };
 
   try {
