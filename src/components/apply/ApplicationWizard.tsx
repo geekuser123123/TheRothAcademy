@@ -156,7 +156,9 @@ export function ApplicationWizard({ applicationId, resumeToken, plan }: Props) {
   const [sectionData, setSectionData] = useState<Record<string, Record<string, string>>>({});
   const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "saved">("idle");
   const [complete, setComplete] = useState(false);
+  const [finishing, setFinishing] = useState(false);
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pendingSave = useRef<{ sectionId: string; fieldId: string; value: string } | null>(null);
 
   const section = sections[sectionIndex];
   const values = sectionData[section.id] ?? {};
@@ -167,7 +169,7 @@ export function ApplicationWizard({ applicationId, resumeToken, plan }: Props) {
     const payload = isSsn
       ? { token: resumeToken, section: "ssn", data: { ssn: value } }
       : { token: resumeToken, section: sectionId, data: { [fieldId]: value }, currentSection: sectionId };
-    fetch(`/api/applications/${applicationId}`, {
+    return fetch(`/api/applications/${applicationId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -179,24 +181,59 @@ export function ApplicationWizard({ applicationId, resumeToken, plan }: Props) {
   function setValue(fieldId: string, value: string) {
     const sectionId = section.id;
     setSectionData((prev) => ({ ...prev, [sectionId]: { ...(prev[sectionId] ?? {}), [fieldId]: value } }));
+    pendingSave.current = { sectionId, fieldId, value };
     if (saveTimer.current) clearTimeout(saveTimer.current);
-    saveTimer.current = setTimeout(() => save(sectionId, fieldId, value), 700);
+    saveTimer.current = setTimeout(() => {
+      pendingSave.current = null;
+      save(sectionId, fieldId, value);
+    }, 700);
+  }
+
+  // Navigating away (section change, or Finish) can land within the 700ms
+  // debounce window of the last keystroke — flush it immediately so nothing
+  // typed right before "Continue"/"Finish" is silently dropped.
+  function flushPending() {
+    if (saveTimer.current) {
+      clearTimeout(saveTimer.current);
+      saveTimer.current = null;
+    }
+    if (pendingSave.current) {
+      const { sectionId, fieldId, value } = pendingSave.current;
+      pendingSave.current = null;
+      return save(sectionId, fieldId, value);
+    }
+    return Promise.resolve();
   }
 
   function validateSection() {
     return visibleFields(section, values).every((f) => !f.required || (values[f.id] ?? "").trim() !== "");
   }
 
-  function next() {
+  async function next() {
     if (!validateSection()) {
       alert("Please fill in all required fields.");
       return;
     }
     if (sectionIndex + 1 < sections.length) {
+      await flushPending();
       setSectionIndex(sectionIndex + 1);
-    } else {
-      setComplete(true);
+      return;
     }
+
+    setFinishing(true);
+    await flushPending();
+    try {
+      await fetch(`/api/applications/${applicationId}/complete`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: resumeToken }),
+      });
+    } catch {
+      // Autosaved data already lives in D1 either way; this call only
+      // notifies GHL, so a network failure here isn't destructive.
+    }
+    setFinishing(false);
+    setComplete(true);
   }
 
   function back() {
@@ -251,11 +288,11 @@ export function ApplicationWizard({ applicationId, resumeToken, plan }: Props) {
       ))}
 
       <div className="aw-nav-row">
-        <button type="button" className="aw-btn-back" onClick={back} disabled={sectionIndex === 0}>
+        <button type="button" className="aw-btn-back" onClick={back} disabled={sectionIndex === 0 || finishing}>
           ← Back
         </button>
-        <button type="button" className="aw-btn-primary" onClick={next}>
-          {sectionIndex + 1 < sections.length ? "Continue →" : "Finish"}
+        <button type="button" className="aw-btn-primary" onClick={next} disabled={finishing}>
+          {sectionIndex + 1 < sections.length ? "Continue →" : finishing ? "Finishing..." : "Finish"}
         </button>
       </div>
     </div>
