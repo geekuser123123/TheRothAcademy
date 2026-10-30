@@ -17,6 +17,22 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Database is not configured yet" }, { status: 503 });
   }
 
+  // Someone who closed the tab mid-wizard and comes back through plan
+  // selection again shouldn't get a second, orphaned application for the
+  // same email + plan -- hand back the one they already started instead.
+  const existing = await db
+    .prepare(
+      `SELECT id, resume_token FROM applications
+        WHERE lead_email = ?1 AND plan = ?2 AND payment_status != 'paid'
+        ORDER BY updated_at DESC LIMIT 1`
+    )
+    .bind(lead.email, plan)
+    .first<{ id: string; resume_token: string }>();
+
+  if (existing) {
+    return NextResponse.json({ id: existing.id, resumeToken: existing.resume_token, existing: true });
+  }
+
   const id = crypto.randomUUID();
   const resumeToken = crypto.randomUUID();
 

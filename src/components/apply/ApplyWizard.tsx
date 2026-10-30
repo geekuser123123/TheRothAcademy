@@ -458,14 +458,25 @@ export function ApplyWizard({ resume }: { resume?: ResumeData } = {}) {
         if (!res.ok) throw new Error("Could not start application");
         return res.json();
       })
-      .then((data: { id: string; resumeToken: string }) => {
+      .then((data: { id: string; resumeToken: string; existing?: boolean }) => {
+        if (data.existing) {
+          // Already has an unpaid application for this email + plan -- send
+          // them into the real resume flow (full saved section data,
+          // current step, payment/docusign state) instead of rendering a
+          // blank wizard that would silently overwrite their progress.
+          // Navigating away -- deliberately don't reset startingApplication
+          // here so the button stays disabled during the redirect.
+          window.location.href = `/apply/resume?id=${data.id}&token=${data.resumeToken}`;
+          return;
+        }
         setApplication(data);
         setStep("application");
+        setStartingApplication(false);
       })
       .catch(() => {
         alert("We couldn't start your application right now. Please try again in a moment.");
-      })
-      .finally(() => setStartingApplication(false));
+        setStartingApplication(false);
+      });
   }
 
   // Readable "Question: Answer" lines for GHL, built from the same question
