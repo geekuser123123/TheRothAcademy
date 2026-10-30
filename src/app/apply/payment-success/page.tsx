@@ -77,7 +77,7 @@ const STYLES = `
 }
 `;
 
-type Status = "confirming" | "paid" | "timeout";
+type Status = "confirming" | "redirecting" | "paid" | "signing_unavailable" | "timeout";
 
 function PaymentSuccessContent() {
   const searchParams = useSearchParams();
@@ -95,6 +95,24 @@ function PaymentSuccessContent() {
     const maxAttempts = 10;
     let cancelled = false;
 
+    async function startSigning() {
+      try {
+        const res = await fetch(`/api/applications/${id}/send-for-signature`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.url) {
+          window.location.href = data.url;
+          return;
+        }
+      } catch {
+        // Fall through to the "we'll be in touch" fallback below.
+      }
+      if (!cancelled) setStatus("signing_unavailable");
+    }
+
     async function poll() {
       attempts++;
       try {
@@ -102,7 +120,18 @@ function PaymentSuccessContent() {
         if (res.ok) {
           const data = await res.json();
           if (data.paymentStatus === "paid") {
-            if (!cancelled) setStatus("paid");
+            if (cancelled) return;
+            // Only the 401(k) order form is wired up to DocuSign so far, and
+            // only ever send one signing request per application -- a
+            // refreshed page with an already-"sent" status falls back to
+            // the honest "we'll be in touch" copy rather than trying (and
+            // failing) to fetch a new link for an envelope that's already out.
+            if (data.plan === "401k" && data.docusignStatus === "not_sent") {
+              setStatus("redirecting");
+              startSigning();
+            } else {
+              setStatus("paid");
+            }
             return;
           }
         }
@@ -139,6 +168,14 @@ function PaymentSuccessContent() {
             <p className="ps-sub">We&apos;re confirming your payment with Stripe. This usually takes just a few seconds.</p>
           </>
         )}
+        {status === "redirecting" && (
+          <>
+            <div className="ps-spinner" />
+            <div className="ps-eyebrow">Payment Confirmed</div>
+            <h2 className="ps-h2">Taking You to Your Order Form</h2>
+            <p className="ps-sub">Your payment has been received. We&apos;re opening your order form for signature now.</p>
+          </>
+        )}
         {status === "paid" && (
           <>
             <div className="ps-eyebrow">Payment Confirmed</div>
@@ -146,6 +183,20 @@ function PaymentSuccessContent() {
             <p className="ps-sub">
               Your payment has been received. We&apos;ll be in touch shortly with next steps to get your order form
               signed and your plan established.
+            </p>
+            <Link href="/" className="ps-btn-primary">
+              Return Home
+            </Link>
+          </>
+        )}
+        {status === "signing_unavailable" && (
+          <>
+            <div className="ps-eyebrow">Payment Confirmed</div>
+            <h2 className="ps-h2">You&apos;re All Set</h2>
+            <p className="ps-sub">
+              Your payment has been received. We hit a snag opening your order form automatically, but don&apos;t
+              worry -- we&apos;ll reach out shortly to get it signed. If you&apos;d rather not wait, call us at{" "}
+              {siteConfig.phone}.
             </p>
             <Link href="/" className="ps-btn-primary">
               Return Home
