@@ -9,6 +9,7 @@ declare global {
     ABANDONED_CHECK_SECRET: string;
     STRIPE_SECRET_KEY: string;
     STRIPE_WEBHOOK_SECRET: string;
+    DOCUSIGN_CONNECT_HMAC_SECRET: string;
   }
 }
 
