@@ -14,6 +14,8 @@ import {
 } from "@/data/apply-content";
 import { getApplicationSections, summarizeSectionValues, type ApplicationField, type ApplicationSection } from "@/data/application-content";
 
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 const STYLES = `
 .aw-card { color: #1E1C19; }
 .aw-eyebrow {
@@ -371,13 +373,19 @@ export function ApplicationWizard({
     return visibleFields(section, values).every((f) => {
       if (!f.required) return true;
       if (f.type === "ssn" && ssnOnFile) return true;
-      return (values[f.id] ?? "").trim() !== "";
+      const value = (values[f.id] ?? "").trim();
+      if (value === "") return false;
+      // Required fields only checked for non-emptiness would let a typo'd
+      // email reach DocuSign, where it fails with INVALID_EMAIL_ADDRESS_FOR_RECIPIENT
+      // after payment -- too late for the customer to fix it themselves.
+      if (f.type === "email") return EMAIL_PATTERN.test(value);
+      return true;
     });
   }
 
   async function next() {
     if (!validateSection()) {
-      alert("Please fill in all required fields.");
+      alert("Please fill in all required fields with valid values.");
       return;
     }
     await flushPending();
