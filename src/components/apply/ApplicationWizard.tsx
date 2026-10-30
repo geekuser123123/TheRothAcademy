@@ -13,6 +13,7 @@ import {
   type UpgradeId,
 } from "@/data/apply-content";
 import { getApplicationSections, summarizeSectionValues, type ApplicationField, type ApplicationSection } from "@/data/application-content";
+import { siteConfig } from "@/data/site-config";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const SSN_PATTERN = /^(\d{3}-\d{2}-\d{4}|\d{9})$/;
@@ -183,6 +184,7 @@ type Props = {
   ssnOnFile?: boolean;
   alreadyComplete?: boolean;
   initialPaymentStatus?: "unpaid" | "paid" | "failed";
+  initialDocusignStatus?: "not_sent" | "sent" | "completed";
 };
 
 function visibleFields(section: ApplicationSection, values: Record<string, string>) {
@@ -315,12 +317,14 @@ export function ApplicationWizard({
   ssnOnFile = false,
   alreadyComplete = false,
   initialPaymentStatus = "unpaid",
+  initialDocusignStatus = "not_sent",
 }: Props) {
   const sections = getApplicationSections(plan);
   const [sectionIndex, setSectionIndex] = useState(initialSectionIndex ?? 0);
   const [sectionData, setSectionData] = useState<Record<string, Record<string, string>>>(initialSectionData ?? {});
   const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "saved">("idle");
   const [complete, setComplete] = useState(alreadyComplete);
+  const [signingError, setSigningError] = useState<string | null>(null);
   const [paymentStatus, setPaymentStatus] = useState(initialPaymentStatus);
   const [finishing, setFinishing] = useState(false);
   const [checkoutError, setCheckoutError] = useState<string | null>(null);
@@ -449,6 +453,29 @@ export function ApplicationWizard({
       setCheckoutError(err instanceof Error ? err.message : "Could not start secure checkout");
       setFinishing(false);
       setComplete(true);
+    }
+  }
+
+  // Covers someone who closed the DocuSign tab before finishing and came
+  // back via their resume link -- send-for-signature resumes the existing
+  // envelope rather than creating a new one when one's already out.
+  async function continueToSigning() {
+    setFinishing(true);
+    setSigningError(null);
+    try {
+      const res = await fetch(`/api/applications/${applicationId}/send-for-signature`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: resumeToken }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.url) {
+        throw new Error(data.error || "Could not resume the signing process");
+      }
+      window.location.href = data.url;
+    } catch (err) {
+      setSigningError(err instanceof Error ? err.message : "Could not resume the signing process");
+      setFinishing(false);
     }
   }
 
@@ -586,6 +613,45 @@ export function ApplicationWizard({
           <button type="button" className="aw-btn-primary" onClick={finishApplication} disabled={finishing}>
             {finishing ? "Submitting..." : "Continue to Secure Payment →"}
           </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (complete && paymentStatus === "paid" && initialDocusignStatus === "completed") {
+    return (
+      <div className="aw-card">
+        <style>{STYLES}</style>
+        <div className="aw-eyebrow">Fully Signed</div>
+        <h2 className="aw-h2">You&apos;re All Set</h2>
+        <p className="aw-sub">
+          Your application, payment, and signed order form are all complete. We&apos;ll be in touch shortly with next
+          steps to get your plan established.
+        </p>
+      </div>
+    );
+  }
+
+  if (complete && paymentStatus === "paid" && (plan === "401k" || plan === "ira")) {
+    return (
+      <div className="aw-card">
+        <style>{STYLES}</style>
+        <div className="aw-eyebrow">Payment Received</div>
+        <h2 className="aw-h2">{signingError ? "One More Step" : "Let's Get Your Order Form Signed"}</h2>
+        <p className="aw-sub">
+          {signingError
+            ? "Your payment is complete, but we couldn't open your order form just now."
+            : "Your payment is complete. Signing your order form electronically is the last step."}
+        </p>
+        {signingError && <p className="aw-sub" style={{ color: "#b3261e", marginTop: -14 }}>{signingError}</p>}
+        <button type="button" className="aw-btn-primary" onClick={continueToSigning} disabled={finishing} style={{ marginBottom: 20 }}>
+          {finishing ? "Opening..." : signingError ? "Try Again →" : "Continue to Signing →"}
+        </button>
+        <div className="aw-complete-box">
+          <p>
+            Rather not sign online right now? Call us at {siteConfig.phone} and we&apos;ll get it sent over another
+            way.
+          </p>
         </div>
       </div>
     );

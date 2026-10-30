@@ -121,11 +121,15 @@ function PaymentSuccessContent() {
           const data = await res.json();
           if (data.paymentStatus === "paid") {
             if (cancelled) return;
-            // Only ever send one signing request per application -- a
-            // refreshed page with an already-"sent" status falls back to
-            // the honest "we'll be in touch" copy rather than trying (and
-            // failing) to fetch a new link for an envelope that's already out.
-            if ((data.plan === "401k" || data.plan === "ira") && data.docusignStatus === "not_sent") {
+            // "not_sent" starts a brand new envelope; "sent" means one's
+            // already out (e.g. they closed the signing tab before
+            // finishing) -- send-for-signature resumes that same envelope
+            // instead of refusing. Only "completed" skips straight to the
+            // generic "you're all set" copy.
+            if (
+              (data.plan === "401k" || data.plan === "ira") &&
+              (data.docusignStatus === "not_sent" || data.docusignStatus === "sent")
+            ) {
               setStatus("redirecting");
               startSigning();
             } else {

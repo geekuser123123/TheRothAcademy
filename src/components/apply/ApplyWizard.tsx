@@ -429,6 +429,7 @@ export type ResumeData = {
   ssnOnFile: boolean;
   alreadyComplete: boolean;
   paymentStatus: "unpaid" | "paid" | "failed";
+  docusignStatus: "not_sent" | "sent" | "completed";
 };
 
 export function ApplyWizard({ resume }: { resume?: ResumeData } = {}) {
@@ -662,6 +663,7 @@ export function ApplyWizard({ resume }: { resume?: ResumeData } = {}) {
               ssnOnFile={resume?.ssnOnFile}
               alreadyComplete={resume?.alreadyComplete}
               initialPaymentStatus={resume?.paymentStatus}
+              initialDocusignStatus={resume?.docusignStatus}
             />
           )}
         </div>

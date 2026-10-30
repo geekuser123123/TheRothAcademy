@@ -103,6 +103,7 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         applicationId: row.id,
         plan: row.plan,
+        envelopeId,
         lead: { firstName: row.lead_first_name, lastName: row.lead_last_name, email: row.lead_email },
       }),
     });

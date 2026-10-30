@@ -48,6 +48,7 @@ export default async function ResumeApplicationPage({ searchParams }: { searchPa
         ssnOnFile: application.ssnOnFile,
         alreadyComplete: application.status === "complete",
         paymentStatus: application.paymentStatus,
+        docusignStatus: application.docusignStatus,
       }}
     />
   );
