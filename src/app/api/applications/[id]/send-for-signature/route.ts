@@ -17,6 +17,12 @@ const N8N_DOCUSIGN_WEBHOOK: Record<"401k" | "ira", string> = {
 // fallback link the way Co-Trustee/Manager recipients do.
 const N8N_DOCUSIGN_RESUME_WEBHOOK = "https://n8n.coreautomations.org/webhook/docusign-resume-signing";
 
+// A one-time safety net emailed the moment the envelope is first created --
+// if the Client closes the embedded signing tab and has no link in hand
+// (e.g. didn't bookmark it, didn't hit Back), this is the only way back in,
+// since embedded signing itself never emails them.
+const N8N_SIGNING_LINK_EMAIL_WEBHOOK = "https://n8n.coreautomations.org/webhook/docusign-signing-link-email";
+
 export async function POST(request: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const body = await request.json().catch(() => null);
@@ -48,6 +54,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
 
   const origin = new URL(request.url).origin;
   const returnUrl = `${origin}/apply/signing-complete?id=${id}&token=${token}`;
+  const resumeLink = `${origin}/apply/resume?id=${id}&token=${token}`;
   const lead = {
     firstName: row.lead_first_name,
     lastName: row.lead_last_name,
@@ -135,6 +142,14 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     )
     .bind(envelopeId, id)
     .run();
+
+  // Fire-and-forget -- the signing URL above is what actually matters for
+  // the immediate redirect; a failed email send shouldn't block that.
+  fetch(N8N_SIGNING_LINK_EMAIL_WEBHOOK, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ applicationId: id, plan: row.plan, lead, resumeLink }),
+  }).catch((err) => console.error("Failed to send signing-link email", err));
 
   return NextResponse.json({ url: signingUrl });
 }
