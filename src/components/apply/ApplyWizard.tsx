@@ -427,6 +427,7 @@ export type ResumeData = {
   initialSectionIndex: number;
   ssnOnFile: boolean;
   alreadyComplete: boolean;
+  paymentStatus: "unpaid" | "paid" | "failed";
 };
 
 export function ApplyWizard({ resume }: { resume?: ResumeData } = {}) {
@@ -651,6 +652,7 @@ export function ApplyWizard({ resume }: { resume?: ResumeData } = {}) {
               initialSectionIndex={resume?.initialSectionIndex}
               ssnOnFile={resume?.ssnOnFile}
               alreadyComplete={resume?.alreadyComplete}
+              initialPaymentStatus={resume?.paymentStatus}
             />
           )}
         </div>

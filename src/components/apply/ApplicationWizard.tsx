@@ -179,6 +179,7 @@ type Props = {
   initialSectionIndex?: number;
   ssnOnFile?: boolean;
   alreadyComplete?: boolean;
+  initialPaymentStatus?: "unpaid" | "paid" | "failed";
 };
 
 function visibleFields(section: ApplicationSection, values: Record<string, string>) {
@@ -300,13 +301,16 @@ export function ApplicationWizard({
   initialSectionIndex,
   ssnOnFile = false,
   alreadyComplete = false,
+  initialPaymentStatus = "unpaid",
 }: Props) {
   const sections = getApplicationSections(plan);
   const [sectionIndex, setSectionIndex] = useState(initialSectionIndex ?? 0);
   const [sectionData, setSectionData] = useState<Record<string, Record<string, string>>>(initialSectionData ?? {});
   const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "saved">("idle");
   const [complete, setComplete] = useState(alreadyComplete);
+  const [paymentStatus, setPaymentStatus] = useState(initialPaymentStatus);
   const [finishing, setFinishing] = useState(false);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
   const [resumeCopied, setResumeCopied] = useState(false);
   const [reviewing, setReviewing] = useState(false);
   const [cameFromReview, setCameFromReview] = useState(false);
@@ -402,6 +406,29 @@ export function ApplicationWizard({
     setReviewing(false);
   }
 
+  async function startCheckout() {
+    setFinishing(true);
+    setCheckoutError(null);
+    try {
+      const res = await fetch(`/api/applications/${applicationId}/checkout`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: resumeToken }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.url) {
+        throw new Error(data.error || "Could not start secure checkout");
+      }
+      // Navigating away -- deliberately don't reset `finishing` here so the
+      // button stays disabled/labeled "Submitting..." during the redirect.
+      window.location.href = data.url;
+    } catch (err) {
+      setCheckoutError(err instanceof Error ? err.message : "Could not start secure checkout");
+      setFinishing(false);
+      setComplete(true);
+    }
+  }
+
   async function finishApplication() {
     setFinishing(true);
     try {
@@ -414,8 +441,7 @@ export function ApplicationWizard({
       // Autosaved data already lives in D1 either way; this call only
       // notifies GHL, so a network failure here isn't destructive.
     }
-    setFinishing(false);
-    setComplete(true);
+    await startCheckout();
   }
 
   async function copyResumeLink() {
@@ -542,16 +568,35 @@ export function ApplicationWizard({
     );
   }
 
+  if (complete && paymentStatus === "paid") {
+    return (
+      <div className="aw-card">
+        <style>{STYLES}</style>
+        <div className="aw-eyebrow">Payment Received</div>
+        <h2 className="aw-h2">You&apos;re All Set</h2>
+        <p className="aw-sub">
+          Your application and payment are both complete. We&apos;ll be in touch shortly with next steps to get your
+          order form signed and your plan established.
+        </p>
+      </div>
+    );
+  }
+
   if (complete) {
     return (
       <div className="aw-card">
         <style>{STYLES}</style>
         <div className="aw-eyebrow">Application Saved</div>
-        <h2 className="aw-h2">That&apos;s Everything We Need For Now</h2>
+        <h2 className="aw-h2">{checkoutError ? "One More Step" : "That's Everything We Need For Now"}</h2>
         <p className="aw-sub">
-          Your answers are saved. Secure payment is the next part of this application, which is still being
-          finalized.
+          {checkoutError
+            ? "Your answers are saved, but we couldn't start secure checkout just now."
+            : "Your answers are saved. Secure payment is the last step to get your plan established."}
         </p>
+        {checkoutError && <p className="aw-sub" style={{ color: "#b3261e", marginTop: -14 }}>{checkoutError}</p>}
+        <button type="button" className="aw-btn-primary" onClick={startCheckout} disabled={finishing} style={{ marginBottom: 20 }}>
+          {finishing ? "Starting Checkout..." : checkoutError ? "Try Payment Again →" : "Continue to Secure Payment →"}
+        </button>
         <div className="aw-complete-box">
           <p>
             A specialist can also take it from here right away if you&apos;d rather not wait, just book a Retirement

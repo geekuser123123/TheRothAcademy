@@ -24,6 +24,7 @@ export type ApplicationRecord = {
   sections: Record<ApplicationSectionId, Record<string, string>>;
   currentSection: string;
   ssnOnFile: boolean;
+  paymentStatus: "unpaid" | "paid" | "failed";
 };
 
 // Shared by the resume-by-link page and the GET /api/applications/[id]
@@ -35,7 +36,7 @@ export async function getApplicationByToken(id: string, token: string): Promise<
     .prepare(
       `SELECT id, plan, status, lead_first_name, lead_last_name, lead_email, lead_phone, eligibility_answers,
               personal_info, spouse_info, business_info, retirement_accounts, setup_details,
-              current_section, ssn_encrypted
+              current_section, ssn_encrypted, payment_status
          FROM applications WHERE id = ?1 AND resume_token = ?2`
     )
     .bind(id, token)
@@ -63,6 +64,7 @@ export async function getApplicationByToken(id: string, token: string): Promise<
     },
     currentSection: (row.current_section as string) ?? "personal_info",
     ssnOnFile: Boolean(row.ssn_encrypted),
+    paymentStatus: (row.payment_status as "unpaid" | "paid" | "failed") ?? "unpaid",
   };
 }
 
