@@ -44,9 +44,18 @@ export async function POST(request: Request) {
   }
 
   const row = await db
-    .prepare(`SELECT payment_status, plan, lead_first_name, lead_last_name, lead_email FROM applications WHERE id = ?1`)
+    .prepare(
+      `SELECT payment_status, plan, lead_first_name, lead_last_name, lead_email, lead_phone FROM applications WHERE id = ?1`
+    )
     .bind(applicationId)
-    .first<{ payment_status: string; plan: string; lead_first_name: string; lead_last_name: string; lead_email: string }>();
+    .first<{
+      payment_status: string;
+      plan: string;
+      lead_first_name: string;
+      lead_last_name: string;
+      lead_email: string;
+      lead_phone: string;
+    }>();
 
   if (!row) return NextResponse.json({ error: "Application not found" }, { status: 404 });
 
@@ -54,6 +63,11 @@ export async function POST(request: Request) {
   if (row.payment_status === "paid") {
     return NextResponse.json({ received: true, alreadyProcessed: true });
   }
+
+  const paidAt = new Date().toISOString();
+  const stripeCheckoutSessionId = (session.id as string) ?? null;
+  const stripePaymentIntentId = (session.payment_intent as string) ?? null;
+  const amountPaidCents = (session.amount_total as number) ?? null;
 
   await db
     .prepare(
@@ -66,12 +80,7 @@ export async function POST(request: Request) {
               updated_at = datetime('now')
         WHERE id = ?4`
     )
-    .bind(
-      (session.id as string) ?? null,
-      (session.payment_intent as string) ?? null,
-      (session.amount_total as number) ?? null,
-      applicationId
-    )
+    .bind(stripeCheckoutSessionId, stripePaymentIntentId, amountPaidCents, applicationId)
     .run();
 
   try {
@@ -81,8 +90,16 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         applicationId,
         plan: row.plan,
-        lead: { firstName: row.lead_first_name, lastName: row.lead_last_name, email: row.lead_email },
-        amountPaidCents: session.amount_total ?? null,
+        lead: {
+          firstName: row.lead_first_name,
+          lastName: row.lead_last_name,
+          email: row.lead_email,
+          phone: row.lead_phone,
+        },
+        amountPaidCents,
+        stripeCheckoutSessionId,
+        stripePaymentIntentId,
+        paidAt,
       }),
     });
   } catch (err) {
