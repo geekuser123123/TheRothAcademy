@@ -506,6 +506,14 @@ export function ApplicationWizard({
       .catch(() => {
         window.prompt("Copy your resume link:", url);
       });
+    // Fire-and-forget -- the clipboard copy above is the guaranteed part of
+    // this action; the email is a bonus safety net in case they close the
+    // tab without ever pasting that link anywhere.
+    fetch(`/api/applications/${applicationId}/email-resume-link`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token: resumeToken }),
+    }).catch(() => {});
   }
 
   if (reviewing && !complete) {
@@ -715,7 +723,7 @@ export function ApplicationWizard({
 
       <div className="aw-save-status-row">
         <button type="button" className="aw-resume-link" onClick={copyResumeLink}>
-          {resumeCopied ? "Link copied" : "Save & finish later"}
+          {resumeCopied ? "Link copied & emailed" : "Save & finish later"}
         </button>
         <span className="aw-save-status">
           {saveStatus === "saving" ? "Saving..." : saveStatus === "saved" ? "Saved" : ""}
