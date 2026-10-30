@@ -79,9 +79,9 @@ function SigningCompleteContent() {
         <div className="sc-eyebrow">Order Form Received</div>
         <h2 className="sc-h2">Thank You for Signing</h2>
         <p className="sc-sub">
-          We&apos;ve received your completed order form. If a spouse or co-trustee also needs to sign, they&apos;ll
-          receive their own secure email invitation separately -- nothing further is needed from you for that.
-          We&apos;ll be in touch with next steps once everything is fully signed.
+          We&apos;ve received your completed order form. If a spouse, co-trustee, or additional LLC manager also
+          needs to sign, they&apos;ll receive their own secure email invitation separately -- nothing further is
+          needed from you for that. We&apos;ll be in touch with next steps once everything is fully signed.
         </p>
         <p className="sc-sub">If you have any questions in the meantime, call us at {siteConfig.phone}.</p>
         <Link href="/" className="sc-btn-primary">
