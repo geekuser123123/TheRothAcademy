@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import { ArrowUpRight, Check } from "lucide-react";
+import { ArrowUpRight, Check, ChevronDown } from "lucide-react";
 import { clsx } from "clsx";
 import { PlanInterestChooser } from "@/components/ui/PlanInterestChooser";
 import { getPageLabel } from "@/lib/page-label";
@@ -10,12 +10,79 @@ import { planInterestOptions, type PlanInterestValue } from "@/data/start-conten
 
 const inputClasses =
   "mt-2 block w-full rounded-sm border border-r-line bg-r-bg px-4 py-3 text-sm text-r-white font-body normal-case placeholder:text-r-muted/50 transition-colors focus:border-r-gold focus:outline-none";
+const selectClasses = `${inputClasses} appearance-none cursor-pointer pr-10`;
 const labelClasses = "text-xs font-semibold uppercase tracking-[0.15em] text-r-muted";
+
+const BUSINESS_OWNERSHIP_OPTIONS = [
+  { value: "sole_proprietorship", label: "Sole Proprietorship" },
+  { value: "partnership", label: "Partnership" },
+  { value: "llc", label: "LLC" },
+  { value: "s_corporation", label: "S Corporation" },
+  { value: "c_corporation", label: "C Corporation" },
+  { value: "other", label: "Other" },
+];
+
+const EMPLOYEE_OPTIONS = [
+  { value: "no", label: "No — just me or my spouse" },
+  { value: "yes", label: "Yes — I have other full-time employees" },
+];
+
+const EXISTING_ACCOUNT_OPTIONS = [
+  { value: "401k", label: "401(k)" },
+  { value: "ira", label: "IRA" },
+  { value: "both", label: "Both" },
+  { value: "none", label: "None" },
+];
+
+const TIMELINE_OPTIONS = [
+  { value: "immediately", label: "Immediately" },
+  { value: "within_a_month", label: "Within a month" },
+  { value: "1_3_months", label: "1–3 months" },
+  { value: "3_6_months", label: "3–6 months" },
+  { value: "not_sure", label: "Not sure yet" },
+];
 
 type Status = "idle" | "submitting" | "success" | "error";
 
 function isPlanInterest(value: string | null): value is PlanInterestValue {
   return planInterestOptions.some((option) => option.value === value);
+}
+
+function SelectField({
+  id,
+  name,
+  label,
+  options,
+  placeholder,
+}: {
+  id: string;
+  name: string;
+  label: string;
+  options: { value: string; label: string }[];
+  placeholder: string;
+}) {
+  return (
+    <label className="block" htmlFor={id}>
+      <span className={labelClasses}>{label}</span>
+      <div className="relative">
+        <select id={id} name={name} defaultValue="" className={selectClasses}>
+          <option value="" disabled>
+            {placeholder}
+          </option>
+          {options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+        <ChevronDown
+          size={16}
+          aria-hidden
+          className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-r-muted/60"
+        />
+      </div>
+    </label>
+  );
 }
 
 export function StartForm() {
@@ -135,26 +202,20 @@ export function StartForm() {
         <div className="border-t border-r-line pt-8">
           <span className={clsx(labelClasses, "text-r-gold")}>Business Details</span>
           <div className="mt-4 grid gap-5 sm:grid-cols-2">
-            <label className="block" htmlFor="start-business-ownership">
-              <span className={labelClasses}>Business Ownership</span>
-              <input
-                id="start-business-ownership"
-                name="businessOwnership"
-                type="text"
-                placeholder="Sole proprietor, partnership, corporation..."
-                className={inputClasses}
-              />
-            </label>
-            <label className="block" htmlFor="start-employee-info">
-              <span className={labelClasses}>Employees</span>
-              <input
-                id="start-employee-info"
-                name="employeeInfo"
-                type="text"
-                placeholder="Any full-time employees besides you or a spouse?"
-                className={inputClasses}
-              />
-            </label>
+            <SelectField
+              id="start-business-ownership"
+              name="businessOwnership"
+              label="Business Ownership"
+              placeholder="Select ownership type..."
+              options={BUSINESS_OWNERSHIP_OPTIONS}
+            />
+            <SelectField
+              id="start-employee-info"
+              name="employeeInfo"
+              label="Employees Besides You or a Spouse?"
+              placeholder="Select..."
+              options={EMPLOYEE_OPTIONS}
+            />
           </div>
         </div>
       )}
@@ -164,26 +225,20 @@ export function StartForm() {
           Tell Us More <span className="normal-case text-r-muted/60">(optional)</span>
         </span>
         <div className="mt-4 grid gap-5 sm:grid-cols-2">
-          <label className="block" htmlFor="start-existing-account">
-            <span className={labelClasses}>Existing Retirement Account</span>
-            <input
-              id="start-existing-account"
-              name="existingAccountType"
-              type="text"
-              placeholder="401(k), IRA, none..."
-              className={inputClasses}
-            />
-          </label>
-          <label className="block" htmlFor="start-timeline">
-            <span className={labelClasses}>Timeline</span>
-            <input
-              id="start-timeline"
-              name="timeline"
-              type="text"
-              placeholder="e.g. Within a month"
-              className={inputClasses}
-            />
-          </label>
+          <SelectField
+            id="start-existing-account"
+            name="existingAccountType"
+            label="Existing Retirement Account"
+            placeholder="Select..."
+            options={EXISTING_ACCOUNT_OPTIONS}
+          />
+          <SelectField
+            id="start-timeline"
+            name="timeline"
+            label="Timeline"
+            placeholder="Select..."
+            options={TIMELINE_OPTIONS}
+          />
         </div>
 
         <label className="mt-5 block" htmlFor="start-investments">
