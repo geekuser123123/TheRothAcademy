@@ -262,6 +262,14 @@ function EyeOffIcon() {
   );
 }
 
+// A Social Security Number is always exactly 9 digits -- strip anything
+// else as it's typed and insert the standard XXX-XX-XXXX hyphens rather
+// than relying on the signer to type them correctly.
+function formatSSN(raw: string): string {
+  const digits = raw.replace(/\D/g, "").slice(0, 9);
+  return [digits.slice(0, 3), digits.slice(3, 5), digits.slice(5, 9)].filter(Boolean).join("-");
+}
+
 function SsnInput({
   id,
   value,
@@ -281,7 +289,9 @@ function SsnInput({
         type={visible ? "text" : "password"}
         value={value}
         placeholder={placeholder}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => onChange(formatSSN(e.target.value))}
+        inputMode="numeric"
+        maxLength={11}
         autoComplete="off"
       />
       <button
