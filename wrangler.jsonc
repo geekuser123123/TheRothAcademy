@@ -19,18 +19,15 @@
       "migrations_dir": "migrations"
     }
   ],
-  // Placeholders only — real values are set with `wrangler secret put
-  // <NAME>`, which overrides this in production. Locally, set these in a
-  // gitignored .dev.vars file instead (wrangler reads it automatically;
-  // .env.local is not used for Cloudflare bindings by the installed
-  // @opennextjs/cloudflare version). ABANDONED_CHECK_SECRET authorizes the
-  // scheduled call to /api/applications/check-abandoned. STRIPE_SECRET_KEY
-  // and STRIPE_WEBHOOK_SECRET are test-mode values during development --
-  // switch to live-mode values only when going to production.
-  "vars": {
-    "SSN_ENCRYPTION_KEY": "",
-    "ABANDONED_CHECK_SECRET": "",
-    "STRIPE_SECRET_KEY": "",
-    "STRIPE_WEBHOOK_SECRET": ""
-  }
+  // SSN_ENCRYPTION_KEY, ABANDONED_CHECK_SECRET, STRIPE_SECRET_KEY, and
+  // STRIPE_WEBHOOK_SECRET are intentionally NOT declared here. Any key listed
+  // under `vars` is reasserted on every deploy -- if a secret of the same
+  // name was set via `wrangler secret put` or the dashboard, that deploy
+  // silently overwrites it back to the literal value in this file (an empty
+  // string, if that's what's here), wiping the real secret. These four must
+  // only ever be set as actual Cloudflare secrets, never as `vars`. Locally,
+  // set them in a gitignored .dev.vars file instead (wrangler reads it
+  // automatically; .env.local is not used for Cloudflare bindings by the
+  // installed @opennextjs/cloudflare version).
+  "vars": {}
 }
