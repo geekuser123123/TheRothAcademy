@@ -121,12 +121,11 @@ function PaymentSuccessContent() {
           const data = await res.json();
           if (data.paymentStatus === "paid") {
             if (cancelled) return;
-            // Only the 401(k) order form is wired up to DocuSign so far, and
-            // only ever send one signing request per application -- a
+            // Only ever send one signing request per application -- a
             // refreshed page with an already-"sent" status falls back to
             // the honest "we'll be in touch" copy rather than trying (and
             // failing) to fetch a new link for an envelope that's already out.
-            if (data.plan === "401k" && data.docusignStatus === "not_sent") {
+            if ((data.plan === "401k" || data.plan === "ira") && data.docusignStatus === "not_sent") {
               setStatus("redirecting");
               startSigning();
             } else {
