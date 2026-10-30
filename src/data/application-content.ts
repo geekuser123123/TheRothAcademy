@@ -88,7 +88,7 @@ const SPOUSE_INFO: Record<PlanId, ApplicationSection> = {
       { id: "additional_manager_city", label: "City", type: "text", required: true, showIf: (v) => v.has_spouse_manager === "yes" },
       { id: "additional_manager_state", label: "State", type: "text", required: true, showIf: (v) => v.has_spouse_manager === "yes" },
       { id: "additional_manager_zip", label: "ZIP", type: "text", required: true, showIf: (v) => v.has_spouse_manager === "yes" },
-      { id: "additional_manager_contact", label: "Best Contact (Phone or Email)", type: "text", required: true, showIf: (v) => v.has_spouse_manager === "yes" },
+      { id: "additional_manager_email", label: "Additional Manager's Email", type: "email", required: true, showIf: (v) => v.has_spouse_manager === "yes" },
     ],
   },
 };

@@ -3,9 +3,12 @@ import { getDb, decryptSSN, getSsnEncryptionKey } from "@/lib/applications-db";
 
 // n8n builds the DocuSign envelope from the application data we send here
 // and returns an embedded signing URL for the Client -- DocuSign emails the
-// Co-Trustee automatically if one is on the application. Only the 401(k)
-// form is wired up so far; the IRA workflow doesn't exist yet.
-const N8N_DOCUSIGN_401K_WEBHOOK = "https://n8n.coreautomations.org/webhook/docusign-send-401k";
+// second signer (Co-Trustee / Manager) automatically if one is on the
+// application.
+const N8N_DOCUSIGN_WEBHOOK: Record<"401k" | "ira", string> = {
+  "401k": "https://n8n.coreautomations.org/webhook/docusign-send-401k",
+  ira: "https://n8n.coreautomations.org/webhook/docusign-send-ira",
+};
 
 export async function POST(request: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -24,7 +27,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     .prepare(
       `SELECT plan, payment_status, docusign_envelope_id, docusign_status,
               lead_first_name, lead_last_name, lead_email, lead_phone,
-              personal_info, spouse_info, business_info, ssn_encrypted, ssn_iv
+              personal_info, spouse_info, business_info, eligibility_answers, ssn_encrypted, ssn_iv
          FROM applications WHERE id = ?1 AND resume_token = ?2`
     )
     .bind(id, token)
@@ -36,8 +39,8 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     return NextResponse.json({ error: "Payment has not been completed yet" }, { status: 409 });
   }
 
-  if (row.plan !== "401k") {
-    // IRA order form isn't wired up to DocuSign yet.
+  const webhookUrl = N8N_DOCUSIGN_WEBHOOK[row.plan as "401k" | "ira"];
+  if (!webhookUrl) {
     return NextResponse.json({ error: "Electronic signing for this plan isn't available yet" }, { status: 503 });
   }
 
@@ -54,6 +57,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
   const personalInfo = row.personal_info ? JSON.parse(row.personal_info as string) : {};
   const spouseInfo = row.spouse_info ? JSON.parse(row.spouse_info as string) : {};
   const businessInfo = row.business_info ? JSON.parse(row.business_info as string) : {};
+  const eligibilityAnswers = row.eligibility_answers ? JSON.parse(row.eligibility_answers as string) : {};
 
   if (row.ssn_encrypted && row.ssn_iv) {
     const secret = await getSsnEncryptionKey();
@@ -68,7 +72,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
   let signingUrl: string;
   let envelopeId: string;
   try {
-    const res = await fetch(N8N_DOCUSIGN_401K_WEBHOOK, {
+    const res = await fetch(webhookUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -83,6 +87,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
         personalInfo,
         spouseInfo,
         businessInfo,
+        eligibilityAnswers,
       }),
     });
     const data = (await res.json().catch(() => ({}))) as { signingUrl?: string; envelopeId?: string };
