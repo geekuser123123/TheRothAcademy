@@ -15,6 +15,7 @@ import {
 import { getApplicationSections, summarizeSectionValues, type ApplicationField, type ApplicationSection } from "@/data/application-content";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const SSN_PATTERN = /^(\d{3}-\d{2}-\d{4}|\d{9})$/;
 
 const STYLES = `
 .aw-card { color: #1E1C19; }
@@ -272,7 +273,7 @@ function SsnInput({
   placeholder?: string;
   onChange: (v: string) => void;
 }) {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   return (
     <div className="aw-ssn-wrap">
       <input
@@ -379,6 +380,10 @@ export function ApplicationWizard({
       // email reach DocuSign, where it fails with INVALID_EMAIL_ADDRESS_FOR_RECIPIENT
       // after payment -- too late for the customer to fix it themselves.
       if (f.type === "email") return EMAIL_PATTERN.test(value);
+      // Unlike email, a malformed SSN isn't rejected by DocuSign -- it's
+      // just text on a legal document, so bad data here fails silently
+      // all the way through instead of erroring anywhere.
+      if (f.type === "ssn") return SSN_PATTERN.test(value);
       return true;
     });
   }
