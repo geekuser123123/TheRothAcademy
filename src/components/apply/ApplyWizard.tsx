@@ -8,9 +8,10 @@ import { PLANS, ELIGIBILITY_QUESTIONS, ANNUAL_MAINTENANCE, type PlanId } from "@
 import { siteConfig } from "@/data/site-config";
 import { generateEventId, getAttributionSnapshot, trackGA4Event } from "@/lib/tracking";
 
-// Not yet live; see the n8n workflow spec given alongside this build. Creates/
-// updates the GHL contact + opportunity on lead capture, and again whenever the
-// eligibility outcome (pass, or which question stopped it) is known.
+// Creates the GHL contact + opportunity on lead capture (New Lead), moves it
+// to Eligibility Questions as soon as screening starts, then on to either
+// Application In Progress or Closed / Unsupported Application once the
+// eligibility outcome is known.
 const N8N_APPLY_WEBHOOK = "https://n8n.coreautomations.org/webhook/apply-lead-ghl";
 
 type Step = "plan" | "help-me-choose" | "lead" | "eligibility" | "outcome" | "application";
@@ -480,7 +481,7 @@ export function ApplyWizard({ resume }: { resume?: ResumeData } = {}) {
   }
 
   function postApplyEvent(payload: Record<string, unknown>) {
-    fetch(N8N_APPLY_WEBHOOK, {
+    return fetch(N8N_APPLY_WEBHOOK, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -513,9 +514,17 @@ export function ApplyWizard({ resume }: { resume?: ResumeData } = {}) {
     if (!validateLead()) return;
     setSubmitting(true);
     trackGA4Event("apply_lead_captured", { plan });
+    // Chained (not fired in parallel) so the GHL contact + opportunity from
+    // lead_captured exist by the time eligibility_started's n8n workflow
+    // searches for them.
     postApplyEvent({
       stage: "lead_captured",
       customer_details: lead,
+    }).then(() => {
+      postApplyEvent({
+        stage: "eligibility_started",
+        customer_details: lead,
+      });
     });
     setSubmitting(false);
     setQIndex(0);
